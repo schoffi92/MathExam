@@ -1,0 +1,39 @@
+<UserControl x:Class="MathExam.App.Views.MenuView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="360">
+        <TextBlock Text="Math Exam" Style="{StaticResource Title}" />
+
+        <Grid Margin="0,0,0,16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="120" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock Text="Lowest number:" VerticalAlignment="Center" />
+            <TextBox Grid.Column="1" Margin="0,4" Padding="4"
+                     Text="{Binding MinText, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Grid.Row="1" Text="Highest number:" VerticalAlignment="Center" />
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="0,4" Padding="4"
+                     Text="{Binding MaxText, UpdateSourceTrigger=PropertyChanged}" />
+        </Grid>
+
+        <GroupBox Header="Operations" Padding="8" Margin="0,0,0,16">
+            <UniformGrid Columns="2">
+                <CheckBox Content="Addition (+)" IsChecked="{Binding UseAdd}" Margin="4" />
+                <CheckBox Content="Subtraction (−)" IsChecked="{Binding UseSubtract}" Margin="4" />
+                <CheckBox Content="Multiplication (×)" IsChecked="{Binding UseMultiply}" Margin="4" />
+                <CheckBox Content="Division (÷)" IsChecked="{Binding UseDivide}" Margin="4" />
+            </UniformGrid>
+        </GroupBox>
+
+        <TextBlock Text="{Binding ErrorMessage}" Foreground="Firebrick" TextWrapping="Wrap"
+                   Margin="0,0,0,12" HorizontalAlignment="Center" />
+
+        <Button Content="Start" Command="{Binding StartCommand}" IsDefault="True"
+                HorizontalAlignment="Center" />
+    </StackPanel>
+</UserControl>

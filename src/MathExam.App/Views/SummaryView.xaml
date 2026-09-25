@@ -1,0 +1,22 @@
+<UserControl x:Class="MathExam.App.Views.SummaryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock Text="Summary" Style="{StaticResource Title}" />
+        <StackPanel Margin="0,0,0,24">
+            <StackPanel.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="FontSize" Value="20" />
+                    <Setter Property="Margin" Value="0,4" />
+                </Style>
+            </StackPanel.Resources>
+            <TextBlock Text="{Binding AnsweredText}" />
+            <TextBlock Text="{Binding CorrectText}" Foreground="DarkGreen" />
+            <TextBlock Text="{Binding WrongText}" Foreground="DarkRed" />
+            <TextBlock Text="{Binding AccuracyText}" />
+            <TextBlock Text="{Binding TimeText}" />
+        </StackPanel>
+        <Button Content="Back to menu" Command="{Binding BackToMenuCommand}" IsDefault="True"
+                HorizontalAlignment="Center" />
+    </StackPanel>
+</UserControl>
