@@ -9,13 +9,15 @@ public sealed class GameSession
     private readonly Stopwatch _stopwatch = new();
 
     /// <param name="difficulty">When given, the game is adaptive: tasks use the adjuster's current range.</param>
-    public GameSession(GameSettings settings, TaskGenerator? generator = null, DifficultyAdjuster? difficulty = null)
+    /// <param name="startedAt">Start time; family games pass one shared time so their players' records belong together.</param>
+    public GameSession(GameSettings settings, TaskGenerator? generator = null, DifficultyAdjuster? difficulty = null,
+        DateTime? startedAt = null)
     {
         Settings = settings;
         _generator = generator ?? new TaskGenerator();
         Difficulty = difficulty;
         StartLevel = difficulty?.Level;
-        StartedAt = DateTime.Now;
+        StartedAt = startedAt ?? DateTime.Now;
         _stopwatch.Start();
         CurrentTask = _generator.Next(TaskSettings);
         TaskNumber = 1;

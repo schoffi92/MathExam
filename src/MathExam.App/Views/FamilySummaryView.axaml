@@ -1,0 +1,35 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:MathExam.App.ViewModels"
+             x:Class="MathExam.App.Views.FamilySummaryView"
+             x:DataType="vm:FamilySummaryViewModel">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock Text="{Binding WinnerText}" Classes="title" Foreground="{DynamicResource AccentBrush}"
+                   TextWrapping="Wrap" TextAlignment="Center" MaxWidth="600" />
+
+        <ItemsControl ItemsSource="{Binding Rows}" Margin="0,0,0,16">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate x:DataType="vm:RankingRow">
+                    <Grid ColumnDefinitions="40,160,160,70,140" Margin="0,6">
+                        <TextBlock Text="{Binding Place}" FontSize="20" FontWeight="SemiBold" />
+                        <TextBlock Grid.Column="1" Text="{Binding Name}" FontSize="20" FontWeight="SemiBold"
+                                   TextTrimming="CharacterEllipsis" />
+                        <TextBlock Grid.Column="2" Text="{Binding Score}" FontSize="18" VerticalAlignment="Center" />
+                        <TextBlock Grid.Column="3" Text="{Binding Accuracy}" FontSize="18" VerticalAlignment="Center" />
+                        <TextBlock Grid.Column="4" Text="{Binding Level}" FontSize="18" VerticalAlignment="Center"
+                                   Foreground="{DynamicResource AccentBrush}" />
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <TextBlock Text="{Binding TimeText}" HorizontalAlignment="Center" Margin="0,0,0,16" />
+        <TextBlock Text="{Binding SaveError}" Foreground="{DynamicResource ErrorBrush}" TextWrapping="Wrap" MaxWidth="480"
+                   HorizontalAlignment="Center" Margin="0,0,0,12" />
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="12">
+            <Button Content="Play again" Command="{Binding PlayAgainCommand}" IsDefault="True" />
+            <Button Content="Back to menu" Command="{Binding BackToMenuCommand}" />
+        </StackPanel>
+    </StackPanel>
+</UserControl>

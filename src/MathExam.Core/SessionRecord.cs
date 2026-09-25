@@ -3,6 +3,7 @@ using System.Text.Json.Serialization;
 namespace MathExam.Core;
 
 /// <summary>A finished game as stored in the progress history.</summary>
+/// <param name="Player">The player's name in a family game; null for a solo game.</param>
 public sealed record SessionRecord(
     DateTime StartedAt,
     TimeSpan Duration,
@@ -12,7 +13,8 @@ public sealed record SessionRecord(
     int Correct,
     int Wrong,
     int? StartLevel,
-    int? EndLevel)
+    int? EndLevel,
+    string? Player = null)
 {
     [JsonIgnore]
     public int Answered => Correct + Wrong;
@@ -23,7 +25,7 @@ public sealed record SessionRecord(
     [JsonIgnore]
     public bool IsAdaptive => EndLevel is not null;
 
-    public static SessionRecord FromSession(GameSession session) => new(
+    public static SessionRecord FromSession(GameSession session, string? player = null) => new(
         session.StartedAt,
         session.Elapsed,
         session.Settings.Min,
@@ -32,5 +34,6 @@ public sealed record SessionRecord(
         session.CorrectCount,
         session.WrongCount,
         session.StartLevel,
-        session.Level);
+        session.Level,
+        player);
 }

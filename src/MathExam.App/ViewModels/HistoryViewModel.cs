@@ -6,7 +6,7 @@ namespace MathExam.App.ViewModels;
 
 /// <summary>One history table row, pre-formatted for display.</summary>
 public sealed record HistoryRow(
-    string Date, string Range, string Operations, string Score, string Accuracy, string Time, string Level);
+    string Date, string Player, string Tasks, string Score, string Accuracy, string Time, string Level);
 
 public partial class HistoryViewModel : ObservableObject
 {
@@ -21,21 +21,19 @@ public partial class HistoryViewModel : ObservableObject
             .OrderByDescending(r => r.StartedAt)
             .Select(r => new HistoryRow(
                 r.StartedAt.ToString("yyyy-MM-dd HH:mm"),
-                $"{r.Min} – {r.Max}",
-                string.Join(" ", r.Operations.Select(o => o.Symbol())),
+                r.Player ?? "Solo",
+                $"{r.Min}–{r.Max}  {string.Join(" ", r.Operations.Select(o => o.Symbol()))}",
                 $"{r.Correct} / {r.Answered}",
                 $"{r.Accuracy:P0}",
-                r.Duration.ToString(@"hh\:mm\:ss"),
+                r.Duration.TotalHours >= 1 ? r.Duration.ToString(@"h\:mm\:ss") : r.Duration.ToString(@"m\:ss"),
                 r.IsAdaptive ? $"{r.StartLevel} → {r.EndLevel}" : "–"))
             .ToList();
 
-        var answered = records.Sum(r => r.Answered);
-        var correct = records.Sum(r => r.Correct);
-        var time = TimeSpan.FromTicks(records.Sum(r => r.Duration.Ticks));
+        var totals = HistoryTotals.From(records);
         TotalsText = records.Count == 0
             ? ""
-            : $"{records.Count} {(records.Count == 1 ? "game" : "games")} · {answered} tasks · {(double)correct / Math.Max(answered, 1):P0} correct · " +
-              $"{(int)time.TotalHours:00}:{time:mm\\:ss} total";
+            : $"{totals.Games} {(totals.Games == 1 ? "game" : "games")} · {totals.Tasks} tasks · {totals.Accuracy:P0} correct · " +
+              $"{(int)totals.Time.TotalHours:00}:{totals.Time:mm\\:ss} total";
     }
 
     public IReadOnlyList<HistoryRow> Rows { get; }

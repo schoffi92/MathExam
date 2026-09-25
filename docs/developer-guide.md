@@ -83,8 +83,10 @@ All the rules live in `MathExam.Core`, so they can be unit tested without a UI. 
 | `TaskGenerator` | `Next(settings)` creates a random `MathTask`. Accepts a `Random` for deterministic tests. |
 | `GameSession` | One endless game. Keeps `CurrentTask`, `TaskNumber`, `CorrectCount`, `WrongCount`, `StartedAt` and `Elapsed` (a `Stopwatch`). `Submit(answer)` → `bool`, then `NextTask()`, then `Stop()`. With an optional `DifficultyAdjuster` it is adaptive: tasks come from `TaskSettings`, and `LastLevelChange` reports +1/−1/0 after each answer. |
 | `DifficultyAdjuster` | Adaptive level 1–10. `RecordAnswer(correct)` → level change. `ForLevel(settings, level)` / `Apply(settings)` narrow the range. |
-| `SessionRecord` | A finished game as stored in the history (range, operations, counts, duration, start/end level). `FromSession(session)` builds one. |
-| `HistoryStore` | Reads and writes the history JSON file. `Load()`, `Add(record)`, `ResumeLevel(records, settings)`. `DefaultPath` is `<LocalApplicationData>/MathExam/history.json`, which is `%LOCALAPPDATA%` on Windows and `~/.local/share` on Linux. |
+| `FamilyGame` | Turn-based game for 2–4 players. Each `FamilyPlayer` has their own adaptive `GameSession`, and all sessions share one start time. `Submit(answer)` answers for `Current`; `NextTurn()` prepares that player's next task and passes the turn on. Also provides `Round`, `Ranking` (correct answers, then accuracy), `Winners` (more than one means a tie; empty if nobody scored), and `ValidatePlayers(names)`. |
+| `SessionRecord` | A finished game as stored in the history (range, operations, counts, duration, start/end level, and `Player`: the name in a family game, `null` for solo). `FromSession(session, player)` builds one. |
+| `HistoryTotals` | Totals over the history. The records of one family game (same `StartedAt`, non-null `Player`) count as one game, and its time counts once. |
+| `HistoryStore` | Reads and writes the history JSON file. `Load()`, `Add(record)`, `ResumeLevel(records, settings, player)`. `DefaultPath` is `<LocalApplicationData>/MathExam/history.json`, which is `%LOCALAPPDATA%` on Windows and `~/.local/share` on Linux. |
 | `DisplayPreferences` / `PreferencesStore` | `TextSize` (`Normal`/`Large`/`ExtraLarge`) and `HighContrast`, stored in `preferences.json`. `Load()` returns `null` when the file is missing or unreadable. |
 | `JsonFile` (internal) | Shared JSON options, the app data folder, and `WriteAtomic` (temp file + move) used by both stores. |
 
@@ -103,11 +105,11 @@ Numbers are `long`, so multiplying two `int`-range operands cannot overflow.
 
 - **Level changes:** +1 after `CorrectStreakToLevelUp` (3) correct answers in a row, −1 after `WrongStreakToLevelDown` (2) wrong answers in a row. The level is clamped to `MinLevel`..`MaxLevel` (1..10), and each streak resets when the level changes or the other kind of answer arrives.
 - **Range per level:** the range grows outwards from the *anchor*, `clamp(0, Min, Max)`, which is the easiest number. Each side covers `ceil(span × level / 10)` of its span, using integer maths so no floating-point rounding creeps in. Rounding up guarantees that a valid `GameSettings` stays valid on every level; for example, division always keeps a non-zero divisor.
-- **Resuming:** `HistoryStore.ResumeLevel` returns the `EndLevel` of the latest adaptive record with the same `Min`/`Max`, or level 1.
+- **Resuming:** `HistoryStore.ResumeLevel` returns the `EndLevel` of the latest adaptive record with the same `Min`/`Max` and the same player (`null` for solo; names compared case-insensitively), or level 1. Solo games and each family player therefore keep separate levels.
 
 ### Progress history (`HistoryStore`)
 
-- **Format:** an indented JSON array of `SessionRecord`s. Enums are stored as names, and computed properties (`Answered`, `Accuracy`, `IsAdaptive`) are `[JsonIgnore]`d.
+- **Format:** an indented JSON array of `SessionRecord`s. Enums are stored as names, and computed properties (`Answered`, `Accuracy`, `IsAdaptive`) are `[JsonIgnore]`d. Files written before family mode have no `Player` property; they load with `Player = null` (solo).
 - **Safe writes:** `Add` writes to `history.json.tmp` and then moves it over the original, so a crash cannot leave a half-written file.
 - **Corrupt files:** a file that can't be parsed is copied to `history.json.bak` and treated as empty, so the next save does not silently destroy it.
 - **Error handling:** the app catches `IOException`/`UnauthorizedAccessException`. A failed save is shown on the summary screen, and a failed load is shown on the History screen. Neither crashes the app.
@@ -121,6 +123,9 @@ Navigation is view-model first. `MainWindow` has a single `ContentControl` bound
 ```
 MenuViewModel ──Start──▶ GameViewModel ──Stop──▶ SummaryViewModel ──Back──▶ MenuViewModel
       │                                        (game saved to history)
+      ├──Family game──▶ FamilySetupViewModel ──Start──▶ FamilyGameViewModel ──Stop──▶ FamilySummaryViewModel
+      │                                                  ▲   (one record per player saved)      │
+      │                                                  └────────────── Play again ────────────┘
       └──History──▶ HistoryViewModel ──Back──▶ MenuViewModel
 ```
 
@@ -129,9 +134,14 @@ MenuViewModel ──Start──▶ GameViewModel ──Stop──▶ SummaryView
 | `DisplayViewModel` | Text size and high contrast. Loads preferences at startup (first launch follows the OS contrast preference, via `ThemeManager.SystemPrefersHighContrast()`), applies the theme, and saves on every change. Exposes `TextScale` (1.0 / 1.25 / 1.5) and one bool per text-size radio button. |
 | `MainViewModel` | Owns navigation, the `HistoryStore` and the shared `DisplayViewModel` (also exposed to the menu as `MenuViewModel.Display`). Reuses one `MenuViewModel`, so settings persist between games. Creates the `DifficultyAdjuster` at the resume level and saves each finished game that has answers. |
 | `MenuViewModel` | Min/max are bound as strings, so invalid input can be reported instead of silently rejected. `ErrorMessage` and `StartCommand.CanExecute` reuse `GameSettings.Validate()`. |
-| `GameViewModel` | `State` (`Answering`/`Correct`/`Wrong`) drives the button text and read-only state. `IsCorrect`/`IsWrong` toggle the views' `correct`/`wrong` style classes. A single `SubmitOrNextCommand` handles both steps. An Avalonia `DispatcherTimer` refreshes `ElapsedText`. |
+| `GameViewModel` | Solo game. `State` (`Answering`/`Correct`/`Wrong`) drives the button text and read-only state. `IsCorrect`/`IsWrong` toggle the views' `correct`/`wrong` style classes. A single `SubmitOrNextCommand` handles both steps. An Avalonia `DispatcherTimer` refreshes `ElapsedText`. |
 | `SummaryViewModel` | Read-only snapshot of the finished session, plus the level range and any history save error. |
-| `HistoryViewModel` | Formats records into `HistoryRow`s (newest first) for a read-only `DataGrid`, and adds a totals line. |
+| `HistoryViewModel` | Formats records into `HistoryRow`s (newest first) for a read-only `DataGrid`, and adds a totals line from `HistoryTotals`. |
+| `FamilySetupViewModel` | 2–4 `PlayerNameEntry` rows (add/remove), validated with `FamilyGame.ValidatePlayers`. Reused, so names are kept; `Open(settings)` receives the menu settings each time. |
+| `FamilyGameViewModel` | Like `GameViewModel`, but for the current player of a `FamilyGame`. Adds `TurnText`, `RoundText` and a `Scoreboard` of `ScoreRow`s (the current player gets the `current` style class). The button reads "Next player". |
+| `FamilySummaryViewModel` | Winner or tie text, and `RankingRow`s where equal players share a place. **Play again** restarts with the same names and settings, loading resume levels fresh. |
+
+`Answers` holds what both game screens share: answer parsing (which accepts `−` as a minus sign), the ✓/✗ feedback text and the level-change text. The green/red answer styles live in `App.axaml` for both screens.
 
 ### Keyboard handling
 
@@ -164,6 +174,8 @@ The Send/Next button has `IsDefault="True"`, so <kbd>Enter</kbd> anywhere in the
 - `DifficultyAdjuster`: streaks, clamping, per-level ranges (including negative ranges and extreme `int` limits), and adaptive sessions staying within the current range
 - `HistoryStore`: round trip, missing file, corrupt-file backup, resume level, and `SessionRecord.FromSession`. These tests use a temp directory.
 - `PreferencesStore`: round trip, missing file, corrupt file
+- `FamilyGame`: turn order and wrap-around, rounds, independent per-player levels and scores, ranking, ties, no winner, name validation and trimming, per-player resume level, and the player name in records, including old history files without it
+- `HistoryTotals`: a family game counts once with its time counted once; family players share the start time
 
 The tests use fixed `Random` seeds, so every run gives the same results.
 

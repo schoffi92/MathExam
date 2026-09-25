@@ -8,13 +8,17 @@ namespace MathExam.App.ViewModels;
 public partial class MenuViewModel : ObservableObject
 {
     private readonly Action<GameSettings, bool> _onStart;
+    private readonly Action<GameSettings> _onFamily;
     private readonly Action _onShowHistory;
 
     /// <param name="onStart">Called with the settings and whether adaptive difficulty is on.</param>
-    public MenuViewModel(DisplayViewModel display, Action<GameSettings, bool> onStart, Action onShowHistory)
+    /// <param name="onFamily">Called with the settings to set up a family game.</param>
+    public MenuViewModel(DisplayViewModel display, Action<GameSettings, bool> onStart, Action<GameSettings> onFamily,
+        Action onShowHistory)
     {
         Display = display;
         _onStart = onStart;
+        _onFamily = onFamily;
         _onShowHistory = onShowHistory;
     }
 
@@ -25,32 +29,32 @@ public partial class MenuViewModel : ObservableObject
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ErrorMessage))]
-    [NotifyCanExecuteChangedFor(nameof(StartCommand))]
+    [NotifyCanExecuteChangedFor(nameof(StartCommand), nameof(FamilyCommand))]
     private string _minText = "1";
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ErrorMessage))]
-    [NotifyCanExecuteChangedFor(nameof(StartCommand))]
+    [NotifyCanExecuteChangedFor(nameof(StartCommand), nameof(FamilyCommand))]
     private string _maxText = "10";
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ErrorMessage))]
-    [NotifyCanExecuteChangedFor(nameof(StartCommand))]
+    [NotifyCanExecuteChangedFor(nameof(StartCommand), nameof(FamilyCommand))]
     private bool _useAdd = true;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ErrorMessage))]
-    [NotifyCanExecuteChangedFor(nameof(StartCommand))]
+    [NotifyCanExecuteChangedFor(nameof(StartCommand), nameof(FamilyCommand))]
     private bool _useSubtract = true;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ErrorMessage))]
-    [NotifyCanExecuteChangedFor(nameof(StartCommand))]
+    [NotifyCanExecuteChangedFor(nameof(StartCommand), nameof(FamilyCommand))]
     private bool _useMultiply = true;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ErrorMessage))]
-    [NotifyCanExecuteChangedFor(nameof(StartCommand))]
+    [NotifyCanExecuteChangedFor(nameof(StartCommand), nameof(FamilyCommand))]
     private bool _useDivide = true;
 
     public string? ErrorMessage => TryBuildSettings(out _);
@@ -63,6 +67,13 @@ public partial class MenuViewModel : ObservableObject
     }
 
     private bool CanStart() => ErrorMessage is null;
+
+    [RelayCommand(CanExecute = nameof(CanStart))]
+    private void Family()
+    {
+        if (TryBuildSettings(out var settings) is null)
+            _onFamily(settings!);
+    }
 
     [RelayCommand]
     private void ShowHistory() => _onShowHistory();

@@ -36,8 +36,12 @@ public sealed class HistoryStore
 
     public void Add(SessionRecord record) => JsonFile.WriteAtomic(FilePath, Load().Append(record).ToList());
 
-    /// <summary>The level to resume at: the end level of the latest adaptive game with the same range.</summary>
-    public static int ResumeLevel(IEnumerable<SessionRecord> records, GameSettings settings) =>
-        records.LastOrDefault(r => r.EndLevel is not null && r.Min == settings.Min && r.Max == settings.Max)?.EndLevel
+    /// <summary>
+    /// The level to resume at: the end level of the latest adaptive game with the same range, played solo
+    /// (<paramref name="player"/> null) or by the same family player (name compared case-insensitively).
+    /// </summary>
+    public static int ResumeLevel(IEnumerable<SessionRecord> records, GameSettings settings, string? player = null) =>
+        records.LastOrDefault(r => r.EndLevel is not null && r.Min == settings.Min && r.Max == settings.Max
+                                   && string.Equals(r.Player, player, StringComparison.OrdinalIgnoreCase))?.EndLevel
         ?? DifficultyAdjuster.MinLevel;
 }

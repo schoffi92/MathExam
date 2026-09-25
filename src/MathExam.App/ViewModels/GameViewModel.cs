@@ -1,17 +1,9 @@
-using System.Globalization;
 using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MathExam.Core;
 
 namespace MathExam.App.ViewModels;
-
-public enum AnswerState
-{
-    Answering,
-    Correct,
-    Wrong,
-}
 
 public partial class GameViewModel : ObservableObject
 {
@@ -45,22 +37,9 @@ public partial class GameViewModel : ObservableObject
     public bool IsCorrect => State == AnswerState.Correct;
     public bool IsWrong => State == AnswerState.Wrong;
     public string ButtonText => IsAnswered ? "Next" : "Send";
-    // Spelled out with a symbol so the result is clear without relying on colour.
-    public string FeedbackText => State switch
-    {
-        AnswerState.Correct => "✓ Correct!",
-        AnswerState.Wrong => $"✗ Correct answer: {_session.CurrentTask.Answer}",
-        _ => "",
-    };
-
+    public string FeedbackText => Answers.Feedback(State, _session.CurrentTask.Answer);
     public string LevelText => _session.IsAdaptive ? $"Level {_session.Level} / {DifficultyAdjuster.MaxLevel}" : "";
-
-    public string LevelChangeText => (IsAnswered ? _session.LastLevelChange : 0) switch
-    {
-        > 0 => "▲ Level up! The numbers get a little bigger.",
-        < 0 => "▼ Level down. The numbers get a little smaller.",
-        _ => "",
-    };
+    public string LevelChangeText => Answers.LevelChange(IsAnswered ? _session.LastLevelChange : 0);
 
     [RelayCommand]
     private void SubmitOrNext()
@@ -75,9 +54,7 @@ public partial class GameViewModel : ObservableObject
             return;
         }
 
-        // Accept the typographic minus as well as the ASCII one.
-        var text = AnswerText.Trim().Replace('−', '-');
-        if (!long.TryParse(text, NumberStyles.Integer, CultureInfo.CurrentCulture, out var answer))
+        if (!Answers.TryParse(AnswerText, out var answer))
             return;
 
         State = _session.Submit(answer) ? AnswerState.Correct : AnswerState.Wrong;

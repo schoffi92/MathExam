@@ -1,24 +1,41 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="using:MathExam.App.ViewModels"
-             x:Class="MathExam.App.Views.GameView"
-             x:DataType="vm:GameViewModel">
+             x:Class="MathExam.App.Views.FamilyGameView"
+             x:DataType="vm:FamilyGameViewModel">
     <DockPanel>
-        <!-- Header: progress and timing -->
-        <UniformGrid DockPanel.Dock="Top" Columns="4" Margin="0,0,0,16">
-            <StackPanel>
-                <TextBlock Text="{Binding TaskNumberText}" FontWeight="SemiBold" />
-                <TextBlock Text="{Binding LevelText}" Foreground="{DynamicResource AccentBrush}" />
-            </StackPanel>
-            <TextBlock Text="{Binding SolvedText}" HorizontalAlignment="Center" />
-            <TextBlock Text="{Binding StartedText}" HorizontalAlignment="Center" />
-            <TextBlock Text="{Binding ElapsedText}" HorizontalAlignment="Right" />
-        </UniformGrid>
+        <!-- Header: round and time -->
+        <Grid DockPanel.Dock="Top" ColumnDefinitions="*,*" Margin="0,0,0,12">
+            <TextBlock Text="{Binding RoundText}" FontWeight="SemiBold" />
+            <TextBlock Grid.Column="1" Text="{Binding ElapsedText}" HorizontalAlignment="Right" />
+        </Grid>
+
+        <!-- Scoreboard: one box per player, the current player framed -->
+        <ItemsControl DockPanel.Dock="Top" ItemsSource="{Binding Scoreboard}" Margin="0,0,0,8">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Rows="1" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate x:DataType="vm:ScoreRow">
+                    <Border Classes="score" Classes.current="{Binding IsCurrent}" Margin="4">
+                        <StackPanel>
+                            <TextBlock Text="{Binding Name}" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" />
+                            <TextBlock Text="{Binding Score}" FontSize="14" />
+                            <TextBlock Text="{Binding Level}" FontSize="14" Foreground="{DynamicResource AccentBrush}" />
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
 
         <Button DockPanel.Dock="Bottom" Content="Stop" Command="{Binding StopCommand}"
                 HorizontalAlignment="Right" Focusable="False" />
 
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="{Binding TurnText}" FontSize="28" FontWeight="SemiBold"
+                       Foreground="{DynamicResource AccentBrush}" HorizontalAlignment="Center" Margin="0,0,0,8" />
             <TextBlock Text="{Binding Equation}" FontSize="56"
                        HorizontalAlignment="Center" Margin="0,0,0,24" />
 

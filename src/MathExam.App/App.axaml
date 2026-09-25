@@ -20,6 +20,15 @@
         <DataTemplate DataType="vm:HistoryViewModel">
             <views:HistoryView />
         </DataTemplate>
+        <DataTemplate DataType="vm:FamilySetupViewModel">
+            <views:FamilySetupView />
+        </DataTemplate>
+        <DataTemplate DataType="vm:FamilyGameViewModel">
+            <views:FamilyGameView />
+        </DataTemplate>
+        <DataTemplate DataType="vm:FamilySummaryViewModel">
+            <views:FamilySummaryView />
+        </DataTemplate>
     </Application.DataTemplates>
 
     <!-- Colour themes: ThemeManager switches RequestedThemeVariant between Light and HighContrast.
@@ -110,6 +119,43 @@
             <Setter Property="Background" Value="{DynamicResource InputBackgroundBrush}" />
             <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}" />
             <Setter Property="BorderThickness" Value="{DynamicResource ControlBorderThickness}" />
+        </Style>
+
+        <!-- Answer feedback (solo and family game). Declared after the focus styles above,
+             so the green/red stays visible while the answer box has focus. -->
+        <Style Selector="TextBox.correct">
+            <Setter Property="Foreground" Value="{DynamicResource CorrectForegroundBrush}" />
+        </Style>
+        <Style Selector="TextBox.correct /template/ Border#PART_BorderElement">
+            <Setter Property="Background" Value="{DynamicResource CorrectBackgroundBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource SuccessBrush}" />
+            <Setter Property="BorderThickness" Value="{DynamicResource FeedbackBorderThickness}" />
+        </Style>
+        <Style Selector="TextBox.wrong">
+            <Setter Property="Foreground" Value="{DynamicResource WrongForegroundBrush}" />
+        </Style>
+        <Style Selector="TextBox.wrong /template/ Border#PART_BorderElement">
+            <Setter Property="Background" Value="{DynamicResource WrongBackgroundBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource ErrorBrush}" />
+            <Setter Property="BorderThickness" Value="{DynamicResource FeedbackBorderThickness}" />
+        </Style>
+        <Style Selector="TextBlock.feedback.correct">
+            <Setter Property="Foreground" Value="{DynamicResource SuccessBrush}" />
+        </Style>
+        <Style Selector="TextBlock.feedback.wrong">
+            <Setter Property="Foreground" Value="{DynamicResource ErrorBrush}" />
+        </Style>
+
+        <!-- Family scoreboard: the player whose turn it is gets a thick accent frame. -->
+        <Style Selector="Border.score">
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
+            <Setter Property="BorderThickness" Value="{DynamicResource ControlBorderThickness}" />
+            <Setter Property="CornerRadius" Value="4" />
+            <Setter Property="Padding" Value="10,6" />
+        </Style>
+        <Style Selector="Border.score.current">
+            <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}" />
+            <Setter Property="BorderThickness" Value="{DynamicResource FeedbackBorderThickness}" />
         </Style>
 
         <Style Selector="CheckBox, RadioButton">

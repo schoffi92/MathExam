@@ -18,8 +18,8 @@
                       CanUserSortColumns="False" FontSize="14" MinHeight="200">
                 <DataGrid.Columns>
                     <DataGridTextColumn x:DataType="vm:HistoryRow" Header="Date" Binding="{Binding Date}" />
-                    <DataGridTextColumn x:DataType="vm:HistoryRow" Header="Range" Binding="{Binding Range}" />
-                    <DataGridTextColumn x:DataType="vm:HistoryRow" Header="Operations" Binding="{Binding Operations}" />
+                    <DataGridTextColumn x:DataType="vm:HistoryRow" Header="Player" Binding="{Binding Player}" />
+                    <DataGridTextColumn x:DataType="vm:HistoryRow" Header="Tasks" Binding="{Binding Tasks}" />
                     <DataGridTextColumn x:DataType="vm:HistoryRow" Header="Correct" Binding="{Binding Score}" />
                     <DataGridTextColumn x:DataType="vm:HistoryRow" Header="Accuracy" Binding="{Binding Accuracy}" />
                     <DataGridTextColumn x:DataType="vm:HistoryRow" Header="Time" Binding="{Binding Time}" />

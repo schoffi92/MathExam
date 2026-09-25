@@ -36,6 +36,25 @@ public sealed class HistoryStoreTests : IDisposable
         Assert.Equal(4, loaded[1].EndLevel);
         Assert.Equal(TimeSpan.FromMinutes(3), loaded[1].Duration);
         Assert.Equal([Operation.Add, Operation.Divide], loaded[1].Operations);
+        Assert.Null(loaded[1].Player);
+    }
+
+    [Fact]
+    public void Player_name_round_trips_and_old_files_without_it_still_load()
+    {
+        var store = new HistoryStore(FilePath);
+        store.Add(Record(3) with { Player = "Anna" });
+        Assert.Equal("Anna", store.Load()[0].Player);
+
+        // A file written before family mode existed has no "Player" property.
+        File.WriteAllText(FilePath, """
+            [{"StartedAt":"2026-09-25T10:00:00","Duration":"00:03:00","Min":1,"Max":10,
+              "Operations":["Add"],"Correct":5,"Wrong":1,"StartLevel":null,"EndLevel":null}]
+            """);
+        var old = store.Load();
+        Assert.Single(old);
+        Assert.Null(old[0].Player);
+        Assert.Equal(5, old[0].Correct);
     }
 
     [Fact]

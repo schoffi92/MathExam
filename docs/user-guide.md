@@ -17,7 +17,7 @@ Defaults: lowest `1`, highest `10`, all operations on, adaptive difficulty on, n
 
 Display changes apply immediately and are remembered the next time you open the app. If Extra large text doesn't fit on a small screen, the window can be scrolled.
 
-**Start** (or <kbd>Enter</kbd>) begins a game. **History** shows your past games. If the settings are invalid, the button stays disabled and a red message says what to fix:
+**Start** (or <kbd>Enter</kbd>) begins a game. **Family game** sets up a game for several players (see [Family game](#5-family-game)). **History** shows your past games. If the settings are invalid, the button stays disabled and a red message says what to fix:
 
 - both limits must be whole numbers,
 - the lowest number must not be greater than the highest,
@@ -77,9 +77,29 @@ Shows the number of answered, correct and wrong tasks, your accuracy, the total 
 
 The game is saved to your progress history when you press **Stop**. A game with no answered tasks is not saved.
 
-## 5. Progress history
+## 5. Family game
 
-The **History** button in the main menu shows every saved game, newest first: date, range, operations, answered, correct, accuracy, time and level (start → end). Above the table is a total across all games.
+Two to four people take turns on one computer, for example a grandchild and a grandparent.
+
+1. Choose the numbers and operations in the main menu, then click **Family game**.
+2. Type a name for each player. **+ Add player** adds a player (up to 4), and **Remove** takes one away (at least 2 must stay). Names must be different. The names are kept for the next family game.
+3. Click **Start** (or press <kbd>Enter</kbd>).
+
+During the game:
+
+- The big yellow or blue line says **whose turn it is**, and that player's box in the scoreboard at the top is framed.
+- The player answers one task as usual (<kbd>Enter</kbd> to send, green or red feedback). **Next player** (or <kbd>Enter</kbd>) passes the turn on.
+- The scoreboard shows each player's correct answers and level. **Round N** counts how many times everyone has had a turn.
+
+**Everyone has their own difficulty level.** Family games are always adaptive: each player moves up and down separately (3 right in a row goes up, 2 wrong in a row goes down) and starts at the level they reached in their last family game with the same numbers. A child and an adult each get tasks that suit them, so the game stays fair.
+
+**Stop** ends the game and shows the ranking. The player with the most correct answers wins; equal scores are decided by accuracy, and completely equal players share a place. **Play again** starts a new round with the same players, and **Back to menu** returns to the menu. Each player's result is saved to the history under their name.
+
+## 6. Progress history
+
+The **History** button in the main menu shows every saved result, newest first: date, player ("Solo" for normal games), tasks (range and operations), correct / answered, accuracy, time and level (start → end). A family game adds one row per player.
+
+Above the table is a total across all games. A family game counts once, and its time is counted once.
 
 The history is stored only on this computer, in `history.json`. Delete that file to clear the history. Display settings are stored next to it in `preferences.json`. The folder is:
 
