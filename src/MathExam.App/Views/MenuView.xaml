@@ -1,7 +1,7 @@
 <UserControl x:Class="MathExam.App.Views.MenuView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="360">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="380">
         <TextBlock Text="Math Exam" Style="{StaticResource Title}" />
 
         <Grid Margin="0,0,0,16">
@@ -32,9 +32,24 @@
 
         <CheckBox Content="Adaptive difficulty" IsChecked="{Binding UseAdaptive}" Margin="4,0,0,2" />
         <TextBlock Text="Starts with small numbers and grows as you answer correctly."
-                   Foreground="Gray" FontSize="13" TextWrapping="Wrap" Margin="24,0,0,12" />
+                   Foreground="{DynamicResource MutedBrush}" FontSize="13" TextWrapping="Wrap" Margin="24,0,0,12" />
 
-        <TextBlock Text="{Binding ErrorMessage}" Foreground="Firebrick" TextWrapping="Wrap"
+        <GroupBox Header="Display" Padding="8" Margin="0,0,0,16">
+            <StackPanel>
+                <TextBlock Text="Text size:" Margin="4,0,0,4" />
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+                    <RadioButton Content="Normal" GroupName="TextSize" Margin="4"
+                                 IsChecked="{Binding Display.IsNormalText}" />
+                    <RadioButton Content="Large" GroupName="TextSize" Margin="12,4,4,4"
+                                 IsChecked="{Binding Display.IsLargeText}" />
+                    <RadioButton Content="Extra large" GroupName="TextSize" Margin="12,4,4,4"
+                                 IsChecked="{Binding Display.IsExtraLargeText}" />
+                </StackPanel>
+                <CheckBox Content="High contrast colours" IsChecked="{Binding Display.HighContrast}" Margin="4" />
+            </StackPanel>
+        </GroupBox>
+
+        <TextBlock Text="{Binding ErrorMessage}" Foreground="{DynamicResource ErrorBrush}" TextWrapping="Wrap"
                    Margin="0,0,0,12" HorizontalAlignment="Center" />
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">

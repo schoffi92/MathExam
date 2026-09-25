@@ -11,11 +11,14 @@ public partial class MenuViewModel : ObservableObject
     private readonly Action _onShowHistory;
 
     /// <param name="onStart">Called with the settings and whether adaptive difficulty is on.</param>
-    public MenuViewModel(Action<GameSettings, bool> onStart, Action onShowHistory)
+    public MenuViewModel(DisplayViewModel display, Action<GameSettings, bool> onStart, Action onShowHistory)
     {
+        Display = display;
         _onStart = onStart;
         _onShowHistory = onShowHistory;
     }
+
+    public DisplayViewModel Display { get; }
 
     [ObservableProperty]
     private bool _useAdaptive = true;

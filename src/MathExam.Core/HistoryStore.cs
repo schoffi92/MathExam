@@ -1,24 +1,16 @@
 using System.Text.Json;
-using System.Text.Json.Serialization;
 
 namespace MathExam.Core;
 
 /// <summary>Persists finished games as a JSON array in a single file.</summary>
 public sealed class HistoryStore
 {
-    private static readonly JsonSerializerOptions JsonOptions = new()
-    {
-        WriteIndented = true,
-        Converters = { new JsonStringEnumConverter() },
-    };
-
     public HistoryStore(string filePath)
     {
         FilePath = filePath;
     }
 
-    public static string DefaultPath => Path.Combine(
-        Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "MathExam", "history.json");
+    public static string DefaultPath => Path.Combine(JsonFile.AppDataDirectory, "history.json");
 
     public string FilePath { get; }
 
@@ -33,7 +25,7 @@ public sealed class HistoryStore
 
         try
         {
-            return JsonSerializer.Deserialize<List<SessionRecord>>(File.ReadAllText(FilePath), JsonOptions) ?? [];
+            return JsonFile.Read<List<SessionRecord>>(FilePath) ?? [];
         }
         catch (JsonException)
         {
@@ -42,16 +34,7 @@ public sealed class HistoryStore
         }
     }
 
-    public void Add(SessionRecord record)
-    {
-        var records = Load().Append(record).ToList();
-        Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(FilePath))!);
-
-        // Write to a temp file first so a crash mid-write cannot corrupt the existing history.
-        var tempPath = FilePath + ".tmp";
-        File.WriteAllText(tempPath, JsonSerializer.Serialize(records, JsonOptions));
-        File.Move(tempPath, FilePath, overwrite: true);
-    }
+    public void Add(SessionRecord record) => JsonFile.WriteAtomic(FilePath, Load().Append(record).ToList());
 
     /// <summary>The level to resume at: the end level of the latest adaptive game with the same range.</summary>
     public static int ResumeLevel(IEnumerable<SessionRecord> records, GameSettings settings) =>

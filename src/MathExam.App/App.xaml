@@ -5,29 +5,130 @@
              xmlns:views="clr-namespace:MathExam.App.Views"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <DataTemplate DataType="{x:Type vm:MenuViewModel}">
-            <views:MenuView />
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:GameViewModel}">
-            <views:GameView />
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:SummaryViewModel}">
-            <views:SummaryView />
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:HistoryViewModel}">
-            <views:HistoryView />
-        </DataTemplate>
+        <ResourceDictionary>
+            <!-- The colour theme; ThemeManager swaps this for Themes/HighContrast.xaml.
+                 Styles below reference its brushes with DynamicResource so they follow the swap. -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/Standard.xaml" />
+            </ResourceDictionary.MergedDictionaries>
 
-        <Style TargetType="Button">
-            <Setter Property="FontSize" Value="18" />
-            <Setter Property="Padding" Value="20,8" />
-            <Setter Property="MinWidth" Value="120" />
-        </Style>
-        <Style x:Key="Title" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="32" />
-            <Setter Property="FontWeight" Value="SemiBold" />
-            <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="Margin" Value="0,0,0,24" />
-        </Style>
+            <DataTemplate DataType="{x:Type vm:MenuViewModel}">
+                <views:MenuView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:GameViewModel}">
+                <views:GameView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:SummaryViewModel}">
+                <views:SummaryView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:HistoryViewModel}">
+                <views:HistoryView />
+            </DataTemplate>
+
+            <!-- Custom template so hover/pressed/disabled states use theme colours instead of the
+                 system's light-blue ones, which are unreadable on the high-contrast theme. -->
+            <Style TargetType="Button">
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="Padding" Value="20,8" />
+                <Setter Property="MinWidth" Value="120" />
+                <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+                <Setter Property="Background" Value="{DynamicResource ButtonBackgroundBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
+                <Setter Property="BorderThickness" Value="{DynamicResource ControlBorderThickness}" />
+                <Setter Property="Cursor" Value="Hand" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="Bd" Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    Padding="{TemplateBinding Padding}" CornerRadius="4">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                  RecognizesAccessKey="True" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource AccentBrush}" />
+                                </Trigger>
+                                <Trigger Property="IsKeyboardFocused" Value="True">
+                                    <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource AccentBrush}" />
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="Bd" Property="Background" Value="{DynamicResource ButtonPressedBrush}" />
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}" />
+                                    <Setter TargetName="Bd" Property="BorderBrush" Value="{DynamicResource DisabledBrush}" />
+                                    <Setter Property="Cursor" Value="Arrow" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!-- Custom template: the system one paints its own light-blue focus border, which would hide the
+                 green/red answer feedback. Focus is a style trigger here, so styles based on this one can override it. -->
+            <Style TargetType="TextBox">
+                <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+                <Setter Property="Background" Value="{DynamicResource InputBackgroundBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
+                <Setter Property="BorderThickness" Value="{DynamicResource ControlBorderThickness}" />
+                <Setter Property="CaretBrush" Value="{DynamicResource ForegroundBrush}" />
+                <Setter Property="SelectionBrush" Value="{DynamicResource AccentBrush}" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="TextBox">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
+                                <ScrollViewer x:Name="PART_ContentHost" Focusable="False"
+                                              HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsKeyboardFocused" Value="True">
+                        <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <!-- Only the text colour is themed: the check box glyph is drawn dark on its default light box. -->
+            <Style TargetType="CheckBox">
+                <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+            </Style>
+            <Style TargetType="RadioButton">
+                <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+            </Style>
+
+            <Style TargetType="GroupBox">
+                <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
+            </Style>
+
+            <Style TargetType="DataGrid">
+                <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+                <Setter Property="Background" Value="{DynamicResource BackgroundBrush}" />
+                <Setter Property="RowBackground" Value="{DynamicResource BackgroundBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
+                <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource BorderBrush}" />
+            </Style>
+            <Style TargetType="DataGridColumnHeader">
+                <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+                <Setter Property="Background" Value="{DynamicResource ButtonBackgroundBrush}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
+                <Setter Property="BorderThickness" Value="0,0,1,1" />
+                <Setter Property="Padding" Value="6,4" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+            </Style>
+
+            <Style x:Key="Title" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="32" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="Margin" Value="0,0,0,24" />
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -10,8 +10,12 @@ MathExam is a practice app for the four basic operations. It shows one equation 
 | **Highest number** | Largest value an operand can take. |
 | **Operations** | Any combination of addition (+), subtraction (−), multiplication (×) and division (÷). |
 | **Adaptive difficulty** | Adjusts how big the numbers are to how well you are doing (see below). |
+| **Display → Text size** | Normal, Large (125%) or Extra large (150%). Everything gets bigger and the window grows to match. |
+| **Display → High contrast colours** | White and yellow on black, with thicker borders. |
 
-Defaults: lowest `1`, highest `10`, all operations on, adaptive difficulty on.
+Defaults: lowest `1`, highest `10`, all operations on, adaptive difficulty on, normal text. High contrast starts on if Windows' own high-contrast mode is on.
+
+Display changes apply immediately and are remembered the next time you open the app. If Extra large text doesn't fit on a small screen, the window can be scrolled.
 
 **Start** (or <kbd>Enter</kbd>) begins a game. **History** shows your past games. If the settings are invalid, the button stays disabled and a red message says what to fix:
 
@@ -46,8 +50,8 @@ In the middle is the equation. The `?` can be the **result** or either **operand
 
 1. Type the missing number. A leading minus sign is allowed.
 2. Press <kbd>Enter</kbd> or click **Send**.
-   - **Correct:** the answer box turns **green**.
-   - **Wrong:** the answer box turns **red**, and the correct answer is shown below it.
+   - **Correct:** the answer box turns **green**, and "✓ Correct!" appears below it.
+   - **Wrong:** the answer box turns **red**, and "✗ Correct answer: N" appears below it.
 3. Press <kbd>Enter</kbd> again or click **Next** for a new random task.
 
 An empty or non-numeric answer is ignored rather than counted as wrong.
@@ -77,7 +81,7 @@ The game is saved to your progress history when you press **Stop**. A game with 
 
 The **History** button in the main menu shows every saved game, newest first: date, range, operations, answered, correct, accuracy, time and level (start → end). Above the table is a total across all games.
 
-The history is stored only on this computer, in `%LOCALAPPDATA%\MathExam\history.json`. Delete that file to clear the history.
+The history is stored only on this computer, in `%LOCALAPPDATA%\MathExam\history.json`. Delete that file to clear the history. Display settings are stored next to it in `preferences.json`.
 
 ## How tasks are generated
 

@@ -35,7 +35,7 @@ public partial class HistoryViewModel : ObservableObject
         var time = TimeSpan.FromTicks(records.Sum(r => r.Duration.Ticks));
         TotalsText = records.Count == 0
             ? ""
-            : $"{records.Count} {(records.Count == 1 ? "game" : "games")} · {answered} tasks ·{(double)correct / Math.Max(answered, 1):P0} correct · " +
+            : $"{records.Count} {(records.Count == 1 ? "game" : "games")} · {answered} tasks · {(double)correct / Math.Max(answered, 1):P0} correct · " +
               $"{(int)time.TotalHours:00}:{time:mm\\:ss} total";
     }
 

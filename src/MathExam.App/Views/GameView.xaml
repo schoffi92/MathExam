@@ -7,7 +7,7 @@
         <UniformGrid DockPanel.Dock="Top" Columns="4" Margin="0,0,0,16">
             <StackPanel>
                 <TextBlock Text="{Binding TaskNumberText}" FontWeight="SemiBold" />
-                <TextBlock Text="{Binding LevelText}" Foreground="SteelBlue" />
+                <TextBlock Text="{Binding LevelText}" Foreground="{DynamicResource AccentBrush}" />
             </StackPanel>
             <TextBlock Text="{Binding SolvedText}" HorizontalAlignment="Center" />
             <TextBlock Text="{Binding StartedText}" HorizontalAlignment="Center" />
@@ -27,17 +27,19 @@
                          Text="{Binding AnswerText, UpdateSourceTrigger=PropertyChanged}"
                          IsReadOnly="{Binding IsAnswered}">
                     <TextBox.Style>
-                        <Style TargetType="TextBox">
+                        <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding State}" Value="Correct">
-                                    <Setter Property="Background" Value="#C8F7C5" />
-                                    <Setter Property="Foreground" Value="DarkGreen" />
-                                    <Setter Property="BorderBrush" Value="Green" />
+                                    <Setter Property="Background" Value="{DynamicResource CorrectBackgroundBrush}" />
+                                    <Setter Property="Foreground" Value="{DynamicResource CorrectForegroundBrush}" />
+                                    <Setter Property="BorderBrush" Value="{DynamicResource SuccessBrush}" />
+                                    <Setter Property="BorderThickness" Value="{DynamicResource FeedbackBorderThickness}" />
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding State}" Value="Wrong">
-                                    <Setter Property="Background" Value="#F9C9C9" />
-                                    <Setter Property="Foreground" Value="DarkRed" />
-                                    <Setter Property="BorderBrush" Value="Red" />
+                                    <Setter Property="Background" Value="{DynamicResource WrongBackgroundBrush}" />
+                                    <Setter Property="Foreground" Value="{DynamicResource WrongForegroundBrush}" />
+                                    <Setter Property="BorderBrush" Value="{DynamicResource ErrorBrush}" />
+                                    <Setter Property="BorderThickness" Value="{DynamicResource FeedbackBorderThickness}" />
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>
@@ -48,9 +50,22 @@
                         IsDefault="True" Focusable="False" Margin="12,0,0,0" />
             </StackPanel>
 
-            <TextBlock Text="{Binding CorrectAnswerText}" Foreground="Firebrick" FontSize="22"
-                       HorizontalAlignment="Center" Margin="0,16,0,0" />
-            <TextBlock Text="{Binding LevelChangeText}" Foreground="SteelBlue" FontSize="18"
+            <TextBlock Text="{Binding FeedbackText}" FontSize="22" FontWeight="SemiBold"
+                       HorizontalAlignment="Center" Margin="0,16,0,0">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding State}" Value="Correct">
+                                <Setter Property="Foreground" Value="{DynamicResource SuccessBrush}" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding State}" Value="Wrong">
+                                <Setter Property="Foreground" Value="{DynamicResource ErrorBrush}" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <TextBlock Text="{Binding LevelChangeText}" Foreground="{DynamicResource AccentBrush}" FontSize="18"
                        HorizontalAlignment="Center" Margin="0,8,0,0" />
         </StackPanel>
     </DockPanel>

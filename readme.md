@@ -17,6 +17,7 @@ A Windows desktop app (C# / WPF, .NET 8) for practising addition, subtraction, m
 - **Endless play:** keep going until you press **Stop**, then see a summary (correct, wrong, accuracy, time).
 - **Adaptive difficulty** (optional): starts with small numbers and widens the range as you answer correctly (10 levels). The next game resumes at your last level.
 - **Progress history:** every game is saved on this PC and listed on the History screen with overall totals.
+- **Accessibility:** three text sizes (Normal / Large / Extra large) and a high-contrast colour theme, both remembered between launches. Right and wrong answers are also shown as text (✓ / ✗), not just by colour.
 
 ## Quick start
 

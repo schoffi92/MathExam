@@ -42,6 +42,8 @@ All the rules live in `MathExam.Core`, so they can be unit tested without a UI. 
 | `DifficultyAdjuster` | Adaptive level 1–10. `RecordAnswer(correct)` → level change. `ForLevel(settings, level)` / `Apply(settings)` narrow the range. |
 | `SessionRecord` | A finished game as stored in the history (range, operations, counts, duration, start/end level). `FromSession(session)` builds one. |
 | `HistoryStore` | Reads and writes the history JSON file. `Load()`, `Add(record)`, `ResumeLevel(records, settings)`. `DefaultPath` is `%LOCALAPPDATA%\MathExam\history.json`. |
+| `DisplayPreferences` / `PreferencesStore` | `TextSize` (`Normal`/`Large`/`ExtraLarge`) and `HighContrast`, stored in `preferences.json`. `Load()` returns `null` when the file is missing or unreadable. |
+| `JsonFile` (internal) | Shared JSON options, the `%LOCALAPPDATA%\MathExam` folder, and `WriteAtomic` (temp file + move) used by both stores. |
 
 ### Task generation rules (`TaskGenerator`)
 
@@ -79,7 +81,8 @@ MenuViewModel ──Start──▶ GameViewModel ──Stop──▶ SummaryView
 
 | View model | Notes |
 |---|---|
-| `MainViewModel` | Owns navigation and the `HistoryStore`. Reuses one `MenuViewModel`, so settings persist between games. Creates the `DifficultyAdjuster` at the resume level and saves each finished game that has answers. |
+| `DisplayViewModel` | Text size and high contrast. Loads preferences at startup (first launch follows `SystemParameters.HighContrast`), applies the theme, and saves on every change. Exposes `TextScale` (1.0 / 1.25 / 1.5) and one bool per text-size radio button. |
+| `MainViewModel` | Owns navigation, the `HistoryStore` and the shared `DisplayViewModel` (also exposed to the menu as `MenuViewModel.Display`). Reuses one `MenuViewModel`, so settings persist between games. Creates the `DifficultyAdjuster` at the resume level and saves each finished game that has answers. |
 | `MenuViewModel` | Min/max are bound as strings, so invalid input can be reported instead of silently rejected. `ErrorMessage` and `StartCommand.CanExecute` reuse `GameSettings.Validate()`. |
 | `GameViewModel` | `State` (`Answering`/`Correct`/`Wrong`) drives the button text, read-only state and colours. A single `SubmitOrNextCommand` handles both steps. A `DispatcherTimer` refreshes `ElapsedText`. |
 | `SummaryViewModel` | Read-only snapshot of the finished session, plus the level range and any history save error. |
@@ -89,9 +92,19 @@ MenuViewModel ──Start──▶ GameViewModel ──Stop──▶ SummaryView
 
 The Send/Next button has `IsDefault="True"`, so <kbd>Enter</kbd> anywhere in the window triggers it. It is also `Focusable="False"`, so keyboard focus stays in the answer box. The Start and Back buttons use `IsDefault` the same way.
 
-### Feedback colours
+### Themes and colours
 
-`GameView.xaml` has `DataTrigger`s on `State` that set the answer box's background, foreground and border to green or red.
+- **Theme files:** every colour comes from a theme dictionary, `Themes/Standard.xaml` or `Themes/HighContrast.xaml`. They define the same keys: `BackgroundBrush`, `ForegroundBrush`, `MutedBrush`, `AccentBrush`, `ErrorBrush`, `SuccessBrush`, `Correct*/Wrong*` brushes, border thicknesses, and the `SystemColors` selection keys used by the `DataGrid`.
+- **Contrast targets:** Standard meets WCAG AA (4.5:1). High contrast meets AAA (7:1).
+- **Switching:** `App.xaml` merges the Standard dictionary. `ThemeManager.Apply(highContrast)` replaces it at runtime, and all styles and views use `DynamicResource`, so they update immediately. Don't add hard-coded colours to views; add a key to both theme files instead.
+- **Custom templates:** `App.xaml` gives `Button` and `TextBox` their own simple templates. The system (Aero2) templates hard-code light-blue hover/focus colours, which are unreadable on black and would hide the answer feedback border. Check boxes and radio buttons only get a themed text colour, because their glyphs are drawn dark on a light box.
+- **Answer feedback:** `GameView.xaml` has `DataTrigger`s on `State` that set the answer box's background, foreground, border and border thickness. This style is `BasedOn` the global `TextBox` style, so it takes priority over the focus border. `FeedbackText` repeats the result as "✓ Correct!" / "✗ Correct answer: N", so it doesn't depend on colour.
+
+### Text size
+
+- **Scaling:** `MainWindow.xaml` puts a `ScaleTransform` bound to `Display.TextScale` in the content's `LayoutTransform`. Every screen scales uniformly, so layouts keep their proportions.
+- **Scrolling:** the content sits in a vertical `ScrollViewer`, so large text stays usable on small screens.
+- **Window size:** `MainWindow.FitToTextScale()` sets the size and minimum size to the base size × scale, clamped to the screen's work area. It skips this when the window is maximised.
 
 ## Tests
 
@@ -104,6 +117,7 @@ The Send/Next button has `IsDefault="True"`, so <kbd>Enter</kbd> anywhere in the
 - `GameSettings` validation and `GameSession` counters and state
 - `DifficultyAdjuster`: streaks, clamping, per-level ranges (including negative ranges and extreme `int` limits), and adaptive sessions staying within the current range
 - `HistoryStore`: round trip, missing file, corrupt-file backup, resume level, and `SessionRecord.FromSession`. These tests use a temp directory.
+- `PreferencesStore`: round trip, missing file, corrupt file
 
 The tests use fixed `Random` seeds, so every run gives the same results.
 

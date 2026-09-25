@@ -29,7 +29,7 @@ public partial class GameViewModel : ObservableObject
     }
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(IsAnswered), nameof(ButtonText), nameof(CorrectAnswerText), nameof(SolvedText),
+    [NotifyPropertyChangedFor(nameof(IsAnswered), nameof(ButtonText), nameof(FeedbackText), nameof(SolvedText),
         nameof(LevelText), nameof(LevelChangeText))]
     private AnswerState _state = AnswerState.Answering;
 
@@ -43,7 +43,13 @@ public partial class GameViewModel : ObservableObject
     public string ElapsedText => $"Elapsed: {_session.Elapsed.ToString(@"hh\:mm\:ss")}";
     public bool IsAnswered => State != AnswerState.Answering;
     public string ButtonText => IsAnswered ? "Next" : "Send";
-    public string CorrectAnswerText => State == AnswerState.Wrong ? $"Correct answer: {_session.CurrentTask.Answer}" : "";
+    // Spelled out with a symbol so the result is clear without relying on colour.
+    public string FeedbackText => State switch
+    {
+        AnswerState.Correct => "✓ Correct!",
+        AnswerState.Wrong => $"✗ Correct answer: {_session.CurrentTask.Answer}",
+        _ => "",
+    };
 
     public string LevelText => _session.IsAdaptive ? $"Level {_session.Level} / {DifficultyAdjuster.MaxLevel}" : "";
 

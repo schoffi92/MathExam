@@ -15,10 +15,13 @@ public partial class MainViewModel : ObservableObject
 
     public MainViewModel()
     {
+        Display = new DisplayViewModel(new PreferencesStore(PreferencesStore.DefaultPath));
         // The menu is reused so the player's last settings survive a game.
-        _menu = new MenuViewModel(StartGame, ShowHistory);
+        _menu = new MenuViewModel(Display, StartGame, ShowHistory);
         _currentViewModel = _menu;
     }
+
+    public DisplayViewModel Display { get; }
 
     private void StartGame(GameSettings settings, bool adaptive)
     {

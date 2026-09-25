@@ -7,7 +7,7 @@
     <DockPanel>
         <TextBlock DockPanel.Dock="Top" Text="Progress history" Style="{StaticResource Title}" Margin="0,0,0,8" />
         <TextBlock DockPanel.Dock="Top" Text="{Binding TotalsText}" HorizontalAlignment="Center" Margin="0,0,0,12" />
-        <TextBlock DockPanel.Dock="Top" Text="{Binding LoadError}" Foreground="Firebrick" TextWrapping="Wrap"
+        <TextBlock DockPanel.Dock="Top" Text="{Binding LoadError}" Foreground="{DynamicResource ErrorBrush}" TextWrapping="Wrap"
                    HorizontalAlignment="Center" />
 
         <Button DockPanel.Dock="Bottom" Content="Back to menu" Command="{Binding BackToMenuCommand}"
@@ -28,7 +28,7 @@
                     <DataGridTextColumn Header="Level" Binding="{Binding Level}" Width="*" />
                 </DataGrid.Columns>
             </DataGrid>
-            <TextBlock Text="No games played yet." Foreground="Gray" FontSize="18"
+            <TextBlock Text="No games played yet." Foreground="{DynamicResource MutedBrush}" FontSize="18"
                        HorizontalAlignment="Center" VerticalAlignment="Center"
                        Visibility="{Binding IsEmpty, Converter={StaticResource BoolToVisibility}}" />
         </Grid>
