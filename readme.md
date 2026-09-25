@@ -23,6 +23,15 @@ A Windows desktop app (C# / WPF, .NET 8) for practising addition, subtraction, m
 
 Requires Windows and the .NET 8 SDK (or newer).
 
+Double-click **`start.bat`**. On the first run it builds the release version, then it starts the app.
+
+| Script | What it does |
+|---|---|
+| `build_release.bat` | Runs the tests, then builds `release\MathExam.App.exe`: a single self-contained file that runs on any 64-bit Windows PC **without installing .NET**. Copy that one file to share the app. |
+| `start.bat` | Starts `release\MathExam.App.exe`, building it first if it is missing. Run `build_release.bat` again after changing the code. |
+
+During development:
+
 ```powershell
 dotnet run --project src/MathExam.App
 ```

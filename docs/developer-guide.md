@@ -13,6 +13,23 @@ dotnet test
 dotnet run --project src/MathExam.App
 ```
 
+### Release build
+
+`build_release.bat` runs `dotnet test -c Release`, then publishes the app into `release\`:
+
+```
+dotnet publish src\MathExam.App\MathExam.App.csproj -c Release -r win-x64 --self-contained true
+    -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true
+    -p:EnableCompressionInSingleFile=true -p:DebugType=none -o release
+```
+
+- **Output:** one compressed exe of about 70 MB that includes the .NET runtime, so the target PC needs nothing installed. `IncludeNativeLibrariesForSelfExtract` is required because WPF has native DLLs.
+- **Failure handling:** a failing test stops the build before anything is published. The script deletes `release\` first, so no stale files remain.
+- **Pausing:** when double-clicked, the script pauses at the end so you can read the output. Pass `--no-pause` when calling it from another script; `start.bat` does this.
+- **Git:** `release\` is ignored by the `[Rr]elease/` rule in `.gitignore`. `.gitattributes` keeps `*.bat` files in CRLF, because cmd.exe can misread labels in files with Unix line endings.
+
+`start.bat` launches `release\MathExam.App.exe`, and runs `build_release.bat` first if the exe is missing. It does not rebuild when the code changes.
+
 ## Solution layout
 
 ```
@@ -25,6 +42,8 @@ src/
 tests/
   MathExam.Core.Tests/    xUnit tests for MathExam.Core
 docs/                     This documentation
+build_release.bat         Test + publish a self-contained exe into release\
+start.bat                 Start the release exe (builds it if missing)
 ```
 
 All the rules live in `MathExam.Core`, so they can be unit tested without a UI. The WPF project only binds that logic to the screen.
