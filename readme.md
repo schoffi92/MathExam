@@ -1,30 +1,45 @@
+# MathExam – Mathematical Education Application
 
+A Windows desktop app (C# / WPF, .NET 8) for practising addition, subtraction, multiplication and division. Each task is an equation with one hidden number, which can be the result or one of the operands:
 
-# Mathematical Education Application
+```
+100 × 100 = ?
+ 99 ×   ? = 990
+```
 
+## Features
 
+- **Main menu:** set the lowest and highest number and choose the operations (add, sub, mul, div).
+- **Game:** shows the task number, solved count, start time and elapsed time.
+  - Type the hidden number and press **Send** or <kbd>Enter</kbd>.
+  - A correct answer is shown in **green**. A wrong answer is shown in **red**, together with the right answer.
+  - Press **Next** or <kbd>Enter</kbd> again for the next random task.
+- **Endless play:** keep going until you press **Stop**, then see a summary (correct, wrong, accuracy, time).
 
-# Main menu
+## Quick start
 
-The user can set the highest and lowest numbers.
-Set the operations (mul, div, add, sub).
-And with start the "game" starts
+Requires Windows and the .NET 8 SDK (or newer).
 
-# The Game
+```powershell
+dotnet run --project src/MathExam.App
+```
 
-App displays the task number and the solved task.
-When it started and how much time spent.
+Run the tests:
 
-it will show an equation and ask for the hidden number.
-The hidden number can be the result or the divisor, dividend or etc.
+```powershell
+dotnet test
+```
 
-After with a send button or the enter hit the entered number get checked.
-If the entered number is good, it will be displayed green.
-If the entered number is wrong it will be displayed with red and show the right answer.
+## Project structure
 
-After hit the next button or another enter we go to the next randomly generated task.
+| Path | Contents |
+|---|---|
+| `src/MathExam.Core` | Game logic: task generation, settings validation, session tracking |
+| `src/MathExam.App` | WPF user interface (MVVM) |
+| `tests/MathExam.Core.Tests` | xUnit tests for the core logic |
+| `docs/` | Documentation |
 
-# examples
+## Documentation
 
-100 * 100 = ?
- 99 *   ? = 990
+- [User Guide](docs/user-guide.md): how to play, settings, and how tasks are generated
+- [Developer Guide](docs/developer-guide.md): architecture, core types, generation rules, UI structure, tests
