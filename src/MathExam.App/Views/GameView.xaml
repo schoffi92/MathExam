@@ -5,7 +5,10 @@
     <DockPanel>
         <!-- Header: progress and timing -->
         <UniformGrid DockPanel.Dock="Top" Columns="4" Margin="0,0,0,16">
-            <TextBlock Text="{Binding TaskNumberText}" FontWeight="SemiBold" />
+            <StackPanel>
+                <TextBlock Text="{Binding TaskNumberText}" FontWeight="SemiBold" />
+                <TextBlock Text="{Binding LevelText}" Foreground="SteelBlue" />
+            </StackPanel>
             <TextBlock Text="{Binding SolvedText}" HorizontalAlignment="Center" />
             <TextBlock Text="{Binding StartedText}" HorizontalAlignment="Center" />
             <TextBlock Text="{Binding ElapsedText}" HorizontalAlignment="Right" />
@@ -47,6 +50,8 @@
 
             <TextBlock Text="{Binding CorrectAnswerText}" Foreground="Firebrick" FontSize="22"
                        HorizontalAlignment="Center" Margin="0,16,0,0" />
+            <TextBlock Text="{Binding LevelChangeText}" Foreground="SteelBlue" FontSize="18"
+                       HorizontalAlignment="Center" Margin="0,8,0,0" />
         </StackPanel>
     </DockPanel>
 </UserControl>

@@ -15,7 +15,10 @@
             <TextBlock Text="{Binding WrongText}" Foreground="DarkRed" />
             <TextBlock Text="{Binding AccuracyText}" />
             <TextBlock Text="{Binding TimeText}" />
+            <TextBlock Text="{Binding LevelText}" />
         </StackPanel>
+        <TextBlock Text="{Binding SaveError}" Foreground="Firebrick" TextWrapping="Wrap" MaxWidth="480"
+                   HorizontalAlignment="Center" Margin="0,0,0,12" />
         <Button Content="Back to menu" Command="{Binding BackToMenuCommand}" IsDefault="True"
                 HorizontalAlignment="Center" />
     </StackPanel>

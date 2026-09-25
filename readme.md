@@ -15,6 +15,8 @@ A Windows desktop app (C# / WPF, .NET 8) for practising addition, subtraction, m
   - A correct answer is shown in **green**. A wrong answer is shown in **red**, together with the right answer.
   - Press **Next** or <kbd>Enter</kbd> again for the next random task.
 - **Endless play:** keep going until you press **Stop**, then see a summary (correct, wrong, accuracy, time).
+- **Adaptive difficulty** (optional): starts with small numbers and widens the range as you answer correctly (10 levels). The next game resumes at your last level.
+- **Progress history:** every game is saved on this PC and listed on the History screen with overall totals.
 
 ## Quick start
 
@@ -34,7 +36,7 @@ dotnet test
 
 | Path | Contents |
 |---|---|
-| `src/MathExam.Core` | Game logic: task generation, settings validation, session tracking |
+| `src/MathExam.Core` | Game logic: task generation, adaptive difficulty, session tracking, history storage |
 | `src/MathExam.App` | WPF user interface (MVVM) |
 | `tests/MathExam.Core.Tests` | xUnit tests for the core logic |
 | `docs/` | Documentation |

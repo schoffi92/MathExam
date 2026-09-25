@@ -38,7 +38,10 @@ All the rules live in `MathExam.Core`, so they can be unit tested without a UI. 
 | `MathTask` | Immutable record `Left Op Right = Result` plus `Hidden`. `Answer` gives the hidden value, `IsCorrect(answer)` checks it, `ToDisplayString()` renders e.g. `99 × ? = 990`. |
 | `GameSettings` | `Min`, `Max`, `Operations`. `Validate()` returns a user-facing error message, or `null` when the settings are valid. |
 | `TaskGenerator` | `Next(settings)` creates a random `MathTask`. Accepts a `Random` for deterministic tests. |
-| `GameSession` | One endless game. Keeps `CurrentTask`, `TaskNumber`, `CorrectCount`, `WrongCount`, `StartedAt` and `Elapsed` (a `Stopwatch`). `Submit(answer)` → `bool`, then `NextTask()`, then `Stop()`. |
+| `GameSession` | One endless game. Keeps `CurrentTask`, `TaskNumber`, `CorrectCount`, `WrongCount`, `StartedAt` and `Elapsed` (a `Stopwatch`). `Submit(answer)` → `bool`, then `NextTask()`, then `Stop()`. With an optional `DifficultyAdjuster` it is adaptive: tasks come from `TaskSettings`, and `LastLevelChange` reports +1/−1/0 after each answer. |
+| `DifficultyAdjuster` | Adaptive level 1–10. `RecordAnswer(correct)` → level change. `ForLevel(settings, level)` / `Apply(settings)` narrow the range. |
+| `SessionRecord` | A finished game as stored in the history (range, operations, counts, duration, start/end level). `FromSession(session)` builds one. |
+| `HistoryStore` | Reads and writes the history JSON file. `Load()`, `Add(record)`, `ResumeLevel(records, settings)`. `DefaultPath` is `%LOCALAPPDATA%\MathExam\history.json`. |
 
 ### Task generation rules (`TaskGenerator`)
 
@@ -51,20 +54,36 @@ All the rules live in `MathExam.Core`, so they can be unit tested without a UI. 
 
 Numbers are `long`, so multiplying two `int`-range operands cannot overflow.
 
+### Adaptive difficulty (`DifficultyAdjuster`)
+
+- **Level changes:** +1 after `CorrectStreakToLevelUp` (3) correct answers in a row, −1 after `WrongStreakToLevelDown` (2) wrong answers in a row. The level is clamped to `MinLevel`..`MaxLevel` (1..10), and each streak resets when the level changes or the other kind of answer arrives.
+- **Range per level:** the range grows outwards from the *anchor*, `clamp(0, Min, Max)`, which is the easiest number. Each side covers `ceil(span × level / 10)` of its span, using integer maths so no floating-point rounding creeps in. Rounding up guarantees that a valid `GameSettings` stays valid on every level; for example, division always keeps a non-zero divisor.
+- **Resuming:** `HistoryStore.ResumeLevel` returns the `EndLevel` of the latest adaptive record with the same `Min`/`Max`, or level 1.
+
+### Progress history (`HistoryStore`)
+
+- **Format:** an indented JSON array of `SessionRecord`s. Enums are stored as names, and computed properties (`Answered`, `Accuracy`, `IsAdaptive`) are `[JsonIgnore]`d.
+- **Safe writes:** `Add` writes to `history.json.tmp` and then moves it over the original, so a crash cannot leave a half-written file.
+- **Corrupt files:** a file that can't be parsed is copied to `history.json.bak` and treated as empty, so the next save does not silently destroy it.
+- **Error handling:** the app catches `IOException`/`UnauthorizedAccessException`. A failed save is shown on the summary screen, and a failed load is shown on the History screen. Neither crashes the app.
+
 ## MathExam.App (WPF / MVVM)
 
 Navigation is view-model first. `MainWindow` has a single `ContentControl` bound to `MainViewModel.CurrentViewModel`, and implicit `DataTemplate`s in `App.xaml` map each view model to its view.
 
 ```
 MenuViewModel ──Start──▶ GameViewModel ──Stop──▶ SummaryViewModel ──Back──▶ MenuViewModel
+      │                                        (game saved to history)
+      └──History──▶ HistoryViewModel ──Back──▶ MenuViewModel
 ```
 
 | View model | Notes |
 |---|---|
-| `MainViewModel` | Owns navigation. Reuses one `MenuViewModel`, so settings persist between games. |
+| `MainViewModel` | Owns navigation and the `HistoryStore`. Reuses one `MenuViewModel`, so settings persist between games. Creates the `DifficultyAdjuster` at the resume level and saves each finished game that has answers. |
 | `MenuViewModel` | Min/max are bound as strings, so invalid input can be reported instead of silently rejected. `ErrorMessage` and `StartCommand.CanExecute` reuse `GameSettings.Validate()`. |
 | `GameViewModel` | `State` (`Answering`/`Correct`/`Wrong`) drives the button text, read-only state and colours. A single `SubmitOrNextCommand` handles both steps. A `DispatcherTimer` refreshes `ElapsedText`. |
-| `SummaryViewModel` | Read-only snapshot of the finished session. |
+| `SummaryViewModel` | Read-only snapshot of the finished session, plus the level range and any history save error. |
+| `HistoryViewModel` | Formats records into `HistoryRow`s (newest first) for a read-only `DataGrid`, and adds a totals line. |
 
 ### Keyboard handling
 
@@ -83,6 +102,8 @@ The Send/Next button has `IsDefault="True"`, so <kbd>Enter</kbd> anywhere in the
 - only enabled operations appear; operands stay within range
 - non-negative subtraction; every hidden part occurs; ambiguous zero cases are avoided
 - `GameSettings` validation and `GameSession` counters and state
+- `DifficultyAdjuster`: streaks, clamping, per-level ranges (including negative ranges and extreme `int` limits), and adaptive sessions staying within the current range
+- `HistoryStore`: round trip, missing file, corrupt-file backup, resume level, and `SessionRecord.FromSession`. These tests use a temp directory.
 
 The tests use fixed `Random` seeds, so every run gives the same results.
 

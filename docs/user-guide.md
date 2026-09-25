@@ -9,10 +9,11 @@ MathExam is a practice app for the four basic operations. It shows one equation 
 | **Lowest number** | Smallest value an operand can take. Negative numbers are allowed. |
 | **Highest number** | Largest value an operand can take. |
 | **Operations** | Any combination of addition (+), subtraction (−), multiplication (×) and division (÷). |
+| **Adaptive difficulty** | Adjusts how big the numbers are to how well you are doing (see below). |
 
-Defaults: lowest `1`, highest `10`, all operations on.
+Defaults: lowest `1`, highest `10`, all operations on, adaptive difficulty on.
 
-**Start** (or <kbd>Enter</kbd>) begins a game. If the settings are invalid, the button stays disabled and a red message says what to fix:
+**Start** (or <kbd>Enter</kbd>) begins a game. **History** shows your past games. If the settings are invalid, the button stays disabled and a red message says what to fix:
 
 - both limits must be whole numbers,
 - the lowest number must not be greater than the highest,
@@ -28,6 +29,7 @@ The top bar shows:
 | Field | Meaning |
 |---|---|
 | `Task #N` | Number of the current task |
+| `Level L / 10` | Current difficulty level (adaptive games only) |
 | `Solved: C / A` | Correct answers / answered tasks |
 | `Started` | Time the game started |
 | `Elapsed` | Time spent so far (hh:mm:ss) |
@@ -54,13 +56,32 @@ An empty or non-numeric answer is ignored rather than counted as wrong.
 
 The game has no fixed length. Click **Stop** to end it and see the summary.
 
-## 3. Summary
+## 3. Adaptive difficulty
 
-Shows the number of answered, correct and wrong tasks, your accuracy and the total time. **Back to menu** (or <kbd>Enter</kbd>) returns to the main menu.
+With adaptive difficulty on, the game has 10 levels.
+
+- **Level 10** uses your full range. Lower levels use a smaller part of it, starting from the easiest number (the one closest to zero). For example, with a range of 1–10, level 1 uses 1–2, level 5 uses 1–6 and level 10 uses 1–10.
+- **3 correct answers in a row** move you up one level: "▲ Level up!".
+- **2 wrong answers in a row** move you down one level: "▼ Level down".
+- The next game with the **same lowest and highest number** starts at the level you ended on. A new range starts at level 1.
+
+With adaptive difficulty off, every task uses the full range.
+
+## 4. Summary
+
+Shows the number of answered, correct and wrong tasks, your accuracy, the total time and, for adaptive games, the start and end level (e.g. `Level: 2 → 5`). **Back to menu** (or <kbd>Enter</kbd>) returns to the main menu.
+
+The game is saved to your progress history when you press **Stop**. A game with no answered tasks is not saved.
+
+## 5. Progress history
+
+The **History** button in the main menu shows every saved game, newest first: date, range, operations, answered, correct, accuracy, time and level (start → end). Above the table is a total across all games.
+
+The history is stored only on this computer, in `%LOCALAPPDATA%\MathExam\history.json`. Delete that file to clear the history.
 
 ## How tasks are generated
 
-- Operands are always within your range. The result may be outside it; for example, with a range of 1–100 you can get `100 × 100 = ?`.
+- Operands are always within your range, or within the current level's range in adaptive games. The result may be outside it; for example, with a range of 1–100 you can get `100 × 100 = ?`.
 - Division always comes out even: the dividend is built as divisor × quotient, and both of those are within your range. You never divide by zero.
 - Subtraction gives no negative results when the lowest number is 0 or more.
 - A number that would make every answer correct, such as `0 × ? = 0`, is never hidden. The result is hidden instead.

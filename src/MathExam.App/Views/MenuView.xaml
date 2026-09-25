@@ -30,10 +30,16 @@
             </UniformGrid>
         </GroupBox>
 
+        <CheckBox Content="Adaptive difficulty" IsChecked="{Binding UseAdaptive}" Margin="4,0,0,2" />
+        <TextBlock Text="Starts with small numbers and grows as you answer correctly."
+                   Foreground="Gray" FontSize="13" TextWrapping="Wrap" Margin="24,0,0,12" />
+
         <TextBlock Text="{Binding ErrorMessage}" Foreground="Firebrick" TextWrapping="Wrap"
                    Margin="0,0,0,12" HorizontalAlignment="Center" />
 
-        <Button Content="Start" Command="{Binding StartCommand}" IsDefault="True"
-                HorizontalAlignment="Center" />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Start" Command="{Binding StartCommand}" IsDefault="True" />
+            <Button Content="History" Command="{Binding ShowHistoryCommand}" Margin="12,0,0,0" />
+        </StackPanel>
     </StackPanel>
 </UserControl>

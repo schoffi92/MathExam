@@ -7,12 +7,18 @@ namespace MathExam.App.ViewModels;
 
 public partial class MenuViewModel : ObservableObject
 {
-    private readonly Action<GameSettings> _onStart;
+    private readonly Action<GameSettings, bool> _onStart;
+    private readonly Action _onShowHistory;
 
-    public MenuViewModel(Action<GameSettings> onStart)
+    /// <param name="onStart">Called with the settings and whether adaptive difficulty is on.</param>
+    public MenuViewModel(Action<GameSettings, bool> onStart, Action onShowHistory)
     {
         _onStart = onStart;
+        _onShowHistory = onShowHistory;
     }
+
+    [ObservableProperty]
+    private bool _useAdaptive = true;
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(ErrorMessage))]
@@ -50,10 +56,13 @@ public partial class MenuViewModel : ObservableObject
     private void Start()
     {
         if (TryBuildSettings(out var settings) is null)
-            _onStart(settings!);
+            _onStart(settings!, UseAdaptive);
     }
 
     private bool CanStart() => ErrorMessage is null;
+
+    [RelayCommand]
+    private void ShowHistory() => _onShowHistory();
 
     /// <summary>Returns an error message, or null and the settings when the input is valid.</summary>
     private string? TryBuildSettings(out GameSettings? settings)

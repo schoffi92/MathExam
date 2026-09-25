@@ -29,7 +29,8 @@ public partial class GameViewModel : ObservableObject
     }
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(IsAnswered), nameof(ButtonText), nameof(CorrectAnswerText), nameof(SolvedText))]
+    [NotifyPropertyChangedFor(nameof(IsAnswered), nameof(ButtonText), nameof(CorrectAnswerText), nameof(SolvedText),
+        nameof(LevelText), nameof(LevelChangeText))]
     private AnswerState _state = AnswerState.Answering;
 
     [ObservableProperty]
@@ -43,6 +44,15 @@ public partial class GameViewModel : ObservableObject
     public bool IsAnswered => State != AnswerState.Answering;
     public string ButtonText => IsAnswered ? "Next" : "Send";
     public string CorrectAnswerText => State == AnswerState.Wrong ? $"Correct answer: {_session.CurrentTask.Answer}" : "";
+
+    public string LevelText => _session.IsAdaptive ? $"Level {_session.Level} / {DifficultyAdjuster.MaxLevel}" : "";
+
+    public string LevelChangeText => (IsAnswered ? _session.LastLevelChange : 0) switch
+    {
+        > 0 => "▲ Level up! The numbers get a little bigger.",
+        < 0 => "▼ Level down. The numbers get a little smaller.",
+        _ => "",
+    };
 
     [RelayCommand]
     private void SubmitOrNext()
