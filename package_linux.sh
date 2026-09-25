@@ -13,6 +13,7 @@ rm -rf release/package
 mkdir -p "$stage"
 install -m 755 release/linux-x64/MathExam "$stage/MathExam"
 install -m 644 packaging/linux/README.txt "$stage/README.txt"
+install -m 644 license.md "$stage/LICENSE.md"
 tar -czf release/MathExam-linux-x64.tar.gz --owner=0 --group=0 -C release/package MathExam
 rm -rf release/package
 

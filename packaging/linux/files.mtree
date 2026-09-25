@@ -3,3 +3,4 @@
 # Lists each file with its Linux permissions, because Windows files have none.
 ./MathExam/MathExam type=file mode=0755 contents=linux-x64/MathExam
 ./MathExam/README.txt type=file mode=0644 contents=linux-x64/README.txt
+./MathExam/LICENSE.md type=file mode=0644 contents=linux-x64/LICENSE.md

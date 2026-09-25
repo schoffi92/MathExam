@@ -56,3 +56,7 @@ dotnet test
 
 - [User Guide](docs/user-guide.md): how to play, settings, and how tasks are generated
 - [Developer Guide](docs/developer-guide.md): architecture, core types, generation rules, UI structure, builds, tests
+
+## License
+
+[MIT](license.md) © 2026 Istvan Schoffhauzer

@@ -16,6 +16,7 @@ call "%~dp0build_release.bat" --no-pause || goto :fail
 echo.
 echo Packaging...
 copy /y packaging\linux\README.txt release\linux-x64\README.txt >nul || goto :fail
+copy /y license.md release\linux-x64\LICENSE.md >nul || goto :fail
 rem The mtree file list sets Linux file permissions (the program must be executable),
 rem which tar cannot take from the Windows file system.
 pushd release

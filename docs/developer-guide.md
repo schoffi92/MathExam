@@ -39,6 +39,7 @@ dotnet publish src/MathExam.App/MathExam.App.csproj -c Release -r <win-x64|linux
 ```
 MathExam/MathExam     (mode 0755, the program)
 MathExam/README.txt   (mode 0644, copied from packaging/linux/README.txt)
+MathExam/LICENSE.md   (mode 0644, copied from license.md; MIT requires the notice in copies)
 ```
 
 - **Permissions:** Windows files have no Unix permissions. `package_linux.bat` therefore passes Windows' built-in `tar.exe` (bsdtar) an mtree file list, `packaging/linux/files.mtree`, which states each file's mode. `package_linux.sh` stages the files with `install -m` and uses GNU tar. Both produce root-owned entries.
