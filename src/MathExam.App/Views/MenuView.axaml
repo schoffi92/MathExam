@@ -1,0 +1,53 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:MathExam.App.ViewModels"
+             x:Class="MathExam.App.Views.MenuView"
+             x:DataType="vm:MenuViewModel">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="380">
+        <TextBlock Text="Math Exam" Classes="title" />
+
+        <Grid ColumnDefinitions="*,120" RowDefinitions="Auto,Auto" Margin="0,0,0,16">
+            <TextBlock Text="Lowest number:" VerticalAlignment="Center" />
+            <TextBox Grid.Column="1" Margin="0,4" Text="{Binding MinText}" />
+            <TextBlock Grid.Row="1" Text="Highest number:" VerticalAlignment="Center" />
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="0,4" Text="{Binding MaxText}" />
+        </Grid>
+
+        <Border Classes="group" Margin="0,0,0,16">
+            <StackPanel>
+                <TextBlock Text="Operations" Classes="groupHeader" />
+                <UniformGrid Columns="2">
+                    <CheckBox Content="Addition (+)" IsChecked="{Binding UseAdd}" />
+                    <CheckBox Content="Subtraction (−)" IsChecked="{Binding UseSubtract}" />
+                    <CheckBox Content="Multiplication (×)" IsChecked="{Binding UseMultiply}" />
+                    <CheckBox Content="Division (÷)" IsChecked="{Binding UseDivide}" />
+                </UniformGrid>
+            </StackPanel>
+        </Border>
+
+        <CheckBox Content="Adaptive difficulty" IsChecked="{Binding UseAdaptive}" />
+        <TextBlock Text="Starts with small numbers and grows as you answer correctly."
+                   Foreground="{DynamicResource MutedBrush}" FontSize="13" TextWrapping="Wrap" Margin="28,0,0,12" />
+
+        <Border Classes="group" Margin="0,0,0,16">
+            <StackPanel>
+                <TextBlock Text="Display" Classes="groupHeader" />
+                <TextBlock Text="Text size:" Margin="4,0,0,0" />
+                <StackPanel Orientation="Horizontal" Spacing="12">
+                    <RadioButton Content="Normal" GroupName="TextSize" IsChecked="{Binding Display.IsNormalText}" />
+                    <RadioButton Content="Large" GroupName="TextSize" IsChecked="{Binding Display.IsLargeText}" />
+                    <RadioButton Content="Extra large" GroupName="TextSize" IsChecked="{Binding Display.IsExtraLargeText}" />
+                </StackPanel>
+                <CheckBox Content="High contrast colours" IsChecked="{Binding Display.HighContrast}" />
+            </StackPanel>
+        </Border>
+
+        <TextBlock Text="{Binding ErrorMessage}" Foreground="{DynamicResource ErrorBrush}" TextWrapping="Wrap"
+                   Margin="0,0,0,12" HorizontalAlignment="Center" />
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="12">
+            <Button Content="Start" Command="{Binding StartCommand}" IsDefault="True" />
+            <Button Content="History" Command="{Binding ShowHistoryCommand}" />
+        </StackPanel>
+    </StackPanel>
+</UserControl>

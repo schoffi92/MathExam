@@ -1,5 +1,5 @@
 using System.Globalization;
-using System.Windows.Threading;
+using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MathExam.Core;
@@ -29,8 +29,8 @@ public partial class GameViewModel : ObservableObject
     }
 
     [ObservableProperty]
-    [NotifyPropertyChangedFor(nameof(IsAnswered), nameof(ButtonText), nameof(FeedbackText), nameof(SolvedText),
-        nameof(LevelText), nameof(LevelChangeText))]
+    [NotifyPropertyChangedFor(nameof(IsAnswered), nameof(IsCorrect), nameof(IsWrong), nameof(ButtonText),
+        nameof(FeedbackText), nameof(SolvedText), nameof(LevelText), nameof(LevelChangeText))]
     private AnswerState _state = AnswerState.Answering;
 
     [ObservableProperty]
@@ -42,6 +42,8 @@ public partial class GameViewModel : ObservableObject
     public string StartedText => $"Started: {_session.StartedAt:HH:mm:ss}";
     public string ElapsedText => $"Elapsed: {_session.Elapsed.ToString(@"hh\:mm\:ss")}";
     public bool IsAnswered => State != AnswerState.Answering;
+    public bool IsCorrect => State == AnswerState.Correct;
+    public bool IsWrong => State == AnswerState.Wrong;
     public string ButtonText => IsAnswered ? "Next" : "Send";
     // Spelled out with a symbol so the result is clear without relying on colour.
     public string FeedbackText => State switch

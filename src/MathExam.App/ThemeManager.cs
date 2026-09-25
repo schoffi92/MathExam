@@ -1,17 +1,25 @@
-using System.Windows;
+using Avalonia;
+using Avalonia.Platform;
+using Avalonia.Styling;
 
 namespace MathExam.App;
 
-/// <summary>Switches the colour theme by replacing the theme dictionary merged into App.xaml.</summary>
+/// <summary>Switches between the standard (Light) and high-contrast theme variants.</summary>
 public static class ThemeManager
 {
-    private static readonly Uri StandardTheme = new("pack://application:,,,/Themes/Standard.xaml");
-    private static readonly Uri HighContrastTheme = new("pack://application:,,,/Themes/HighContrast.xaml");
+    /// <summary>
+    /// Custom theme variant with its own resource dictionary (Themes/HighContrast.axaml). It inherits
+    /// Dark, so Fluent controls we do not restyle (check boxes, data grid, scroll bars) render light-on-dark.
+    /// </summary>
+    public static readonly ThemeVariant HighContrast = new("HighContrast", ThemeVariant.Dark);
 
     public static void Apply(bool highContrast)
     {
-        var dictionaries = Application.Current.Resources.MergedDictionaries;
-        dictionaries.Clear();
-        dictionaries.Add(new ResourceDictionary { Source = highContrast ? HighContrastTheme : StandardTheme });
+        if (Application.Current is { } app)
+            app.RequestedThemeVariant = highContrast ? HighContrast : ThemeVariant.Light;
     }
+
+    /// <summary>True when the operating system's high-contrast / increased-contrast mode is on.</summary>
+    public static bool SystemPrefersHighContrast() =>
+        Application.Current?.PlatformSettings?.GetColorValues().ContrastPreference == ColorContrastPreference.High;
 }

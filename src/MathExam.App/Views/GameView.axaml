@@ -1,0 +1,69 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:MathExam.App.ViewModels"
+             x:Class="MathExam.App.Views.GameView"
+             x:DataType="vm:GameViewModel">
+    <!-- Answer feedback. These styles are closer to the controls than the app-wide ones,
+         so they win over the focus border and keep the green/red visible while typing. -->
+    <UserControl.Styles>
+        <Style Selector="TextBox.correct">
+            <Setter Property="Foreground" Value="{DynamicResource CorrectForegroundBrush}" />
+        </Style>
+        <Style Selector="TextBox.correct /template/ Border#PART_BorderElement">
+            <Setter Property="Background" Value="{DynamicResource CorrectBackgroundBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource SuccessBrush}" />
+            <Setter Property="BorderThickness" Value="{DynamicResource FeedbackBorderThickness}" />
+        </Style>
+        <Style Selector="TextBox.wrong">
+            <Setter Property="Foreground" Value="{DynamicResource WrongForegroundBrush}" />
+        </Style>
+        <Style Selector="TextBox.wrong /template/ Border#PART_BorderElement">
+            <Setter Property="Background" Value="{DynamicResource WrongBackgroundBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource ErrorBrush}" />
+            <Setter Property="BorderThickness" Value="{DynamicResource FeedbackBorderThickness}" />
+        </Style>
+        <Style Selector="TextBlock.feedback.correct">
+            <Setter Property="Foreground" Value="{DynamicResource SuccessBrush}" />
+        </Style>
+        <Style Selector="TextBlock.feedback.wrong">
+            <Setter Property="Foreground" Value="{DynamicResource ErrorBrush}" />
+        </Style>
+    </UserControl.Styles>
+
+    <DockPanel>
+        <!-- Header: progress and timing -->
+        <UniformGrid DockPanel.Dock="Top" Columns="4" Margin="0,0,0,16">
+            <StackPanel>
+                <TextBlock Text="{Binding TaskNumberText}" FontWeight="SemiBold" />
+                <TextBlock Text="{Binding LevelText}" Foreground="{DynamicResource AccentBrush}" />
+            </StackPanel>
+            <TextBlock Text="{Binding SolvedText}" HorizontalAlignment="Center" />
+            <TextBlock Text="{Binding StartedText}" HorizontalAlignment="Center" />
+            <TextBlock Text="{Binding ElapsedText}" HorizontalAlignment="Right" />
+        </UniformGrid>
+
+        <Button DockPanel.Dock="Bottom" Content="Stop" Command="{Binding StopCommand}"
+                HorizontalAlignment="Right" Focusable="False" />
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="{Binding Equation}" FontSize="56"
+                       HorizontalAlignment="Center" Margin="0,0,0,24" />
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="12">
+                <TextBox x:Name="AnswerBox" Width="200" FontSize="32" Padding="6"
+                         TextAlignment="Center" VerticalContentAlignment="Center"
+                         Text="{Binding AnswerText}" IsReadOnly="{Binding IsAnswered}"
+                         Classes.correct="{Binding IsCorrect}" Classes.wrong="{Binding IsWrong}" />
+                <!-- IsDefault makes Enter trigger Send/Next; not focusable so focus stays in the answer box. -->
+                <Button Content="{Binding ButtonText}" Command="{Binding SubmitOrNextCommand}"
+                        IsDefault="True" Focusable="False" VerticalAlignment="Stretch" VerticalContentAlignment="Center" />
+            </StackPanel>
+
+            <TextBlock Text="{Binding FeedbackText}" FontSize="22" FontWeight="SemiBold"
+                       HorizontalAlignment="Center" Margin="0,16,0,0" Classes="feedback"
+                       Classes.correct="{Binding IsCorrect}" Classes.wrong="{Binding IsWrong}" />
+            <TextBlock Text="{Binding LevelChangeText}" Foreground="{DynamicResource AccentBrush}" FontSize="18"
+                       HorizontalAlignment="Center" Margin="0,8,0,0" />
+        </StackPanel>
+    </DockPanel>
+</UserControl>

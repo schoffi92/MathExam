@@ -1,0 +1,131 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:app="using:MathExam.App"
+             xmlns:vm="using:MathExam.App.ViewModels"
+             xmlns:views="using:MathExam.App.Views"
+             x:Class="MathExam.App.App"
+             RequestedThemeVariant="Light">
+
+    <!-- Maps each screen's view model to its view (MainWindow shows CurrentViewModel). -->
+    <Application.DataTemplates>
+        <DataTemplate DataType="vm:MenuViewModel">
+            <views:MenuView />
+        </DataTemplate>
+        <DataTemplate DataType="vm:GameViewModel">
+            <views:GameView />
+        </DataTemplate>
+        <DataTemplate DataType="vm:SummaryViewModel">
+            <views:SummaryView />
+        </DataTemplate>
+        <DataTemplate DataType="vm:HistoryViewModel">
+            <views:HistoryView />
+        </DataTemplate>
+    </Application.DataTemplates>
+
+    <!-- Colour themes: ThemeManager switches RequestedThemeVariant between Light and HighContrast.
+         Everything below uses DynamicResource, so it follows the switch immediately. -->
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceInclude x:Key="Light" Source="/Themes/Standard.axaml" />
+                <ResourceInclude x:Key="{x:Static app:ThemeManager.HighContrast}" Source="/Themes/HighContrast.axaml" />
+            </ResourceDictionary.ThemeDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+
+    <!-- Styles declared after FluentTheme override its control themes. -->
+    <Application.Styles>
+        <FluentTheme />
+        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml" />
+
+        <Style Selector="Window">
+            <Setter Property="Background" Value="{DynamicResource BackgroundBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        </Style>
+
+        <Style Selector="TextBlock.title">
+            <Setter Property="FontSize" Value="32" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,0,0,24" />
+        </Style>
+
+        <!-- Framed section with a heading, used instead of WPF's GroupBox. -->
+        <Style Selector="Border.group">
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
+            <Setter Property="BorderThickness" Value="{DynamicResource ControlBorderThickness}" />
+            <Setter Property="CornerRadius" Value="4" />
+            <Setter Property="Padding" Value="8" />
+        </Style>
+        <Style Selector="TextBlock.groupHeader">
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Margin" Value="4,0,0,4" />
+        </Style>
+
+        <!-- Buttons: theme colours in every state (Fluent's own hover colours are unreadable on black). -->
+        <Style Selector="Button">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="Padding" Value="20,8" />
+            <Setter Property="MinWidth" Value="120" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+            <Setter Property="Background" Value="{DynamicResource ButtonBackgroundBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
+            <Setter Property="BorderThickness" Value="{DynamicResource ControlBorderThickness}" />
+            <Setter Property="Cursor" Value="Hand" />
+        </Style>
+        <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource ButtonBackgroundBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        </Style>
+        <Style Selector="Button:focus-visible /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}" />
+        </Style>
+        <Style Selector="Button:pressed /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource ButtonPressedBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        </Style>
+        <Style Selector="Button:disabled /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource ButtonBackgroundBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource DisabledBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource DisabledBrush}" />
+        </Style>
+
+        <!-- Text boxes: themed colours; focus shows as an accent border. -->
+        <Style Selector="TextBox">
+            <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+            <Setter Property="Background" Value="{DynamicResource InputBackgroundBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
+            <Setter Property="BorderThickness" Value="{DynamicResource ControlBorderThickness}" />
+            <Setter Property="CaretBrush" Value="{DynamicResource ForegroundBrush}" />
+            <Setter Property="SelectionBrush" Value="{DynamicResource AccentBrush}" />
+        </Style>
+        <Style Selector="TextBox:pointerover /template/ Border#PART_BorderElement">
+            <Setter Property="Background" Value="{DynamicResource InputBackgroundBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}" />
+        </Style>
+        <Style Selector="TextBox:focus /template/ Border#PART_BorderElement">
+            <Setter Property="Background" Value="{DynamicResource InputBackgroundBrush}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}" />
+            <Setter Property="BorderThickness" Value="{DynamicResource ControlBorderThickness}" />
+        </Style>
+
+        <Style Selector="CheckBox, RadioButton">
+            <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        </Style>
+
+        <Style Selector="DataGrid">
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}" />
+            <Setter Property="BorderThickness" Value="{DynamicResource ControlBorderThickness}" />
+            <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource BorderBrush}" />
+            <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+        </Style>
+        <Style Selector="DataGridColumnHeader">
+            <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+    </Application.Styles>
+</Application>

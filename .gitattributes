@@ -1,2 +1,7 @@
 # Batch files need CRLF line endings for cmd.exe labels to work reliably
 *.bat text eol=crlf
+
+# Shell scripts and files shipped to Linux need LF line endings
+*.sh text eol=lf
+*.mtree text eol=lf
+packaging/linux/* text eol=lf

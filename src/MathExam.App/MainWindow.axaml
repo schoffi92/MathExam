@@ -1,0 +1,14 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:MathExam.App.ViewModels"
+        x:Class="MathExam.App.MainWindow"
+        x:DataType="vm:MainViewModel"
+        Title="Math Exam" WindowStartupLocation="CenterScreen" FontSize="16">
+    <!-- Scrolls when large text does not fit on a small screen. -->
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <!-- Text size: MainWindow.FitToTextScale sets a ScaleTransform here, scaling the whole screen. -->
+        <LayoutTransformControl x:Name="Scaler">
+            <ContentControl Content="{Binding CurrentViewModel}" Margin="24" />
+        </LayoutTransformControl>
+    </ScrollViewer>
+</Window>

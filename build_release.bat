@@ -1,8 +1,9 @@
 @echo off
 setlocal
-rem Builds a release of MathExam into the "release" folder.
-rem Runs the tests first, then publishes a self-contained single-file exe for
-rem 64-bit Windows, so the target PC does not need .NET installed.
+rem Builds release versions of MathExam into release\<platform>.
+rem Runs the tests first, then publishes self-contained single-file builds for 64-bit
+rem Windows (release\win-x64\MathExam.exe) and Linux (release\linux-x64\MathExam),
+rem so the target PC does not need .NET installed.
 rem Usage: build_release.bat [--no-pause]
 
 cd /d "%~dp0"
@@ -15,16 +16,20 @@ where dotnet >nul 2>&1 || (
 echo Running tests...
 dotnet test MathExam.sln -c Release --nologo -v q || goto :fail
 
-echo.
-echo Publishing...
 if exist release rmdir /s /q release || goto :fail
-dotnet publish src\MathExam.App\MathExam.App.csproj -c Release -r win-x64 --self-contained true ^
-    -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true ^
-    -p:EnableCompressionInSingleFile=true -p:DebugType=none ^
-    -o release --nologo -v q || goto :fail
+for %%R in (win-x64 linux-x64) do (
+    echo.
+    echo Publishing %%R...
+    dotnet publish src\MathExam.App\MathExam.App.csproj -c Release -r %%R --self-contained true ^
+        -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true ^
+        -p:EnableCompressionInSingleFile=true -p:DebugType=none ^
+        -o release\%%R --nologo -v q || goto :fail
+)
 
 echo.
-echo Done: %~dp0release\MathExam.App.exe
+echo Done:
+echo   %~dp0release\win-x64\MathExam.exe
+echo   %~dp0release\linux-x64\MathExam
 call :pause_unless %1
 exit /b 0
 

@@ -1,5 +1,5 @@
 <!-- Standard theme. All text colours meet WCAG AA contrast (4.5:1) on their backgrounds. -->
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <SolidColorBrush x:Key="BackgroundBrush" Color="#FFFFFF" />
     <SolidColorBrush x:Key="ForegroundBrush" Color="#1A1A1A" />
@@ -22,9 +22,18 @@
     <Thickness x:Key="ControlBorderThickness">1</Thickness>
     <Thickness x:Key="FeedbackBorderThickness">2</Thickness>
 
-    <!-- Selection colours used by the DataGrid. -->
-    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#1F5F99" />
-    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="#FFFFFF" />
-    <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="#D6E4F0" />
-    <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="#1A1A1A" />
+    <!-- Fluent check box / radio button colours: the app's blue instead of the OS accent colour,
+         so the app looks the same on every system. -->
+    <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillChecked" Color="#1F5F99" />
+    <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillCheckedPointerOver" Color="#2A70B0" />
+    <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillCheckedPressed" Color="#174A78" />
+    <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeChecked" Color="#1F5F99" />
+    <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeCheckedPointerOver" Color="#2A70B0" />
+    <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeCheckedPressed" Color="#174A78" />
+    <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedFill" Color="#1F5F99" />
+    <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedFillPointerOver" Color="#2A70B0" />
+    <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedFillPressed" Color="#174A78" />
+    <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedStroke" Color="#1F5F99" />
+    <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedStrokePointerOver" Color="#2A70B0" />
+    <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedStrokePressed" Color="#174A78" />
 </ResourceDictionary>

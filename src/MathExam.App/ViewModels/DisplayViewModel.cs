@@ -1,5 +1,3 @@
-using System.IO;
-using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using MathExam.Core;
 
@@ -20,8 +18,8 @@ public partial class DisplayViewModel : ObservableObject
     public DisplayViewModel(PreferencesStore store)
     {
         _store = store;
-        // First launch: follow the Windows high-contrast setting.
-        var saved = store.Load() ?? new DisplayPreferences(HighContrast: SystemParameters.HighContrast);
+        // First launch: follow the operating system's high-contrast setting.
+        var saved = store.Load() ?? new DisplayPreferences(HighContrast: ThemeManager.SystemPrefersHighContrast());
         _textSize = saved.TextSize;
         _highContrast = saved.HighContrast;
         ThemeManager.Apply(_highContrast);

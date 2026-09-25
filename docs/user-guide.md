@@ -13,7 +13,7 @@ MathExam is a practice app for the four basic operations. It shows one equation 
 | **Display → Text size** | Normal, Large (125%) or Extra large (150%). Everything gets bigger and the window grows to match. |
 | **Display → High contrast colours** | White and yellow on black, with thicker borders. |
 
-Defaults: lowest `1`, highest `10`, all operations on, adaptive difficulty on, normal text. High contrast starts on if Windows' own high-contrast mode is on.
+Defaults: lowest `1`, highest `10`, all operations on, adaptive difficulty on, normal text. High contrast starts on if the operating system's high-contrast mode is on.
 
 Display changes apply immediately and are remembered the next time you open the app. If Extra large text doesn't fit on a small screen, the window can be scrolled.
 
@@ -81,7 +81,10 @@ The game is saved to your progress history when you press **Stop**. A game with 
 
 The **History** button in the main menu shows every saved game, newest first: date, range, operations, answered, correct, accuracy, time and level (start → end). Above the table is a total across all games.
 
-The history is stored only on this computer, in `%LOCALAPPDATA%\MathExam\history.json`. Delete that file to clear the history. Display settings are stored next to it in `preferences.json`.
+The history is stored only on this computer, in `history.json`. Delete that file to clear the history. Display settings are stored next to it in `preferences.json`. The folder is:
+
+- **Windows:** `%LOCALAPPDATA%\MathExam\`
+- **Linux:** `~/.local/share/MathExam/`
 
 ## How tasks are generated
 

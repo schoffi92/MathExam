@@ -2,33 +2,52 @@
 
 ## Requirements
 
-- Windows (WPF)
-- .NET SDK 8 or newer (the projects target `net8.0` / `net8.0-windows`)
+- Windows or Linux (macOS should also work, since Avalonia supports it, but it is untested)
+- **.NET SDK 9.0.300 or newer.** The projects target `net8.0`, but Avalonia 12's source generators need the C# compiler that ships with SDK 9.0.3xx. With SDK 8 the build fails with misleading `InitializeComponent does not exist` errors, so `global.json` requires 9.0.300 and rolls forward to any newer SDK.
 
 ## Build, test, run
 
-```powershell
+```sh
 dotnet build MathExam.sln
 dotnet test
 dotnet run --project src/MathExam.App
 ```
 
-### Release build
+### Release builds
 
-`build_release.bat` runs `dotnet test -c Release`, then publishes the app into `release\`:
+`build_release.bat` (Windows) and `build_release.sh` (Linux) do the same thing. They run `dotnet test -c Release`, then publish once per platform (runtime identifier) into `release/<rid>/`:
 
 ```
-dotnet publish src\MathExam.App\MathExam.App.csproj -c Release -r win-x64 --self-contained true
+dotnet publish src/MathExam.App/MathExam.App.csproj -c Release -r <win-x64|linux-x64> --self-contained true
     -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true
-    -p:EnableCompressionInSingleFile=true -p:DebugType=none -o release
+    -p:EnableCompressionInSingleFile=true -p:DebugType=none -o release/<rid>
 ```
 
-- **Output:** one compressed exe of about 70 MB that includes the .NET runtime, so the target PC needs nothing installed. `IncludeNativeLibrariesForSelfExtract` is required because WPF has native DLLs.
-- **Failure handling:** a failing test stops the build before anything is published. The script deletes `release\` first, so no stale files remain.
-- **Pausing:** when double-clicked, the script pauses at the end so you can read the output. Pass `--no-pause` when calling it from another script; `start.bat` does this.
-- **Git:** `release\` is ignored by the `[Rr]elease/` rule in `.gitignore`. `.gitattributes` keeps `*.bat` files in CRLF, because cmd.exe can misread labels in files with Unix line endings.
+- **Output:** `release/win-x64/MathExam.exe` and `release/linux-x64/MathExam`, each a compressed single file of about 45 MB that includes the .NET runtime. `IncludeNativeLibrariesForSelfExtract` bundles Avalonia's native libraries (SkiaSharp, HarfBuzz).
+- **Cross-publishing:** either OS can build both platforms.
+- **Debug symbols:** the `RemovePdbsFromPublish` target in `MathExam.App.csproj` deletes the ~100 MB of native `.pdb` files that SkiaSharp would otherwise leave next to the exe.
+- **Failure handling:** a failing test stops the build before anything is published. `release/` is deleted first, so no stale files remain.
+- **Pausing:** when double-clicked, the `.bat` scripts pause at the end so you can read the output. Pass `--no-pause` when calling one from another script.
+- **Calling scripts:** the `.bat` scripts call each other by full path (`"%~dp0build_release.bat"`), because cmd does not search the current folder when `NoDefaultCurrentDirectoryInExePath` is set. The `.sh` scripts call each other with `bash`, so they work even if a checkout lost the execute bit.
 
-`start.bat` launches `release\MathExam.App.exe`, and runs `build_release.bat` first if the exe is missing. It does not rebuild when the code changes.
+`start.bat` / `start.sh` launch the release build for the current OS, and run the build script first if it is missing. They do not rebuild when the code changes.
+
+### Linux archive
+
+`package_linux.bat` / `package_linux.sh` run the build script, then create `release/MathExam-linux-x64.tar.gz`:
+
+```
+MathExam/MathExam     (mode 0755, the program)
+MathExam/README.txt   (mode 0644, copied from packaging/linux/README.txt)
+```
+
+- **Permissions:** Windows files have no Unix permissions. `package_linux.bat` therefore passes Windows' built-in `tar.exe` (bsdtar) an mtree file list, `packaging/linux/files.mtree`, which states each file's mode. `package_linux.sh` stages the files with `install -m` and uses GNU tar. Both produce root-owned entries.
+- **Line endings:** `.gitattributes` keeps `*.bat` in CRLF (cmd.exe can misread labels otherwise), and keeps `*.sh`, `*.mtree` and `packaging/linux/*` in LF.
+- **Git:** `release/` is ignored by the `[Rr]elease/` rule in `.gitignore`.
+
+### Testing on Linux without a desktop
+
+Verified on Ubuntu 20.04 (WSL2): a Linux build and an extracted archive run under the Xvfb virtual display, driven with `xdotool` (Enter → Start, type an answer, Enter → Send). The Linux program needs the usual X11 libraries: `libX11`, `libICE`, `libSM` and `fontconfig`. Without a display it exits with `XOpenDisplay failed`.
 
 ## Solution layout
 
@@ -36,17 +55,21 @@ dotnet publish src\MathExam.App\MathExam.App.csproj -c Release -r win-x64 --self
 MathExam.sln
 src/
   MathExam.Core/          Game logic, no UI dependencies
-  MathExam.App/           WPF front end (MVVM, CommunityToolkit.Mvvm)
+  MathExam.App/           Avalonia front end (MVVM, CommunityToolkit.Mvvm); builds MathExam(.exe)
+    Themes/               Standard.axaml, HighContrast.axaml
     ViewModels/
     Views/
 tests/
   MathExam.Core.Tests/    xUnit tests for MathExam.Core
+packaging/linux/          README.txt and files.mtree for the Linux archive
 docs/                     This documentation
-build_release.bat         Test + publish a self-contained exe into release\
-start.bat                 Start the release exe (builds it if missing)
+global.json               Minimum .NET SDK (9.0.300)
+build_release.bat/.sh     Test + publish self-contained builds into release/<rid>/
+start.bat/.sh             Start the release build (builds it if missing)
+package_linux.bat/.sh     Build + create release/MathExam-linux-x64.tar.gz
 ```
 
-All the rules live in `MathExam.Core`, so they can be unit tested without a UI. The WPF project only binds that logic to the screen.
+All the rules live in `MathExam.Core`, so they can be unit tested without a UI. The Avalonia project only binds that logic to the screen.
 
 ## MathExam.Core
 
@@ -60,9 +83,9 @@ All the rules live in `MathExam.Core`, so they can be unit tested without a UI. 
 | `GameSession` | One endless game. Keeps `CurrentTask`, `TaskNumber`, `CorrectCount`, `WrongCount`, `StartedAt` and `Elapsed` (a `Stopwatch`). `Submit(answer)` → `bool`, then `NextTask()`, then `Stop()`. With an optional `DifficultyAdjuster` it is adaptive: tasks come from `TaskSettings`, and `LastLevelChange` reports +1/−1/0 after each answer. |
 | `DifficultyAdjuster` | Adaptive level 1–10. `RecordAnswer(correct)` → level change. `ForLevel(settings, level)` / `Apply(settings)` narrow the range. |
 | `SessionRecord` | A finished game as stored in the history (range, operations, counts, duration, start/end level). `FromSession(session)` builds one. |
-| `HistoryStore` | Reads and writes the history JSON file. `Load()`, `Add(record)`, `ResumeLevel(records, settings)`. `DefaultPath` is `%LOCALAPPDATA%\MathExam\history.json`. |
+| `HistoryStore` | Reads and writes the history JSON file. `Load()`, `Add(record)`, `ResumeLevel(records, settings)`. `DefaultPath` is `<LocalApplicationData>/MathExam/history.json`, which is `%LOCALAPPDATA%` on Windows and `~/.local/share` on Linux. |
 | `DisplayPreferences` / `PreferencesStore` | `TextSize` (`Normal`/`Large`/`ExtraLarge`) and `HighContrast`, stored in `preferences.json`. `Load()` returns `null` when the file is missing or unreadable. |
-| `JsonFile` (internal) | Shared JSON options, the `%LOCALAPPDATA%\MathExam` folder, and `WriteAtomic` (temp file + move) used by both stores. |
+| `JsonFile` (internal) | Shared JSON options, the app data folder, and `WriteAtomic` (temp file + move) used by both stores. |
 
 ### Task generation rules (`TaskGenerator`)
 
@@ -88,9 +111,11 @@ Numbers are `long`, so multiplying two `int`-range operands cannot overflow.
 - **Corrupt files:** a file that can't be parsed is copied to `history.json.bak` and treated as empty, so the next save does not silently destroy it.
 - **Error handling:** the app catches `IOException`/`UnauthorizedAccessException`. A failed save is shown on the summary screen, and a failed load is shown on the History screen. Neither crashes the app.
 
-## MathExam.App (WPF / MVVM)
+## MathExam.App (Avalonia / MVVM)
 
-Navigation is view-model first. `MainWindow` has a single `ContentControl` bound to `MainViewModel.CurrentViewModel`, and implicit `DataTemplate`s in `App.xaml` map each view model to its view.
+The UI uses [Avalonia](https://avaloniaui.net) 12 with the Fluent theme and the bundled Inter font, so it looks the same on every OS. `Program.cs` is the entry point. `App.axaml` holds the view templates, theme dictionaries and global styles.
+
+Navigation is view-model first. `MainWindow` has a single `ContentControl` bound to `MainViewModel.CurrentViewModel`, and the `Application.DataTemplates` in `App.axaml` map each view model to its view. Views use compiled bindings (`x:DataType`), so a binding typo is a build error rather than a silent runtime failure.
 
 ```
 MenuViewModel ──Start──▶ GameViewModel ──Stop──▶ SummaryViewModel ──Back──▶ MenuViewModel
@@ -100,10 +125,10 @@ MenuViewModel ──Start──▶ GameViewModel ──Stop──▶ SummaryView
 
 | View model | Notes |
 |---|---|
-| `DisplayViewModel` | Text size and high contrast. Loads preferences at startup (first launch follows `SystemParameters.HighContrast`), applies the theme, and saves on every change. Exposes `TextScale` (1.0 / 1.25 / 1.5) and one bool per text-size radio button. |
+| `DisplayViewModel` | Text size and high contrast. Loads preferences at startup (first launch follows the OS contrast preference, via `ThemeManager.SystemPrefersHighContrast()`), applies the theme, and saves on every change. Exposes `TextScale` (1.0 / 1.25 / 1.5) and one bool per text-size radio button. |
 | `MainViewModel` | Owns navigation, the `HistoryStore` and the shared `DisplayViewModel` (also exposed to the menu as `MenuViewModel.Display`). Reuses one `MenuViewModel`, so settings persist between games. Creates the `DifficultyAdjuster` at the resume level and saves each finished game that has answers. |
 | `MenuViewModel` | Min/max are bound as strings, so invalid input can be reported instead of silently rejected. `ErrorMessage` and `StartCommand.CanExecute` reuse `GameSettings.Validate()`. |
-| `GameViewModel` | `State` (`Answering`/`Correct`/`Wrong`) drives the button text, read-only state and colours. A single `SubmitOrNextCommand` handles both steps. A `DispatcherTimer` refreshes `ElapsedText`. |
+| `GameViewModel` | `State` (`Answering`/`Correct`/`Wrong`) drives the button text and read-only state. `IsCorrect`/`IsWrong` toggle the views' `correct`/`wrong` style classes. A single `SubmitOrNextCommand` handles both steps. An Avalonia `DispatcherTimer` refreshes `ElapsedText`. |
 | `SummaryViewModel` | Read-only snapshot of the finished session, plus the level range and any history save error. |
 | `HistoryViewModel` | Formats records into `HistoryRow`s (newest first) for a read-only `DataGrid`, and adds a totals line. |
 
@@ -113,17 +138,18 @@ The Send/Next button has `IsDefault="True"`, so <kbd>Enter</kbd> anywhere in the
 
 ### Themes and colours
 
-- **Theme files:** every colour comes from a theme dictionary, `Themes/Standard.xaml` or `Themes/HighContrast.xaml`. They define the same keys: `BackgroundBrush`, `ForegroundBrush`, `MutedBrush`, `AccentBrush`, `ErrorBrush`, `SuccessBrush`, `Correct*/Wrong*` brushes, border thicknesses, and the `SystemColors` selection keys used by the `DataGrid`.
+- **Theme files:** every app colour comes from `Themes/Standard.axaml` or `Themes/HighContrast.axaml`. They define the same keys: `BackgroundBrush`, `ForegroundBrush`, `MutedBrush`, `AccentBrush`, `ErrorBrush`, `SuccessBrush`, `Correct*/Wrong*` brushes and border thicknesses. They also override Fluent's check box and radio button brushes (`CheckBox*`, `RadioButton*`), so those controls use the app's blue, or yellow with a black mark, instead of the OS accent colour.
 - **Contrast targets:** Standard meets WCAG AA (4.5:1). High contrast meets AAA (7:1).
-- **Switching:** `App.xaml` merges the Standard dictionary. `ThemeManager.Apply(highContrast)` replaces it at runtime, and all styles and views use `DynamicResource`, so they update immediately. Don't add hard-coded colours to views; add a key to both theme files instead.
-- **Custom templates:** `App.xaml` gives `Button` and `TextBox` their own simple templates. The system (Aero2) templates hard-code light-blue hover/focus colours, which are unreadable on black and would hide the answer feedback border. Check boxes and radio buttons only get a themed text colour, because their glyphs are drawn dark on a light box.
-- **Answer feedback:** `GameView.xaml` has `DataTrigger`s on `State` that set the answer box's background, foreground, border and border thickness. This style is `BasedOn` the global `TextBox` style, so it takes priority over the focus border. `FeedbackText` repeats the result as "✓ Correct!" / "✗ Correct answer: N", so it doesn't depend on colour.
+- **Switching:** Avalonia theme variants do the switching. `App.axaml` registers the two files as `ThemeDictionaries` for `Light` and for `ThemeManager.HighContrast`, a custom variant that inherits `Dark`, so any Fluent control not restyled here renders light-on-dark. `ThemeManager.Apply(highContrast)` sets `Application.RequestedThemeVariant`, and all styles and views use `DynamicResource`, so they update immediately. Don't add hard-coded colours to views; add a key to both theme files instead.
+- **Control styles:** styles in `App.axaml`, declared after `<FluentTheme />`, restyle `Button` and `TextBox` in every state (`:pointerover`, `:pressed`, `:focus`, `:disabled`, targeting `/template/` parts). Fluent's own hover colours are unreadable on black.
+- **Answer feedback:** the answer box and feedback text get `correct`/`wrong` style classes (`Classes.correct="{Binding IsCorrect}"`). The matching styles live in `GameView.axaml`, which is closer to the control than the app styles, so they override the focus border. `FeedbackText` repeats the result as "✓ Correct!" / "✗ Correct answer: N", so it doesn't depend on colour.
+- **No GroupBox:** Avalonia has no `GroupBox`, so framed sections are a `Border` with the `group` class plus a `groupHeader` text block.
 
 ### Text size
 
-- **Scaling:** `MainWindow.xaml` puts a `ScaleTransform` bound to `Display.TextScale` in the content's `LayoutTransform`. Every screen scales uniformly, so layouts keep their proportions.
+- **Scaling:** `MainWindow.axaml` wraps the content in a `LayoutTransformControl`. `MainWindow.FitToTextScale()` gives it a `ScaleTransform` of `Display.TextScale` whenever the setting changes. Every screen scales uniformly, so layouts keep their proportions.
 - **Scrolling:** the content sits in a vertical `ScrollViewer`, so large text stays usable on small screens.
-- **Window size:** `MainWindow.FitToTextScale()` sets the size and minimum size to the base size × scale, clamped to the screen's work area. It skips this when the window is maximised.
+- **Window size:** the size and minimum size are set to the base size × scale, clamped to the screen's working area. This is skipped when the window is maximised.
 
 ## Tests
 
@@ -143,3 +169,4 @@ The tests use fixed `Random` seeds, so every run gives the same results.
 ## Notes
 
 - The default .NET `.gitignore` contains a macOS `*.app` rule. On Windows it also matches the `MathExam.App` folder, so the file ends with an explicit `!src/MathExam.App/` exception. Keep it if you regenerate the file.
+- The app was originally WPF (Windows only). It moved to Avalonia to run on Linux. The view models and `MathExam.Core` were reused; the views, themes and window code were rewritten in Avalonia XAML (`.axaml`).

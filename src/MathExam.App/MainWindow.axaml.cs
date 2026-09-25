@@ -1,5 +1,7 @@
 using System.ComponentModel;
-using System.Windows;
+using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Media;
 using MathExam.App.ViewModels;
 
 namespace MathExam.App;
@@ -28,12 +30,13 @@ public partial class MainWindow : Window
             FitToTextScale();
     }
 
-    /// <summary>Resizes the window to match the text scale, keeping it inside the screen's work area.</summary>
+    /// <summary>Scales the content and resizes the window to match, keeping it inside the screen's work area.</summary>
     private void FitToTextScale()
     {
         var scale = _viewModel.Display.TextScale;
-        var area = SystemParameters.WorkArea;
+        Scaler.LayoutTransform = new ScaleTransform(scale, scale);
 
+        var area = WorkingAreaSize();
         MinWidth = Math.Min(BaseMinWidth * scale, area.Width);
         MinHeight = Math.Min(BaseMinHeight * scale, area.Height);
         if (WindowState != WindowState.Normal)
@@ -41,11 +44,14 @@ public partial class MainWindow : Window
 
         Width = Math.Min(BaseWidth * scale, area.Width);
         Height = Math.Min(BaseHeight * scale, area.Height);
+    }
 
-        if (IsLoaded)
-        {
-            Left = Math.Clamp(Left, area.Left, area.Right - Width);
-            Top = Math.Clamp(Top, area.Top, area.Bottom - Height);
-        }
+    /// <summary>Usable screen size in device-independent pixels (unbounded if the screen is unknown).</summary>
+    private Size WorkingAreaSize()
+    {
+        var screen = Screens.ScreenFromWindow(this) ?? Screens.Primary;
+        return screen is null
+            ? new Size(double.PositiveInfinity, double.PositiveInfinity)
+            : screen.WorkingArea.Size.ToSize(screen.Scaling);
     }
 }

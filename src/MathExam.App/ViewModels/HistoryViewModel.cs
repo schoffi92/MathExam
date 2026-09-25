@@ -6,7 +6,7 @@ namespace MathExam.App.ViewModels;
 
 /// <summary>One history table row, pre-formatted for display.</summary>
 public sealed record HistoryRow(
-    string Date, string Range, string Operations, int Answered, int Correct, string Accuracy, string Time, string Level);
+    string Date, string Range, string Operations, string Score, string Accuracy, string Time, string Level);
 
 public partial class HistoryViewModel : ObservableObject
 {
@@ -23,8 +23,7 @@ public partial class HistoryViewModel : ObservableObject
                 r.StartedAt.ToString("yyyy-MM-dd HH:mm"),
                 $"{r.Min} – {r.Max}",
                 string.Join(" ", r.Operations.Select(o => o.Symbol())),
-                r.Answered,
-                r.Correct,
+                $"{r.Correct} / {r.Answered}",
                 $"{r.Accuracy:P0}",
                 r.Duration.ToString(@"hh\:mm\:ss"),
                 r.IsAdaptive ? $"{r.StartLevel} → {r.EndLevel}" : "–"))

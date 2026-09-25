@@ -1,0 +1,48 @@
+<!-- High-contrast theme: white and yellow on black, thick borders. Text colours meet WCAG AAA (7:1). -->
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="BackgroundBrush" Color="#000000" />
+    <SolidColorBrush x:Key="ForegroundBrush" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="MutedBrush" Color="#D8D8D8" />
+    <SolidColorBrush x:Key="AccentBrush" Color="#FFFF00" />
+    <SolidColorBrush x:Key="ErrorBrush" Color="#FF8080" />
+    <SolidColorBrush x:Key="SuccessBrush" Color="#66FF66" />
+    <SolidColorBrush x:Key="BorderBrush" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="DisabledBrush" Color="#A0A0A0" />
+
+    <SolidColorBrush x:Key="InputBackgroundBrush" Color="#000000" />
+    <SolidColorBrush x:Key="ButtonBackgroundBrush" Color="#000000" />
+    <SolidColorBrush x:Key="ButtonPressedBrush" Color="#333333" />
+
+    <SolidColorBrush x:Key="CorrectBackgroundBrush" Color="#00C000" />
+    <SolidColorBrush x:Key="CorrectForegroundBrush" Color="#000000" />
+    <SolidColorBrush x:Key="WrongBackgroundBrush" Color="#FF8080" />
+    <SolidColorBrush x:Key="WrongForegroundBrush" Color="#000000" />
+
+    <Thickness x:Key="ControlBorderThickness">2</Thickness>
+    <Thickness x:Key="FeedbackBorderThickness">4</Thickness>
+
+    <!-- Fluent check box / radio button colours (instead of the OS accent): yellow box, black mark. -->
+    <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillChecked" Color="#FFFF00" />
+    <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillCheckedPointerOver" Color="#FFFF00" />
+    <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillCheckedPressed" Color="#FFFF00" />
+    <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeChecked" Color="#FFFF00" />
+    <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeCheckedPointerOver" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeCheckedPressed" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundChecked" Color="#000000" />
+    <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundCheckedPointerOver" Color="#000000" />
+    <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundCheckedPressed" Color="#000000" />
+    <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeUnchecked" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeUncheckedPointerOver" Color="#FFFF00" />
+    <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedFill" Color="#FFFF00" />
+    <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedFillPointerOver" Color="#FFFF00" />
+    <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedFillPressed" Color="#FFFF00" />
+    <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedStroke" Color="#FFFF00" />
+    <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedStrokePointerOver" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedStrokePressed" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="RadioButtonCheckGlyphFill" Color="#000000" />
+    <SolidColorBrush x:Key="RadioButtonCheckGlyphFillPointerOver" Color="#000000" />
+    <SolidColorBrush x:Key="RadioButtonCheckGlyphFillPressed" Color="#000000" />
+    <SolidColorBrush x:Key="RadioButtonOuterEllipseStroke" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="RadioButtonOuterEllipseStrokePointerOver" Color="#FFFF00" />
+</ResourceDictionary>
