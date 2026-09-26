@@ -23,6 +23,8 @@
                     <CheckBox Content="{x:Static res:Strings.Menu_Subtract}" IsChecked="{Binding UseSubtract}" />
                     <CheckBox Content="{x:Static res:Strings.Menu_Multiply}" IsChecked="{Binding UseMultiply}" />
                     <CheckBox Content="{x:Static res:Strings.Menu_Divide}" IsChecked="{Binding UseDivide}" />
+                    <CheckBox Content="{x:Static res:Strings.Menu_Power}" IsChecked="{Binding UsePower}" />
+                    <CheckBox Content="{x:Static res:Strings.Menu_Root}" IsChecked="{Binding UseRoot}" />
                 </UniformGrid>
             </StackPanel>
         </Border>

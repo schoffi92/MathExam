@@ -13,27 +13,27 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Settings_MinGreaterThanMax" xml:space="preserve">
-    <value>A legkisebb szám nem lehet nagyobb a legnagyobbnál.</value>
+    <value>Pienin luku ei saa olla suurempi kuin suurin luku.</value>
   </data>
   <data name="Settings_NoOperation" xml:space="preserve">
-    <value>Válassz legalább egy műveletet.</value>
+    <value>Valitse vähintään yksi laskutoimitus.</value>
   </data>
   <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
-    <value>Az osztáshoz kell egy nem nulla szám a tartományban.</value>
+    <value>Jakolasku tarvitsee alueelle luvun, joka ei ole nolla.</value>
   </data>
   <data name="Settings_PowerRangeTooFar" xml:space="preserve">
-    <value>A hatványozáshoz és a gyökvonáshoz kell egy −{0} és {0} közötti szám a tartományban.</value>
+    <value>Potensseja ja juuria varten alueella täytyy olla luku väliltä −{0} – {0}.</value>
   </data>
   <data name="Players_Count" xml:space="preserve">
-    <value>A családi játékhoz {0}–{1} játékos kell.</value>
+    <value>Perhepeliin tarvitaan {0}–{1} pelaajaa.</value>
   </data>
   <data name="Players_EmptyName" xml:space="preserve">
-    <value>Adj nevet minden játékosnak.</value>
+    <value>Anna jokaiselle pelaajalle nimi.</value>
   </data>
   <data name="Players_NameTooLong" xml:space="preserve">
-    <value>A név legfeljebb {0} karakter lehet.</value>
+    <value>Nimessä voi olla enintään {0} merkkiä.</value>
   </data>
   <data name="Players_DuplicateName" xml:space="preserve">
-    <value>Minden játékosnak különböző név kell.</value>
+    <value>Jokaisella pelaajalla on oltava eri nimi.</value>
   </data>
 </root>

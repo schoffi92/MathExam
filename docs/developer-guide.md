@@ -57,7 +57,7 @@ MathExam.sln
 src/
   MathExam.Core/          Game logic, no UI dependencies (Resources/: validation messages)
   MathExam.App/           Avalonia front end (MVVM, CommunityToolkit.Mvvm); builds MathExam(.exe)
-    Resources/            Strings.resx (English) + Strings.fr/de/hu.resx
+    Resources/            Strings.resx (English) + one Strings.<lang>.resx per translation
     Themes/               Standard.axaml, HighContrast.axaml
     ViewModels/
     Views/
@@ -77,10 +77,10 @@ All the rules live in `MathExam.Core`, so they can be unit tested without a UI. 
 
 | Type | Responsibility |
 |---|---|
-| `Operation` | `Add`, `Subtract`, `Multiply`, `Divide`. `Symbol()` returns `+ − × ÷`. |
+| `Operation` | `Add`, `Subtract`, `Multiply`, `Divide`, `Power`, `Root`. `Symbol()` returns `+ − × ÷ xⁿ √`. |
 | `HiddenPart` | Which number is hidden: `Left`, `Right` or `Result`. |
-| `MathTask` | Immutable record `Left Op Right = Result` plus `Hidden`. `Answer` gives the hidden value, `IsCorrect(answer)` checks it, `ToDisplayString()` renders e.g. `99 × ? = 990`. |
-| `GameSettings` | `Min`, `Max`, `Operations`. `Validate()` returns a user-facing error message in the current UI language, or `null` when the settings are valid. |
+| `MathTask` | Immutable record `Left Op Right = Result` plus `Hidden`. For `Power`, Left is the base and Right the exponent; for `Root`, Left is the degree and Right the radicand. `Answer` gives the hidden value, and `IsCorrect(answer)` checks it (a hidden base of an even power also accepts its negative). `ToParts()` returns the text as `EquationPart`s with exponents/degrees marked superscript; `ToDisplayString()` joins them into plain text, e.g. `99 × ? = 990`, `3² = ?`, `2^? = 8`, `³√27 = ?`. |
+| `GameSettings` | `Min`, `Max`, `Operations`. `PowerBaseLimit` (1000) bounds the bases of powers and roots. `Validate()` returns a user-facing error message in the current UI language, or `null` when the settings are valid. |
 | `TaskGenerator` | `Next(settings)` creates a random `MathTask`. Accepts a `Random` for deterministic tests. |
 | `GameSession` | One endless game. Keeps `CurrentTask`, `TaskNumber`, `CorrectCount`, `WrongCount`, `StartedAt` and `Elapsed` (a `Stopwatch`). `Submit(answer)` → `bool`, then `NextTask()`, then `Stop()`. With an optional `DifficultyAdjuster` it is adaptive: tasks come from `TaskSettings`, and `LastLevelChange` reports +1/−1/0 after each answer. |
 | `DifficultyAdjuster` | Adaptive level 1–10. `RecordAnswer(correct)` → level change. `ForLevel(settings, level)` / `Apply(settings)` narrow the range. |
@@ -88,7 +88,7 @@ All the rules live in `MathExam.Core`, so they can be unit tested without a UI. 
 | `SessionRecord` | A finished game as stored in the history (range, operations, counts, duration, start/end level, and `Player`: the name in a family game, `null` for solo). `FromSession(session, player)` builds one. |
 | `HistoryTotals` | Totals over the history. The records of one family game (same `StartedAt`, non-null `Player`) count as one game, and its time counts once. |
 | `HistoryStore` | Reads and writes the history JSON file. `Load()`, `Add(record)`, `ResumeLevel(records, settings, player)`. `DefaultPath` is `<LocalApplicationData>/MathExam/history.json`, which is `%LOCALAPPDATA%` on Windows and `~/.local/share` on Linux. |
-| `DisplayPreferences` / `PreferencesStore` | `TextSize` (`Normal`/`Large`/`ExtraLarge`), `HighContrast` and `Language` (`"en"`, `"fr"`, `"de"`, `"hu"`, or `null` for the system language), stored in `preferences.json`. Older files without `Language` load with `null`. `Load()` returns `null` when the file is missing or unreadable. |
+| `DisplayPreferences` / `PreferencesStore` | `TextSize` (`Normal`/`Large`/`ExtraLarge`), `HighContrast` and `Language` (a two-letter code such as `"hu"`, or `null` for the system language), stored in `preferences.json`. Older files without `Language` load with `null`. `Load()` returns `null` when the file is missing or unreadable. |
 | `JsonFile` (internal) | Shared JSON options, the app data folder, and `WriteAtomic` (temp file + move) used by both stores. |
 
 ### Task generation rules (`TaskGenerator`)
@@ -98,9 +98,13 @@ All the rules live in `MathExam.Core`, so they can be unit tested without a UI. 
    - **Add / Multiply:** `a`, `b` random; the result is computed.
    - **Subtract:** `a`, `b` random. If `Min >= 0`, they are swapped so that `a >= b` and the result is never negative.
    - **Divide:** built backwards to stay exact. Divisor `b ≠ 0` and quotient `q` are random, and the dividend is `b × q`.
-3. Pick a random `HiddenPart`. If hiding that operand would allow any answer (`× 0`, `0 ÷ ?`), hide the `Result` instead.
+   - **Power:** base `b` from `[Min, Max] ∩ [−PowerBaseLimit, PowerBaseLimit]`; exponent from 2..`MaxExponent` (5), where exponents above 2 are only allowed while `|b|^e ≤ MaxHigherPower` (1000).
+   - **Root:** built backwards like division. The root `r` is picked like a power base and the degree like an exponent, and the radicand is `r^d`. A negative `r` only gets odd degrees (falling back to 3 when `|r| > 10`), so every root is real and whole.
+3. Pick a random `HiddenPart`. If hiding that operand would allow any answer (`× 0`, `0 ÷ ?`, `(0 or ±1)^?`, `?√(0 or ±1)`), hide the `Result` instead.
 
-Numbers are `long`, so multiplying two `int`-range operands cannot overflow.
+`GameSettings.Validate()` rejects powers/roots when the range has no number within ±`PowerBaseLimit`. `DifficultyAdjuster` narrows the range towards its number closest to zero, which is always within the limit, so every level stays valid.
+
+Numbers are `long`, so multiplying two `int`-range operands cannot overflow; powers stay far below the `long` range because the base is at most 1000 and the exponent at most 5.
 
 ### Adaptive difficulty (`DifficultyAdjuster`)
 
@@ -135,7 +139,7 @@ MenuViewModel ──Start──▶ GameViewModel ──Stop──▶ SummaryView
 | `DisplayViewModel` | Text size, high contrast and language. Loads preferences at startup (first launch follows the OS contrast preference, via `ThemeManager.SystemPrefersHighContrast()`), applies the theme and language, and saves on every change. Exposes `TextScale` (1.0 / 1.25 / 1.5), one bool per text-size radio button, and `Languages` / `Language` for the language list. |
 | `MainViewModel` | Owns navigation, the `HistoryStore` and the shared `DisplayViewModel` (also exposed to the menu as `MenuViewModel.Display`). Reuses one `MenuViewModel`, so settings persist between games. Creates the `DifficultyAdjuster` at the resume level and saves each finished game that has answers. |
 | `MenuViewModel` | Min/max are bound as strings, so invalid input can be reported instead of silently rejected. `ErrorMessage` and `StartCommand.CanExecute` reuse `GameSettings.Validate()`. |
-| `GameViewModel` | Solo game. `State` (`Answering`/`Correct`/`Wrong`) drives the button text and read-only state. `IsCorrect`/`IsWrong` toggle the views' `correct`/`wrong` style classes. A single `SubmitOrNextCommand` handles both steps. An Avalonia `DispatcherTimer` refreshes `ElapsedText`. |
+| `GameViewModel` | Solo game. `Equation` is the current `MathTask`, drawn by `Views/EquationBlock`, a `TextBlock` that turns `ToParts()` into runs: superscript digits use the font's Unicode superscripts, and a hidden `?` exponent is a smaller run with `BaselineAlignment.Superscript`. `State` (`Answering`/`Correct`/`Wrong`) drives the button text and read-only state. `IsCorrect`/`IsWrong` toggle the views' `correct`/`wrong` style classes. A single `SubmitOrNextCommand` handles both steps. An Avalonia `DispatcherTimer` refreshes `ElapsedText`. |
 | `SummaryViewModel` | Read-only snapshot of the finished session, plus the level range and any history save error. |
 | `HistoryViewModel` | Formats records into `HistoryRow`s (newest first) for a read-only `DataGrid`, and adds a totals line from `HistoryTotals`. |
 | `FamilySetupViewModel` | 2–4 `PlayerNameEntry` rows (add/remove), validated with `FamilyGame.ValidatePlayers`. Reused, so names are kept; `Open(settings)` receives the menu settings each time. |
@@ -159,7 +163,7 @@ The Send/Next button has `IsDefault="True"`, so <kbd>Enter</kbd> anywhere in the
 
 ### Languages
 
-- **Strings:** every UI text lives in `Resources/Strings.resx` (English, the fallback) with one `Strings.<lang>.resx` per translation (`fr`, `de`, `hu`). `MathExam.Core` has its own small set for the validation messages. The build generates a `Strings` class from each neutral file (`StronglyTyped*` metadata in the `.csproj`), so keys are checked at compile time. The app's class is public so views can use `{x:Static res:Strings.Key}`.
+- **Strings:** every UI text lives in `Resources/Strings.resx` (English, the fallback) with one `Strings.<lang>.resx` per translation (`fr`, `de`, `hu`, `it`, `es`, `pl`, `cs`, `fi`, `pt`, `sv`). `MathExam.Core` has its own small set for the validation messages. The build generates a `Strings` class from each neutral file (`StronglyTyped*` metadata in the `.csproj`), so keys are checked at compile time. The app's class is public so views can use `{x:Static res:Strings.Key}`.
 - **Formatting:** view models use `string.Format(Strings.Key, ...)`, so each language can put the numbers where its grammar wants them (`Task #{0}` → `{0}. feladat`). Plurals that differ get separate keys (`History_GameOne` / `History_GameMany`).
 - **Switching:** `LanguageManager.Apply(code)` sets `CultureInfo.CurrentUICulture` (and the default for new threads); `null` restores the culture the app started with. Only the UI language changes; numbers, percentages and parsing keep following the OS regional settings (`CurrentCulture`).
 - **Live change:** views read `{x:Static}` texts once, so when `DisplayViewModel.Language` changes, `MainWindow.RebuildScreen()` replaces the `ContentControl` and every view is created again. View models are kept, so entered settings survive. `FamilySetupViewModel.Open` relabels the player rows for the same reason.
@@ -180,11 +184,12 @@ The Send/Next button has `IsDefault="True"`, so <kbd>Enter</kbd> anywhere in the
 - exact division and no division by zero
 - only enabled operations appear; operands stay within range
 - non-negative subtraction; every hidden part occurs; ambiguous zero cases are avoided
-- `GameSettings` validation and `GameSession` counters and state
+- `GameSettings` validation (including the power/root base limit) and `GameSession` counters and state
+- powers and roots: arithmetic, exponent and degree limits, odd roots of negative numbers, ambiguous hidden parts, display strings and superscript parts, and ± answers for even powers
 - `DifficultyAdjuster`: streaks, clamping, per-level ranges (including negative ranges and extreme `int` limits), and adaptive sessions staying within the current range
 - `HistoryStore`: round trip, missing file, corrupt-file backup, resume level, and `SessionRecord.FromSession`. These tests use a temp directory.
 - `PreferencesStore`: round trip, missing file, corrupt file, older files without a language
-- translations: every `Strings.<lang>.resx` has exactly the English keys and the same `{n}` placeholders, and messages follow `CurrentUICulture`
+- translations: every `Strings.<lang>.resx` has exactly the English keys and the same `{n}` placeholders, and each Core translation loads for its `CurrentUICulture`
 - `FamilyGame`: turn order and wrap-around, rounds, independent per-player levels and scores, ranking, ties, no winner, name validation and trimming, per-player resume level, and the player name in records, including old history files without it
 - `HistoryTotals`: a family game counts once with its time counted once; family players share the start time
 

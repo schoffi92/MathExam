@@ -4,6 +4,9 @@ namespace MathExam.Core;
 
 public sealed class GameSettings
 {
+    /// <summary>Powers and roots use only the numbers of the range within ± this limit.</summary>
+    public const int PowerBaseLimit = 1000;
+
     public GameSettings(int min, int max, IEnumerable<Operation> operations)
     {
         Min = min;
@@ -24,6 +27,8 @@ public sealed class GameSettings
             return Strings.Settings_NoOperation;
         if (Operations.Contains(Operation.Divide) && Min == 0 && Max == 0)
             return Strings.Settings_DivisionNeedsNonZero;
+        if (Operations.Any(o => o.IsPowerOrRoot()) && (Max < -PowerBaseLimit || Min > PowerBaseLimit))
+            return string.Format(Strings.Settings_PowerRangeTooFar, PowerBaseLimit);
         return null;
     }
 

@@ -37,7 +37,7 @@ public partial class FamilyGameViewModel : ObservableObject
     public string TurnText => string.Format(Strings.FamilyGame_Turn, _game.Current.Name);
     public string RoundText => string.Format(Strings.FamilyGame_Round, _game.Round);
     public string ElapsedText => string.Format(Strings.Game_Elapsed, Session.Elapsed.ToString(@"hh\:mm\:ss"));
-    public string Equation => Session.CurrentTask.ToDisplayString();
+    public MathTask Equation => Session.CurrentTask;
     public bool IsAnswered => State != AnswerState.Answering;
     public bool IsCorrect => State == AnswerState.Correct;
     public bool IsWrong => State == AnswerState.Wrong;

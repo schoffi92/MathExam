@@ -18,7 +18,7 @@ public sealed partial class TranslationTests
     public void All_supported_languages_are_translated()
     {
         var files = Translations().Select(row => Path.GetFileName((string)row[0])).ToHashSet();
-        foreach (var lang in new[] { "fr", "de", "hu" })
+        foreach (var lang in new[] { "fr", "de", "hu", "it", "es", "pl", "cs", "fi", "pt", "sv" })
             Assert.Contains($"Strings.{lang}.resx", files);
     }
 
@@ -39,14 +39,22 @@ public sealed partial class TranslationTests
         }
     }
 
-    [Fact]
-    public void Messages_follow_the_UI_language()
+    /// <summary>Each Core translation is built into a satellite assembly that .NET finds for its language.</summary>
+    [Theory]
+    [MemberData(nameof(Translations))]
+    public void Messages_follow_the_UI_language(string relativePath)
     {
+        if (!relativePath.Contains("MathExam.Core"))
+            return;
+        var path = Path.Combine(RepoRoot(), relativePath);
+        var language = Path.GetFileNameWithoutExtension(path).Split('.')[1];
+        var expected = Read(path)["Settings_NoOperation"];
+
         var original = CultureInfo.CurrentUICulture;
         try
         {
-            CultureInfo.CurrentUICulture = new CultureInfo("hu");
-            Assert.Equal("Válassz legalább egy műveletet.", new GameSettings(1, 10, []).Validate());
+            CultureInfo.CurrentUICulture = new CultureInfo(language);
+            Assert.Equal(expected, new GameSettings(1, 10, []).Validate());
             CultureInfo.CurrentUICulture = new CultureInfo("en");
             Assert.Equal("Select at least one operation.", new GameSettings(1, 10, []).Validate());
         }

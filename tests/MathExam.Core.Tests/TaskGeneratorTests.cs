@@ -13,6 +13,14 @@ public class TaskGeneratorTests
             yield return generator.Next(settings);
     }
 
+    private static long Pow(long @base, long exponent)
+    {
+        long result = 1;
+        for (var i = 0; i < exponent; i++)
+            result *= @base;
+        return result;
+    }
+
     [Theory]
     [InlineData(1, 10)]
     [InlineData(0, 100)]
@@ -28,9 +36,13 @@ public class TaskGeneratorTests
                 Operation.Subtract => t.Left - t.Right,
                 Operation.Multiply => t.Left * t.Right,
                 Operation.Divide => t.Left / t.Right,
+                Operation.Power => Pow(t.Left, t.Right),
+                Operation.Root => t.Result,
                 _ => throw new InvalidOperationException(),
             };
             Assert.Equal(expected, t.Result);
+            if (t.Op == Operation.Root)
+                Assert.Equal(t.Right, Pow(t.Result, t.Left));
         }
     }
 
@@ -91,6 +103,51 @@ public class TaskGeneratorTests
             if (t.Op == Operation.Multiply && t.Hidden == HiddenPart.Left) Assert.NotEqual(0, t.Right);
             if (t.Op == Operation.Multiply && t.Hidden == HiddenPart.Right) Assert.NotEqual(0, t.Left);
             if (t.Op == Operation.Divide && t.Hidden == HiddenPart.Right) Assert.NotEqual(0, t.Left);
+        }
+    }
+
+    [Theory]
+    [InlineData(1, 10)]
+    [InlineData(-20, 20)]
+    [InlineData(-5000, -900)]
+    [InlineData(int.MinValue, int.MaxValue)]
+    public void Powers_use_small_exponents_and_stay_small_beyond_squares(int min, int max)
+    {
+        foreach (var t in Generate(new GameSettings(min, max, [Operation.Power])))
+        {
+            Assert.InRange(t.Left, Math.Max(min, -GameSettings.PowerBaseLimit), Math.Min(max, GameSettings.PowerBaseLimit));
+            Assert.InRange(t.Right, 2, TaskGenerator.MaxExponent);
+            if (t.Right > 2)
+                Assert.InRange(Math.Abs(t.Result), 0, TaskGenerator.MaxHigherPower);
+        }
+    }
+
+    [Theory]
+    [InlineData(1, 10)]
+    [InlineData(-20, 20)]
+    [InlineData(-1000, -500)]
+    public void Roots_are_whole_and_negative_numbers_only_get_odd_roots(int min, int max)
+    {
+        var tasks = Generate(new GameSettings(min, max, [Operation.Root])).ToList();
+        foreach (var t in tasks)
+        {
+            Assert.InRange(t.Result, min, max);
+            Assert.InRange(t.Left, 2, TaskGenerator.MaxExponent);
+            Assert.Equal(t.Right, Pow(t.Result, t.Left));
+            if (t.Right < 0)
+                Assert.Equal(1, t.Left % 2);
+        }
+        if (min >= 0)
+            Assert.Contains(tasks, t => t.Left == 2);
+    }
+
+    [Fact]
+    public void Ambiguous_power_and_root_parts_are_never_hidden()
+    {
+        foreach (var t in Generate(new GameSettings(-1, 1, [Operation.Power, Operation.Root])))
+        {
+            if (t.Op == Operation.Power) Assert.NotEqual(HiddenPart.Right, t.Hidden);
+            if (t.Op == Operation.Root) Assert.NotEqual(HiddenPart.Left, t.Hidden);
         }
     }
 

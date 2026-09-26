@@ -21,6 +21,9 @@
   <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
     <value>Division needs a non-zero number in the range.</value>
   </data>
+  <data name="Settings_PowerRangeTooFar" xml:space="preserve">
+    <value>Powers and roots need a number between −{0} and {0} in the range.</value>
+  </data>
   <data name="Players_Count" xml:space="preserve">
     <value>A family game needs {0} to {1} players.</value>
   </data>

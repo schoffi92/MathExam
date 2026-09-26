@@ -12,7 +12,7 @@ public partial class MainWindow : Window
 {
     // Window size at normal text size; it is multiplied by the text scale.
     private const double BaseWidth = 800;
-    private const double BaseHeight = 660;
+    private const double BaseHeight = 720;
     private const double BaseMinWidth = 560;
     private const double BaseMinHeight = 480;
 

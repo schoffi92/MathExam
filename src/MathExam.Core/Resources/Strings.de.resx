@@ -21,6 +21,9 @@
   <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
     <value>Für die Division muss der Bereich eine Zahl ungleich null enthalten.</value>
   </data>
+  <data name="Settings_PowerRangeTooFar" xml:space="preserve">
+    <value>Für Potenzen und Wurzeln muss der Bereich eine Zahl zwischen −{0} und {0} enthalten.</value>
+  </data>
   <data name="Players_Count" xml:space="preserve">
     <value>Ein Familienspiel braucht {0} bis {1} Spieler.</value>
   </data>

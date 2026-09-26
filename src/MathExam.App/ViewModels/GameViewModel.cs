@@ -29,7 +29,7 @@ public partial class GameViewModel : ObservableObject
     [ObservableProperty]
     private string _answerText = "";
 
-    public string Equation => _session.CurrentTask.ToDisplayString();
+    public MathTask Equation => _session.CurrentTask;
     public string TaskNumberText => string.Format(Strings.Game_TaskNumber, _session.TaskNumber);
     public string SolvedText => string.Format(Strings.Game_Solved, _session.CorrectCount, _session.AnsweredCount);
     public string StartedText => string.Format(Strings.Game_Started, _session.StartedAt.ToString("HH:mm:ss"));

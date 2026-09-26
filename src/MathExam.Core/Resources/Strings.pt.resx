@@ -13,27 +13,27 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Settings_MinGreaterThanMax" xml:space="preserve">
-    <value>A legkisebb szám nem lehet nagyobb a legnagyobbnál.</value>
+    <value>O menor número não pode ser maior do que o maior número.</value>
   </data>
   <data name="Settings_NoOperation" xml:space="preserve">
-    <value>Válassz legalább egy műveletet.</value>
+    <value>Escolhe pelo menos uma operação.</value>
   </data>
   <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
-    <value>Az osztáshoz kell egy nem nulla szám a tartományban.</value>
+    <value>A divisão precisa de um número diferente de zero no intervalo.</value>
   </data>
   <data name="Settings_PowerRangeTooFar" xml:space="preserve">
-    <value>A hatványozáshoz és a gyökvonáshoz kell egy −{0} és {0} közötti szám a tartományban.</value>
+    <value>As potências e raízes precisam de um número entre −{0} e {0} no intervalo.</value>
   </data>
   <data name="Players_Count" xml:space="preserve">
-    <value>A családi játékhoz {0}–{1} játékos kell.</value>
+    <value>Um jogo em família precisa de {0} a {1} jogadores.</value>
   </data>
   <data name="Players_EmptyName" xml:space="preserve">
-    <value>Adj nevet minden játékosnak.</value>
+    <value>Escreve um nome para cada jogador.</value>
   </data>
   <data name="Players_NameTooLong" xml:space="preserve">
-    <value>A név legfeljebb {0} karakter lehet.</value>
+    <value>Os nomes podem ter no máximo {0} caracteres.</value>
   </data>
   <data name="Players_DuplicateName" xml:space="preserve">
-    <value>Minden játékosnak különböző név kell.</value>
+    <value>Cada jogador precisa de um nome diferente.</value>
   </data>
 </root>

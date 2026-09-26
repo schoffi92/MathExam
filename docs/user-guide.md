@@ -1,6 +1,6 @@
 # User Guide
 
-MathExam is a practice app for the four basic operations. It shows one equation at a time with a single number hidden, and you type in the missing number.
+MathExam is a practice app for the four basic operations, plus powers and roots. It shows one equation at a time with a single number hidden, and you type in the missing number.
 
 ## 1. Main menu
 
@@ -8,13 +8,13 @@ MathExam is a practice app for the four basic operations. It shows one equation 
 |---|---|
 | **Lowest number** | Smallest value an operand can take. Negative numbers are allowed. |
 | **Highest number** | Largest value an operand can take. |
-| **Operations** | Any combination of addition (+), subtraction (−), multiplication (×) and division (÷). |
+| **Operations** | Any combination of addition (+), subtraction (−), multiplication (×), division (÷), powers (xⁿ) and roots (√). |
 | **Adaptive difficulty** | Adjusts how big the numbers are to how well you are doing (see below). |
 | **Display → Text size** | Normal, Large (125%) or Extra large (150%). Everything gets bigger and the window grows to match. |
 | **Display → High contrast colours** | White and yellow on black, with thicker borders. |
-| **Display → Language** | English, Français (French), Deutsch (German) or Magyar (Hungarian). *System default* uses your operating system's language, or English if it is none of these. |
+| **Display → Language** | English, Français (French), Deutsch (German), Magyar (Hungarian), Italiano (Italian), Español (Spanish), Polski (Polish), Čeština (Czech), Suomi (Finnish), Português (Portuguese) or Svenska (Swedish). *System default* uses your operating system's language, or English if it is none of these. |
 
-Defaults: lowest `1`, highest `10`, all operations on, adaptive difficulty on, normal text, system language. High contrast starts on if the operating system's high-contrast mode is on.
+Defaults: lowest `1`, highest `10`, the four basic operations on (powers and roots off), adaptive difficulty on, normal text, system language. High contrast starts on if the operating system's high-contrast mode is on.
 
 Display changes, including the language, apply immediately and are remembered the next time you open the app. If Extra large text doesn't fit on a small screen, the window can be scrolled.
 
@@ -23,7 +23,8 @@ Display changes, including the language, apply immediately and are remembered th
 - both limits must be whole numbers,
 - the lowest number must not be greater than the highest,
 - at least one operation must be selected,
-- division needs at least one non-zero number in the range.
+- division needs at least one non-zero number in the range,
+- powers and roots need at least one number between −1000 and 1000 in the range.
 
 Your settings are kept when you return to the menu.
 
@@ -45,7 +46,11 @@ In the middle is the equation. The `?` can be the **result** or either **operand
 7 × 8 = ?
 7 × ? = 56
 ? ÷ 4 = 9
+?² = 49
+³√? = 4
 ```
+
+With powers, the `?` can also be the exponent (`2^? = 8`, shown raised); with roots, the degree (`?√27 = 3`). For `?² = 49`, both 7 and −7 count as correct.
 
 ### Answering
 
@@ -112,4 +117,6 @@ The history is stored only on this computer, in `history.json`. Delete that file
 - Operands are always within your range, or within the current level's range in adaptive games. The result may be outside it; for example, with a range of 1–100 you can get `100 × 100 = ?`.
 - Division always comes out even: the dividend is built as divisor × quotient, and both of those are within your range. You never divide by zero.
 - Subtraction gives no negative results when the lowest number is 0 or more.
-- A number that would make every answer correct, such as `0 × ? = 0`, is never hidden. The result is hidden instead.
+- A number that would make every answer correct, such as `0 × ? = 0` or `1^? = 1`, is never hidden. The result is hidden instead.
+- **Powers:** the base comes from your range (at most ±1000) and the exponent is 2 to 5. Exponents above 2 are only used while the result stays within ±1000, so you get `12²` but not `12³`, and `4⁴` but not `6⁴`.
+- **Roots:** built backwards from the answer, so they always come out even: `√49 = 7` comes from `7²`. Square roots are written without the small 2. A negative number only gets an odd root, such as `³√−8 = −2`.

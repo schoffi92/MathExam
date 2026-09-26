@@ -1,6 +1,6 @@
 # MathExam – Mathematical Education Application
 
-A desktop app for **Windows and Linux** (C# / Avalonia, .NET 8) for practising addition, subtraction, multiplication and division. Each task is an equation with one hidden number, which can be the result or one of the operands:
+A desktop app for **Windows and Linux** (C# / Avalonia, .NET 8) for practising addition, subtraction, multiplication and division, plus powers and roots. Each task is an equation with one hidden number, which can be the result or one of the operands:
 
 ```
 100 × 100 = ?
@@ -9,7 +9,7 @@ A desktop app for **Windows and Linux** (C# / Avalonia, .NET 8) for practising a
 
 ## Features
 
-- **Main menu:** set the lowest and highest number and choose the operations (add, sub, mul, div).
+- **Main menu:** set the lowest and highest number and choose the operations (add, sub, mul, div, powers, roots).
 - **Game:** shows the task number, solved count, start time and elapsed time.
   - Type the hidden number and press **Send** or <kbd>Enter</kbd>.
   - A correct answer is shown in **green**. A wrong answer is shown in **red**, together with the right answer.
@@ -18,7 +18,7 @@ A desktop app for **Windows and Linux** (C# / Avalonia, .NET 8) for practising a
 - **Adaptive difficulty** (optional): starts with small numbers and widens the range as you answer correctly (10 levels). The next game resumes at your last level.
 - **Family game:** 2–4 players take turns on one computer, each with their own adaptive level, so a child and a grandparent can play fairly together. Live scoreboard, final ranking, and "Play again".
 - **Progress history:** every game is saved on this computer and listed on the History screen with overall totals.
-- **Languages:** English, French, German and Hungarian. The app follows the system language, or you can pick one in the menu.
+- **Languages:** English, French, German, Hungarian, Italian, Spanish, Polish, Czech, Finnish, Portuguese and Swedish. The app follows the system language, or you can pick one in the menu.
 - **Accessibility:** three text sizes (Normal / Large / Extra large) and a high-contrast colour theme, both remembered between launches. Right and wrong answers are also shown as text (✓ / ✗), not just by colour.
 
 ## Quick start

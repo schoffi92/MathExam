@@ -58,6 +58,16 @@ public partial class MenuViewModel : ObservableObject
     [NotifyCanExecuteChangedFor(nameof(StartCommand), nameof(FamilyCommand))]
     private bool _useDivide = true;
 
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ErrorMessage))]
+    [NotifyCanExecuteChangedFor(nameof(StartCommand), nameof(FamilyCommand))]
+    private bool _usePower;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ErrorMessage))]
+    [NotifyCanExecuteChangedFor(nameof(StartCommand), nameof(FamilyCommand))]
+    private bool _useRoot;
+
     public string? ErrorMessage => TryBuildSettings(out _);
 
     [RelayCommand(CanExecute = nameof(CanStart))]
@@ -93,6 +103,8 @@ public partial class MenuViewModel : ObservableObject
         if (UseSubtract) ops.Add(Operation.Subtract);
         if (UseMultiply) ops.Add(Operation.Multiply);
         if (UseDivide) ops.Add(Operation.Divide);
+        if (UsePower) ops.Add(Operation.Power);
+        if (UseRoot) ops.Add(Operation.Root);
 
         var candidate = new GameSettings(min, max, ops);
         var error = candidate.Validate();

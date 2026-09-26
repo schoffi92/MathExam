@@ -24,6 +24,13 @@ public static class LanguageManager
         new("fr", "Français"),
         new("de", "Deutsch"),
         new("hu", "Magyar"),
+        new("it", "Italiano"),
+        new("es", "Español"),
+        new("pl", "Polski"),
+        new("cs", "Čeština"),
+        new("fi", "Suomi"),
+        new("pt", "Português"),
+        new("sv", "Svenska"),
     ];
 
     /// <summary>Returns the option for a saved code; unknown codes fall back to the system default.</summary>

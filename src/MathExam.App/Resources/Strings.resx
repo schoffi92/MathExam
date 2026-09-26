@@ -33,6 +33,12 @@
   <data name="Menu_Divide" xml:space="preserve">
     <value>Division (÷)</value>
   </data>
+  <data name="Menu_Power" xml:space="preserve">
+    <value>Powers (xⁿ)</value>
+  </data>
+  <data name="Menu_Root" xml:space="preserve">
+    <value>Roots (√)</value>
+  </data>
   <data name="Menu_Adaptive" xml:space="preserve">
     <value>Adaptive difficulty</value>
   </data>
