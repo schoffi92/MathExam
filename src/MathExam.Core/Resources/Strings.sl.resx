@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Settings_MinGreaterThanMax" xml:space="preserve">
+    <value>Najmanjše število ne sme biti večje od največjega števila.</value>
+  </data>
+  <data name="Settings_NoOperation" xml:space="preserve">
+    <value>Izberi vsaj eno računsko operacijo.</value>
+  </data>
+  <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
+    <value>Deljenje potrebuje v razponu število, ki ni nič.</value>
+  </data>
+  <data name="Settings_PowerRangeTooFar" xml:space="preserve">
+    <value>Potenciranje in korenjenje potrebujeta v razponu število med −{0} in {0}.</value>
+  </data>
+  <data name="Players_Count" xml:space="preserve">
+    <value>Družinska igra potrebuje od {0} do {1} igralcev.</value>
+  </data>
+  <data name="Players_EmptyName" xml:space="preserve">
+    <value>Vpiši ime za vsakega igralca.</value>
+  </data>
+  <data name="Players_NameTooLong" xml:space="preserve">
+    <value>Ime ima lahko največ {0} znakov.</value>
+  </data>
+  <data name="Players_DuplicateName" xml:space="preserve">
+    <value>Vsak igralec mora imeti drugačno ime.</value>
+  </data>
+</root>

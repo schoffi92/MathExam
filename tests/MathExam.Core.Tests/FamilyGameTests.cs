@@ -13,7 +13,7 @@ public class FamilyGameTests
     {
         var answer = game.Current.Session.CurrentTask.Answer;
         game.Submit(correct ? answer : answer + 1);
-        game.NextTurn();
+        game.Next();
     }
 
     [Fact]
@@ -31,6 +31,44 @@ public class FamilyGameTests
         Assert.Equal(8, game.TurnNumber);
         Assert.Equal(3, game.Round);
     }
+
+    [Fact]
+    public void Each_player_answers_several_tasks_per_turn()
+    {
+        var game = new FamilyGame(Settings, [("Anna", 1), ("Ben", 1)], new TaskGenerator(new Random(5)), tasksPerTurn: 3);
+        var order = new List<(string, int, bool)>();
+        for (var i = 0; i < 8; i++)
+        {
+            order.Add((game.Current.Name, game.TaskInTurn, game.IsLastTaskOfTurn));
+            Answer(game, true);
+        }
+
+        Assert.Equal(
+        [
+            ("Anna", 1, false), ("Anna", 2, false), ("Anna", 3, true),
+            ("Ben", 1, false), ("Ben", 2, false), ("Ben", 3, true),
+            ("Anna", 1, false), ("Anna", 2, false),
+        ], order);
+        Assert.Equal(3, game.TurnNumber);
+        Assert.Equal(2, game.Round);
+        Assert.Equal(5, game.Players[0].Session.AnsweredCount);
+        Assert.Equal(3, game.Players[1].Session.AnsweredCount);
+    }
+
+    [Fact]
+    public void One_task_per_turn_is_the_default()
+    {
+        var game = NewGame(("Anna", 1), ("Ben", 1));
+        Assert.Equal(1, game.TasksPerTurn);
+        Assert.True(game.IsLastTaskOfTurn);
+    }
+
+    [Theory]
+    [InlineData(0)]
+    [InlineData(FamilyGame.MaxTasksPerTurn + 1)]
+    public void Tasks_per_turn_must_be_in_range(int tasksPerTurn) =>
+        Assert.Throws<ArgumentOutOfRangeException>(() =>
+            new FamilyGame(Settings, [("Anna", 1), ("Ben", 1)], tasksPerTurn: tasksPerTurn));
 
     [Fact]
     public void Each_player_has_their_own_level_and_range()

@@ -193,7 +193,7 @@
     <value>Hru se nepodařilo uložit do historie: {0}</value>
   </data>
   <data name="FamilySetup_Intro" xml:space="preserve">
-    <value>Střídejte se u tohoto počítače: každý hráč vyřeší jeden příklad a pak předá dál.</value>
+    <value>Střídejte se u tohoto počítače: každý hráč vyřeší své příklady a pak předá dál.</value>
   </data>
   <data name="FamilySetup_Settings" xml:space="preserve">
     <value>Čísla od {0} do {1}, {2}. Každý má vlastní úroveň obtížnosti.</value>
@@ -210,11 +210,17 @@
   <data name="FamilySetup_AddPlayer" xml:space="preserve">
     <value>+ Přidat hráče</value>
   </data>
+  <data name="FamilySetup_TasksPerTurn" xml:space="preserve">
+    <value>Příklady v jednom tahu:</value>
+  </data>
   <data name="FamilyGame_Turn" xml:space="preserve">
     <value>Na řadě: {0}</value>
   </data>
   <data name="FamilyGame_Round" xml:space="preserve">
     <value>Kolo {0}</value>
+  </data>
+  <data name="FamilyGame_TaskInTurn" xml:space="preserve">
+    <value>Příklad {0} z {1}</value>
   </data>
   <data name="FamilyGame_NextPlayer" xml:space="preserve">
     <value>Další hráč</value>

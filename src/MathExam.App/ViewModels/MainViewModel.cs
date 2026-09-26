@@ -47,11 +47,11 @@ public partial class MainViewModel : ObservableObject
     }
 
     /// <summary>Family games are always adaptive: every player resumes at their own last level.</summary>
-    private void StartFamilyGame(GameSettings settings, IReadOnlyList<string> names)
+    private void StartFamilyGame(GameSettings settings, IReadOnlyList<string> names, int tasksPerTurn)
     {
         var history = LoadHistorySafe();
         var players = names.Select(name => (name, HistoryStore.ResumeLevel(history, settings, name)));
-        CurrentViewModel = new FamilyGameViewModel(new FamilyGame(settings, players), game => ShowFamilySummary(game, names));
+        CurrentViewModel = new FamilyGameViewModel(new FamilyGame(settings, players, tasksPerTurn: tasksPerTurn), game => ShowFamilySummary(game, names));
     }
 
     private void ShowFamilySummary(FamilyGame game, IReadOnlyList<string> names)
@@ -61,7 +61,7 @@ public partial class MainViewModel : ObservableObject
             .Select(p => SessionRecord.FromSession(p.Session, p.Name))
             .ToList();
         var saveError = records.Count > 0 ? SaveToHistory(records) : null;
-        CurrentViewModel = new FamilySummaryViewModel(game, saveError, () => StartFamilyGame(game.Settings, names), ShowMenu);
+        CurrentViewModel = new FamilySummaryViewModel(game, saveError, () => StartFamilyGame(game.Settings, names, game.TasksPerTurn), ShowMenu);
     }
 
     private void ShowHistory()

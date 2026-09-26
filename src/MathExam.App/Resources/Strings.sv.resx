@@ -193,7 +193,7 @@
     <value>Spelet kunde inte sparas i historiken: {0}</value>
   </data>
   <data name="FamilySetup_Intro" xml:space="preserve">
-    <value>Turas om vid den här datorn: varje spelare löser en uppgift och lämnar sedan över.</value>
+    <value>Turas om vid den här datorn: varje spelare löser sina uppgifter och lämnar sedan över.</value>
   </data>
   <data name="FamilySetup_Settings" xml:space="preserve">
     <value>Tal {0} – {1}, {2}. Alla har sin egen svårighetsgrad.</value>
@@ -210,11 +210,17 @@
   <data name="FamilySetup_AddPlayer" xml:space="preserve">
     <value>+ Lägg till spelare</value>
   </data>
+  <data name="FamilySetup_TasksPerTurn" xml:space="preserve">
+    <value>Uppgifter per tur:</value>
+  </data>
   <data name="FamilyGame_Turn" xml:space="preserve">
     <value>Din tur, {0}!</value>
   </data>
   <data name="FamilyGame_Round" xml:space="preserve">
     <value>Omgång {0}</value>
+  </data>
+  <data name="FamilyGame_TaskInTurn" xml:space="preserve">
+    <value>Uppgift {0} av {1}</value>
   </data>
   <data name="FamilyGame_NextPlayer" xml:space="preserve">
     <value>Nästa spelare</value>

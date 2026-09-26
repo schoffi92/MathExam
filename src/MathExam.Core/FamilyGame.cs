@@ -8,23 +8,28 @@ public sealed record FamilyPlayer(string Name, GameSession Session);
 /// <summary>
 /// A turn-based game for several players on one computer. Every player has their own
 /// <see cref="GameSession"/> with its own adaptive level, so players of different ages can play together;
-/// the players take turns, one task each.
+/// the players take turns of <see cref="TasksPerTurn"/> tasks each.
 /// </summary>
 public sealed class FamilyGame
 {
     public const int MinPlayers = 2;
     public const int MaxPlayers = 4;
     public const int MaxNameLength = 20;
+    public const int MaxTasksPerTurn = 10;
 
     private readonly List<FamilyPlayer> _players;
 
     /// <param name="players">Names and the adaptive level each player starts at, in turn order.</param>
-    public FamilyGame(GameSettings settings, IEnumerable<(string Name, int StartLevel)> players, TaskGenerator? generator = null)
+    /// <param name="tasksPerTurn">How many tasks a player answers in a row before the turn passes on.</param>
+    public FamilyGame(GameSettings settings, IEnumerable<(string Name, int StartLevel)> players,
+        TaskGenerator? generator = null, int tasksPerTurn = 1)
     {
         var list = players.ToList();
         var error = ValidatePlayers(list.Select(p => p.Name));
         if (error is not null)
             throw new ArgumentException(error, nameof(players));
+        ArgumentOutOfRangeException.ThrowIfLessThan(tasksPerTurn, 1);
+        ArgumentOutOfRangeException.ThrowIfGreaterThan(tasksPerTurn, MaxTasksPerTurn);
 
         generator ??= new TaskGenerator();
         Settings = settings;
@@ -33,13 +38,22 @@ public sealed class FamilyGame
             .Select(p => new FamilyPlayer(p.Name.Trim(),
                 new GameSession(settings, generator, new DifficultyAdjuster(p.StartLevel), startedAt)))
             .ToList();
+        TasksPerTurn = tasksPerTurn;
         TurnNumber = 1;
+        TaskInTurn = 1;
     }
 
     public GameSettings Settings { get; }
     public IReadOnlyList<FamilyPlayer> Players => _players;
     public int CurrentIndex { get; private set; }
     public FamilyPlayer Current => _players[CurrentIndex];
+
+    public int TasksPerTurn { get; }
+
+    /// <summary>Which of the current player's <see cref="TasksPerTurn"/> tasks this is, starting at 1.</summary>
+    public int TaskInTurn { get; private set; }
+
+    public bool IsLastTaskOfTurn => TaskInTurn == TasksPerTurn;
 
     /// <summary>Counts every turn of every player, starting at 1.</summary>
     public int TurnNumber { get; private set; }
@@ -49,10 +63,18 @@ public sealed class FamilyGame
 
     public bool Submit(long answer) => Current.Session.Submit(answer);
 
-    /// <summary>Prepares the current player's next task and passes the turn to the next player.</summary>
-    public void NextTurn()
+    /// <summary>
+    /// Prepares the current player's next task. After their last task of the turn, the turn passes to the next player.
+    /// </summary>
+    public void Next()
     {
         Current.Session.NextTask();
+        if (!IsLastTaskOfTurn)
+        {
+            TaskInTurn++;
+            return;
+        }
+        TaskInTurn = 1;
         CurrentIndex = (CurrentIndex + 1) % _players.Count;
         TurnNumber++;
     }

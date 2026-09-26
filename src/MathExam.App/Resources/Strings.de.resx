@@ -193,7 +193,7 @@
     <value>Das Spiel konnte nicht im Verlauf gespeichert werden: {0}</value>
   </data>
   <data name="FamilySetup_Intro" xml:space="preserve">
-    <value>Spielt abwechselnd an diesem Computer: Jeder beantwortet eine Aufgabe und gibt dann weiter.</value>
+    <value>Spielt abwechselnd an diesem Computer: Jeder löst seine Aufgaben und gibt dann weiter.</value>
   </data>
   <data name="FamilySetup_Settings" xml:space="preserve">
     <value>Zahlen {0} – {1}, {2}. Jeder hat seine eigene Schwierigkeitsstufe.</value>
@@ -210,11 +210,17 @@
   <data name="FamilySetup_AddPlayer" xml:space="preserve">
     <value>+ Spieler hinzufügen</value>
   </data>
+  <data name="FamilySetup_TasksPerTurn" xml:space="preserve">
+    <value>Aufgaben pro Zug:</value>
+  </data>
   <data name="FamilyGame_Turn" xml:space="preserve">
     <value>{0} ist dran</value>
   </data>
   <data name="FamilyGame_Round" xml:space="preserve">
     <value>Runde {0}</value>
+  </data>
+  <data name="FamilyGame_TaskInTurn" xml:space="preserve">
+    <value>Aufgabe {0} von {1}</value>
   </data>
   <data name="FamilyGame_NextPlayer" xml:space="preserve">
     <value>Nächster Spieler</value>

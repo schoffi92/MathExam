@@ -13,240 +13,240 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Menu_Lowest" xml:space="preserve">
-    <value>Pienin luku:</value>
+    <value>Minste tall:</value>
   </data>
   <data name="Menu_Highest" xml:space="preserve">
-    <value>Suurin luku:</value>
+    <value>Største tall:</value>
   </data>
   <data name="Menu_Operations" xml:space="preserve">
-    <value>Laskutoimitukset</value>
+    <value>Regnearter</value>
   </data>
   <data name="Menu_Add" xml:space="preserve">
-    <value>Yhteenlasku (+)</value>
+    <value>Addisjon (+)</value>
   </data>
   <data name="Menu_Subtract" xml:space="preserve">
-    <value>Vähennyslasku (−)</value>
+    <value>Subtraksjon (−)</value>
   </data>
   <data name="Menu_Multiply" xml:space="preserve">
-    <value>Kertolasku (×)</value>
+    <value>Multiplikasjon (×)</value>
   </data>
   <data name="Menu_Divide" xml:space="preserve">
-    <value>Jakolasku (÷)</value>
+    <value>Divisjon (÷)</value>
   </data>
   <data name="Menu_Power" xml:space="preserve">
-    <value>Potenssit (xⁿ)</value>
+    <value>Potenser (xⁿ)</value>
   </data>
   <data name="Menu_Root" xml:space="preserve">
-    <value>Juuret (√)</value>
+    <value>Røtter (√)</value>
   </data>
   <data name="Menu_Adaptive" xml:space="preserve">
-    <value>Mukautuva vaikeustaso</value>
+    <value>Tilpasset vanskelighetsgrad</value>
   </data>
   <data name="Menu_AdaptiveHint" xml:space="preserve">
-    <value>Alkaa pienillä luvuilla, jotka kasvavat, kun vastaat oikein.</value>
+    <value>Begynner med små tall som blir større når du svarer riktig.</value>
   </data>
   <data name="Menu_Display" xml:space="preserve">
-    <value>Näyttö</value>
+    <value>Visning</value>
   </data>
   <data name="Menu_TextSize" xml:space="preserve">
-    <value>Tekstin koko:</value>
+    <value>Tekststørrelse:</value>
   </data>
   <data name="Menu_TextNormal" xml:space="preserve">
-    <value>Normaali</value>
+    <value>Normal</value>
   </data>
   <data name="Menu_TextLarge" xml:space="preserve">
-    <value>Suuri</value>
+    <value>Stor</value>
   </data>
   <data name="Menu_TextExtraLarge" xml:space="preserve">
-    <value>Erittäin suuri</value>
+    <value>Ekstra stor</value>
   </data>
   <data name="Menu_HighContrast" xml:space="preserve">
-    <value>Suurikontrastiset värit</value>
+    <value>Farger med høy kontrast</value>
   </data>
   <data name="Menu_Language" xml:space="preserve">
-    <value>Kieli:</value>
+    <value>Språk:</value>
   </data>
   <data name="Menu_LanguageSystem" xml:space="preserve">
-    <value>Järjestelmän kieli</value>
+    <value>Systemets språk</value>
   </data>
   <data name="Menu_Family" xml:space="preserve">
-    <value>Perhepeli</value>
+    <value>Familiespill</value>
   </data>
   <data name="Menu_History" xml:space="preserve">
-    <value>Historia</value>
+    <value>Historikk</value>
   </data>
   <data name="Menu_MinNotWhole" xml:space="preserve">
-    <value>Pienimmän luvun on oltava kokonaisluku.</value>
+    <value>Det minste tallet må være et heltall.</value>
   </data>
   <data name="Menu_MaxNotWhole" xml:space="preserve">
-    <value>Suurimman luvun on oltava kokonaisluku.</value>
+    <value>Det største tallet må være et heltall.</value>
   </data>
   <data name="Common_Start" xml:space="preserve">
-    <value>Aloita</value>
+    <value>Start</value>
   </data>
   <data name="Common_Back" xml:space="preserve">
-    <value>Takaisin</value>
+    <value>Tilbake</value>
   </data>
   <data name="Common_BackToMenu" xml:space="preserve">
-    <value>Takaisin valikkoon</value>
+    <value>Tilbake til menyen</value>
   </data>
   <data name="Common_Stop" xml:space="preserve">
-    <value>Lopeta</value>
+    <value>Avslutt</value>
   </data>
   <data name="Common_Time" xml:space="preserve">
-    <value>Aika: {0}</value>
+    <value>Tid: {0}</value>
   </data>
   <data name="Game_TaskNumber" xml:space="preserve">
-    <value>Tehtävä {0}</value>
+    <value>Oppgave {0}</value>
   </data>
   <data name="Game_Level" xml:space="preserve">
-    <value>Taso {0} / {1}</value>
+    <value>Nivå {0} / {1}</value>
   </data>
   <data name="Game_Solved" xml:space="preserve">
-    <value>Ratkaistu: {0} / {1}</value>
+    <value>Løst: {0} / {1}</value>
   </data>
   <data name="Game_Started" xml:space="preserve">
-    <value>Aloitettu: {0}</value>
+    <value>Startet: {0}</value>
   </data>
   <data name="Game_Elapsed" xml:space="preserve">
-    <value>Kulunut: {0}</value>
+    <value>Spilletid: {0}</value>
   </data>
   <data name="Game_Send" xml:space="preserve">
-    <value>Tarkista</value>
+    <value>Svar</value>
   </data>
   <data name="Game_Next" xml:space="preserve">
-    <value>Seuraava</value>
+    <value>Neste</value>
   </data>
   <data name="Answer_Correct" xml:space="preserve">
-    <value>✓ Oikein!</value>
+    <value>✓ Riktig!</value>
   </data>
   <data name="Answer_Wrong" xml:space="preserve">
-    <value>✗ Oikea vastaus: {0}</value>
+    <value>✗ Riktig svar: {0}</value>
   </data>
   <data name="Answer_LevelUp" xml:space="preserve">
-    <value>▲ Taso nousi! Luvut kasvavat hieman.</value>
+    <value>▲ Nytt nivå! Tallene blir litt større.</value>
   </data>
   <data name="Answer_LevelDown" xml:space="preserve">
-    <value>▼ Taso laski. Luvut pienenevät hieman.</value>
+    <value>▼ Nivået går ned. Tallene blir litt mindre.</value>
   </data>
   <data name="Summary_Title" xml:space="preserve">
-    <value>Yhteenveto</value>
+    <value>Sammendrag</value>
   </data>
   <data name="Summary_Answered" xml:space="preserve">
-    <value>Vastattu: {0}</value>
+    <value>Besvart: {0}</value>
   </data>
   <data name="Summary_Correct" xml:space="preserve">
-    <value>Oikein: {0}</value>
+    <value>Riktige: {0}</value>
   </data>
   <data name="Summary_Wrong" xml:space="preserve">
-    <value>Väärin: {0}</value>
+    <value>Feil: {0}</value>
   </data>
   <data name="Summary_Accuracy" xml:space="preserve">
-    <value>Tarkkuus: {0}</value>
+    <value>Treffsikkerhet: {0}</value>
   </data>
   <data name="Summary_Level" xml:space="preserve">
-    <value>Taso: {0} → {1}</value>
+    <value>Nivå: {0} → {1}</value>
   </data>
   <data name="History_Title" xml:space="preserve">
-    <value>Edistymisesi</value>
+    <value>Din fremgang</value>
   </data>
   <data name="History_Date" xml:space="preserve">
-    <value>Päivämäärä</value>
+    <value>Dato</value>
   </data>
   <data name="History_Player" xml:space="preserve">
-    <value>Pelaaja</value>
+    <value>Spiller</value>
   </data>
   <data name="History_Tasks" xml:space="preserve">
-    <value>Tehtävät</value>
+    <value>Oppgaver</value>
   </data>
   <data name="History_Correct" xml:space="preserve">
-    <value>Oikein</value>
+    <value>Riktige</value>
   </data>
   <data name="History_Accuracy" xml:space="preserve">
-    <value>Tarkkuus</value>
+    <value>Treffsikkerhet</value>
   </data>
   <data name="History_Time" xml:space="preserve">
-    <value>Aika</value>
+    <value>Tid</value>
   </data>
   <data name="History_Level" xml:space="preserve">
-    <value>Taso</value>
+    <value>Nivå</value>
   </data>
   <data name="History_Empty" xml:space="preserve">
-    <value>Pelejä ei ole vielä pelattu.</value>
+    <value>Ingen spill er spilt ennå.</value>
   </data>
   <data name="History_Solo" xml:space="preserve">
-    <value>Yksin</value>
+    <value>Solo</value>
   </data>
   <data name="History_GameOne" xml:space="preserve">
-    <value>Pelejä: {0}</value>
+    <value>{0} spill</value>
   </data>
   <data name="History_GameMany" xml:space="preserve">
-    <value>Pelejä: {0}</value>
+    <value>{0} spill</value>
   </data>
   <data name="History_Totals" xml:space="preserve">
-    <value>{0} · Tehtäviä: {1} · Oikein: {2} · Yhteensä: {3}</value>
+    <value>{0} · {1} oppgaver · {2} riktige · {3} totalt</value>
   </data>
   <data name="History_LoadError" xml:space="preserve">
-    <value>Historiaa ei voitu lukea: {0}</value>
+    <value>Historikken kunne ikke leses: {0}</value>
   </data>
   <data name="History_SaveError" xml:space="preserve">
-    <value>Peliä ei voitu tallentaa historiaan: {0}</value>
+    <value>Spillet kunne ikke lagres i historikken: {0}</value>
   </data>
   <data name="FamilySetup_Intro" xml:space="preserve">
-    <value>Pelatkaa vuorotellen tällä tietokoneella: jokainen ratkaisee omat tehtävänsä ja antaa sitten vuoron seuraavalle.</value>
+    <value>Bytt på ved denne datamaskinen: hver spiller løser oppgavene sine og gir så videre.</value>
   </data>
   <data name="FamilySetup_Settings" xml:space="preserve">
-    <value>Luvut {0} – {1}, {2}. Jokaisella on oma vaikeustasonsa.</value>
+    <value>Tall {0} – {1}, {2}. Alle har sin egen vanskelighetsgrad.</value>
   </data>
   <data name="FamilySetup_Player" xml:space="preserve">
-    <value>Pelaaja {0}:</value>
+    <value>Spiller {0}:</value>
   </data>
   <data name="FamilySetup_NamePlaceholder" xml:space="preserve">
-    <value>Nimi</value>
+    <value>Navn</value>
   </data>
   <data name="FamilySetup_Remove" xml:space="preserve">
-    <value>Poista</value>
+    <value>Fjern</value>
   </data>
   <data name="FamilySetup_AddPlayer" xml:space="preserve">
-    <value>+ Lisää pelaaja</value>
+    <value>+ Legg til spiller</value>
   </data>
   <data name="FamilySetup_TasksPerTurn" xml:space="preserve">
-    <value>Tehtäviä vuoroa kohden:</value>
+    <value>Oppgaver per tur:</value>
   </data>
   <data name="FamilyGame_Turn" xml:space="preserve">
-    <value>Vuorossa: {0}</value>
+    <value>Din tur, {0}!</value>
   </data>
   <data name="FamilyGame_Round" xml:space="preserve">
-    <value>Kierros {0}</value>
+    <value>Runde {0}</value>
   </data>
   <data name="FamilyGame_TaskInTurn" xml:space="preserve">
-    <value>Tehtävä {0}/{1}</value>
+    <value>Oppgave {0} av {1}</value>
   </data>
   <data name="FamilyGame_NextPlayer" xml:space="preserve">
-    <value>Seuraava pelaaja</value>
+    <value>Neste spiller</value>
   </data>
   <data name="Family_Score" xml:space="preserve">
-    <value>{0} / {1} oikein</value>
+    <value>{0} / {1} riktige</value>
   </data>
   <data name="Family_Level" xml:space="preserve">
-    <value>Taso {0}</value>
+    <value>Nivå {0}</value>
   </data>
   <data name="Family_LevelRange" xml:space="preserve">
-    <value>Taso {0} → {1}</value>
+    <value>Nivå {0} → {1}</value>
   </data>
   <data name="FamilySummary_NoWinner" xml:space="preserve">
-    <value>Kukaan ei saanut pisteitä tällä kertaa. Yrittäkää uudelleen!</value>
+    <value>Ingen fikk poeng denne gangen. Prøv igjen!</value>
   </data>
   <data name="FamilySummary_Winner" xml:space="preserve">
-    <value>{0} voittaa!</value>
+    <value>{0} vinner!</value>
   </data>
   <data name="FamilySummary_Tie" xml:space="preserve">
-    <value>Tasapeli: {0}!</value>
+    <value>Uavgjort: {0}!</value>
   </data>
   <data name="FamilySummary_And" xml:space="preserve">
-    <value> ja </value>
+    <value> og </value>
   </data>
   <data name="FamilySummary_PlayAgain" xml:space="preserve">
-    <value>Pelaa uudelleen</value>
+    <value>Spill igjen</value>
   </data>
 </root>

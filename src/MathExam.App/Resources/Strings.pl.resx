@@ -193,7 +193,7 @@
     <value>Nie udało się zapisać gry w historii: {0}</value>
   </data>
   <data name="FamilySetup_Intro" xml:space="preserve">
-    <value>Grajcie na zmianę na tym komputerze: każdy gracz rozwiązuje jedno zadanie i przekazuje dalej.</value>
+    <value>Grajcie na zmianę na tym komputerze: każdy gracz rozwiązuje swoje zadania i przekazuje dalej.</value>
   </data>
   <data name="FamilySetup_Settings" xml:space="preserve">
     <value>Liczby od {0} do {1}, {2}. Każdy ma własny poziom trudności.</value>
@@ -210,11 +210,17 @@
   <data name="FamilySetup_AddPlayer" xml:space="preserve">
     <value>+ Dodaj gracza</value>
   </data>
+  <data name="FamilySetup_TasksPerTurn" xml:space="preserve">
+    <value>Zadania w turze:</value>
+  </data>
   <data name="FamilyGame_Turn" xml:space="preserve">
     <value>Teraz gra: {0}</value>
   </data>
   <data name="FamilyGame_Round" xml:space="preserve">
     <value>Runda {0}</value>
+  </data>
+  <data name="FamilyGame_TaskInTurn" xml:space="preserve">
+    <value>Zadanie {0} z {1}</value>
   </data>
   <data name="FamilyGame_NextPlayer" xml:space="preserve">
     <value>Następny gracz</value>

@@ -31,6 +31,10 @@ public static class LanguageManager
         new("fi", "Suomi"),
         new("pt", "Português"),
         new("sv", "Svenska"),
+        new("nb", "Norsk bokmål"),
+        new("hr", "Hrvatski"),
+        new("sl", "Slovenščina"),
+        new("sk", "Slovenčina"),
     ];
 
     /// <summary>Returns the option for a saved code; unknown codes fall back to the system default.</summary>

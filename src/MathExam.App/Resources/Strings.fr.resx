@@ -193,7 +193,7 @@
     <value>Impossible d'enregistrer la partie dans l'historique : {0}</value>
   </data>
   <data name="FamilySetup_Intro" xml:space="preserve">
-    <value>Jouez à tour de rôle sur cet ordinateur : chaque joueur répond à un calcul, puis passe la main.</value>
+    <value>Jouez à tour de rôle sur cet ordinateur : chaque joueur répond à ses calculs, puis passe la main.</value>
   </data>
   <data name="FamilySetup_Settings" xml:space="preserve">
     <value>Nombres de {0} à {1}, {2}. Chacun a son propre niveau de difficulté.</value>
@@ -210,11 +210,17 @@
   <data name="FamilySetup_AddPlayer" xml:space="preserve">
     <value>+ Ajouter un joueur</value>
   </data>
+  <data name="FamilySetup_TasksPerTurn" xml:space="preserve">
+    <value>Calculs par tour :</value>
+  </data>
   <data name="FamilyGame_Turn" xml:space="preserve">
     <value>Au tour de {0}</value>
   </data>
   <data name="FamilyGame_Round" xml:space="preserve">
     <value>Tour {0}</value>
+  </data>
+  <data name="FamilyGame_TaskInTurn" xml:space="preserve">
+    <value>Calcul {0} sur {1}</value>
   </data>
   <data name="FamilyGame_NextPlayer" xml:space="preserve">
     <value>Joueur suivant</value>

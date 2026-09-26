@@ -193,7 +193,7 @@
     <value>No se pudo guardar la partida en el historial: {0}</value>
   </data>
   <data name="FamilySetup_Intro" xml:space="preserve">
-    <value>Jugad por turnos en este ordenador: cada jugador resuelve un ejercicio y luego pasa el turno.</value>
+    <value>Jugad por turnos en este ordenador: cada jugador resuelve sus ejercicios y luego pasa el turno.</value>
   </data>
   <data name="FamilySetup_Settings" xml:space="preserve">
     <value>Números del {0} al {1}, {2}. Cada uno tiene su propio nivel de dificultad.</value>
@@ -210,11 +210,17 @@
   <data name="FamilySetup_AddPlayer" xml:space="preserve">
     <value>+ Añadir jugador</value>
   </data>
+  <data name="FamilySetup_TasksPerTurn" xml:space="preserve">
+    <value>Ejercicios por turno:</value>
+  </data>
   <data name="FamilyGame_Turn" xml:space="preserve">
     <value>Turno de {0}</value>
   </data>
   <data name="FamilyGame_Round" xml:space="preserve">
     <value>Ronda {0}</value>
+  </data>
+  <data name="FamilyGame_TaskInTurn" xml:space="preserve">
+    <value>Ejercicio {0} de {1}</value>
   </data>
   <data name="FamilyGame_NextPlayer" xml:space="preserve">
     <value>Siguiente jugador</value>

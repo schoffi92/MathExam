@@ -193,7 +193,7 @@
     <value>The game could not be saved to the history: {0}</value>
   </data>
   <data name="FamilySetup_Intro" xml:space="preserve">
-    <value>Take turns on this computer: each player answers one task, then passes on.</value>
+    <value>Take turns on this computer: each player answers their tasks, then passes on.</value>
   </data>
   <data name="FamilySetup_Settings" xml:space="preserve">
     <value>Numbers {0} – {1}, {2}. Everyone has their own difficulty level.</value>
@@ -210,11 +210,17 @@
   <data name="FamilySetup_AddPlayer" xml:space="preserve">
     <value>+ Add player</value>
   </data>
+  <data name="FamilySetup_TasksPerTurn" xml:space="preserve">
+    <value>Tasks per turn:</value>
+  </data>
   <data name="FamilyGame_Turn" xml:space="preserve">
     <value>{0}'s turn</value>
   </data>
   <data name="FamilyGame_Round" xml:space="preserve">
     <value>Round {0}</value>
+  </data>
+  <data name="FamilyGame_TaskInTurn" xml:space="preserve">
+    <value>Task {0} of {1}</value>
   </data>
   <data name="FamilyGame_NextPlayer" xml:space="preserve">
     <value>Next player</value>

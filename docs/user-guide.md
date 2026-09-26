@@ -12,7 +12,7 @@ MathExam is a practice app for the four basic operations, plus powers and roots.
 | **Adaptive difficulty** | Adjusts how big the numbers are to how well you are doing (see below). |
 | **Display → Text size** | Normal, Large (125%) or Extra large (150%). Everything gets bigger and the window grows to match. |
 | **Display → High contrast colours** | White and yellow on black, with thicker borders. |
-| **Display → Language** | English, Français (French), Deutsch (German), Magyar (Hungarian), Italiano (Italian), Español (Spanish), Polski (Polish), Čeština (Czech), Suomi (Finnish), Português (Portuguese) or Svenska (Swedish). *System default* uses your operating system's language, or English if it is none of these. |
+| **Display → Language** | English, Français (French), Deutsch (German), Magyar (Hungarian), Italiano (Italian), Español (Spanish), Polski (Polish), Čeština (Czech), Suomi (Finnish), Português (Portuguese), Svenska (Swedish), Norsk bokmål (Norwegian), Hrvatski (Croatian), Slovenščina (Slovenian) or Slovenčina (Slovak). *System default* uses your operating system's language, or English if it is none of these. |
 
 Defaults: lowest `1`, highest `10`, the four basic operations on (powers and roots off), adaptive difficulty on, normal text, system language. High contrast starts on if the operating system's high-contrast mode is on.
 
@@ -89,17 +89,18 @@ Two to four people take turns on one computer, for example a grandchild and a gr
 
 1. Choose the numbers and operations in the main menu, then click **Family game**.
 2. Type a name for each player. **+ Add player** adds a player (up to 4), and **Remove** takes one away (at least 2 must stay). Names must be different. The names are kept for the next family game.
-3. Click **Start** (or press <kbd>Enter</kbd>).
+3. Choose **Tasks per turn** (1–10, default 1): how many tasks each player answers in a row before the next player's turn.
+4. Click **Start** (or press <kbd>Enter</kbd>).
 
 During the game:
 
 - The big yellow or blue line says **whose turn it is**, and that player's box in the scoreboard at the top is framed.
-- The player answers one task as usual (<kbd>Enter</kbd> to send, green or red feedback). **Next player** (or <kbd>Enter</kbd>) passes the turn on.
+- The player answers their tasks as usual (<kbd>Enter</kbd> to send, green or red feedback). With more than one task per turn, "Task 2 of 3" shows where they are, and **Next** (or <kbd>Enter</kbd>) brings their next task. After their last task, **Next player** passes the turn on.
 - The scoreboard shows each player's correct answers and level. **Round N** counts how many times everyone has had a turn.
 
 **Everyone has their own difficulty level.** Family games are always adaptive: each player moves up and down separately (3 right in a row goes up, 2 wrong in a row goes down) and starts at the level they reached in their last family game with the same numbers. A child and an adult each get tasks that suit them, so the game stays fair.
 
-**Stop** ends the game and shows the ranking. The player with the most correct answers wins; equal scores are decided by accuracy, and completely equal players share a place. **Play again** starts a new round with the same players, and **Back to menu** returns to the menu. Each player's result is saved to the history under their name.
+**Stop** ends the game and shows the ranking. The player with the most correct answers wins; equal scores are decided by accuracy, and completely equal players share a place. **Play again** starts a new round with the same players and tasks per turn, and **Back to menu** returns to the menu. Each player's result is saved to the history under their name.
 
 ## 6. Progress history
 

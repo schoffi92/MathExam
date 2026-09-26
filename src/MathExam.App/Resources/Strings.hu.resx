@@ -193,7 +193,7 @@
     <value>A játékot nem sikerült menteni az előzmények közé: {0}</value>
   </data>
   <data name="FamilySetup_Intro" xml:space="preserve">
-    <value>Felváltva játszotok ezen a gépen: mindenki megold egy feladatot, aztán továbbadja.</value>
+    <value>Felváltva játszotok ezen a gépen: mindenki megoldja a saját feladatait, aztán továbbadja.</value>
   </data>
   <data name="FamilySetup_Settings" xml:space="preserve">
     <value>Számok: {0} – {1}, {2}. Mindenkinek saját nehézségi szintje van.</value>
@@ -210,11 +210,17 @@
   <data name="FamilySetup_AddPlayer" xml:space="preserve">
     <value>+ Új játékos</value>
   </data>
+  <data name="FamilySetup_TasksPerTurn" xml:space="preserve">
+    <value>Feladatok egy menetben:</value>
+  </data>
   <data name="FamilyGame_Turn" xml:space="preserve">
     <value>{0} következik</value>
   </data>
   <data name="FamilyGame_Round" xml:space="preserve">
     <value>{0}. kör</value>
+  </data>
+  <data name="FamilyGame_TaskInTurn" xml:space="preserve">
+    <value>Feladat: {0} / {1}</value>
   </data>
   <data name="FamilyGame_NextPlayer" xml:space="preserve">
     <value>Következő játékos</value>

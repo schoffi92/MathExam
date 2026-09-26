@@ -18,7 +18,7 @@ A desktop app for **Windows and Linux** (C# / Avalonia, .NET 8) for practising a
 - **Adaptive difficulty** (optional): starts with small numbers and widens the range as you answer correctly (10 levels). The next game resumes at your last level.
 - **Family game:** 2–4 players take turns on one computer, each with their own adaptive level, so a child and a grandparent can play fairly together. Live scoreboard, final ranking, and "Play again".
 - **Progress history:** every game is saved on this computer and listed on the History screen with overall totals.
-- **Languages:** English, French, German, Hungarian, Italian, Spanish, Polish, Czech, Finnish, Portuguese and Swedish. The app follows the system language, or you can pick one in the menu.
+- **Languages:** English, French, German, Hungarian, Italian, Spanish, Polish, Czech, Finnish, Portuguese, Swedish, Norwegian, Croatian, Slovenian and Slovak. The app follows the system language, or you can pick one in the menu.
 - **Accessibility:** three text sizes (Normal / Large / Extra large) and a high-contrast colour theme, both remembered between launches. Right and wrong answers are also shown as text (✓ / ✗), not just by colour.
 
 ## Quick start

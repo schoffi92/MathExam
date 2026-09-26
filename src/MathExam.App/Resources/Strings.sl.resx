@@ -13,240 +13,240 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Menu_Lowest" xml:space="preserve">
-    <value>Pienin luku:</value>
+    <value>Najmanjše število:</value>
   </data>
   <data name="Menu_Highest" xml:space="preserve">
-    <value>Suurin luku:</value>
+    <value>Največje število:</value>
   </data>
   <data name="Menu_Operations" xml:space="preserve">
-    <value>Laskutoimitukset</value>
+    <value>Računske operacije</value>
   </data>
   <data name="Menu_Add" xml:space="preserve">
-    <value>Yhteenlasku (+)</value>
+    <value>Seštevanje (+)</value>
   </data>
   <data name="Menu_Subtract" xml:space="preserve">
-    <value>Vähennyslasku (−)</value>
+    <value>Odštevanje (−)</value>
   </data>
   <data name="Menu_Multiply" xml:space="preserve">
-    <value>Kertolasku (×)</value>
+    <value>Množenje (×)</value>
   </data>
   <data name="Menu_Divide" xml:space="preserve">
-    <value>Jakolasku (÷)</value>
+    <value>Deljenje (÷)</value>
   </data>
   <data name="Menu_Power" xml:space="preserve">
-    <value>Potenssit (xⁿ)</value>
+    <value>Potenciranje (xⁿ)</value>
   </data>
   <data name="Menu_Root" xml:space="preserve">
-    <value>Juuret (√)</value>
+    <value>Korenjenje (√)</value>
   </data>
   <data name="Menu_Adaptive" xml:space="preserve">
-    <value>Mukautuva vaikeustaso</value>
+    <value>Prilagodljiva težavnost</value>
   </data>
   <data name="Menu_AdaptiveHint" xml:space="preserve">
-    <value>Alkaa pienillä luvuilla, jotka kasvavat, kun vastaat oikein.</value>
+    <value>Začne z majhnimi števili, ki rastejo, ko odgovarjaš pravilno.</value>
   </data>
   <data name="Menu_Display" xml:space="preserve">
-    <value>Näyttö</value>
+    <value>Prikaz</value>
   </data>
   <data name="Menu_TextSize" xml:space="preserve">
-    <value>Tekstin koko:</value>
+    <value>Velikost besedila:</value>
   </data>
   <data name="Menu_TextNormal" xml:space="preserve">
-    <value>Normaali</value>
+    <value>Običajna</value>
   </data>
   <data name="Menu_TextLarge" xml:space="preserve">
-    <value>Suuri</value>
+    <value>Velika</value>
   </data>
   <data name="Menu_TextExtraLarge" xml:space="preserve">
-    <value>Erittäin suuri</value>
+    <value>Zelo velika</value>
   </data>
   <data name="Menu_HighContrast" xml:space="preserve">
-    <value>Suurikontrastiset värit</value>
+    <value>Barve z visokim kontrastom</value>
   </data>
   <data name="Menu_Language" xml:space="preserve">
-    <value>Kieli:</value>
+    <value>Jezik:</value>
   </data>
   <data name="Menu_LanguageSystem" xml:space="preserve">
-    <value>Järjestelmän kieli</value>
+    <value>Jezik sistema</value>
   </data>
   <data name="Menu_Family" xml:space="preserve">
-    <value>Perhepeli</value>
+    <value>Družinska igra</value>
   </data>
   <data name="Menu_History" xml:space="preserve">
-    <value>Historia</value>
+    <value>Zgodovina</value>
   </data>
   <data name="Menu_MinNotWhole" xml:space="preserve">
-    <value>Pienimmän luvun on oltava kokonaisluku.</value>
+    <value>Najmanjše število mora biti celo število.</value>
   </data>
   <data name="Menu_MaxNotWhole" xml:space="preserve">
-    <value>Suurimman luvun on oltava kokonaisluku.</value>
+    <value>Največje število mora biti celo število.</value>
   </data>
   <data name="Common_Start" xml:space="preserve">
-    <value>Aloita</value>
+    <value>Začni</value>
   </data>
   <data name="Common_Back" xml:space="preserve">
-    <value>Takaisin</value>
+    <value>Nazaj</value>
   </data>
   <data name="Common_BackToMenu" xml:space="preserve">
-    <value>Takaisin valikkoon</value>
+    <value>Nazaj v meni</value>
   </data>
   <data name="Common_Stop" xml:space="preserve">
-    <value>Lopeta</value>
+    <value>Končaj</value>
   </data>
   <data name="Common_Time" xml:space="preserve">
-    <value>Aika: {0}</value>
+    <value>Čas: {0}</value>
   </data>
   <data name="Game_TaskNumber" xml:space="preserve">
-    <value>Tehtävä {0}</value>
+    <value>Naloga {0}</value>
   </data>
   <data name="Game_Level" xml:space="preserve">
-    <value>Taso {0} / {1}</value>
+    <value>Stopnja {0} / {1}</value>
   </data>
   <data name="Game_Solved" xml:space="preserve">
-    <value>Ratkaistu: {0} / {1}</value>
+    <value>Rešeno: {0} / {1}</value>
   </data>
   <data name="Game_Started" xml:space="preserve">
-    <value>Aloitettu: {0}</value>
+    <value>Začetek: {0}</value>
   </data>
   <data name="Game_Elapsed" xml:space="preserve">
-    <value>Kulunut: {0}</value>
+    <value>Pretečeno: {0}</value>
   </data>
   <data name="Game_Send" xml:space="preserve">
-    <value>Tarkista</value>
+    <value>Preveri</value>
   </data>
   <data name="Game_Next" xml:space="preserve">
-    <value>Seuraava</value>
+    <value>Naprej</value>
   </data>
   <data name="Answer_Correct" xml:space="preserve">
-    <value>✓ Oikein!</value>
+    <value>✓ Pravilno!</value>
   </data>
   <data name="Answer_Wrong" xml:space="preserve">
-    <value>✗ Oikea vastaus: {0}</value>
+    <value>✗ Pravilni odgovor: {0}</value>
   </data>
   <data name="Answer_LevelUp" xml:space="preserve">
-    <value>▲ Taso nousi! Luvut kasvavat hieman.</value>
+    <value>▲ Višja stopnja! Števila bodo malo večja.</value>
   </data>
   <data name="Answer_LevelDown" xml:space="preserve">
-    <value>▼ Taso laski. Luvut pienenevät hieman.</value>
+    <value>▼ Nižja stopnja. Števila bodo malo manjša.</value>
   </data>
   <data name="Summary_Title" xml:space="preserve">
-    <value>Yhteenveto</value>
+    <value>Povzetek</value>
   </data>
   <data name="Summary_Answered" xml:space="preserve">
-    <value>Vastattu: {0}</value>
+    <value>Odgovorjeno: {0}</value>
   </data>
   <data name="Summary_Correct" xml:space="preserve">
-    <value>Oikein: {0}</value>
+    <value>Pravilno: {0}</value>
   </data>
   <data name="Summary_Wrong" xml:space="preserve">
-    <value>Väärin: {0}</value>
+    <value>Napačno: {0}</value>
   </data>
   <data name="Summary_Accuracy" xml:space="preserve">
-    <value>Tarkkuus: {0}</value>
+    <value>Natančnost: {0}</value>
   </data>
   <data name="Summary_Level" xml:space="preserve">
-    <value>Taso: {0} → {1}</value>
+    <value>Stopnja: {0} → {1}</value>
   </data>
   <data name="History_Title" xml:space="preserve">
-    <value>Edistymisesi</value>
+    <value>Tvoj napredek</value>
   </data>
   <data name="History_Date" xml:space="preserve">
-    <value>Päivämäärä</value>
+    <value>Datum</value>
   </data>
   <data name="History_Player" xml:space="preserve">
-    <value>Pelaaja</value>
+    <value>Igralec</value>
   </data>
   <data name="History_Tasks" xml:space="preserve">
-    <value>Tehtävät</value>
+    <value>Naloge</value>
   </data>
   <data name="History_Correct" xml:space="preserve">
-    <value>Oikein</value>
+    <value>Pravilno</value>
   </data>
   <data name="History_Accuracy" xml:space="preserve">
-    <value>Tarkkuus</value>
+    <value>Natančnost</value>
   </data>
   <data name="History_Time" xml:space="preserve">
-    <value>Aika</value>
+    <value>Čas</value>
   </data>
   <data name="History_Level" xml:space="preserve">
-    <value>Taso</value>
+    <value>Stopnja</value>
   </data>
   <data name="History_Empty" xml:space="preserve">
-    <value>Pelejä ei ole vielä pelattu.</value>
+    <value>Odigrana ni bila še nobena igra.</value>
   </data>
   <data name="History_Solo" xml:space="preserve">
-    <value>Yksin</value>
+    <value>Samostojno</value>
   </data>
   <data name="History_GameOne" xml:space="preserve">
-    <value>Pelejä: {0}</value>
+    <value>Igre: {0}</value>
   </data>
   <data name="History_GameMany" xml:space="preserve">
-    <value>Pelejä: {0}</value>
+    <value>Igre: {0}</value>
   </data>
   <data name="History_Totals" xml:space="preserve">
-    <value>{0} · Tehtäviä: {1} · Oikein: {2} · Yhteensä: {3}</value>
+    <value>{0} · Naloge: {1} · Pravilno: {2} · Skupaj: {3}</value>
   </data>
   <data name="History_LoadError" xml:space="preserve">
-    <value>Historiaa ei voitu lukea: {0}</value>
+    <value>Zgodovine ni bilo mogoče prebrati: {0}</value>
   </data>
   <data name="History_SaveError" xml:space="preserve">
-    <value>Peliä ei voitu tallentaa historiaan: {0}</value>
+    <value>Igre ni bilo mogoče shraniti v zgodovino: {0}</value>
   </data>
   <data name="FamilySetup_Intro" xml:space="preserve">
-    <value>Pelatkaa vuorotellen tällä tietokoneella: jokainen ratkaisee omat tehtävänsä ja antaa sitten vuoron seuraavalle.</value>
+    <value>Izmenjujte se za tem računalnikom: vsak igralec reši svoje naloge in nato preda naprej.</value>
   </data>
   <data name="FamilySetup_Settings" xml:space="preserve">
-    <value>Luvut {0} – {1}, {2}. Jokaisella on oma vaikeustasonsa.</value>
+    <value>Števila od {0} do {1}, {2}. Vsak ima svojo stopnjo težavnosti.</value>
   </data>
   <data name="FamilySetup_Player" xml:space="preserve">
-    <value>Pelaaja {0}:</value>
+    <value>Igralec {0}:</value>
   </data>
   <data name="FamilySetup_NamePlaceholder" xml:space="preserve">
-    <value>Nimi</value>
+    <value>Ime</value>
   </data>
   <data name="FamilySetup_Remove" xml:space="preserve">
-    <value>Poista</value>
+    <value>Odstrani</value>
   </data>
   <data name="FamilySetup_AddPlayer" xml:space="preserve">
-    <value>+ Lisää pelaaja</value>
+    <value>+ Dodaj igralca</value>
   </data>
   <data name="FamilySetup_TasksPerTurn" xml:space="preserve">
-    <value>Tehtäviä vuoroa kohden:</value>
+    <value>Nalog na potezo:</value>
   </data>
   <data name="FamilyGame_Turn" xml:space="preserve">
-    <value>Vuorossa: {0}</value>
+    <value>Na vrsti: {0}</value>
   </data>
   <data name="FamilyGame_Round" xml:space="preserve">
-    <value>Kierros {0}</value>
+    <value>Krog {0}</value>
   </data>
   <data name="FamilyGame_TaskInTurn" xml:space="preserve">
-    <value>Tehtävä {0}/{1}</value>
+    <value>Naloga {0} od {1}</value>
   </data>
   <data name="FamilyGame_NextPlayer" xml:space="preserve">
-    <value>Seuraava pelaaja</value>
+    <value>Naslednji igralec</value>
   </data>
   <data name="Family_Score" xml:space="preserve">
-    <value>{0} / {1} oikein</value>
+    <value>{0} / {1} pravilno</value>
   </data>
   <data name="Family_Level" xml:space="preserve">
-    <value>Taso {0}</value>
+    <value>Stopnja {0}</value>
   </data>
   <data name="Family_LevelRange" xml:space="preserve">
-    <value>Taso {0} → {1}</value>
+    <value>Stopnja {0} → {1}</value>
   </data>
   <data name="FamilySummary_NoWinner" xml:space="preserve">
-    <value>Kukaan ei saanut pisteitä tällä kertaa. Yrittäkää uudelleen!</value>
+    <value>Tokrat ni nihče dobil točke. Poskusite znova!</value>
   </data>
   <data name="FamilySummary_Winner" xml:space="preserve">
-    <value>{0} voittaa!</value>
+    <value>Zmagovalec: {0}!</value>
   </data>
   <data name="FamilySummary_Tie" xml:space="preserve">
-    <value>Tasapeli: {0}!</value>
+    <value>Neodločeno: {0}!</value>
   </data>
   <data name="FamilySummary_And" xml:space="preserve">
-    <value> ja </value>
+    <value> in </value>
   </data>
   <data name="FamilySummary_PlayAgain" xml:space="preserve">
-    <value>Pelaa uudelleen</value>
+    <value>Igraj znova</value>
   </data>
 </root>

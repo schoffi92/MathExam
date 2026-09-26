@@ -193,7 +193,7 @@
     <value>Impossibile salvare la partita nella cronologia: {0}</value>
   </data>
   <data name="FamilySetup_Intro" xml:space="preserve">
-    <value>Giocate a turno su questo computer: ogni giocatore risolve un esercizio e poi passa la mano.</value>
+    <value>Giocate a turno su questo computer: ogni giocatore risolve i suoi esercizi e poi passa la mano.</value>
   </data>
   <data name="FamilySetup_Settings" xml:space="preserve">
     <value>Numeri da {0} a {1}, {2}. Ognuno ha il proprio livello di difficoltà.</value>
@@ -210,11 +210,17 @@
   <data name="FamilySetup_AddPlayer" xml:space="preserve">
     <value>+ Aggiungi giocatore</value>
   </data>
+  <data name="FamilySetup_TasksPerTurn" xml:space="preserve">
+    <value>Esercizi per turno:</value>
+  </data>
   <data name="FamilyGame_Turn" xml:space="preserve">
     <value>Tocca a {0}</value>
   </data>
   <data name="FamilyGame_Round" xml:space="preserve">
     <value>Turno {0}</value>
+  </data>
+  <data name="FamilyGame_TaskInTurn" xml:space="preserve">
+    <value>Esercizio {0} di {1}</value>
   </data>
   <data name="FamilyGame_NextPlayer" xml:space="preserve">
     <value>Prossimo giocatore</value>

@@ -36,12 +36,15 @@ public partial class FamilyGameViewModel : ObservableObject
 
     public string TurnText => string.Format(Strings.FamilyGame_Turn, _game.Current.Name);
     public string RoundText => string.Format(Strings.FamilyGame_Round, _game.Round);
+    public bool HasSeveralTasksPerTurn => _game.TasksPerTurn > 1;
+    public string TaskInTurnText => string.Format(Strings.FamilyGame_TaskInTurn, _game.TaskInTurn, _game.TasksPerTurn);
     public string ElapsedText => string.Format(Strings.Game_Elapsed, Session.Elapsed.ToString(@"hh\:mm\:ss"));
     public MathTask Equation => Session.CurrentTask;
     public bool IsAnswered => State != AnswerState.Answering;
     public bool IsCorrect => State == AnswerState.Correct;
     public bool IsWrong => State == AnswerState.Wrong;
-    public string ButtonText => IsAnswered ? Strings.FamilyGame_NextPlayer : Strings.Game_Send;
+    public string ButtonText => !IsAnswered ? Strings.Game_Send
+        : _game.IsLastTaskOfTurn ? Strings.FamilyGame_NextPlayer : Strings.Game_Next;
     public string FeedbackText => Answers.Feedback(State, Session.CurrentTask.Answer);
     public string LevelChangeText => Answers.LevelChange(IsAnswered ? Session.LastLevelChange : 0);
 
@@ -58,11 +61,12 @@ public partial class FamilyGameViewModel : ObservableObject
     {
         if (IsAnswered)
         {
-            _game.NextTurn();
+            _game.Next();
             AnswerText = "";
             State = AnswerState.Answering;
             OnPropertyChanged(nameof(TurnText));
             OnPropertyChanged(nameof(RoundText));
+            OnPropertyChanged(nameof(TaskInTurnText));
             OnPropertyChanged(nameof(Equation));
             return;
         }

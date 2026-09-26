@@ -30,11 +30,12 @@ public partial class PlayerNameEntry : ObservableObject
 /// <summary>Enter the players' names for a family game. Reused, so the names are kept for the next game.</summary>
 public partial class FamilySetupViewModel : ObservableObject
 {
-    private readonly Action<GameSettings, IReadOnlyList<string>> _onStart;
+    private readonly Action<GameSettings, IReadOnlyList<string>, int> _onStart;
     private readonly Action _onBack;
     private GameSettings? _settings;
 
-    public FamilySetupViewModel(Action<GameSettings, IReadOnlyList<string>> onStart, Action onBack)
+    /// <param name="onStart">Called with the settings, the player names and the tasks per turn.</param>
+    public FamilySetupViewModel(Action<GameSettings, IReadOnlyList<string>, int> onStart, Action onBack)
     {
         _onStart = onStart;
         _onBack = onBack;
@@ -46,6 +47,12 @@ public partial class FamilySetupViewModel : ObservableObject
 
     [ObservableProperty]
     private string _settingsText = "";
+
+    // decimal?, because that is what NumericUpDown binds to; null while the box is being edited.
+    [ObservableProperty]
+    private decimal? _tasksPerTurn = 1;
+
+    public int MaxTasksPerTurn => FamilyGame.MaxTasksPerTurn;
 
     public string? ErrorMessage => FamilyGame.ValidatePlayers(Players.Select(p => p.Name));
 
@@ -68,7 +75,8 @@ public partial class FamilySetupViewModel : ObservableObject
     private void Start()
     {
         if (_settings is not null && CanStart())
-            _onStart(_settings, Players.Select(p => p.Name.Trim()).ToList());
+            _onStart(_settings, Players.Select(p => p.Name.Trim()).ToList(),
+                (int)Math.Clamp(TasksPerTurn ?? 1, 1, FamilyGame.MaxTasksPerTurn));
     }
 
     private bool CanStart() => ErrorMessage is null;
