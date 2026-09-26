@@ -1,6 +1,7 @@
 # Builds and tests MathExam on every push and pull request to main.
 # package_linux.sh runs the tests, publishes the self-contained Windows and Linux builds
-# (build_release.sh) and creates the Linux archive; both builds are kept as run artifacts.
+# (build_release.sh) and creates the Linux archives for x64, arm64 and 32-bit arm (Raspberry Pi);
+# all builds are kept as run artifacts.
 # Pushing a version tag (e.g. v0.2) also attaches them to a GitHub release for that tag.
 
 name: Build
@@ -38,11 +39,11 @@ jobs:
         path: release/win-x64/MathExam.exe
         if-no-files-found: error
 
-    - name: Upload Linux build
+    - name: Upload Linux builds
       uses: actions/upload-artifact@v4
       with:
-        name: MathExam-linux-x64
-        path: release/MathExam-linux-x64.tar.gz
+        name: MathExam-linux
+        path: release/MathExam-linux-*.tar.gz
         if-no-files-found: error
 
     - name: Attach builds to the release
@@ -52,6 +53,8 @@ jobs:
         files: |
           release/win-x64/MathExam.exe
           release/MathExam-linux-x64.tar.gz
+          release/MathExam-linux-arm64.tar.gz
+          release/MathExam-linux-arm.tar.gz
 
 permissions:
   contents: write  # only needed by the release step

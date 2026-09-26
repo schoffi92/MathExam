@@ -1,6 +1,6 @@
 # MathExam – Mathematical Education Application
 
-A desktop app for **Windows and Linux** (C# / Avalonia, .NET 8) for practising addition, subtraction, multiplication and division, plus powers and roots. Each task is an equation with one hidden number, which can be the result or one of the operands:
+A desktop app for **Windows and Linux** (including the Raspberry Pi) (C# / Avalonia, .NET 8) for practising addition, subtraction, multiplication and division, plus powers and roots. Each task is an equation with one hidden number, which can be the result or one of the operands:
 
 ```
 100 × 100 = ?
@@ -30,15 +30,15 @@ Building requires the **.NET SDK 9.0.300 or newer** (see `global.json`). The app
 
 **Windows:** double-click **`start.bat`**. On the first run it builds the release version, then it starts the app.
 
-**Linux:** run `./start.sh`, which does the same.
+**Linux:** run `./start.sh`, which does the same. It picks the build for the computer's processor: x64, 64-bit ARM or 32-bit ARM (e.g. a Raspberry Pi 3).
 
 | Windows | Linux | What it does |
 |---|---|---|
-| `build_release.bat` | `build_release.sh` | Runs the tests, then builds `release/win-x64/MathExam.exe` and `release/linux-x64/MathExam`. Each is a single self-contained file that runs **without installing .NET**. |
+| `build_release.bat` | `build_release.sh` | Runs the tests, then builds `release/win-x64/MathExam.exe` and `release/linux-<arch>/MathExam` for `x64`, `arm64` and `arm` (32-bit). Each is a single self-contained file that runs **without installing .NET**. |
 | `start.bat` | `start.sh` | Starts the release build for the current OS, building it first if it is missing. Run the build script again after changing the code. |
-| `package_linux.bat` | `package_linux.sh` | Builds, then creates **`release/MathExam-linux-x64.tar.gz`**, containing the Linux program (marked executable) and a README. |
+| `package_linux.bat` | `package_linux.sh` | Builds, then creates **`release/MathExam-linux-x64.tar.gz`**, **`-linux-arm64.tar.gz`** and **`-linux-arm.tar.gz`**, each containing the Linux program (marked executable) and a README. |
 
-To share the app, send `release/win-x64/MathExam.exe` to Windows users and `MathExam-linux-x64.tar.gz` to Linux users. On Linux: `tar -xzf MathExam-linux-x64.tar.gz && ./MathExam/MathExam`.
+To share the app, send `release/win-x64/MathExam.exe` to Windows users and the matching Linux archive to Linux users: `x64` for most PCs, `arm64` for a Raspberry Pi with 64-bit Raspberry Pi OS, `arm` for 32-bit Raspberry Pi OS (`uname -m` shows `x86_64`, `aarch64` or `armv7l`). On Linux: `tar -xzf MathExam-linux-<arch>.tar.gz && ./MathExam/MathExam`.
 
 During development:
 

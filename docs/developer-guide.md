@@ -18,23 +18,24 @@ dotnet run --project src/MathExam.App
 `build_release.bat` (Windows) and `build_release.sh` (Linux) do the same thing. They run `dotnet test -c Release`, then publish once per platform (runtime identifier) into `release/<rid>/`:
 
 ```
-dotnet publish src/MathExam.App/MathExam.App.csproj -c Release -r <win-x64|linux-x64> --self-contained true
+dotnet publish src/MathExam.App/MathExam.App.csproj -c Release -r <win-x64|linux-x64|linux-arm64|linux-arm> --self-contained true
     -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true
     -p:EnableCompressionInSingleFile=true -p:DebugType=none -o release/<rid>
 ```
 
-- **Output:** `release/win-x64/MathExam.exe` and `release/linux-x64/MathExam`, each a compressed single file of about 45 MB that includes the .NET runtime. `IncludeNativeLibrariesForSelfExtract` bundles Avalonia's native libraries (SkiaSharp, HarfBuzz).
-- **Cross-publishing:** either OS can build both platforms.
+- **Output:** `release/win-x64/MathExam.exe` and `release/linux-{x64,arm64,arm}/MathExam`, each a compressed single file of 41–47 MB that includes the .NET runtime. `IncludeNativeLibrariesForSelfExtract` bundles Avalonia's native libraries (SkiaSharp, HarfBuzz), which ship builds for all these processors.
+- **Raspberry Pi:** `linux-arm64` is for 64-bit Raspberry Pi OS (Pi 3 and later), `linux-arm` for 32-bit Raspberry Pi OS (`armhf`, Pi 2 and later). .NET does not support ARMv6, so the Pi Zero and Pi 1 are out. The ARM builds are cross-published and have not yet been tried on real hardware.
+- **Cross-publishing:** either OS can build all platforms.
 - **Debug symbols:** the `RemovePdbsFromPublish` target in `MathExam.App.csproj` deletes the ~100 MB of native `.pdb` files that SkiaSharp would otherwise leave next to the exe.
 - **Failure handling:** a failing test stops the build before anything is published. `release/` is deleted first, so no stale files remain.
 - **Pausing:** when double-clicked, the `.bat` scripts pause at the end so you can read the output. Pass `--no-pause` when calling one from another script.
 - **Calling scripts:** the `.bat` scripts call each other by full path (`"%~dp0build_release.bat"`), because cmd does not search the current folder when `NoDefaultCurrentDirectoryInExePath` is set. The `.sh` scripts call each other with `bash`, so they work even if a checkout lost the execute bit.
 
-`start.bat` / `start.sh` launch the release build for the current OS, and run the build script first if it is missing. They do not rebuild when the code changes.
+`start.bat` / `start.sh` launch the release build for the current OS (`start.sh` picks the Linux build from `uname -m`), and run the build script first if it is missing. They do not rebuild when the code changes.
 
 ### Linux archive
 
-`package_linux.bat` / `package_linux.sh` run the build script, then create `release/MathExam-linux-x64.tar.gz`:
+`package_linux.bat` / `package_linux.sh` run the build script, then create `release/MathExam-linux-<rid>.tar.gz` for `linux-x64`, `linux-arm64` and `linux-arm`, each with:
 
 ```
 MathExam/MathExam     (mode 0755, the program)
@@ -42,7 +43,7 @@ MathExam/README.txt   (mode 0644, copied from packaging/linux/README.txt)
 MathExam/LICENSE.md   (mode 0644, copied from license.md; MIT requires the notice in copies)
 ```
 
-- **Permissions:** Windows files have no Unix permissions. `package_linux.bat` therefore passes Windows' built-in `tar.exe` (bsdtar) an mtree file list, `packaging/linux/files.mtree`, which states each file's mode. `package_linux.sh` stages the files with `install -m` and uses GNU tar. Both produce root-owned entries.
+- **Permissions:** Windows files have no Unix permissions. `package_linux.bat` therefore passes Windows' built-in `tar.exe` (bsdtar) an mtree file list, `packaging/linux/files.mtree`, which states each file's mode; tar runs inside `release/<rid>/`, so the one list serves every archive. `package_linux.sh` stages the files with `install -m` and uses GNU tar. Both produce root-owned entries.
 - **Line endings:** `.gitattributes` keeps `*.bat` in CRLF (cmd.exe can misread labels otherwise), and keeps `*.sh`, `*.mtree` and `packaging/linux/*` in LF.
 - **Git:** `release/` is ignored by the `[Rr]elease/` rule in `.gitignore`.
 
@@ -68,7 +69,7 @@ docs/                     This documentation
 global.json               Minimum .NET SDK (9.0.300)
 build_release.bat/.sh     Test + publish self-contained builds into release/<rid>/
 start.bat/.sh             Start the release build (builds it if missing)
-package_linux.bat/.sh     Build + create release/MathExam-linux-x64.tar.gz
+package_linux.bat/.sh     Build + create release/MathExam-linux-{x64,arm64,arm}.tar.gz
 ```
 
 All the rules live in `MathExam.Core`, so they can be unit tested without a UI. The Avalonia project only binds that logic to the screen.

@@ -1,6 +1,7 @@
 #mtree
-# Contents of MathExam-linux-x64.tar.gz for package_linux.bat (paths relative to release/).
+# Contents of each MathExam-linux-<arch>.tar.gz for package_linux.bat, which runs tar inside
+# release/<arch>/, so the contents= paths are relative to that folder.
 # Lists each file with its Linux permissions, because Windows files have none.
-./MathExam/MathExam type=file mode=0755 contents=linux-x64/MathExam
-./MathExam/README.txt type=file mode=0644 contents=linux-x64/README.txt
-./MathExam/LICENSE.md type=file mode=0644 contents=linux-x64/LICENSE.md
+./MathExam/MathExam type=file mode=0755 contents=MathExam
+./MathExam/README.txt type=file mode=0644 contents=README.txt
+./MathExam/LICENSE.md type=file mode=0644 contents=LICENSE.md
