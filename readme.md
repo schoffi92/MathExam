@@ -23,7 +23,7 @@ A desktop app for **Windows and Linux**, including the Raspberry Pi (C# / Avalon
 - **Players and goals:** each child (or pupil) has a profile with their own history, levels, personal bests and a daily goal ("Today: 12 / 20 tasks"). Switch players in one click on the menu.
 - **Progress history:** every game is saved on this computer and listed on the History screen with totals and accuracy per operation, for all players or one. A Players tab gives a class overview. Export as CSV for a spreadsheet.
 - **Printable worksheets:** 10, 20 or 30 tasks with the current settings as a PDF with answer keys, in up to four versions; a sheet code gives a whole class the same tasks.
-- **How to use:** a button on the menu opens a short, scrollable guide to the app in the chosen language.
+- **How to use:** a button on the menu opens a short, scrollable guide to the app, with its own language list.
 - **Languages:** English, French, German, Hungarian, Italian, Spanish, Polish, Czech, Finnish, Portuguese, Swedish, Norwegian, Croatian, Slovenian, Slovak, Turkish, Greek, Romanian and Dutch. The app follows the system language, or you can pick one in the menu.
 - **Accessibility:** three text sizes (Normal / Large / Extra large) and a high-contrast colour theme, both remembered between launches. Right and wrong answers are also shown as text (✓ / ✗), not just by colour.
 

@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.Text.RegularExpressions;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -14,7 +15,8 @@ public sealed record HelpSection(string Title, string Body);
 /// <summary>
 /// The "How to use" screen: the Help_S{n}_Title/Body texts in the current language. A «Key» in them stands for
 /// another text (a button or setting name) and is filled in here, so the help names every control exactly as
-/// the screens show it.
+/// the screens show it. The screen has its own language list (the app's language setting), and reloads the
+/// texts when the language changes.
 /// </summary>
 public partial class HelpViewModel : ObservableObject, IScrollsItself
 {
@@ -22,18 +24,37 @@ public partial class HelpViewModel : ObservableObject, IScrollsItself
 
     private readonly Action _onClose;
 
-    public HelpViewModel(Action onClose)
+    public HelpViewModel(DisplayViewModel display, Action onClose)
     {
+        Display = display;
         _onClose = onClose;
-        Sections = Enumerable.Range(1, SectionCount)
-            .Select(i => new HelpSection(Text($"Help_S{i}_Title"), Text($"Help_S{i}_Body")))
-            .ToList();
+        _sections = LoadSections();
+        Display.PropertyChanged += OnDisplayChanged;
     }
 
-    public IReadOnlyList<HelpSection> Sections { get; }
+    /// <summary>The app's display settings; the language list is bound to <see cref="DisplayViewModel.Language"/>.</summary>
+    public DisplayViewModel Display { get; }
+
+    [ObservableProperty]
+    private IReadOnlyList<HelpSection> _sections;
 
     [RelayCommand]
-    private void Close() => _onClose();
+    private void Close()
+    {
+        Display.PropertyChanged -= OnDisplayChanged;
+        _onClose();
+    }
+
+    private void OnDisplayChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        // The new language is already applied (DisplayViewModel does that first), so the texts come out in it.
+        if (e.PropertyName == nameof(DisplayViewModel.Language))
+            Sections = LoadSections();
+    }
+
+    private static IReadOnlyList<HelpSection> LoadSections() => Enumerable.Range(1, SectionCount)
+        .Select(i => new HelpSection(Text($"Help_S{i}_Title"), Text($"Help_S{i}_Body")))
+        .ToList();
 
     private static string Text(string key) =>
         FillLabels(Strings.ResourceManager.GetString(key, Strings.Culture) ?? key);

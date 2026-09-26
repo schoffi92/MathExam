@@ -27,7 +27,7 @@ public partial class MainViewModel : ObservableObject
         _profiles = _profileStore.Load();
         // The menu and family setup are reused so settings and player names survive a game.
         _menu = new MenuViewModel(Display, StartGame, ShowFamilySetup, ShowHistory, ShowWorksheet, ShowPlayers, SelectPlayer,
-            () => CurrentViewModel = new HelpViewModel(ShowMenu));
+            () => CurrentViewModel = new HelpViewModel(Display, ShowMenu));
         _familySetup = new FamilySetupViewModel(StartFamilyGame, ShowMenu);
         _currentViewModel = _menu;
         RefreshMenu();

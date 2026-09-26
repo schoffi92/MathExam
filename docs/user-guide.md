@@ -22,7 +22,7 @@ Defaults: lowest `1`, highest `10`, the four basic operations on (powers, roots 
 
 Display changes, including the language, apply immediately and are remembered the next time you open the app. If Extra large text doesn't fit on a small screen, the window can be scrolled.
 
-The menu has two columns: what to practise on the left; the player and the display settings on the right. **How to use** at the top right opens a short guide to the app in the chosen language; scroll through it and press **Close** (or <kbd>Esc</kbd>) to return to the menu, with your settings as they were.
+The menu has two columns: what to practise on the left; the player and the display settings on the right. **How to use** at the top right opens a short guide to the app in the chosen language; scroll through it and press **Close** (or <kbd>Esc</kbd>) to return to the menu, with your settings as they were. The guide has its own **Language** list: it is the same setting as on the menu, so choosing a language there switches the guide and the whole app.
 
 **Start** (or <kbd>Enter</kbd>) begins a game. **Family game** sets up a game for several players (see [Family game](#5-family-game)). **History** shows your past games. **Worksheet (PDF)** opens the options for a printable worksheet (see [Worksheets](#7-printable-worksheets)). If the settings are invalid, the button stays disabled and a red message says what to fix:
 
