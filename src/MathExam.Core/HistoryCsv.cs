@@ -17,7 +17,7 @@ public static class HistoryCsv
         var operations = Enum.GetValues<Operation>();
         var header = new List<string>
         {
-            "Started", "Player", "Min", "Max", "Operations", "Numbers", "MissingOperator", "Answered", "Correct",
+            "Started", "Player", "Mode", "Min", "Max", "Operations", "Numbers", "MissingOperator", "Answered", "Correct",
             "Wrong", "Accuracy", "DurationSeconds", "TimeLimitSeconds", "StartLevel", "EndLevel",
         };
         foreach (var op in operations)
@@ -29,7 +29,8 @@ public static class HistoryCsv
             var row = new List<string>
             {
                 r.StartedAt.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture),
-                r.Player ?? "",
+                r.Who ?? "",
+                r.Mode.ToString(),
                 Number(r.Min),
                 Number(r.Max),
                 string.Join(" ", r.Operations),

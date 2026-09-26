@@ -1,0 +1,45 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:MathExam.App.ViewModels"
+             xmlns:res="using:MathExam.App.Resources"
+             xmlns:core="using:MathExam.Core"
+             x:Class="MathExam.App.Views.PlayersView"
+             x:DataType="vm:PlayersViewModel">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="520">
+        <TextBlock Text="{x:Static res:Strings.Players_Title}" Classes="title" Margin="0,0,0,8" />
+        <TextBlock Text="{x:Static res:Strings.Players_Intro}" Foreground="{DynamicResource MutedBrush}"
+                   TextWrapping="Wrap" TextAlignment="Center" Margin="0,0,0,16" />
+
+        <!-- One row per player: name, daily goal, remove. -->
+        <Grid ColumnDefinitions="*,Auto,Auto" Margin="0,0,0,4">
+            <TextBlock Grid.Column="1" Text="{x:Static res:Strings.Players_Goal}" FontSize="13"
+                       Foreground="{DynamicResource MutedBrush}" Margin="0,0,8,0" />
+        </Grid>
+        <ItemsControl ItemsSource="{Binding Rows}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate x:DataType="vm:PlayerRow">
+                    <Grid ColumnDefinitions="*,Auto,Auto" Margin="0,4">
+                        <TextBlock Text="{Binding Name}" VerticalAlignment="Center" FontWeight="SemiBold"
+                                   TextTrimming="CharacterEllipsis" />
+                        <NumericUpDown Grid.Column="1" Value="{Binding DailyGoal}" Minimum="0" Maximum="500"
+                                       Increment="5" FormatString="0" ParsingNumberStyle="Integer" Width="130" />
+                        <Button Grid.Column="2" Content="{x:Static res:Strings.FamilySetup_Remove}" Command="{Binding RemoveCommand}"
+                                Margin="8,0,0,0" MinWidth="0" Padding="10,4" FontSize="14" />
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <Grid ColumnDefinitions="*,Auto" Margin="0,16,0,0">
+            <TextBox Text="{Binding NewName}" PlaceholderText="{x:Static res:Strings.FamilySetup_NamePlaceholder}"
+                     MaxLength="{x:Static core:FamilyGame.MaxNameLength}" />
+            <Button Grid.Column="1" Content="{x:Static res:Strings.Players_Add}" Command="{Binding AddCommand}"
+                    IsDefault="True" Margin="8,0,0,0" MinWidth="0" Padding="16,4" />
+        </Grid>
+        <TextBlock Text="{Binding ErrorMessage}" Foreground="{DynamicResource ErrorBrush}" TextWrapping="Wrap"
+                   HorizontalAlignment="Center" Margin="0,8,0,0" />
+
+        <Button Content="{x:Static res:Strings.Common_BackToMenu}" Command="{Binding BackCommand}" IsCancel="True"
+                HorizontalAlignment="Center" Margin="0,16,0,0" />
+    </StackPanel>
+</UserControl>

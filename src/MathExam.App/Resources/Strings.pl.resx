@@ -60,9 +60,6 @@
   <data name="Menu_AdaptiveHint" xml:space="preserve">
     <value>Zaczyna od małych liczb, które rosną, gdy odpowiadasz poprawnie.</value>
   </data>
-  <data name="Menu_Timed" xml:space="preserve">
-    <value>Na czas: 1 minuta (solo)</value>
-  </data>
   <data name="Menu_Display" xml:space="preserve">
     <value>Wygląd</value>
   </data>
@@ -219,9 +216,6 @@
   <data name="History_Empty" xml:space="preserve">
     <value>Nie rozegrano jeszcze żadnej gry.</value>
   </data>
-  <data name="History_Solo" xml:space="preserve">
-    <value>Solo</value>
-  </data>
   <data name="History_GameOne" xml:space="preserve">
     <value>Gry: {0}</value>
   </data>
@@ -320,5 +314,95 @@
   </data>
   <data name="Worksheet_Settings" xml:space="preserve">
     <value>Liczby od {0} do {1}, {2}</value>
+  </data>
+  <data name="Menu_Player" xml:space="preserve">
+    <value>Gracz:</value>
+  </data>
+  <data name="Menu_Guest" xml:space="preserve">
+    <value>Gość</value>
+  </data>
+  <data name="Menu_Players" xml:space="preserve">
+    <value>Gracze…</value>
+  </data>
+  <data name="Menu_Mode" xml:space="preserve">
+    <value>Gra:</value>
+  </data>
+  <data name="Mode_Practice" xml:space="preserve">
+    <value>Ćwiczenie</value>
+  </data>
+  <data name="Mode_Timed" xml:space="preserve">
+    <value>Na czas (1 minuta)</value>
+  </data>
+  <data name="Mode_TimedShort" xml:space="preserve">
+    <value>Na czas</value>
+  </data>
+  <data name="Mode_Test" xml:space="preserve">
+    <value>Sprawdzian ({0} zadań)</value>
+  </data>
+  <data name="Mode_TestShort" xml:space="preserve">
+    <value>Sprawdzian</value>
+  </data>
+  <data name="Goal_Progress" xml:space="preserve">
+    <value>Zadania dziś: {0} / {1}</value>
+  </data>
+  <data name="Goal_Done" xml:space="preserve">
+    <value>✓ Cel na dziś osiągnięty!</value>
+  </data>
+  <data name="Players_Title" xml:space="preserve">
+    <value>Gracze</value>
+  </data>
+  <data name="Players_Intro" xml:space="preserve">
+    <value>Każdy gracz ma własną historię, poziomy i dzienny cel. Po usunięciu gracza jego gry zostają w historii.</value>
+  </data>
+  <data name="Players_Add" xml:space="preserve">
+    <value>Dodaj</value>
+  </data>
+  <data name="Players_Goal" xml:space="preserve">
+    <value>Dzienny cel (zadania):</value>
+  </data>
+  <data name="Summary_Score" xml:space="preserve">
+    <value>Wynik: {0} / {1}</value>
+  </data>
+  <data name="Summary_Review" xml:space="preserve">
+    <value>Do powtórki:</value>
+  </data>
+  <data name="Summary_YourAnswer" xml:space="preserve">
+    <value>{0}   (twoja odpowiedź: {1})</value>
+  </data>
+  <data name="History_Show" xml:space="preserve">
+    <value>Pokaż:</value>
+  </data>
+  <data name="History_AllPlayers" xml:space="preserve">
+    <value>Wszyscy gracze</value>
+  </data>
+  <data name="History_Games" xml:space="preserve">
+    <value>Gry</value>
+  </data>
+  <data name="History_Game" xml:space="preserve">
+    <value>Gra</value>
+  </data>
+  <data name="History_Today" xml:space="preserve">
+    <value>Dziś</value>
+  </data>
+  <data name="History_LastPlayed" xml:space="preserve">
+    <value>Ostatnia gra</value>
+  </data>
+  <data name="Worksheet_Tasks" xml:space="preserve">
+    <value>Zadania na karcie:</value>
+  </data>
+  <data name="Worksheet_Versions" xml:space="preserve">
+    <value>Wersje:</value>
+  </data>
+  <data name="Worksheet_Code" xml:space="preserve">
+    <value>Kod karty:</value>
+  </data>
+  <data name="Worksheet_CodeHint" xml:space="preserve">
+    <value>Ten sam kod daje te same zadania, np. dla całej klasy. Zostaw puste, aby dostać nowe zadania.</value>
+  </data>
+  <data name="Worksheet_Save" xml:space="preserve">
+    <value>Zapisz PDF…</value>
+  </data>
+  <data name="Worksheet_Version" xml:space="preserve">
+    <value>Wersja {0}</value>
   </data>
 </root>

@@ -60,9 +60,6 @@
   <data name="Menu_AdaptiveHint" xml:space="preserve">
     <value>Začína s malými číslami, ktoré rastú, keď odpovedáš správne.</value>
   </data>
-  <data name="Menu_Timed" xml:space="preserve">
-    <value>Na čas: 1 minúta (sólo)</value>
-  </data>
   <data name="Menu_Display" xml:space="preserve">
     <value>Zobrazenie</value>
   </data>
@@ -219,9 +216,6 @@
   <data name="History_Empty" xml:space="preserve">
     <value>Zatiaľ sa nehrala žiadna hra.</value>
   </data>
-  <data name="History_Solo" xml:space="preserve">
-    <value>Sólo</value>
-  </data>
   <data name="History_GameOne" xml:space="preserve">
     <value>Hry: {0}</value>
   </data>
@@ -320,5 +314,95 @@
   </data>
   <data name="Worksheet_Settings" xml:space="preserve">
     <value>Čísla od {0} do {1}, {2}</value>
+  </data>
+  <data name="Menu_Player" xml:space="preserve">
+    <value>Hráč:</value>
+  </data>
+  <data name="Menu_Guest" xml:space="preserve">
+    <value>Hosť</value>
+  </data>
+  <data name="Menu_Players" xml:space="preserve">
+    <value>Hráči…</value>
+  </data>
+  <data name="Menu_Mode" xml:space="preserve">
+    <value>Hra:</value>
+  </data>
+  <data name="Mode_Practice" xml:space="preserve">
+    <value>Precvičovanie</value>
+  </data>
+  <data name="Mode_Timed" xml:space="preserve">
+    <value>Na čas (1 minúta)</value>
+  </data>
+  <data name="Mode_TimedShort" xml:space="preserve">
+    <value>Na čas</value>
+  </data>
+  <data name="Mode_Test" xml:space="preserve">
+    <value>Test ({0} príkladov)</value>
+  </data>
+  <data name="Mode_TestShort" xml:space="preserve">
+    <value>Test</value>
+  </data>
+  <data name="Goal_Progress" xml:space="preserve">
+    <value>Príklady dnes: {0} / {1}</value>
+  </data>
+  <data name="Goal_Done" xml:space="preserve">
+    <value>✓ Denný cieľ splnený!</value>
+  </data>
+  <data name="Players_Title" xml:space="preserve">
+    <value>Hráči</value>
+  </data>
+  <data name="Players_Intro" xml:space="preserve">
+    <value>Každý hráč má vlastnú históriu, úrovne a denný cieľ. Po odobraní hráča zostanú jeho hry v histórii.</value>
+  </data>
+  <data name="Players_Add" xml:space="preserve">
+    <value>Pridať</value>
+  </data>
+  <data name="Players_Goal" xml:space="preserve">
+    <value>Denný cieľ (príklady):</value>
+  </data>
+  <data name="Summary_Score" xml:space="preserve">
+    <value>Výsledok: {0} / {1}</value>
+  </data>
+  <data name="Summary_Review" xml:space="preserve">
+    <value>Na precvičenie:</value>
+  </data>
+  <data name="Summary_YourAnswer" xml:space="preserve">
+    <value>{0}   (tvoja odpoveď: {1})</value>
+  </data>
+  <data name="History_Show" xml:space="preserve">
+    <value>Zobraziť:</value>
+  </data>
+  <data name="History_AllPlayers" xml:space="preserve">
+    <value>Všetci hráči</value>
+  </data>
+  <data name="History_Games" xml:space="preserve">
+    <value>Hry</value>
+  </data>
+  <data name="History_Game" xml:space="preserve">
+    <value>Hra</value>
+  </data>
+  <data name="History_Today" xml:space="preserve">
+    <value>Dnes</value>
+  </data>
+  <data name="History_LastPlayed" xml:space="preserve">
+    <value>Naposledy</value>
+  </data>
+  <data name="Worksheet_Tasks" xml:space="preserve">
+    <value>Príklady na list:</value>
+  </data>
+  <data name="Worksheet_Versions" xml:space="preserve">
+    <value>Verzie:</value>
+  </data>
+  <data name="Worksheet_Code" xml:space="preserve">
+    <value>Kód listu:</value>
+  </data>
+  <data name="Worksheet_CodeHint" xml:space="preserve">
+    <value>Rovnaký kód dá rovnaké príklady, napríklad pre celú triedu. Pre nové príklady nechaj pole prázdne.</value>
+  </data>
+  <data name="Worksheet_Save" xml:space="preserve">
+    <value>Uložiť PDF…</value>
+  </data>
+  <data name="Worksheet_Version" xml:space="preserve">
+    <value>Verzia {0}</value>
   </data>
 </root>

@@ -39,4 +39,7 @@
   <data name="Players_DuplicateName" xml:space="preserve">
     <value>Každý hráč musí mít jiné jméno.</value>
   </data>
+  <data name="Profiles_NameTaken" xml:space="preserve">
+    <value>Hráč s tímto jménem už existuje.</value>
+  </data>
 </root>

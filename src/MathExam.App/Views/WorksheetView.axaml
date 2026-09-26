@@ -1,0 +1,32 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:MathExam.App.ViewModels"
+             xmlns:res="using:MathExam.App.Resources"
+             x:Class="MathExam.App.Views.WorksheetView"
+             x:DataType="vm:WorksheetViewModel">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="480">
+        <TextBlock Text="{x:Static res:Strings.Menu_Worksheet}" Classes="title" />
+
+        <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto,Auto" RowSpacing="12">
+            <TextBlock Text="{x:Static res:Strings.Worksheet_Tasks}" VerticalAlignment="Center" />
+            <ComboBox Grid.Column="1" ItemsSource="{Binding TaskCounts}" SelectedItem="{Binding TaskCount}" Width="150" />
+
+            <TextBlock Grid.Row="1" Text="{x:Static res:Strings.Worksheet_Versions}" VerticalAlignment="Center" />
+            <NumericUpDown Grid.Row="1" Grid.Column="1" Value="{Binding Versions}" Minimum="1" Maximum="{Binding VersionLimit}"
+                           Increment="1" FormatString="0" ParsingNumberStyle="Integer" Width="150" />
+
+            <TextBlock Grid.Row="2" Text="{x:Static res:Strings.Worksheet_Code}" VerticalAlignment="Center" />
+            <NumericUpDown Grid.Row="2" Grid.Column="1" Value="{Binding Code}" Minimum="1" Maximum="{Binding CodeLimit}"
+                           Increment="1" FormatString="0" ParsingNumberStyle="Integer" Width="150" ShowButtonSpinner="False" />
+        </Grid>
+        <TextBlock Text="{x:Static res:Strings.Worksheet_CodeHint}" Foreground="{DynamicResource MutedBrush}" FontSize="13"
+                   TextWrapping="Wrap" Margin="0,8,0,24" />
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="12">
+            <Button Content="{x:Static res:Strings.Worksheet_Save}" Command="{Binding SaveCommand}" IsDefault="True" />
+            <Button Content="{x:Static res:Strings.Common_Back}" Command="{Binding BackCommand}" IsCancel="True" />
+        </StackPanel>
+        <TextBlock Text="{Binding StatusText}" Foreground="{DynamicResource MutedBrush}" TextWrapping="Wrap"
+                   HorizontalAlignment="Center" Margin="0,12,0,0" />
+    </StackPanel>
+</UserControl>

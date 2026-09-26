@@ -10,12 +10,17 @@ public partial class GameViewModel : ObservableObject
 {
     private readonly GameSession _session;
     private readonly Action<GameSession> _onStop;
+    private readonly DailyGoalProgress _goal;
     private readonly DispatcherTimer _timer;
 
-    public GameViewModel(GameSession session, Action<GameSession> onStop)
+    /// <param name="player">The profile playing, shown in the header; null for the guest.</param>
+    /// <param name="goal">The player's daily goal and the tasks they answered earlier today.</param>
+    public GameViewModel(GameSession session, Action<GameSession> onStop, string? player = null, DailyGoalProgress? goal = null)
     {
         _session = session;
         _onStop = onStop;
+        PlayerName = player ?? "";
+        _goal = goal ?? DailyGoalProgress.None;
         _timer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(250) };
         _timer.Tick += (_, _) => OnTick();
         _timer.Start();
@@ -24,15 +29,21 @@ public partial class GameViewModel : ObservableObject
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(IsAnswered), nameof(IsCorrect), nameof(IsWrong), nameof(ButtonText),
         nameof(FeedbackText), nameof(ExplanationText), nameof(SolvedText), nameof(LevelText), nameof(LevelChangeText),
-        nameof(ShowOperatorButtons))]
+        nameof(ShowOperatorButtons), nameof(GoalText))]
     private AnswerState _state = AnswerState.Answering;
 
     [ObservableProperty]
     private string _answerText = "";
 
     public MathTask Equation => _session.CurrentTask;
-    public string TaskNumberText => string.Format(Strings.Game_TaskNumber, _session.TaskNumber);
-    public string SolvedText => string.Format(Strings.Game_Solved, _session.CorrectCount, _session.AnsweredCount);
+    // A test counts towards its end: "Task 3 of 20".
+    public string TaskNumberText => _session.TaskLimit is { } limit
+        ? string.Format(Strings.FamilyGame_TaskInTurn, _session.TaskNumber, limit)
+        : string.Format(Strings.Game_TaskNumber, _session.TaskNumber);
+    public string PlayerName { get; }
+    public string GoalText => _goal.Text(_session.AnsweredCount);
+    // Hidden in a test, which reveals nothing about right and wrong until the end.
+    public string SolvedText => _session.IsTest ? "" : string.Format(Strings.Game_Solved, _session.CorrectCount, _session.AnsweredCount);
     public string StartedText => string.Format(Strings.Game_Started, _session.StartedAt.ToString("HH:mm:ss"));
 
     /// <summary>Elapsed time, or in a timed challenge the time left.</summary>
@@ -68,8 +79,27 @@ public partial class GameViewModel : ObservableObject
         }
 
         var result = Answers.Submit(AnswerText, _session.CurrentTask, _session.Submit, _session.SubmitOperator);
-        if (result is { } correct)
+        if (result is not { } correct)
+            return;
+
+        if (!_session.IsTest)
+        {
             State = correct ? AnswerState.Correct : AnswerState.Wrong;
+            return;
+        }
+
+        // A test shows no feedback until the end: straight on to the next task, or to the summary.
+        if (_session.IsTestComplete)
+        {
+            Stop();
+            return;
+        }
+        _session.NextTask();
+        AnswerText = "";
+        OnPropertyChanged(nameof(Equation));
+        OnPropertyChanged(nameof(TaskNumberText));
+        OnPropertyChanged(nameof(ShowOperatorButtons));
+        OnPropertyChanged(nameof(GoalText));
     }
 
     /// <summary>An operator button of a missing-operator task: fills in the symbol and sends it.</summary>

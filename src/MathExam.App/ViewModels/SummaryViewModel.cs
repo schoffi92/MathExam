@@ -24,6 +24,14 @@ public partial class SummaryViewModel : ObservableObject
         SaveError = saveError ?? "";
 
         TimeUpText = session.IsTimeUp ? Strings.Summary_TimeUp : "";
+        if (session.TaskLimit is { } limit)
+        {
+            ScoreText = string.Format(Strings.Summary_Score, session.CorrectCount, limit);
+            // What to practise: each wrong answer, with the task solved.
+            Review = session.Mistakes
+                .Select(m => string.Format(Strings.Summary_YourAnswer, m.Task.ToDisplayString(revealAnswer: true), m.Given))
+                .ToList();
+        }
         if (session.IsTimed)
         {
             BestText = session.CorrectCount > (previousBest ?? 0)
@@ -33,6 +41,9 @@ public partial class SummaryViewModel : ObservableObject
     }
 
     public string TimeUpText { get; }
+    public string ScoreText { get; } = "";
+    public IReadOnlyList<string> Review { get; } = [];
+    public bool HasReview => Review.Count > 0;
     public string BestText { get; } = "";
 
     public string AnsweredText { get; }

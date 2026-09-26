@@ -29,6 +29,12 @@
         <DataTemplate DataType="vm:FamilySummaryViewModel">
             <views:FamilySummaryView />
         </DataTemplate>
+        <DataTemplate DataType="vm:PlayersViewModel">
+            <views:PlayersView />
+        </DataTemplate>
+        <DataTemplate DataType="vm:WorksheetViewModel">
+            <views:WorksheetView />
+        </DataTemplate>
     </Application.DataTemplates>
 
     <!-- Colour themes: ThemeManager switches RequestedThemeVariant between Light and HighContrast.

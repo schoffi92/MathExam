@@ -60,9 +60,6 @@
   <data name="Menu_AdaptiveHint" xml:space="preserve">
     <value>Začne z majhnimi števili, ki rastejo, ko odgovarjaš pravilno.</value>
   </data>
-  <data name="Menu_Timed" xml:space="preserve">
-    <value>Na čas: 1 minuta (samostojno)</value>
-  </data>
   <data name="Menu_Display" xml:space="preserve">
     <value>Prikaz</value>
   </data>
@@ -219,9 +216,6 @@
   <data name="History_Empty" xml:space="preserve">
     <value>Odigrana ni bila še nobena igra.</value>
   </data>
-  <data name="History_Solo" xml:space="preserve">
-    <value>Samostojno</value>
-  </data>
   <data name="History_GameOne" xml:space="preserve">
     <value>Igre: {0}</value>
   </data>
@@ -320,5 +314,95 @@
   </data>
   <data name="Worksheet_Settings" xml:space="preserve">
     <value>Števila od {0} do {1}, {2}</value>
+  </data>
+  <data name="Menu_Player" xml:space="preserve">
+    <value>Igralec:</value>
+  </data>
+  <data name="Menu_Guest" xml:space="preserve">
+    <value>Gost</value>
+  </data>
+  <data name="Menu_Players" xml:space="preserve">
+    <value>Igralci…</value>
+  </data>
+  <data name="Menu_Mode" xml:space="preserve">
+    <value>Igra:</value>
+  </data>
+  <data name="Mode_Practice" xml:space="preserve">
+    <value>Vaja</value>
+  </data>
+  <data name="Mode_Timed" xml:space="preserve">
+    <value>Na čas (1 minuta)</value>
+  </data>
+  <data name="Mode_TimedShort" xml:space="preserve">
+    <value>Na čas</value>
+  </data>
+  <data name="Mode_Test" xml:space="preserve">
+    <value>Preizkus ({0} nalog)</value>
+  </data>
+  <data name="Mode_TestShort" xml:space="preserve">
+    <value>Preizkus</value>
+  </data>
+  <data name="Goal_Progress" xml:space="preserve">
+    <value>Naloge danes: {0} / {1}</value>
+  </data>
+  <data name="Goal_Done" xml:space="preserve">
+    <value>✓ Dnevni cilj dosežen!</value>
+  </data>
+  <data name="Players_Title" xml:space="preserve">
+    <value>Igralci</value>
+  </data>
+  <data name="Players_Intro" xml:space="preserve">
+    <value>Vsak igralec ima svojo zgodovino, stopnje in dnevni cilj. Ko igralca odstranite, njegove igre ostanejo v zgodovini.</value>
+  </data>
+  <data name="Players_Add" xml:space="preserve">
+    <value>Dodaj</value>
+  </data>
+  <data name="Players_Goal" xml:space="preserve">
+    <value>Dnevni cilj (naloge):</value>
+  </data>
+  <data name="Summary_Score" xml:space="preserve">
+    <value>Rezultat: {0} / {1}</value>
+  </data>
+  <data name="Summary_Review" xml:space="preserve">
+    <value>Za vajo:</value>
+  </data>
+  <data name="Summary_YourAnswer" xml:space="preserve">
+    <value>{0}   (tvoj odgovor: {1})</value>
+  </data>
+  <data name="History_Show" xml:space="preserve">
+    <value>Prikaži:</value>
+  </data>
+  <data name="History_AllPlayers" xml:space="preserve">
+    <value>Vsi igralci</value>
+  </data>
+  <data name="History_Games" xml:space="preserve">
+    <value>Igre</value>
+  </data>
+  <data name="History_Game" xml:space="preserve">
+    <value>Igra</value>
+  </data>
+  <data name="History_Today" xml:space="preserve">
+    <value>Danes</value>
+  </data>
+  <data name="History_LastPlayed" xml:space="preserve">
+    <value>Zadnja igra</value>
+  </data>
+  <data name="Worksheet_Tasks" xml:space="preserve">
+    <value>Nalog na list:</value>
+  </data>
+  <data name="Worksheet_Versions" xml:space="preserve">
+    <value>Različice:</value>
+  </data>
+  <data name="Worksheet_Code" xml:space="preserve">
+    <value>Koda lista:</value>
+  </data>
+  <data name="Worksheet_CodeHint" xml:space="preserve">
+    <value>Ista koda da iste naloge, npr. za cel razred. Pusti prazno za nove naloge.</value>
+  </data>
+  <data name="Worksheet_Save" xml:space="preserve">
+    <value>Shrani PDF…</value>
+  </data>
+  <data name="Worksheet_Version" xml:space="preserve">
+    <value>Različica {0}</value>
   </data>
 </root>

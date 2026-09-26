@@ -46,28 +46,60 @@
                 <CheckBox Content="{x:Static res:Strings.Menu_Adaptive}" IsChecked="{Binding UseAdaptive}" />
                 <TextBlock Text="{x:Static res:Strings.Menu_AdaptiveHint}"
                            Foreground="{DynamicResource MutedBrush}" FontSize="13" TextWrapping="Wrap" Margin="28,0,0,8" />
-                <CheckBox Content="{x:Static res:Strings.Menu_Timed}" IsChecked="{Binding UseTimed}" />
-            </StackPanel>
-
-            <Border Grid.Column="2" Classes="group" VerticalAlignment="Top">
-                <StackPanel Spacing="2">
-                    <TextBlock Text="{x:Static res:Strings.Menu_Display}" Classes="groupHeader" />
-                    <TextBlock Text="{x:Static res:Strings.Menu_TextSize}" Margin="4,0,0,0" />
-                    <RadioButton Content="{x:Static res:Strings.Menu_TextNormal}" GroupName="TextSize" IsChecked="{Binding Display.IsNormalText}" />
-                    <RadioButton Content="{x:Static res:Strings.Menu_TextLarge}" GroupName="TextSize" IsChecked="{Binding Display.IsLargeText}" />
-                    <RadioButton Content="{x:Static res:Strings.Menu_TextExtraLarge}" GroupName="TextSize" IsChecked="{Binding Display.IsExtraLargeText}" />
-                    <CheckBox Content="{x:Static res:Strings.Menu_HighContrast}" IsChecked="{Binding Display.HighContrast}" Margin="0,8,0,0" />
-                    <TextBlock Text="{x:Static res:Strings.Menu_Language}" Margin="4,8,0,4" />
-                    <ComboBox ItemsSource="{Binding Display.Languages}" SelectedItem="{Binding Display.Language}"
-                              MinWidth="200" Margin="4,0,0,0">
+                <StackPanel Orientation="Horizontal" Spacing="8" Margin="4,4,0,0">
+                    <TextBlock Text="{x:Static res:Strings.Menu_Mode}" VerticalAlignment="Center" />
+                    <ComboBox ItemsSource="{Binding Modes}" SelectedItem="{Binding Mode}" MinWidth="240">
                         <ComboBox.ItemTemplate>
-                            <DataTemplate x:DataType="app:LanguageOption">
+                            <DataTemplate x:DataType="vm:GameModeOption">
                                 <TextBlock Text="{Binding DisplayName}" />
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
                 </StackPanel>
-            </Border>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2">
+                <!-- Who is playing: the guest or a profile, with their daily goal. -->
+                <Border Classes="group" Margin="0,0,0,16">
+                    <StackPanel Spacing="4">
+                        <TextBlock Text="{x:Static res:Strings.Menu_Player}" Classes="groupHeader" />
+                        <Grid ColumnDefinitions="*,Auto">
+                            <ComboBox ItemsSource="{Binding Players}" SelectedItem="{Binding SelectedPlayer}"
+                                      HorizontalAlignment="Stretch" Margin="4,0,0,0">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate x:DataType="vm:PlayerOption">
+                                        <TextBlock Text="{Binding DisplayName}" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                            <Button Grid.Column="1" Content="{x:Static res:Strings.Menu_Players}" Command="{Binding ManagePlayersCommand}"
+                                    Margin="8,0,0,0" MinWidth="0" Padding="10,4" FontSize="14" />
+                        </Grid>
+                        <TextBlock Text="{Binding GoalText}" Foreground="{DynamicResource AccentBrush}" Margin="4,0,0,0"
+                                   TextWrapping="Wrap" />
+                    </StackPanel>
+                </Border>
+
+                <Border Classes="group" VerticalAlignment="Top">
+                    <StackPanel Spacing="2">
+                        <TextBlock Text="{x:Static res:Strings.Menu_Display}" Classes="groupHeader" />
+                        <TextBlock Text="{x:Static res:Strings.Menu_TextSize}" Margin="4,0,0,0" />
+                        <RadioButton Content="{x:Static res:Strings.Menu_TextNormal}" GroupName="TextSize" IsChecked="{Binding Display.IsNormalText}" />
+                        <RadioButton Content="{x:Static res:Strings.Menu_TextLarge}" GroupName="TextSize" IsChecked="{Binding Display.IsLargeText}" />
+                        <RadioButton Content="{x:Static res:Strings.Menu_TextExtraLarge}" GroupName="TextSize" IsChecked="{Binding Display.IsExtraLargeText}" />
+                        <CheckBox Content="{x:Static res:Strings.Menu_HighContrast}" IsChecked="{Binding Display.HighContrast}" Margin="0,8,0,0" />
+                        <TextBlock Text="{x:Static res:Strings.Menu_Language}" Margin="4,8,0,4" />
+                        <ComboBox ItemsSource="{Binding Display.Languages}" SelectedItem="{Binding Display.Language}"
+                                  MinWidth="200" Margin="4,0,0,0">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate x:DataType="app:LanguageOption">
+                                    <TextBlock Text="{Binding DisplayName}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
         </Grid>
 
         <TextBlock Text="{Binding ErrorMessage}" Foreground="{DynamicResource ErrorBrush}" TextWrapping="Wrap"
@@ -86,7 +118,5 @@
             <Button Content="{x:Static res:Strings.Menu_Worksheet}" Command="{Binding WorksheetCommand}" />
         </StackPanel>
 
-        <TextBlock Text="{Binding StatusText}" Foreground="{DynamicResource MutedBrush}" TextWrapping="Wrap"
-                   HorizontalAlignment="Center" MaxWidth="700" Margin="0,8,0,0" />
     </StackPanel>
 </UserControl>

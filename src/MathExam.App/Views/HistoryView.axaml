@@ -6,9 +6,6 @@
              x:DataType="vm:HistoryViewModel">
     <DockPanel>
         <TextBlock DockPanel.Dock="Top" Text="{x:Static res:Strings.History_Title}" Classes="title" Margin="0,0,0,8" />
-        <TextBlock DockPanel.Dock="Top" Text="{Binding TotalsText}" HorizontalAlignment="Center" Margin="0,0,0,4" />
-        <TextBlock DockPanel.Dock="Top" Text="{Binding ByOperationText}" HorizontalAlignment="Center"
-                   Foreground="{DynamicResource AccentBrush}" TextWrapping="Wrap" Margin="0,0,0,12" />
         <TextBlock DockPanel.Dock="Top" Text="{Binding LoadError}" Foreground="{DynamicResource ErrorBrush}"
                    TextWrapping="Wrap" HorizontalAlignment="Center" />
 
@@ -20,22 +17,60 @@
         <TextBlock DockPanel.Dock="Bottom" Text="{Binding StatusText}" HorizontalAlignment="Center" TextWrapping="Wrap"
                    Foreground="{DynamicResource MutedBrush}" Margin="0,8,0,0" />
 
-        <Grid>
-            <DataGrid ItemsSource="{Binding Rows}" AutoGenerateColumns="False" IsReadOnly="True"
-                      HeadersVisibility="Column" GridLinesVisibility="Horizontal" SelectionMode="Single"
-                      CanUserSortColumns="False" FontSize="14" MinHeight="200">
-                <DataGrid.Columns>
-                    <DataGridTextColumn x:DataType="vm:HistoryRow" Header="{x:Static res:Strings.History_Date}" Binding="{Binding Date}" />
-                    <DataGridTextColumn x:DataType="vm:HistoryRow" Header="{x:Static res:Strings.History_Player}" Binding="{Binding Player}" />
-                    <DataGridTextColumn x:DataType="vm:HistoryRow" Header="{x:Static res:Strings.History_Tasks}" Binding="{Binding Tasks}" />
-                    <DataGridTextColumn x:DataType="vm:HistoryRow" Header="{x:Static res:Strings.History_Correct}" Binding="{Binding Score}" />
-                    <DataGridTextColumn x:DataType="vm:HistoryRow" Header="{x:Static res:Strings.History_Accuracy}" Binding="{Binding Accuracy}" />
-                    <DataGridTextColumn x:DataType="vm:HistoryRow" Header="{x:Static res:Strings.History_Time}" Binding="{Binding Time}" />
-                    <DataGridTextColumn x:DataType="vm:HistoryRow" Header="{x:Static res:Strings.History_Level}" Binding="{Binding Level}" Width="*" />
-                </DataGrid.Columns>
-            </DataGrid>
-            <TextBlock Text="{x:Static res:Strings.History_Empty}" Foreground="{DynamicResource MutedBrush}" FontSize="18"
-                       HorizontalAlignment="Center" VerticalAlignment="Center" IsVisible="{Binding IsEmpty}" />
-        </Grid>
+        <!-- Games: every result, for all players or one. Players: one row per player, e.g. a class overview. -->
+        <TabControl>
+            <TabItem Header="{x:Static res:Strings.History_Games}">
+                <DockPanel>
+                    <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Spacing="8" HorizontalAlignment="Center"
+                                Margin="0,8,0,8">
+                        <TextBlock Text="{x:Static res:Strings.History_Show}" VerticalAlignment="Center" />
+                        <ComboBox ItemsSource="{Binding Filters}" SelectedItem="{Binding Filter}" MinWidth="200">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate x:DataType="vm:HistoryFilter">
+                                    <TextBlock Text="{Binding DisplayName}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
+                    <TextBlock DockPanel.Dock="Top" Text="{Binding TotalsText}" HorizontalAlignment="Center" Margin="0,0,0,4" />
+                    <TextBlock DockPanel.Dock="Top" Text="{Binding ByOperationText}" HorizontalAlignment="Center"
+                               Foreground="{DynamicResource AccentBrush}" TextWrapping="Wrap" Margin="0,0,0,12" />
+                    <Grid>
+                        <DataGrid ItemsSource="{Binding Rows}" AutoGenerateColumns="False" IsReadOnly="True"
+                                  HeadersVisibility="Column" GridLinesVisibility="Horizontal" SelectionMode="Single"
+                                  CanUserSortColumns="False" FontSize="14" MinHeight="200">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn x:DataType="vm:HistoryRow" Header="{x:Static res:Strings.History_Date}" Binding="{Binding Date}" />
+                                <DataGridTextColumn x:DataType="vm:HistoryRow" Header="{x:Static res:Strings.History_Player}" Binding="{Binding Player}" />
+                                <DataGridTextColumn x:DataType="vm:HistoryRow" Header="{x:Static res:Strings.History_Game}" Binding="{Binding Game}" />
+                                <DataGridTextColumn x:DataType="vm:HistoryRow" Header="{x:Static res:Strings.History_Tasks}" Binding="{Binding Tasks}" />
+                                <DataGridTextColumn x:DataType="vm:HistoryRow" Header="{x:Static res:Strings.History_Correct}" Binding="{Binding Score}" />
+                                <DataGridTextColumn x:DataType="vm:HistoryRow" Header="{x:Static res:Strings.History_Accuracy}" Binding="{Binding Accuracy}" />
+                                <DataGridTextColumn x:DataType="vm:HistoryRow" Header="{x:Static res:Strings.History_Time}" Binding="{Binding Time}" />
+                                <DataGridTextColumn x:DataType="vm:HistoryRow" Header="{x:Static res:Strings.History_Level}" Binding="{Binding Level}" Width="*" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <TextBlock Text="{x:Static res:Strings.History_Empty}" Foreground="{DynamicResource MutedBrush}" FontSize="18"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center" IsVisible="{Binding IsEmpty}" />
+                    </Grid>
+                </DockPanel>
+            </TabItem>
+
+            <TabItem Header="{x:Static res:Strings.Players_Title}">
+                <DataGrid ItemsSource="{Binding Players}" AutoGenerateColumns="False" IsReadOnly="True" Margin="0,8,0,0"
+                          HeadersVisibility="Column" GridLinesVisibility="Horizontal" SelectionMode="Single"
+                          CanUserSortColumns="False" FontSize="14" MinHeight="200">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn x:DataType="vm:PlayerOverviewRow" Header="{x:Static res:Strings.History_Player}" Binding="{Binding Player}" />
+                        <DataGridTextColumn x:DataType="vm:PlayerOverviewRow" Header="{x:Static res:Strings.History_Games}" Binding="{Binding Games}" />
+                        <DataGridTextColumn x:DataType="vm:PlayerOverviewRow" Header="{x:Static res:Strings.History_Tasks}" Binding="{Binding Tasks}" />
+                        <DataGridTextColumn x:DataType="vm:PlayerOverviewRow" Header="{x:Static res:Strings.History_Accuracy}" Binding="{Binding Accuracy}" />
+                        <DataGridTextColumn x:DataType="vm:PlayerOverviewRow" Header="{x:Static res:Strings.History_Time}" Binding="{Binding Time}" />
+                        <DataGridTextColumn x:DataType="vm:PlayerOverviewRow" Header="{x:Static res:Strings.History_Today}" Binding="{Binding Today}" />
+                        <DataGridTextColumn x:DataType="vm:PlayerOverviewRow" Header="{x:Static res:Strings.History_LastPlayed}" Binding="{Binding LastPlayed}" Width="*" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+        </TabControl>
     </DockPanel>
 </UserControl>

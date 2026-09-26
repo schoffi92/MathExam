@@ -21,10 +21,10 @@ public class HistoryCsvTests
 
         var lines = CsvLines(record);
 
-        Assert.StartsWith("Started,Player,Min,Max,Operations,Numbers,MissingOperator,Answered,Correct,Wrong,Accuracy,", lines[0]);
+        Assert.StartsWith("Started,Player,Mode,Min,Max,Operations,Numbers,MissingOperator,Answered,Correct,Wrong,Accuracy,", lines[0]);
         Assert.EndsWith("RootCorrect,RootWrong", lines[0]);
         Assert.Equal(
-            "2026-09-26 14:05:00,\"Anna, the \"\"Great\"\"\",1,10,Add Divide,Whole,true,8,7,1,0.875,75.3,60,1,3," +
+            "2026-09-26 14:05:00,\"Anna, the \"\"Great\"\"\",Family,1,10,Add Divide,Whole,true,8,7,1,0.875,75.3,60,1,3," +
             "5,0,0,0,0,0,2,1,0,0,0,0",
             lines[1]);
     }
@@ -35,6 +35,7 @@ public class HistoryCsvTests
         var old = new SessionRecord(new DateTime(2026, 1, 2), TimeSpan.FromMinutes(1), 1, 10, [Operation.Add], 3, 0, null, null);
         var row = CsvLines(old)[1];
         Assert.EndsWith(",,,,,,,,,,,,", row);
+        Assert.Contains(",Practice,1,10,", row);
         Assert.Contains(",3,3,0,1,60,,,", row);
     }
 }

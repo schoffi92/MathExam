@@ -39,4 +39,7 @@
   <data name="Players_DuplicateName" xml:space="preserve">
     <value>Svaki igrač mora imati drugačije ime.</value>
   </data>
+  <data name="Profiles_NameTaken" xml:space="preserve">
+    <value>Već postoji igrač s tim imenom.</value>
+  </data>
 </root>

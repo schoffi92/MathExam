@@ -12,7 +12,12 @@
                 <TextBlock Text="{Binding TaskNumberText}" FontWeight="SemiBold" />
                 <TextBlock Text="{Binding LevelText}" Foreground="{DynamicResource AccentBrush}" />
             </StackPanel>
-            <TextBlock Text="{Binding SolvedText}" HorizontalAlignment="Center" />
+            <StackPanel HorizontalAlignment="Center">
+                <TextBlock Text="{Binding SolvedText}" HorizontalAlignment="Center" />
+                <TextBlock Text="{Binding PlayerName}" HorizontalAlignment="Center" FontWeight="SemiBold" />
+                <TextBlock Text="{Binding GoalText}" HorizontalAlignment="Center" FontSize="13"
+                           Foreground="{DynamicResource AccentBrush}" />
+            </StackPanel>
             <TextBlock Text="{Binding StartedText}" HorizontalAlignment="Center" />
             <TextBlock Text="{Binding ClockText}" HorizontalAlignment="Right" />
         </UniformGrid>

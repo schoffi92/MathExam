@@ -12,7 +12,8 @@ MathExam is a practice app for the four basic operations, plus powers and roots,
 | **Missing operator** | Some + − × ÷ tasks hide the operator instead of a number, e.g. `6 ? 3 = 18`. |
 | **Numbers** | *Whole numbers*, *Decimals* (tenths, e.g. `1.7`) or *Fractions* (e.g. `3/4`, `1 1/2`). Decimals and fractions work with addition and subtraction only. |
 | **Adaptive difficulty** | Adjusts how big the numbers are to how well you are doing (see below). |
-| **Timed challenge** | A one-minute solo game: answer as many as you can (see [Timed challenge](#timed-challenge)). |
+| **Game** | *Practice* (no end), *Timed challenge (1 minute)* or *Test* of 10 or 20 tasks (see [Timed challenge](#timed-challenge) and [Tests](#tests)). Family games ignore it. |
+| **Player** | Who plays solo games: *Guest* or a profile (see [Players and goals](#8-players-and-goals)). **Players…** adds and removes profiles. |
 | **Display → Text size** | Normal, Large (125%) or Extra large (150%). Everything gets bigger and the window grows to match. |
 | **Display → High contrast colours** | White and yellow on black, with thicker borders. |
 | **Display → Language** | English, Français (French), Deutsch (German), Magyar (Hungarian), Italiano (Italian), Español (Spanish), Polski (Polish), Čeština (Czech), Suomi (Finnish), Português (Portuguese), Svenska (Swedish), Norsk bokmål (Norwegian), Hrvatski (Croatian), Slovenščina (Slovenian), Slovenčina (Slovak), Türkçe (Turkish), Ελληνικά (Greek), Română (Romanian) or Nederlands (Dutch). *System default* uses your operating system's language, or English if it is none of these. |
@@ -94,7 +95,11 @@ The game has no fixed length. Click **Stop** to end it and see the summary.
 
 ### Timed challenge
 
-With **Timed challenge** ticked, **Start** begins a one-minute game. The top bar shows the time left, and the game ends by itself when it runs out. The summary then says "Time's up!" and compares your correct answers with your **personal best**: the best earlier timed game with exactly the same range, operations and options. Beat it and you see "New personal best!". The challenge is for solo games; family games ignore it.
+With **Game: Timed challenge (1 minute)**, **Start** begins a one-minute game. The top bar shows the time left, and the game ends by itself when it runs out. The summary then says "Time's up!" and compares your correct answers with your **personal best**: the best earlier timed game with exactly the same range, operations and options, by the same player. Beat it and you see "New personal best!". The challenge is for solo games; family games ignore it.
+
+### Tests
+
+With **Game: Test (10 tasks)** or **Test (20 tasks)**, **Start** begins a short test. It uses your whole range (adaptive levels are left out, so every test is comparable) and shows `Task 3 of 20` at the top. There is no right/wrong feedback, explanation or score during the test: after each answer the next task comes straight away. After the last task (or **Stop**), the summary shows the **score**, e.g. `Score: 17 / 20`, and **To practise:** the tasks answered wrong, solved, with the answer that was given, e.g. `7 × 8 = 56   (you answered 54)`.
 
 ## 3. Adaptive difficulty
 
@@ -134,27 +139,51 @@ During the game:
 
 ## 6. Progress history
 
-The **History** button in the main menu shows every saved result, newest first: date, player ("Solo" for normal games), tasks (range and operations), correct / answered, accuracy, time and level (start → end). A family game adds one row per player.
+The **History** button in the main menu has two tabs.
+
+**Games** shows every saved result, newest first: date, player (*Guest* for solo games without a profile), game (practice, timed, test or family), tasks (range and operations), correct / answered, accuracy, time and level (start → end). A family game adds one row per player. **Show:** limits the list, the totals and the per-operation line to one player; a player's family games count too.
+
+**Players** has one row per player, as an overview for a parent or a teacher: games, tasks, accuracy, total time, tasks today (against the daily goal, e.g. `12 / 20`) and when they last played.
 
 Above the table is a total across all games. A family game counts once, and its time is counted once. Below it, **By operation** shows your accuracy for each operation (e.g. `+ 95 %  ·  × 70 %`), so you can see what to practise. It covers games played since this was added; older games only count in the totals.
 
 In the Tasks column, `(1/2)` marks a fraction game, `(0.1)` a decimal game and `(?)` a game with missing operators.
 
-**Export (CSV)** saves the whole history as a CSV file for a spreadsheet: one row per result, with the date, player, settings, counts, accuracy, time, levels, time limit and the correct/wrong counts per operation. The file uses English column names, `yyyy-MM-dd HH:mm:ss` dates and `.` as the decimal point, whatever the app's language.
+**Export (CSV)** saves what the Games tab shows (all players, or the chosen one) as a CSV file for a spreadsheet: one row per result, with the date, player, game mode, settings, counts, accuracy, time, levels, time limit and the correct/wrong counts per operation. The file uses English column names, `yyyy-MM-dd HH:mm:ss` dates and `.` as the decimal point, whatever the app's language.
 
-The history is stored only on this computer, in `history.json`. Delete that file to clear the history. Display settings are stored next to it in `preferences.json`. The folder is:
+The history is stored only on this computer, in `history.json`. Delete that file to clear the history. Display settings are stored next to it in `preferences.json`, and the players in `profiles.json`. The folder is:
 
 - **Windows:** `%LOCALAPPDATA%\MathExam\`
 - **Linux:** `~/.local/share/MathExam/`
 
 ## 7. Printable worksheets
 
-**Worksheet (PDF)** in the main menu asks where to save, then creates an A4 PDF with 20 random tasks using the current menu settings (the full range, without adaptive levels):
+**Worksheet (PDF)** in the main menu opens the worksheet options, which use the current menu settings (the full range, without adaptive levels):
 
-- **Page 1:** the title, the settings, lines for a name and the date, and the tasks in two columns. A line marks each missing number, a box each missing operator, and a small raised box a missing exponent or root degree.
-- **Page 2:** the answer key, with every task written out in full.
+| Option | Meaning |
+|---|---|
+| **Tasks per sheet** | 10, 20 or 30. |
+| **Versions** | 1 to 4 different sheets (A, B, C, D) with the same settings, e.g. so neighbours in class get different tasks. |
+| **Sheet code** | Any number up to 999999. The same code, settings and number of tasks always give the same tasks, so every pupil gets the same sheet (a later app version may make different tasks from the same code). Leave it empty for new tasks; the sheet then shows the code it used, so it can be made again. |
 
-Each click creates a new set of tasks.
+**Save PDF…** asks where to save, then writes an A4 PDF:
+
+- **One task page per version:** the title, the settings, the version and code, lines for a name and the date, and the tasks in two columns. A line marks each missing number, a box each missing operator, and a small raised box a missing exponent or root degree.
+- **Then one answer key per version,** with every task written out in full, so the task pages can be printed for the class and the keys kept apart.
+
+## 8. Players and goals
+
+**Players…** next to the player list in the main menu opens the Players screen:
+
+- Type a name and click **Add** (or press <kbd>Enter</kbd>). Names must be different.
+- Set each player's **daily goal** in tasks (0 means no goal).
+- **Remove** takes a player off the list. Their games stay in the history.
+
+Choose the player in the menu before pressing **Start**. Solo games are then saved under that player, who has their own adaptive levels and personal bests. *Guest* plays without a profile; games from before profiles existed belong to the guest.
+
+With a daily goal, the menu and the game screen show the progress, e.g. `Today: 12 / 20 tasks`, and then `✓ Daily goal reached!`. Every answered task counts, including family games played under the same name.
+
+For a class, add each pupil as a player and let them pick their name before playing; the History screen's **Players** tab and **Export (CSV)** then give the teacher an overview of everyone.
 
 ## How tasks are generated
 

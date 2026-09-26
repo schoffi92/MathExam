@@ -60,9 +60,6 @@
   <data name="Menu_AdaptiveHint" xml:space="preserve">
     <value>Începe cu numere mici, care cresc când răspunzi corect.</value>
   </data>
-  <data name="Menu_Timed" xml:space="preserve">
-    <value>Contra cronometru: 1 minut (individual)</value>
-  </data>
   <data name="Menu_Display" xml:space="preserve">
     <value>Afișare</value>
   </data>
@@ -219,9 +216,6 @@
   <data name="History_Empty" xml:space="preserve">
     <value>Încă nu s-a jucat niciun joc.</value>
   </data>
-  <data name="History_Solo" xml:space="preserve">
-    <value>Individual</value>
-  </data>
   <data name="History_GameOne" xml:space="preserve">
     <value>Jocuri: {0}</value>
   </data>
@@ -320,5 +314,95 @@
   </data>
   <data name="Worksheet_Settings" xml:space="preserve">
     <value>Numere de la {0} la {1}, {2}</value>
+  </data>
+  <data name="Menu_Player" xml:space="preserve">
+    <value>Jucător:</value>
+  </data>
+  <data name="Menu_Guest" xml:space="preserve">
+    <value>Invitat</value>
+  </data>
+  <data name="Menu_Players" xml:space="preserve">
+    <value>Jucători…</value>
+  </data>
+  <data name="Menu_Mode" xml:space="preserve">
+    <value>Joc:</value>
+  </data>
+  <data name="Mode_Practice" xml:space="preserve">
+    <value>Exersare</value>
+  </data>
+  <data name="Mode_Timed" xml:space="preserve">
+    <value>Contra cronometru (1 minut)</value>
+  </data>
+  <data name="Mode_TimedShort" xml:space="preserve">
+    <value>Cronometrat</value>
+  </data>
+  <data name="Mode_Test" xml:space="preserve">
+    <value>Test (exerciții: {0})</value>
+  </data>
+  <data name="Mode_TestShort" xml:space="preserve">
+    <value>Test</value>
+  </data>
+  <data name="Goal_Progress" xml:space="preserve">
+    <value>Exerciții azi: {0} / {1}</value>
+  </data>
+  <data name="Goal_Done" xml:space="preserve">
+    <value>✓ Obiectivul zilei a fost atins!</value>
+  </data>
+  <data name="Players_Title" xml:space="preserve">
+    <value>Jucători</value>
+  </data>
+  <data name="Players_Intro" xml:space="preserve">
+    <value>Fiecare jucător are propriul istoric, propriile niveluri și un obiectiv zilnic. Dacă elimini un jucător, jocurile lui rămân în istoric.</value>
+  </data>
+  <data name="Players_Add" xml:space="preserve">
+    <value>Adaugă</value>
+  </data>
+  <data name="Players_Goal" xml:space="preserve">
+    <value>Obiectiv zilnic (exerciții):</value>
+  </data>
+  <data name="Summary_Score" xml:space="preserve">
+    <value>Scor: {0} / {1}</value>
+  </data>
+  <data name="Summary_Review" xml:space="preserve">
+    <value>De exersat:</value>
+  </data>
+  <data name="Summary_YourAnswer" xml:space="preserve">
+    <value>{0}   (răspunsul tău: {1})</value>
+  </data>
+  <data name="History_Show" xml:space="preserve">
+    <value>Arată:</value>
+  </data>
+  <data name="History_AllPlayers" xml:space="preserve">
+    <value>Toți jucătorii</value>
+  </data>
+  <data name="History_Games" xml:space="preserve">
+    <value>Jocuri</value>
+  </data>
+  <data name="History_Game" xml:space="preserve">
+    <value>Joc</value>
+  </data>
+  <data name="History_Today" xml:space="preserve">
+    <value>Azi</value>
+  </data>
+  <data name="History_LastPlayed" xml:space="preserve">
+    <value>Ultimul joc</value>
+  </data>
+  <data name="Worksheet_Tasks" xml:space="preserve">
+    <value>Exerciții pe fișă:</value>
+  </data>
+  <data name="Worksheet_Versions" xml:space="preserve">
+    <value>Variante:</value>
+  </data>
+  <data name="Worksheet_Code" xml:space="preserve">
+    <value>Codul fișei:</value>
+  </data>
+  <data name="Worksheet_CodeHint" xml:space="preserve">
+    <value>Același cod dă aceleași exerciții, de exemplu pentru toată clasa. Lasă gol pentru exerciții noi.</value>
+  </data>
+  <data name="Worksheet_Save" xml:space="preserve">
+    <value>Salvează PDF…</value>
+  </data>
+  <data name="Worksheet_Version" xml:space="preserve">
+    <value>Varianta {0}</value>
   </data>
 </root>

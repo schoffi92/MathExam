@@ -60,9 +60,6 @@
   <data name="Menu_AdaptiveHint" xml:space="preserve">
     <value>Počinje s malim brojevima koji rastu kad odgovaraš točno.</value>
   </data>
-  <data name="Menu_Timed" xml:space="preserve">
-    <value>Na vrijeme: 1 minuta (samostalno)</value>
-  </data>
   <data name="Menu_Display" xml:space="preserve">
     <value>Prikaz</value>
   </data>
@@ -219,9 +216,6 @@
   <data name="History_Empty" xml:space="preserve">
     <value>Još nije odigrana nijedna igra.</value>
   </data>
-  <data name="History_Solo" xml:space="preserve">
-    <value>Samostalno</value>
-  </data>
   <data name="History_GameOne" xml:space="preserve">
     <value>Igre: {0}</value>
   </data>
@@ -320,5 +314,95 @@
   </data>
   <data name="Worksheet_Settings" xml:space="preserve">
     <value>Brojevi od {0} do {1}, {2}</value>
+  </data>
+  <data name="Menu_Player" xml:space="preserve">
+    <value>Igrač:</value>
+  </data>
+  <data name="Menu_Guest" xml:space="preserve">
+    <value>Gost</value>
+  </data>
+  <data name="Menu_Players" xml:space="preserve">
+    <value>Igrači…</value>
+  </data>
+  <data name="Menu_Mode" xml:space="preserve">
+    <value>Igra:</value>
+  </data>
+  <data name="Mode_Practice" xml:space="preserve">
+    <value>Vježba</value>
+  </data>
+  <data name="Mode_Timed" xml:space="preserve">
+    <value>Na vrijeme (1 minuta)</value>
+  </data>
+  <data name="Mode_TimedShort" xml:space="preserve">
+    <value>Na vrijeme</value>
+  </data>
+  <data name="Mode_Test" xml:space="preserve">
+    <value>Ispit ({0} zadataka)</value>
+  </data>
+  <data name="Mode_TestShort" xml:space="preserve">
+    <value>Ispit</value>
+  </data>
+  <data name="Goal_Progress" xml:space="preserve">
+    <value>Zadaci danas: {0} / {1}</value>
+  </data>
+  <data name="Goal_Done" xml:space="preserve">
+    <value>✓ Dnevni cilj postignut!</value>
+  </data>
+  <data name="Players_Title" xml:space="preserve">
+    <value>Igrači</value>
+  </data>
+  <data name="Players_Intro" xml:space="preserve">
+    <value>Svaki igrač ima svoju povijest, razine i dnevni cilj. Kad uklonite igrača, njegove igre ostaju u povijesti.</value>
+  </data>
+  <data name="Players_Add" xml:space="preserve">
+    <value>Dodaj</value>
+  </data>
+  <data name="Players_Goal" xml:space="preserve">
+    <value>Dnevni cilj (zadaci):</value>
+  </data>
+  <data name="Summary_Score" xml:space="preserve">
+    <value>Rezultat: {0} / {1}</value>
+  </data>
+  <data name="Summary_Review" xml:space="preserve">
+    <value>Za vježbu:</value>
+  </data>
+  <data name="Summary_YourAnswer" xml:space="preserve">
+    <value>{0}   (tvoj odgovor: {1})</value>
+  </data>
+  <data name="History_Show" xml:space="preserve">
+    <value>Prikaži:</value>
+  </data>
+  <data name="History_AllPlayers" xml:space="preserve">
+    <value>Svi igrači</value>
+  </data>
+  <data name="History_Games" xml:space="preserve">
+    <value>Igre</value>
+  </data>
+  <data name="History_Game" xml:space="preserve">
+    <value>Igra</value>
+  </data>
+  <data name="History_Today" xml:space="preserve">
+    <value>Danas</value>
+  </data>
+  <data name="History_LastPlayed" xml:space="preserve">
+    <value>Zadnja igra</value>
+  </data>
+  <data name="Worksheet_Tasks" xml:space="preserve">
+    <value>Zadataka po listiću:</value>
+  </data>
+  <data name="Worksheet_Versions" xml:space="preserve">
+    <value>Inačice:</value>
+  </data>
+  <data name="Worksheet_Code" xml:space="preserve">
+    <value>Šifra listića:</value>
+  </data>
+  <data name="Worksheet_CodeHint" xml:space="preserve">
+    <value>Ista šifra daje iste zadatke, npr. za cijeli razred. Ostavi prazno za nove zadatke.</value>
+  </data>
+  <data name="Worksheet_Save" xml:space="preserve">
+    <value>Spremi PDF…</value>
+  </data>
+  <data name="Worksheet_Version" xml:space="preserve">
+    <value>Inačica {0}</value>
   </data>
 </root>

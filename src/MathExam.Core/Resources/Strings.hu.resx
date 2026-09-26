@@ -39,4 +39,7 @@
   <data name="Players_DuplicateName" xml:space="preserve">
     <value>Minden játékosnak különböző név kell.</value>
   </data>
+  <data name="Profiles_NameTaken" xml:space="preserve">
+    <value>Már van ilyen nevű játékos.</value>
+  </data>
 </root>

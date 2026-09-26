@@ -39,4 +39,7 @@
   <data name="Players_DuplicateName" xml:space="preserve">
     <value>Κάθε παίκτης χρειάζεται διαφορετικό όνομα.</value>
   </data>
+  <data name="Profiles_NameTaken" xml:space="preserve">
+    <value>Υπάρχει ήδη παίκτης με αυτό το όνομα.</value>
+  </data>
 </root>

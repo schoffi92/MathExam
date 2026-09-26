@@ -60,9 +60,6 @@
   <data name="Menu_AdaptiveHint" xml:space="preserve">
     <value>Küçük sayılarla başlar, doğru cevap verdikçe sayılar büyür.</value>
   </data>
-  <data name="Menu_Timed" xml:space="preserve">
-    <value>Zamana karşı: 1 dakika (tek kişilik)</value>
-  </data>
   <data name="Menu_Display" xml:space="preserve">
     <value>Görünüm</value>
   </data>
@@ -219,9 +216,6 @@
   <data name="History_Empty" xml:space="preserve">
     <value>Henüz hiç oyun oynanmadı.</value>
   </data>
-  <data name="History_Solo" xml:space="preserve">
-    <value>Tek kişilik</value>
-  </data>
   <data name="History_GameOne" xml:space="preserve">
     <value>{0} oyun</value>
   </data>
@@ -320,5 +314,95 @@
   </data>
   <data name="Worksheet_Settings" xml:space="preserve">
     <value>Sayılar {0} – {1}, {2}</value>
+  </data>
+  <data name="Menu_Player" xml:space="preserve">
+    <value>Oyuncu:</value>
+  </data>
+  <data name="Menu_Guest" xml:space="preserve">
+    <value>Misafir</value>
+  </data>
+  <data name="Menu_Players" xml:space="preserve">
+    <value>Oyuncular…</value>
+  </data>
+  <data name="Menu_Mode" xml:space="preserve">
+    <value>Oyun:</value>
+  </data>
+  <data name="Mode_Practice" xml:space="preserve">
+    <value>Alıştırma</value>
+  </data>
+  <data name="Mode_Timed" xml:space="preserve">
+    <value>Zamana karşı (1 dakika)</value>
+  </data>
+  <data name="Mode_TimedShort" xml:space="preserve">
+    <value>Süreli</value>
+  </data>
+  <data name="Mode_Test" xml:space="preserve">
+    <value>Sınav ({0} soru)</value>
+  </data>
+  <data name="Mode_TestShort" xml:space="preserve">
+    <value>Sınav</value>
+  </data>
+  <data name="Goal_Progress" xml:space="preserve">
+    <value>Bugün: {0} / {1} soru</value>
+  </data>
+  <data name="Goal_Done" xml:space="preserve">
+    <value>✓ Günlük hedefe ulaşıldı!</value>
+  </data>
+  <data name="Players_Title" xml:space="preserve">
+    <value>Oyuncular</value>
+  </data>
+  <data name="Players_Intro" xml:space="preserve">
+    <value>Her oyuncunun kendi geçmişi, seviyeleri ve günlük hedefi vardır. Bir oyuncuyu kaldırmak oyunlarını geçmişten silmez.</value>
+  </data>
+  <data name="Players_Add" xml:space="preserve">
+    <value>Ekle</value>
+  </data>
+  <data name="Players_Goal" xml:space="preserve">
+    <value>Günlük hedef (soru):</value>
+  </data>
+  <data name="Summary_Score" xml:space="preserve">
+    <value>Puan: {0} / {1}</value>
+  </data>
+  <data name="Summary_Review" xml:space="preserve">
+    <value>Tekrar edilecekler:</value>
+  </data>
+  <data name="Summary_YourAnswer" xml:space="preserve">
+    <value>{0}   (senin cevabın: {1})</value>
+  </data>
+  <data name="History_Show" xml:space="preserve">
+    <value>Göster:</value>
+  </data>
+  <data name="History_AllPlayers" xml:space="preserve">
+    <value>Tüm oyuncular</value>
+  </data>
+  <data name="History_Games" xml:space="preserve">
+    <value>Oyunlar</value>
+  </data>
+  <data name="History_Game" xml:space="preserve">
+    <value>Oyun</value>
+  </data>
+  <data name="History_Today" xml:space="preserve">
+    <value>Bugün</value>
+  </data>
+  <data name="History_LastPlayed" xml:space="preserve">
+    <value>Son oyun</value>
+  </data>
+  <data name="Worksheet_Tasks" xml:space="preserve">
+    <value>Kâğıt başına soru:</value>
+  </data>
+  <data name="Worksheet_Versions" xml:space="preserve">
+    <value>Sürümler:</value>
+  </data>
+  <data name="Worksheet_Code" xml:space="preserve">
+    <value>Kâğıt kodu:</value>
+  </data>
+  <data name="Worksheet_CodeHint" xml:space="preserve">
+    <value>Aynı kod aynı soruları verir, örneğin bütün bir sınıf için. Yeni sorular için boş bırak.</value>
+  </data>
+  <data name="Worksheet_Save" xml:space="preserve">
+    <value>PDF kaydet…</value>
+  </data>
+  <data name="Worksheet_Version" xml:space="preserve">
+    <value>Sürüm {0}</value>
   </data>
 </root>

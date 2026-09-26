@@ -60,9 +60,6 @@
   <data name="Menu_AdaptiveHint" xml:space="preserve">
     <value>Begynner med små tall som blir større når du svarer riktig.</value>
   </data>
-  <data name="Menu_Timed" xml:space="preserve">
-    <value>Mot klokka: 1 minutt (solo)</value>
-  </data>
   <data name="Menu_Display" xml:space="preserve">
     <value>Visning</value>
   </data>
@@ -219,9 +216,6 @@
   <data name="History_Empty" xml:space="preserve">
     <value>Ingen spill er spilt ennå.</value>
   </data>
-  <data name="History_Solo" xml:space="preserve">
-    <value>Solo</value>
-  </data>
   <data name="History_GameOne" xml:space="preserve">
     <value>{0} spill</value>
   </data>
@@ -320,5 +314,95 @@
   </data>
   <data name="Worksheet_Settings" xml:space="preserve">
     <value>Tall {0} – {1}, {2}</value>
+  </data>
+  <data name="Menu_Player" xml:space="preserve">
+    <value>Spiller:</value>
+  </data>
+  <data name="Menu_Guest" xml:space="preserve">
+    <value>Gjest</value>
+  </data>
+  <data name="Menu_Players" xml:space="preserve">
+    <value>Spillere…</value>
+  </data>
+  <data name="Menu_Mode" xml:space="preserve">
+    <value>Spill:</value>
+  </data>
+  <data name="Mode_Practice" xml:space="preserve">
+    <value>Øving</value>
+  </data>
+  <data name="Mode_Timed" xml:space="preserve">
+    <value>Mot klokka (1 minutt)</value>
+  </data>
+  <data name="Mode_TimedShort" xml:space="preserve">
+    <value>På tid</value>
+  </data>
+  <data name="Mode_Test" xml:space="preserve">
+    <value>Prøve ({0} oppgaver)</value>
+  </data>
+  <data name="Mode_TestShort" xml:space="preserve">
+    <value>Prøve</value>
+  </data>
+  <data name="Goal_Progress" xml:space="preserve">
+    <value>I dag: {0} / {1} oppgaver</value>
+  </data>
+  <data name="Goal_Done" xml:space="preserve">
+    <value>✓ Dagens mål er nådd!</value>
+  </data>
+  <data name="Players_Title" xml:space="preserve">
+    <value>Spillere</value>
+  </data>
+  <data name="Players_Intro" xml:space="preserve">
+    <value>Hver spiller har egen historikk, egne nivåer og et daglig mål. Fjerner du en spiller, blir spillene liggende i historikken.</value>
+  </data>
+  <data name="Players_Add" xml:space="preserve">
+    <value>Legg til</value>
+  </data>
+  <data name="Players_Goal" xml:space="preserve">
+    <value>Daglig mål (oppgaver):</value>
+  </data>
+  <data name="Summary_Score" xml:space="preserve">
+    <value>Resultat: {0} / {1}</value>
+  </data>
+  <data name="Summary_Review" xml:space="preserve">
+    <value>Å øve på:</value>
+  </data>
+  <data name="Summary_YourAnswer" xml:space="preserve">
+    <value>{0}   (ditt svar: {1})</value>
+  </data>
+  <data name="History_Show" xml:space="preserve">
+    <value>Vis:</value>
+  </data>
+  <data name="History_AllPlayers" xml:space="preserve">
+    <value>Alle spillere</value>
+  </data>
+  <data name="History_Games" xml:space="preserve">
+    <value>Spill</value>
+  </data>
+  <data name="History_Game" xml:space="preserve">
+    <value>Spill</value>
+  </data>
+  <data name="History_Today" xml:space="preserve">
+    <value>I dag</value>
+  </data>
+  <data name="History_LastPlayed" xml:space="preserve">
+    <value>Sist spilt</value>
+  </data>
+  <data name="Worksheet_Tasks" xml:space="preserve">
+    <value>Oppgaver per ark:</value>
+  </data>
+  <data name="Worksheet_Versions" xml:space="preserve">
+    <value>Versjoner:</value>
+  </data>
+  <data name="Worksheet_Code" xml:space="preserve">
+    <value>Arkkode:</value>
+  </data>
+  <data name="Worksheet_CodeHint" xml:space="preserve">
+    <value>Samme kode gir de samme oppgavene, for eksempel for en hel klasse. La feltet stå tomt for nye oppgaver.</value>
+  </data>
+  <data name="Worksheet_Save" xml:space="preserve">
+    <value>Lagre PDF…</value>
+  </data>
+  <data name="Worksheet_Version" xml:space="preserve">
+    <value>Versjon {0}</value>
   </data>
 </root>

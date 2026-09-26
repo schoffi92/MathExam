@@ -60,9 +60,6 @@
   <data name="Menu_AdaptiveHint" xml:space="preserve">
     <value>Börjar med små tal som växer när du svarar rätt.</value>
   </data>
-  <data name="Menu_Timed" xml:space="preserve">
-    <value>Mot klockan: 1 minut (solo)</value>
-  </data>
   <data name="Menu_Display" xml:space="preserve">
     <value>Visning</value>
   </data>
@@ -219,9 +216,6 @@
   <data name="History_Empty" xml:space="preserve">
     <value>Inga spel har spelats än.</value>
   </data>
-  <data name="History_Solo" xml:space="preserve">
-    <value>Solo</value>
-  </data>
   <data name="History_GameOne" xml:space="preserve">
     <value>{0} spel</value>
   </data>
@@ -320,5 +314,95 @@
   </data>
   <data name="Worksheet_Settings" xml:space="preserve">
     <value>Tal {0} – {1}, {2}</value>
+  </data>
+  <data name="Menu_Player" xml:space="preserve">
+    <value>Spelare:</value>
+  </data>
+  <data name="Menu_Guest" xml:space="preserve">
+    <value>Gäst</value>
+  </data>
+  <data name="Menu_Players" xml:space="preserve">
+    <value>Spelare…</value>
+  </data>
+  <data name="Menu_Mode" xml:space="preserve">
+    <value>Spel:</value>
+  </data>
+  <data name="Mode_Practice" xml:space="preserve">
+    <value>Övning</value>
+  </data>
+  <data name="Mode_Timed" xml:space="preserve">
+    <value>Mot klockan (1 minut)</value>
+  </data>
+  <data name="Mode_TimedShort" xml:space="preserve">
+    <value>På tid</value>
+  </data>
+  <data name="Mode_Test" xml:space="preserve">
+    <value>Prov ({0} uppgifter)</value>
+  </data>
+  <data name="Mode_TestShort" xml:space="preserve">
+    <value>Prov</value>
+  </data>
+  <data name="Goal_Progress" xml:space="preserve">
+    <value>Idag: {0} / {1} uppgifter</value>
+  </data>
+  <data name="Goal_Done" xml:space="preserve">
+    <value>✓ Dagens mål uppnått!</value>
+  </data>
+  <data name="Players_Title" xml:space="preserve">
+    <value>Spelare</value>
+  </data>
+  <data name="Players_Intro" xml:space="preserve">
+    <value>Varje spelare har egen historik, egna nivåer och ett dagligt mål. Om en spelare tas bort finns spelen kvar i historiken.</value>
+  </data>
+  <data name="Players_Add" xml:space="preserve">
+    <value>Lägg till</value>
+  </data>
+  <data name="Players_Goal" xml:space="preserve">
+    <value>Dagligt mål (uppgifter):</value>
+  </data>
+  <data name="Summary_Score" xml:space="preserve">
+    <value>Resultat: {0} / {1}</value>
+  </data>
+  <data name="Summary_Review" xml:space="preserve">
+    <value>Att öva på:</value>
+  </data>
+  <data name="Summary_YourAnswer" xml:space="preserve">
+    <value>{0}   (ditt svar: {1})</value>
+  </data>
+  <data name="History_Show" xml:space="preserve">
+    <value>Visa:</value>
+  </data>
+  <data name="History_AllPlayers" xml:space="preserve">
+    <value>Alla spelare</value>
+  </data>
+  <data name="History_Games" xml:space="preserve">
+    <value>Spel</value>
+  </data>
+  <data name="History_Game" xml:space="preserve">
+    <value>Spel</value>
+  </data>
+  <data name="History_Today" xml:space="preserve">
+    <value>Idag</value>
+  </data>
+  <data name="History_LastPlayed" xml:space="preserve">
+    <value>Senast spelat</value>
+  </data>
+  <data name="Worksheet_Tasks" xml:space="preserve">
+    <value>Uppgifter per blad:</value>
+  </data>
+  <data name="Worksheet_Versions" xml:space="preserve">
+    <value>Versioner:</value>
+  </data>
+  <data name="Worksheet_Code" xml:space="preserve">
+    <value>Bladkod:</value>
+  </data>
+  <data name="Worksheet_CodeHint" xml:space="preserve">
+    <value>Samma kod ger samma uppgifter, till exempel för en hel klass. Lämna tomt för nya uppgifter.</value>
+  </data>
+  <data name="Worksheet_Save" xml:space="preserve">
+    <value>Spara PDF…</value>
+  </data>
+  <data name="Worksheet_Version" xml:space="preserve">
+    <value>Version {0}</value>
   </data>
 </root>

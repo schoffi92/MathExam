@@ -39,4 +39,7 @@
   <data name="Players_DuplicateName" xml:space="preserve">
     <value>Hver spiller trenger et eget navn.</value>
   </data>
+  <data name="Profiles_NameTaken" xml:space="preserve">
+    <value>Det finnes allerede en spiller med dette navnet.</value>
+  </data>
 </root>

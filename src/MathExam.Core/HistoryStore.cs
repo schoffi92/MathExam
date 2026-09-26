@@ -38,22 +38,27 @@ public sealed class HistoryStore
 
     /// <summary>
     /// The level to resume at: the end level of the latest adaptive game with the same range and kind of numbers,
-    /// played solo (<paramref name="player"/> null) or by the same family player (name compared case-insensitively).
+    /// played by the same family player, or solo (<paramref name="player"/> null) under the same profile
+    /// (null for the guest). Names are compared case-insensitively.
     /// </summary>
-    public static int ResumeLevel(IEnumerable<SessionRecord> records, GameSettings settings, string? player = null) =>
+    public static int ResumeLevel(IEnumerable<SessionRecord> records, GameSettings settings, string? player = null,
+        string? profile = null) =>
         records.LastOrDefault(r => r.EndLevel is not null && r.Min == settings.Min && r.Max == settings.Max
                                    && r.Numbers == settings.Numbers
-                                   && string.Equals(r.Player, player, StringComparison.OrdinalIgnoreCase))?.EndLevel
+                                   && string.Equals(r.Player, player, StringComparison.OrdinalIgnoreCase)
+                                   && (player is not null || string.Equals(r.Profile, profile, StringComparison.OrdinalIgnoreCase)))
+            ?.EndLevel
         ?? DifficultyAdjuster.MinLevel;
 
     /// <summary>
-    /// The most correct answers in an earlier timed solo game with the same time limit and settings as
-    /// <paramref name="game"/>, or null when there is none (or <paramref name="game"/> is not timed).
+    /// The most correct answers in an earlier timed solo game by the same profile, with the same time limit and
+    /// settings as <paramref name="game"/>, or null when there is none (or <paramref name="game"/> is not timed).
     /// </summary>
     public static int? PersonalBest(IEnumerable<SessionRecord> records, SessionRecord game) =>
         game.TimeLimitSeconds is null
             ? null
             : records
-                .Where(r => r.Player is null && r.TimeLimitSeconds == game.TimeLimitSeconds && r.HasSameSettings(game))
+                .Where(r => r.Player is null && string.Equals(r.Profile, game.Profile, StringComparison.OrdinalIgnoreCase)
+                            && r.TimeLimitSeconds == game.TimeLimitSeconds && r.HasSameSettings(game))
                 .Max(r => (int?)r.Correct);
 }

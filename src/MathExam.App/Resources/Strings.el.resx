@@ -60,9 +60,6 @@
   <data name="Menu_AdaptiveHint" xml:space="preserve">
     <value>Ξεκινά με μικρούς αριθμούς, που μεγαλώνουν όσο απαντάς σωστά.</value>
   </data>
-  <data name="Menu_Timed" xml:space="preserve">
-    <value>Με χρονόμετρο: 1 λεπτό (ατομικό)</value>
-  </data>
   <data name="Menu_Display" xml:space="preserve">
     <value>Εμφάνιση</value>
   </data>
@@ -219,9 +216,6 @@
   <data name="History_Empty" xml:space="preserve">
     <value>Δεν έχει παιχτεί ακόμα κανένα παιχνίδι.</value>
   </data>
-  <data name="History_Solo" xml:space="preserve">
-    <value>Ατομικό</value>
-  </data>
   <data name="History_GameOne" xml:space="preserve">
     <value>{0} παιχνίδι</value>
   </data>
@@ -320,5 +314,95 @@
   </data>
   <data name="Worksheet_Settings" xml:space="preserve">
     <value>Αριθμοί {0} – {1}, {2}</value>
+  </data>
+  <data name="Menu_Player" xml:space="preserve">
+    <value>Παίκτης:</value>
+  </data>
+  <data name="Menu_Guest" xml:space="preserve">
+    <value>Επισκέπτης</value>
+  </data>
+  <data name="Menu_Players" xml:space="preserve">
+    <value>Παίκτες…</value>
+  </data>
+  <data name="Menu_Mode" xml:space="preserve">
+    <value>Παιχνίδι:</value>
+  </data>
+  <data name="Mode_Practice" xml:space="preserve">
+    <value>Εξάσκηση</value>
+  </data>
+  <data name="Mode_Timed" xml:space="preserve">
+    <value>Με χρονόμετρο (1 λεπτό)</value>
+  </data>
+  <data name="Mode_TimedShort" xml:space="preserve">
+    <value>Χρονόμετρο</value>
+  </data>
+  <data name="Mode_Test" xml:space="preserve">
+    <value>Τεστ ({0} ασκήσεις)</value>
+  </data>
+  <data name="Mode_TestShort" xml:space="preserve">
+    <value>Τεστ</value>
+  </data>
+  <data name="Goal_Progress" xml:space="preserve">
+    <value>Σήμερα: {0} / {1} ασκήσεις</value>
+  </data>
+  <data name="Goal_Done" xml:space="preserve">
+    <value>✓ Ο στόχος της ημέρας επιτεύχθηκε!</value>
+  </data>
+  <data name="Players_Title" xml:space="preserve">
+    <value>Παίκτες</value>
+  </data>
+  <data name="Players_Intro" xml:space="preserve">
+    <value>Κάθε παίκτης έχει το δικό του ιστορικό, επίπεδα και ημερήσιο στόχο. Αν αφαιρέσετε έναν παίκτη, τα παιχνίδια του μένουν στο ιστορικό.</value>
+  </data>
+  <data name="Players_Add" xml:space="preserve">
+    <value>Προσθήκη</value>
+  </data>
+  <data name="Players_Goal" xml:space="preserve">
+    <value>Ημερήσιος στόχος (ασκήσεις):</value>
+  </data>
+  <data name="Summary_Score" xml:space="preserve">
+    <value>Βαθμολογία: {0} / {1}</value>
+  </data>
+  <data name="Summary_Review" xml:space="preserve">
+    <value>Για εξάσκηση:</value>
+  </data>
+  <data name="Summary_YourAnswer" xml:space="preserve">
+    <value>{0}   (η απάντησή σου: {1})</value>
+  </data>
+  <data name="History_Show" xml:space="preserve">
+    <value>Εμφάνιση:</value>
+  </data>
+  <data name="History_AllPlayers" xml:space="preserve">
+    <value>Όλοι οι παίκτες</value>
+  </data>
+  <data name="History_Games" xml:space="preserve">
+    <value>Παιχνίδια</value>
+  </data>
+  <data name="History_Game" xml:space="preserve">
+    <value>Παιχνίδι</value>
+  </data>
+  <data name="History_Today" xml:space="preserve">
+    <value>Σήμερα</value>
+  </data>
+  <data name="History_LastPlayed" xml:space="preserve">
+    <value>Τελευταίο παιχνίδι</value>
+  </data>
+  <data name="Worksheet_Tasks" xml:space="preserve">
+    <value>Ασκήσεις ανά φύλλο:</value>
+  </data>
+  <data name="Worksheet_Versions" xml:space="preserve">
+    <value>Εκδοχές:</value>
+  </data>
+  <data name="Worksheet_Code" xml:space="preserve">
+    <value>Κωδικός φύλλου:</value>
+  </data>
+  <data name="Worksheet_CodeHint" xml:space="preserve">
+    <value>Ο ίδιος κωδικός δίνει τις ίδιες ασκήσεις, π.χ. για όλη την τάξη. Άφησέ το κενό για νέες ασκήσεις.</value>
+  </data>
+  <data name="Worksheet_Save" xml:space="preserve">
+    <value>Αποθήκευση PDF…</value>
+  </data>
+  <data name="Worksheet_Version" xml:space="preserve">
+    <value>Εκδοχή {0}</value>
   </data>
 </root>

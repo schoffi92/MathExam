@@ -3,22 +3,25 @@ using SkiaSharp;
 
 namespace MathExam.App;
 
-/// <summary>The texts and tasks of a printable worksheet.</summary>
+/// <summary>One version of a worksheet: a label (e.g. "Version B · Sheet code: 4821") and its tasks.</summary>
+public sealed record WorksheetSheet(string Label, IReadOnlyList<MathTask> Tasks);
+
+/// <summary>The texts and sheets of a printable worksheet.</summary>
 public sealed record WorksheetContent(
     string Title, string Settings, string NameLabel, string DateLabel, string Date, string AnswersTitle,
-    IReadOnlyList<MathTask> Tasks);
+    IReadOnlyList<WorksheetSheet> Sheets);
 
 /// <summary>
-/// Writes a worksheet as an A4 PDF with SkiaSharp (which Avalonia already ships): page 1 has the tasks with
-/// blanks to fill in, page 2 the answer key. Exponents and root degrees use superscript digits.
+/// Writes a worksheet as an A4 PDF with SkiaSharp (which Avalonia already ships): one page per sheet with the
+/// tasks and blanks to fill in, then one answer key per sheet, so the task pages can be printed for a class
+/// and the keys kept apart. Exponents and root degrees use superscript digits.
 /// </summary>
 public static class WorksheetPdf
 {
-    public const int TaskCount = 20;
+    public const int MaxTasks = 30;
 
     // A4 in points (1/72 inch).
     private const float PageWidth = 595, PageHeight = 842, Margin = 50;
-    private const int Rows = TaskCount / 2;
 
     public static void Write(Stream output, WorksheetContent content, SKTypeface regular, SKTypeface bold)
     {
@@ -27,13 +30,25 @@ public static class WorksheetPdf
         using var muted = new SKPaint { Color = new SKColor(0x55, 0x55, 0x55), IsAntialias = true };
         using var line = new SKPaint { Color = new SKColor(0x88, 0x88, 0x88), StrokeWidth = 0.8f, IsAntialias = true };
 
-        // Page 1: header, then the tasks in two columns.
+        foreach (var sheet in content.Sheets)
+            WriteTaskPage(document, content, sheet, regular, bold, ink, muted, line);
+        foreach (var sheet in content.Sheets)
+            WriteAnswerPage(document, content, sheet, regular, bold, ink, muted, line);
+        document.Close();
+    }
+
+    private static void WriteTaskPage(SKDocument document, WorksheetContent content, WorksheetSheet sheet,
+        SKTypeface regular, SKTypeface bold, SKPaint ink, SKPaint muted, SKPaint line)
+    {
+        // Header, then the tasks in two columns.
         var canvas = document.BeginPage(PageWidth, PageHeight);
         var y = Margin + 20;
         canvas.DrawText(content.Title, Margin, y, new SKFont(bold, 22), ink);
         y += 22;
         canvas.DrawText(content.Settings, Margin, y, new SKFont(regular, 11), muted);
-        y += 32;
+        y += 16;
+        canvas.DrawText(sheet.Label, Margin, y, new SKFont(regular, 11), muted);
+        y += 30;
         var labelFont = new SKFont(regular, 12);
         canvas.DrawText(content.NameLabel, Margin, y, labelFont, ink);
         var nameStart = Margin + labelFont.MeasureText(content.NameLabel) + 6;
@@ -43,31 +58,36 @@ public static class WorksheetPdf
         canvas.DrawText(content.Date, dateX + labelFont.MeasureText(content.DateLabel) + 6, y, labelFont, ink);
         y += 20;
         canvas.DrawLine(Margin, y, PageWidth - Margin, y, line);
-        DrawTasks(canvas, content.Tasks, reveal: false, y + 10, 18, regular, ink, muted, line);
+        DrawTasks(canvas, sheet.Tasks, reveal: false, y + 10, sheet.Tasks.Count > 20 ? 15 : 18, regular, ink, muted, line);
         document.EndPage();
+    }
 
-        // Page 2: the answer key.
-        canvas = document.BeginPage(PageWidth, PageHeight);
-        y = Margin + 20;
+    private static void WriteAnswerPage(SKDocument document, WorksheetContent content, WorksheetSheet sheet,
+        SKTypeface regular, SKTypeface bold, SKPaint ink, SKPaint muted, SKPaint line)
+    {
+        var canvas = document.BeginPage(PageWidth, PageHeight);
+        var y = Margin + 20;
         canvas.DrawText($"{content.Title} – {content.AnswersTitle}", Margin, y, new SKFont(bold, 18), ink);
         y += 16;
+        canvas.DrawText(sheet.Label, Margin, y, new SKFont(regular, 11), muted);
+        y += 12;
         canvas.DrawLine(Margin, y, PageWidth - Margin, y, line);
-        DrawTasks(canvas, content.Tasks, reveal: true, y + 10, 14, regular, ink, muted, line);
+        DrawTasks(canvas, sheet.Tasks, reveal: true, y + 10, sheet.Tasks.Count > 20 ? 12 : 14, regular, ink, muted, line);
         document.EndPage();
-
-        document.Close();
     }
 
     private static void DrawTasks(SKCanvas canvas, IReadOnlyList<MathTask> tasks, bool reveal, float top, float size,
         SKTypeface typeface, SKPaint ink, SKPaint muted, SKPaint line)
     {
+        // Two columns, filled top to bottom; at least ten rows, so short sheets are not spread thin.
+        var rows = Math.Max(10, (tasks.Count + 1) / 2);
         var columnWidth = (PageWidth - 2 * Margin) / 2;
-        var rowHeight = (PageHeight - Margin - top) / Rows;
+        var rowHeight = (PageHeight - Margin - top) / rows;
         var numberFont = new SKFont(typeface, size * 0.7f);
         for (var i = 0; i < tasks.Count; i++)
         {
-            var x = Margin + i / Rows * columnWidth;
-            var baseline = top + (i % Rows) * rowHeight + rowHeight * 0.6f;
+            var x = Margin + i / rows * columnWidth;
+            var baseline = top + (i % rows) * rowHeight + rowHeight * 0.6f;
             canvas.DrawText($"{i + 1}.", x, baseline, numberFont, muted);
             DrawEquation(canvas, tasks[i], reveal, x + 30, baseline, size, columnWidth - 44, typeface, ink, line);
         }

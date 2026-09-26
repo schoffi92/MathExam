@@ -39,4 +39,7 @@
   <data name="Players_DuplicateName" xml:space="preserve">
     <value>Jokaisella pelaajalla on oltava eri nimi.</value>
   </data>
+  <data name="Profiles_NameTaken" xml:space="preserve">
+    <value>Tämänniminen pelaaja on jo olemassa.</value>
+  </data>
 </root>

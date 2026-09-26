@@ -22,27 +22,88 @@ public sealed record NumberOption(NumberKind Kind)
     };
 }
 
+/// <summary>A choice in the "Game" list: practice, a timed challenge, or a test of a number of tasks.</summary>
+public sealed record GameModeOption(GameMode Mode, int TaskCount = 0)
+{
+    public static IReadOnlyList<GameModeOption> All { get; } =
+        [new(GameMode.Practice), new(GameMode.Timed), new(GameMode.Test, 10), new(GameMode.Test, 20)];
+
+    public string DisplayName => Mode switch
+    {
+        GameMode.Timed => Strings.Mode_Timed,
+        GameMode.Test => string.Format(Strings.Mode_Test, TaskCount),
+        _ => Strings.Mode_Practice,
+    };
+}
+
+/// <summary>A choice in the "Player" list; <see cref="Name"/> is null for the guest.</summary>
+public sealed record PlayerOption(string? Name)
+{
+    public string DisplayName => Name ?? Strings.Menu_Guest;
+}
+
 public partial class MenuViewModel : ObservableObject
 {
-    private readonly Action<GameSettings, bool, bool> _onStart;
+    private readonly Action<GameSettings, bool, GameModeOption> _onStart;
     private readonly Action<GameSettings> _onFamily;
     private readonly Action _onShowHistory;
-    private readonly Func<GameSettings, Task<string?>> _onWorksheet;
+    private readonly Action<GameSettings> _onWorksheet;
+    private readonly Action _onPlayers;
+    private readonly Action<string?> _onSelectPlayer;
+    private bool _settingPlayers;
 
-    /// <param name="onStart">Called with the settings, whether adaptive difficulty is on, and whether the game is timed.</param>
+    /// <param name="onStart">Called with the settings, whether adaptive difficulty is on, and the game mode.</param>
     /// <param name="onFamily">Called with the settings to set up a family game.</param>
-    /// <param name="onWorksheet">Saves a worksheet with the settings; returns a message to show, or null if cancelled.</param>
-    public MenuViewModel(DisplayViewModel display, Action<GameSettings, bool, bool> onStart, Action<GameSettings> onFamily,
-        Action onShowHistory, Func<GameSettings, Task<string?>> onWorksheet)
+    /// <param name="onWorksheet">Opens the worksheet options with the settings.</param>
+    /// <param name="onPlayers">Opens the screen for adding and removing players.</param>
+    /// <param name="onSelectPlayer">Called with the chosen player's name (null for the guest).</param>
+    public MenuViewModel(DisplayViewModel display, Action<GameSettings, bool, GameModeOption> onStart, Action<GameSettings> onFamily,
+        Action onShowHistory, Action<GameSettings> onWorksheet, Action onPlayers, Action<string?> onSelectPlayer)
     {
         Display = display;
         _onStart = onStart;
         _onFamily = onFamily;
         _onShowHistory = onShowHistory;
         _onWorksheet = onWorksheet;
+        _onPlayers = onPlayers;
+        _onSelectPlayer = onSelectPlayer;
     }
 
     public DisplayViewModel Display { get; }
+
+    public IReadOnlyList<GameModeOption> Modes => GameModeOption.All;
+
+    [ObservableProperty]
+    private GameModeOption _mode = GameModeOption.All[0];
+
+    /// <summary>The guest, then each profile.</summary>
+    [ObservableProperty]
+    private IReadOnlyList<PlayerOption> _players = [new PlayerOption(null)];
+
+    [ObservableProperty]
+    private PlayerOption? _selectedPlayer;
+
+    /// <summary>The chosen player's progress towards their daily goal, or empty.</summary>
+    [ObservableProperty]
+    private string _goalText = "";
+
+    /// <summary>Refills the player list, e.g. after the Players screen, and selects <paramref name="current"/>.</summary>
+    public void SetPlayers(IReadOnlyList<string> names, string? current)
+    {
+        _settingPlayers = true;
+        Players = [new PlayerOption(null), .. names.Select(n => new PlayerOption(n))];
+        SelectedPlayer = Players.FirstOrDefault(p => string.Equals(p.Name, current, StringComparison.OrdinalIgnoreCase)) ?? Players[0];
+        _settingPlayers = false;
+    }
+
+    partial void OnSelectedPlayerChanged(PlayerOption? value)
+    {
+        if (!_settingPlayers && value is not null)
+            _onSelectPlayer(value.Name);
+    }
+
+    [RelayCommand]
+    private void ManagePlayers() => _onPlayers();
 
     public IReadOnlyList<NumberOption> NumberOptions => NumberOption.All;
 
@@ -53,13 +114,6 @@ public partial class MenuViewModel : ObservableObject
 
     [ObservableProperty]
     private bool _useMissingOperator;
-
-    [ObservableProperty]
-    private bool _useTimed;
-
-    /// <summary>The result of the last worksheet save.</summary>
-    [ObservableProperty]
-    private string _statusText = "";
 
     [ObservableProperty]
     private bool _useAdaptive = true;
@@ -110,7 +164,7 @@ public partial class MenuViewModel : ObservableObject
     private void Start()
     {
         if (TryBuildSettings(out var settings) is null)
-            _onStart(settings!, UseAdaptive, UseTimed);
+            _onStart(settings!, UseAdaptive, Mode);
     }
 
     private bool CanStart() => ErrorMessage is null;
@@ -126,10 +180,10 @@ public partial class MenuViewModel : ObservableObject
     private void ShowHistory() => _onShowHistory();
 
     [RelayCommand(CanExecute = nameof(CanStart))]
-    private async Task Worksheet()
+    private void Worksheet()
     {
-        if (TryBuildSettings(out var settings) is null && await _onWorksheet(settings!) is { } message)
-            StatusText = message;
+        if (TryBuildSettings(out var settings) is null)
+            _onWorksheet(settings!);
     }
 
     /// <summary>Returns an error message, or null and the settings when the input is valid.</summary>
