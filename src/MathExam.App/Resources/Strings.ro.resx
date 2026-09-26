@@ -408,4 +408,67 @@
   <data name="Menu_Convert" xml:space="preserve">
     <value>Transformări de unități (km → m)</value>
   </data>
+  <data name="Help_Title" xml:space="preserve">
+    <value>Cum se folosește</value>
+  </data>
+  <data name="Help_Close" xml:space="preserve">
+    <value>Închide</value>
+  </data>
+  <data name="Help_S1_Title" xml:space="preserve">
+    <value>Primii pași</value>
+  </data>
+  <data name="Help_S1_Body" xml:space="preserve">
+    <value>1. Alege cel mai mic și cel mai mare număr și bifează operațiile pe care vrei să le exersezi.
+2. Apasă «Common_Start» (sau Enter).
+3. Scrie numărul care lipsește și apasă Enter sau «Game_Send». Verdele înseamnă corect, roșul arată răspunsul corect.
+4. Apasă Enter pentru exercițiul următor și «Common_Stop» când ai terminat. Un rezumat arată cum te-ai descurcat.</value>
+  </data>
+  <data name="Help_S2_Title" xml:space="preserve">
+    <value>Exerciții și răspunsuri</value>
+  </data>
+  <data name="Help_S2_Body" xml:space="preserve">
+    <value>• ? poate fi rezultatul, un număr din exercițiu sau (la semnul lipsă) semnul însuși: apasă + − × ÷ sau scrie + - * /.
+• Fracții și zecimale: scrie 3/4, 1 1/2, 0.5 sau 0,5. Orice valoare egală este bună.
+• Transformări de unități: scrie doar numărul, de exemplu 3000 pentru 3 km = ? m.
+• După un răspuns greșit, un rând arată cum se ajunge la rezultat.</value>
+  </data>
+  <data name="Help_S3_Title" xml:space="preserve">
+    <value>Moduri de joc</value>
+  </data>
+  <data name="Help_S3_Body" xml:space="preserve">
+    <value>• «Mode_Practice»: câte exerciții vrei.
+• «Mode_Timed»: răspunde la cât mai multe și bate-ți recordul.
+• «Mode_TestShort»: 10 sau 20 de exerciții fără ajutor; scorul și exercițiile de exersat apar la sfârșit.</value>
+  </data>
+  <data name="Help_S4_Title" xml:space="preserve">
+    <value>«Menu_Adaptive»</value>
+  </data>
+  <data name="Help_S4_Body" xml:space="preserve">
+    <value>Jocul începe cu numere mici. Trei răspunsuri corecte la rând te urcă un nivel, două greșite te coboară. Nivelul tău este păstrat pentru jocul următor.</value>
+  </data>
+  <data name="Help_S5_Title" xml:space="preserve">
+    <value>Jucători și obiective</value>
+  </data>
+  <data name="Help_S5_Body" xml:space="preserve">
+    <value>Cu «Menu_Players» adaugi fiecare copil sau elev și stabilești un obiectiv zilnic. Alege jucătorul înainte să apeși «Common_Start»: jocurile, nivelurile și recordurile lui sunt păstrate separat, iar meniul arată progresul de azi. «Menu_Guest» joacă fără nume.</value>
+  </data>
+  <data name="Help_S6_Title" xml:space="preserve">
+    <value>«Menu_Family»</value>
+  </data>
+  <data name="Help_S6_Body" xml:space="preserve">
+    <value>2–4 jucători joacă pe rând la un calculator, fiecare la nivelul lui, astfel încât copiii și adulții pot juca împreună corect. Poți alege câte exerciții rezolvă fiecare jucător pe tură.</value>
+  </data>
+  <data name="Help_S7_Title" xml:space="preserve">
+    <value>Istoric și fișe de lucru</value>
+  </data>
+  <data name="Help_S7_Body" xml:space="preserve">
+    <value>• «Menu_History» arată toate jocurile, pentru toți jucătorii sau pentru unul, cu precizia pe operații. Fila «Players_Title» oferă o privire de ansamblu, iar «History_Export» o salvează pentru o foaie de calcul.
+• «Menu_Worksheet» creează o fișă de tipărit cu setările actuale și rezultatele. Același cod dă aceleași exerciții, de exemplu pentru toată clasa.</value>
+  </data>
+  <data name="Help_S8_Title" xml:space="preserve">
+    <value>«Menu_Display»</value>
+  </data>
+  <data name="Help_S8_Body" xml:space="preserve">
+    <value>În dreapta meniului poți alege un text mai mare, culori cu contrast ridicat sau altă limbă. Schimbările se aplică imediat și sunt păstrate.</value>
+  </data>
 </root>

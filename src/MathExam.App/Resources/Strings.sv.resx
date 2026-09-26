@@ -408,4 +408,67 @@
   <data name="Menu_Convert" xml:space="preserve">
     <value>Enhetsomvandling (km → m)</value>
   </data>
+  <data name="Help_Title" xml:space="preserve">
+    <value>Så använder du appen</value>
+  </data>
+  <data name="Help_Close" xml:space="preserve">
+    <value>Stäng</value>
+  </data>
+  <data name="Help_S1_Title" xml:space="preserve">
+    <value>Kom igång</value>
+  </data>
+  <data name="Help_S1_Body" xml:space="preserve">
+    <value>1. Välj minsta och största tal och kryssa i räknesätten du vill öva på.
+2. Tryck på «Common_Start» (eller Enter).
+3. Skriv det saknade talet och tryck Enter eller «Game_Send». Grönt betyder rätt, rött visar rätt svar.
+4. Tryck Enter för nästa uppgift och «Common_Stop» när du är klar. En sammanfattning visar hur det gick.</value>
+  </data>
+  <data name="Help_S2_Title" xml:space="preserve">
+    <value>Uppgifter och svar</value>
+  </data>
+  <data name="Help_S2_Body" xml:space="preserve">
+    <value>• ? kan vara resultatet, ett tal i uppgiften eller (med saknat räknetecken) själva tecknet: klicka på + − × ÷ eller skriv + - * /.
+• Bråk och decimaltal: skriv 3/4, 1 1/2, 0.5 eller 0,5. Alla lika värden räknas.
+• Enhetsomvandling: skriv bara talet, till exempel 3000 för 3 km = ? m.
+• Efter ett fel svar visar en rad hur man räknar ut det.</value>
+  </data>
+  <data name="Help_S3_Title" xml:space="preserve">
+    <value>Spellägen</value>
+  </data>
+  <data name="Help_S3_Body" xml:space="preserve">
+    <value>• «Mode_Practice»: så många uppgifter du vill.
+• «Mode_Timed»: svara på så många som möjligt och slå ditt personbästa.
+• «Mode_TestShort»: 10 eller 20 uppgifter utan hjälp; resultatet och uppgifterna att öva på kommer på slutet.</value>
+  </data>
+  <data name="Help_S4_Title" xml:space="preserve">
+    <value>«Menu_Adaptive»</value>
+  </data>
+  <data name="Help_S4_Body" xml:space="preserve">
+    <value>Spelet börjar med små tal. Tre rätta svar i rad tar dig upp en nivå, två fel ner en. Din nivå sparas till nästa spel.</value>
+  </data>
+  <data name="Help_S5_Title" xml:space="preserve">
+    <value>Spelare och mål</value>
+  </data>
+  <data name="Help_S5_Body" xml:space="preserve">
+    <value>Med «Menu_Players» lägger du till varje barn eller elev och sätter ett dagligt mål. Välj spelare innan du trycker på «Common_Start»: spel, nivåer och personbästa sparas separat, och menyn visar dagens framsteg. «Menu_Guest» spelar utan namn.</value>
+  </data>
+  <data name="Help_S6_Title" xml:space="preserve">
+    <value>«Menu_Family»</value>
+  </data>
+  <data name="Help_S6_Body" xml:space="preserve">
+    <value>2–4 spelare turas om vid en dator, var och en på sin nivå, så att barn och vuxna kan spela rättvist tillsammans. Du kan välja hur många uppgifter varje spelare löser per tur.</value>
+  </data>
+  <data name="Help_S7_Title" xml:space="preserve">
+    <value>Historik och arbetsblad</value>
+  </data>
+  <data name="Help_S7_Body" xml:space="preserve">
+    <value>• «Menu_History» visar alla spel, för alla spelare eller en, med träffsäkerheten per räknesätt. Fliken «Players_Title» ger en överblick, och «History_Export» sparar det för ett kalkylprogram.
+• «Menu_Worksheet» gör ett blad att skriva ut med de nuvarande inställningarna och facit. Samma kod ger samma uppgifter, till exempel för en hel klass.</value>
+  </data>
+  <data name="Help_S8_Title" xml:space="preserve">
+    <value>«Menu_Display»</value>
+  </data>
+  <data name="Help_S8_Body" xml:space="preserve">
+    <value>Till höger i menyn kan du välja större text, färger med hög kontrast eller ett annat språk. Ändringarna gäller direkt och sparas.</value>
+  </data>
 </root>

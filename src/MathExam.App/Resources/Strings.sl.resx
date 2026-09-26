@@ -408,4 +408,67 @@
   <data name="Menu_Convert" xml:space="preserve">
     <value>Pretvarjanje enot (km → m)</value>
   </data>
+  <data name="Help_Title" xml:space="preserve">
+    <value>Kako uporabljati</value>
+  </data>
+  <data name="Help_Close" xml:space="preserve">
+    <value>Zapri</value>
+  </data>
+  <data name="Help_S1_Title" xml:space="preserve">
+    <value>Prvi koraki</value>
+  </data>
+  <data name="Help_S1_Body" xml:space="preserve">
+    <value>1. Izberi najmanjše in največje število ter označi računske operacije, ki jih želiš vaditi.
+2. Pritisni «Common_Start» (ali Enter).
+3. Vpiši manjkajoče število in pritisni Enter ali «Game_Send». Zelena pomeni pravilno, rdeča pokaže pravilni odgovor.
+4. Z Enterjem pride naslednja naloga, ko končaš, pa pritisni «Common_Stop». Povzetek pokaže, kako ti je šlo.</value>
+  </data>
+  <data name="Help_S2_Title" xml:space="preserve">
+    <value>Naloge in odgovori</value>
+  </data>
+  <data name="Help_S2_Body" xml:space="preserve">
+    <value>• ? je lahko rezultat, število v nalogi ali (pri manjkajočem znaku) sam znak: klikni + − × ÷ ali vpiši + - * /.
+• Ulomki in decimalna števila: vpiši 3/4, 1 1/2, 0.5 ali 0,5. Šteje vsaka enaka vrednost.
+• Pretvarjanje enot: vpiši samo število, npr. 3000 za 3 km = ? m.
+• Po napačnem odgovoru vrstica pokaže, kako do rešitve.</value>
+  </data>
+  <data name="Help_S3_Title" xml:space="preserve">
+    <value>Načini igre</value>
+  </data>
+  <data name="Help_S3_Body" xml:space="preserve">
+    <value>• «Mode_Practice»: toliko nalog, kolikor želiš.
+• «Mode_Timed»: odgovori na čim več nalog in premagaj svoj rekord.
+• «Mode_TestShort»: 10 ali 20 nalog brez pomoči; rezultat in naloge za vajo pridejo na koncu.</value>
+  </data>
+  <data name="Help_S4_Title" xml:space="preserve">
+    <value>«Menu_Adaptive»</value>
+  </data>
+  <data name="Help_S4_Body" xml:space="preserve">
+    <value>Igra se začne z majhnimi števili. Trije pravilni odgovori zapored te dvignejo za stopnjo, dva napačna spustijo. Tvoja stopnja se zapomni za naslednjo igro.</value>
+  </data>
+  <data name="Help_S5_Title" xml:space="preserve">
+    <value>Igralci in cilji</value>
+  </data>
+  <data name="Help_S5_Body" xml:space="preserve">
+    <value>Z gumbom «Menu_Players» dodaš vsakega otroka ali učenca in nastaviš dnevni cilj. Izberi igralca, preden pritisneš «Common_Start»: njegove igre, stopnje in rekordi se hranijo ločeno, meni pa pokaže današnji napredek. «Menu_Guest» igra brez imena.</value>
+  </data>
+  <data name="Help_S6_Title" xml:space="preserve">
+    <value>«Menu_Family»</value>
+  </data>
+  <data name="Help_S6_Body" xml:space="preserve">
+    <value>2–4 igralci se izmenjujejo za enim računalnikom, vsak na svoji stopnji, zato lahko otroci in odrasli pošteno igrajo skupaj. Nastaviš lahko, koliko nalog vsak reši na potezo.</value>
+  </data>
+  <data name="Help_S7_Title" xml:space="preserve">
+    <value>Zgodovina in delovni listi</value>
+  </data>
+  <data name="Help_S7_Body" xml:space="preserve">
+    <value>• «Menu_History» prikaže vse igre, za vse igralce ali enega, z natančnostjo po operacijah. Zavihek «Players_Title» da pregled, «History_Export» pa ga shrani za preglednico.
+• «Menu_Worksheet» izdela list za tiskanje s trenutnimi nastavitvami in rešitvami. Ista koda da iste naloge, npr. za cel razred.</value>
+  </data>
+  <data name="Help_S8_Title" xml:space="preserve">
+    <value>«Menu_Display»</value>
+  </data>
+  <data name="Help_S8_Body" xml:space="preserve">
+    <value>Desno v meniju lahko izbereš večje besedilo, barve z visokim kontrastom ali drug jezik. Spremembe veljajo takoj in se zapomnijo.</value>
+  </data>
 </root>

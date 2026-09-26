@@ -408,4 +408,67 @@
   <data name="Menu_Convert" xml:space="preserve">
     <value>Einheiten umrechnen (km → m)</value>
   </data>
+  <data name="Help_Title" xml:space="preserve">
+    <value>Anleitung</value>
+  </data>
+  <data name="Help_Close" xml:space="preserve">
+    <value>Schließen</value>
+  </data>
+  <data name="Help_S1_Title" xml:space="preserve">
+    <value>So geht's los</value>
+  </data>
+  <data name="Help_S1_Body" xml:space="preserve">
+    <value>1. Wähle die kleinste und die größte Zahl und hake die Rechenarten an, die du üben willst.
+2. Drücke «Common_Start» (oder Enter).
+3. Tippe die fehlende Zahl ein und drücke Enter oder «Game_Send». Grün heißt richtig, Rot zeigt die richtige Antwort.
+4. Drücke Enter für die nächste Aufgabe und «Common_Stop», wenn du fertig bist. Eine Zusammenfassung zeigt dein Ergebnis.</value>
+  </data>
+  <data name="Help_S2_Title" xml:space="preserve">
+    <value>Aufgaben und Antworten</value>
+  </data>
+  <data name="Help_S2_Body" xml:space="preserve">
+    <value>• Das ? kann das Ergebnis sein, eine Zahl der Aufgabe oder (beim fehlenden Rechenzeichen) das Zeichen: klicke + − × ÷ oder tippe + - * /.
+• Brüche und Dezimalzahlen: tippe 3/4, 1 1/2, 0.5 oder 0,5. Jeder gleiche Wert zählt.
+• Einheiten umrechnen: tippe nur die Zahl, z. B. 3000 bei 3 km = ? m.
+• Nach einer falschen Antwort zeigt eine Zeile den Rechenweg.</value>
+  </data>
+  <data name="Help_S3_Title" xml:space="preserve">
+    <value>Spielarten</value>
+  </data>
+  <data name="Help_S3_Body" xml:space="preserve">
+    <value>• «Mode_Practice»: so viele Aufgaben, wie du willst.
+• «Mode_Timed»: beantworte so viele wie möglich und schlage deine Bestleistung.
+• «Mode_TestShort»: 10 oder 20 Aufgaben ohne Hilfen; das Ergebnis und die Aufgaben zum Üben kommen am Ende.</value>
+  </data>
+  <data name="Help_S4_Title" xml:space="preserve">
+    <value>«Menu_Adaptive»</value>
+  </data>
+  <data name="Help_S4_Body" xml:space="preserve">
+    <value>Das Spiel beginnt mit kleinen Zahlen. Drei richtige Antworten hintereinander bringen dich eine Stufe höher, zwei falsche eine tiefer. Deine Stufe wird für das nächste Spiel gemerkt.</value>
+  </data>
+  <data name="Help_S5_Title" xml:space="preserve">
+    <value>Spieler und Ziele</value>
+  </data>
+  <data name="Help_S5_Body" xml:space="preserve">
+    <value>Mit «Menu_Players» fügst du jedes Kind oder jeden Schüler hinzu und legst ein Tagesziel fest. Wähle den Spieler, bevor du «Common_Start» drückst: Spiele, Stufen und Bestleistungen werden getrennt gespeichert, und das Menü zeigt den Fortschritt von heute. «Menu_Guest» spielt ohne Namen.</value>
+  </data>
+  <data name="Help_S6_Title" xml:space="preserve">
+    <value>«Menu_Family»</value>
+  </data>
+  <data name="Help_S6_Body" xml:space="preserve">
+    <value>2–4 Spieler sind abwechselnd an einem Computer dran, jeder auf seiner Stufe, damit Kinder und Erwachsene fair zusammen spielen. Du kannst festlegen, wie viele Aufgaben jeder pro Zug löst.</value>
+  </data>
+  <data name="Help_S7_Title" xml:space="preserve">
+    <value>Verlauf und Arbeitsblätter</value>
+  </data>
+  <data name="Help_S7_Body" xml:space="preserve">
+    <value>• «Menu_History» zeigt alle Spiele, für alle Spieler oder einen, mit der Trefferquote je Rechenart. Der Reiter «Players_Title» gibt einen Überblick, und «History_Export» speichert alles für eine Tabellenkalkulation.
+• «Menu_Worksheet» erstellt ein Blatt zum Ausdrucken mit den aktuellen Einstellungen und Lösungen. Dieselbe Blattnummer ergibt dieselben Aufgaben, z. B. für eine ganze Klasse.</value>
+  </data>
+  <data name="Help_S8_Title" xml:space="preserve">
+    <value>«Menu_Display»</value>
+  </data>
+  <data name="Help_S8_Body" xml:space="preserve">
+    <value>Rechts im Menü kannst du eine größere Schrift, kontrastreiche Farben oder eine andere Sprache wählen. Änderungen wirken sofort und werden gespeichert.</value>
+  </data>
 </root>

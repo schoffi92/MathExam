@@ -6,7 +6,12 @@
              x:Class="MathExam.App.Views.MenuView"
              x:DataType="vm:MenuViewModel">
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock Text="Math Exam" Classes="title" />
+        <!-- The title centred, with the help button on the right of the same row. -->
+        <Grid ColumnDefinitions="*,Auto,*">
+            <TextBlock Grid.Column="1" Text="Math Exam" Classes="title" />
+            <Button Grid.Column="2" Content="{x:Static res:Strings.Help_Title}" Command="{Binding HelpCommand}"
+                    HorizontalAlignment="Right" VerticalAlignment="Top" MinWidth="0" Padding="12,4" FontSize="14" />
+        </Grid>
 
         <!-- Two columns: what to practise on the left, how the app looks on the right. -->
         <Grid ColumnDefinitions="420,24,300">

@@ -408,4 +408,67 @@
   <data name="Menu_Convert" xml:space="preserve">
     <value>Eenheden omrekenen (km → m)</value>
   </data>
+  <data name="Help_Title" xml:space="preserve">
+    <value>Zo werkt het</value>
+  </data>
+  <data name="Help_Close" xml:space="preserve">
+    <value>Sluiten</value>
+  </data>
+  <data name="Help_S1_Title" xml:space="preserve">
+    <value>Aan de slag</value>
+  </data>
+  <data name="Help_S1_Body" xml:space="preserve">
+    <value>1. Kies het kleinste en het grootste getal en vink de bewerkingen aan die je wilt oefenen.
+2. Druk op «Common_Start» (of Enter).
+3. Typ het ontbrekende getal en druk op Enter of «Game_Send». Groen betekent goed; rood laat het goede antwoord zien.
+4. Druk op Enter voor de volgende som en op «Common_Stop» als je klaar bent. Een overzicht laat zien hoe het ging.</value>
+  </data>
+  <data name="Help_S2_Title" xml:space="preserve">
+    <value>Sommen en antwoorden</value>
+  </data>
+  <data name="Help_S2_Body" xml:space="preserve">
+    <value>• Het ? kan de uitkomst zijn, een getal in de som of (bij een ontbrekend teken) het teken zelf: klik op + − × ÷ of typ + - * /.
+• Breuken en kommagetallen: typ 3/4, 1 1/2, 0.5 of 0,5. Elke gelijke waarde telt.
+• Eenheden omrekenen: typ alleen het getal, bijvoorbeeld 3000 bij 3 km = ? m.
+• Na een fout antwoord laat een regel zien hoe je het uitrekent.</value>
+  </data>
+  <data name="Help_S3_Title" xml:space="preserve">
+    <value>Spelvormen</value>
+  </data>
+  <data name="Help_S3_Body" xml:space="preserve">
+    <value>• «Mode_Practice»: zoveel sommen als je wilt.
+• «Mode_Timed»: beantwoord er zoveel mogelijk en verbeter je persoonlijke record.
+• «Mode_TestShort»: 10 of 20 sommen zonder hulp; de score en de sommen om te oefenen komen aan het eind.</value>
+  </data>
+  <data name="Help_S4_Title" xml:space="preserve">
+    <value>«Menu_Adaptive»</value>
+  </data>
+  <data name="Help_S4_Body" xml:space="preserve">
+    <value>Het spel begint met kleine getallen. Drie goede antwoorden op rij brengen je een niveau hoger, twee foute een niveau lager. Je niveau wordt onthouden voor het volgende spel.</value>
+  </data>
+  <data name="Help_S5_Title" xml:space="preserve">
+    <value>Spelers en doelen</value>
+  </data>
+  <data name="Help_S5_Body" xml:space="preserve">
+    <value>Met «Menu_Players» voeg je elk kind of elke leerling toe en stel je een dagdoel in. Kies de speler voordat je op «Common_Start» drukt: spellen, niveaus en records worden apart bewaard, en het menu toont de voortgang van vandaag. «Menu_Guest» speelt zonder naam.</value>
+  </data>
+  <data name="Help_S6_Title" xml:space="preserve">
+    <value>«Menu_Family»</value>
+  </data>
+  <data name="Help_S6_Body" xml:space="preserve">
+    <value>2–4 spelers spelen om de beurt op één computer, ieder op zijn eigen niveau, zodat kinderen en volwassenen eerlijk samen kunnen spelen. Je kunt instellen hoeveel sommen iedere speler per beurt maakt.</value>
+  </data>
+  <data name="Help_S7_Title" xml:space="preserve">
+    <value>Geschiedenis en werkbladen</value>
+  </data>
+  <data name="Help_S7_Body" xml:space="preserve">
+    <value>• «Menu_History» toont alle spellen, voor alle spelers of één, met de nauwkeurigheid per bewerking. Het tabblad «Players_Title» geeft een overzicht, en «History_Export» slaat het op voor een spreadsheet.
+• «Menu_Worksheet» maakt een blad om te printen met de huidige instellingen en de antwoorden. Dezelfde code geeft dezelfde sommen, bijvoorbeeld voor een hele klas.</value>
+  </data>
+  <data name="Help_S8_Title" xml:space="preserve">
+    <value>«Menu_Display»</value>
+  </data>
+  <data name="Help_S8_Body" xml:space="preserve">
+    <value>Rechts in het menu kun je grotere tekst, kleuren met hoog contrast of een andere taal kiezen. Wijzigingen gelden meteen en worden onthouden.</value>
+  </data>
 </root>

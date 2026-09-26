@@ -408,4 +408,67 @@
   <data name="Menu_Convert" xml:space="preserve">
     <value>Birim dönüştürme (km → m)</value>
   </data>
+  <data name="Help_Title" xml:space="preserve">
+    <value>Nasıl kullanılır</value>
+  </data>
+  <data name="Help_Close" xml:space="preserve">
+    <value>Kapat</value>
+  </data>
+  <data name="Help_S1_Title" xml:space="preserve">
+    <value>Başlarken</value>
+  </data>
+  <data name="Help_S1_Body" xml:space="preserve">
+    <value>1. En küçük ve en büyük sayıyı seç, çalışmak istediğin işlemleri işaretle.
+2. «Common_Start» düğmesine (ya da Enter'a) bas.
+3. Eksik sayıyı yaz ve Enter'a ya da «Game_Send» düğmesine bas. Yeşil doğru demektir, kırmızı doğru cevabı gösterir.
+4. Sonraki soru için Enter'a bas, bitirince «Common_Stop» düğmesine bas. Özet, nasıl gittiğini gösterir.</value>
+  </data>
+  <data name="Help_S2_Title" xml:space="preserve">
+    <value>Sorular ve cevaplar</value>
+  </data>
+  <data name="Help_S2_Body" xml:space="preserve">
+    <value>• ? sonuç, sorudaki bir sayı ya da (eksik işlem işaretinde) işaretin kendisi olabilir: + − × ÷ düğmelerine tıkla ya da + - * / yaz.
+• Kesirler ve ondalık sayılar: 3/4, 1 1/2, 0.5 ya da 0,5 yaz. Eşit olan her değer doğru sayılır.
+• Birim dönüştürme: yalnızca sayıyı yaz, örneğin 3 km = ? m için 3000.
+• Yanlış bir cevaptan sonra bir satır çözüm yolunu gösterir.</value>
+  </data>
+  <data name="Help_S3_Title" xml:space="preserve">
+    <value>Oyun türleri</value>
+  </data>
+  <data name="Help_S3_Body" xml:space="preserve">
+    <value>• «Mode_Practice»: istediğin kadar soru.
+• «Mode_Timed»: olabildiğince çok soruyu cevapla ve kişisel rekorunu geç.
+• «Mode_TestShort»: ipucu olmadan 10 ya da 20 soru; puan ve tekrar edilecek sorular sonda gelir.</value>
+  </data>
+  <data name="Help_S4_Title" xml:space="preserve">
+    <value>«Menu_Adaptive»</value>
+  </data>
+  <data name="Help_S4_Body" xml:space="preserve">
+    <value>Oyun küçük sayılarla başlar. Arka arkaya üç doğru cevap seni bir seviye yukarı, iki yanlış bir seviye aşağı taşır. Seviyen bir sonraki oyun için hatırlanır.</value>
+  </data>
+  <data name="Help_S5_Title" xml:space="preserve">
+    <value>Oyuncular ve hedefler</value>
+  </data>
+  <data name="Help_S5_Body" xml:space="preserve">
+    <value>«Menu_Players» ile her çocuğu ya da öğrenciyi ekleyip günlük hedef belirleyebilirsin. «Common_Start» düğmesine basmadan önce oyuncuyu seç: oyunları, seviyeleri ve rekorları ayrı tutulur, menü de bugünkü ilerlemeyi gösterir. «Menu_Guest» adsız oynar.</value>
+  </data>
+  <data name="Help_S6_Title" xml:space="preserve">
+    <value>«Menu_Family»</value>
+  </data>
+  <data name="Help_S6_Body" xml:space="preserve">
+    <value>2–4 oyuncu tek bilgisayarda sırayla oynar, her biri kendi seviyesinde; böylece çocuklar ve yetişkinler adil bir şekilde birlikte oynayabilir. Her oyuncunun bir sırada kaç soru çözeceğini seçebilirsin.</value>
+  </data>
+  <data name="Help_S7_Title" xml:space="preserve">
+    <value>Geçmiş ve çalışma kâğıtları</value>
+  </data>
+  <data name="Help_S7_Body" xml:space="preserve">
+    <value>• «Menu_History» tüm oyunları, bütün oyuncular ya da biri için, işleme göre başarıyla birlikte listeler. «Players_Title» sekmesi genel bir bakış sunar, «History_Export» ise bunu elektronik tablo için kaydeder.
+• «Menu_Worksheet» şu anki ayarlarla ve cevap anahtarıyla yazdırılabilir bir kâğıt hazırlar. Aynı kod aynı soruları verir, örneğin bütün bir sınıf için.</value>
+  </data>
+  <data name="Help_S8_Title" xml:space="preserve">
+    <value>«Menu_Display»</value>
+  </data>
+  <data name="Help_S8_Body" xml:space="preserve">
+    <value>Menünün sağ tarafında daha büyük yazı, yüksek karşıtlıklı renkler ya da başka bir dil seçebilirsin. Değişiklikler hemen uygulanır ve hatırlanır.</value>
+  </data>
 </root>

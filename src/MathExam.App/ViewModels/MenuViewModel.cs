@@ -50,6 +50,7 @@ public partial class MenuViewModel : ObservableObject
     private readonly Action<GameSettings> _onWorksheet;
     private readonly Action _onPlayers;
     private readonly Action<string?> _onSelectPlayer;
+    private readonly Action _onHelp;
     private bool _settingPlayers;
 
     /// <param name="onStart">Called with the settings, whether adaptive difficulty is on, and the game mode.</param>
@@ -57,9 +58,11 @@ public partial class MenuViewModel : ObservableObject
     /// <param name="onWorksheet">Opens the worksheet options with the settings.</param>
     /// <param name="onPlayers">Opens the screen for adding and removing players.</param>
     /// <param name="onSelectPlayer">Called with the chosen player's name (null for the guest).</param>
+    /// <param name="onHelp">Opens the "How to use" screen.</param>
     public MenuViewModel(DisplayViewModel display, Action<GameSettings, bool, GameModeOption> onStart, Action<GameSettings> onFamily,
-        Action onShowHistory, Action<GameSettings> onWorksheet, Action onPlayers, Action<string?> onSelectPlayer)
+        Action onShowHistory, Action<GameSettings> onWorksheet, Action onPlayers, Action<string?> onSelectPlayer, Action onHelp)
     {
+        _onHelp = onHelp;
         Display = display;
         _onStart = onStart;
         _onFamily = onFamily;
@@ -104,6 +107,9 @@ public partial class MenuViewModel : ObservableObject
 
     [RelayCommand]
     private void ManagePlayers() => _onPlayers();
+
+    [RelayCommand]
+    private void Help() => _onHelp();
 
     public IReadOnlyList<NumberOption> NumberOptions => NumberOption.All;
 

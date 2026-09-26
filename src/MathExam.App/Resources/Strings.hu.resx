@@ -408,4 +408,67 @@
   <data name="Menu_Convert" xml:space="preserve">
     <value>Mértékegység-átváltás (km → m)</value>
   </data>
+  <data name="Help_Title" xml:space="preserve">
+    <value>Használati útmutató</value>
+  </data>
+  <data name="Help_Close" xml:space="preserve">
+    <value>Bezárás</value>
+  </data>
+  <data name="Help_S1_Title" xml:space="preserve">
+    <value>Első lépések</value>
+  </data>
+  <data name="Help_S1_Body" xml:space="preserve">
+    <value>1. Add meg a legkisebb és a legnagyobb számot, és jelöld be a gyakorolni kívánt műveleteket.
+2. Nyomd meg az «Common_Start» gombot (vagy az Entert).
+3. Írd be a hiányzó számot, és nyomj Entert vagy a «Game_Send» gombot. A zöld jó választ jelent, a piros megmutatja a helyeset.
+4. Enterrel jön a következő feladat, és ha végeztél, nyomd meg a «Common_Stop» gombot. Az összesítés megmutatja, hogyan sikerült.</value>
+  </data>
+  <data name="Help_S2_Title" xml:space="preserve">
+    <value>Feladatok és válaszok</value>
+  </data>
+  <data name="Help_S2_Body" xml:space="preserve">
+    <value>• A ? lehet az eredmény, a feladat egyik száma vagy (hiányzó műveleti jelnél) maga a jel: kattints a + − × ÷ gombra, vagy írd be: + - * /.
+• Törtek és tizedes törtek: írd be így: 3/4, 1 1/2, 0.5 vagy 0,5. Minden egyenlő érték jó.
+• Mértékegység-átváltás: csak a számot írd be, például 3000-et a 3 km = ? m feladatnál.
+• Rossz válasz után egy sor megmutatja a megoldás menetét.</value>
+  </data>
+  <data name="Help_S3_Title" xml:space="preserve">
+    <value>Játékmódok</value>
+  </data>
+  <data name="Help_S3_Body" xml:space="preserve">
+    <value>• «Mode_Practice»: annyi feladat, amennyit csak szeretnél.
+• «Mode_Timed»: válaszolj minél többre, és döntsd meg az egyéni csúcsodat.
+• «Mode_TestShort»: 10 vagy 20 feladat segítség nélkül; az eredmény és a gyakorolni valók a végén jönnek.</value>
+  </data>
+  <data name="Help_S4_Title" xml:space="preserve">
+    <value>«Menu_Adaptive»</value>
+  </data>
+  <data name="Help_S4_Body" xml:space="preserve">
+    <value>A játék kis számokkal indul. Három egymást követő jó válasz után egy szinttel feljebb lépsz, két rossz után lejjebb. A szinted megmarad a következő játékra.</value>
+  </data>
+  <data name="Help_S5_Title" xml:space="preserve">
+    <value>Játékosok és célok</value>
+  </data>
+  <data name="Help_S5_Body" xml:space="preserve">
+    <value>A «Menu_Players» gombbal felveheted a gyerekeket vagy tanulókat, és napi célt adhatsz nekik. Az «Common_Start» előtt válaszd ki a játékost: a játékai, szintjei és csúcsai külön maradnak, a menü pedig mutatja a mai haladást. A «Menu_Guest» név nélkül játszik.</value>
+  </data>
+  <data name="Help_S6_Title" xml:space="preserve">
+    <value>«Menu_Family»</value>
+  </data>
+  <data name="Help_S6_Body" xml:space="preserve">
+    <value>2–4 játékos felváltva játszik egy gépen, mindenki a saját szintjén, így gyerekek és felnőttek is igazságosan játszhatnak együtt. Beállíthatod, hány feladatot old meg egy menetben mindenki.</value>
+  </data>
+  <data name="Help_S7_Title" xml:space="preserve">
+    <value>Előzmények és feladatlapok</value>
+  </data>
+  <data name="Help_S7_Body" xml:space="preserve">
+    <value>• Az «Menu_History» minden játékot felsorol, az összes játékosra vagy egyre, műveletenkénti pontossággal. A «Players_Title» fül áttekintést ad, az «History_Export» pedig táblázatkezelőbe menti.
+• A «Menu_Worksheet» nyomtatható lapot készít a mostani beállításokkal és megoldókulccsal. Ugyanaz a lapkód ugyanazokat a feladatokat adja, például egy egész osztálynak.</value>
+  </data>
+  <data name="Help_S8_Title" xml:space="preserve">
+    <value>«Menu_Display»</value>
+  </data>
+  <data name="Help_S8_Body" xml:space="preserve">
+    <value>A menü jobb oldalán nagyobb betűméretet, nagy kontrasztú színeket vagy másik nyelvet választhatsz. A változások azonnal érvényesek, és megmaradnak.</value>
+  </data>
 </root>

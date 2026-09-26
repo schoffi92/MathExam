@@ -35,6 +35,9 @@
         <DataTemplate DataType="vm:WorksheetViewModel">
             <views:WorksheetView />
         </DataTemplate>
+        <DataTemplate DataType="vm:HelpViewModel">
+            <views:HelpView />
+        </DataTemplate>
     </Application.DataTemplates>
 
     <!-- Colour themes: ThemeManager switches RequestedThemeVariant between Light and HighContrast.

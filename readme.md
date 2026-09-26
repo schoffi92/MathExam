@@ -1,10 +1,12 @@
 # MathExam – Mathematical Education Application
 
-A desktop app for **Windows and Linux** (including the Raspberry Pi) (C# / Avalonia, .NET 8) for practising addition, subtraction, multiplication and division, plus powers, roots and metric unit conversion. Each task is an equation with one hidden number, which can be the result or one of the operands:
+A desktop app for **Windows and Linux**, including the Raspberry Pi (C# / Avalonia, .NET 8), for practising addition, subtraction, multiplication and division, plus powers, roots and metric unit conversion. Each task is an equation with one hidden part: the result, an operand, or the operator:
 
 ```
 100 × 100 = ?
  99 ×   ? = 990
+  6 ?   3 = 18
+     3 km = ? m
 ```
 
 ## Features
@@ -14,14 +16,14 @@ A desktop app for **Windows and Linux** (including the Raspberry Pi) (C# / Avalo
   - Type the hidden number and press **Send** or <kbd>Enter</kbd>.
   - A correct answer is shown in **green**. A wrong answer is shown in **red**, together with the right answer.
   - Press **Next** or <kbd>Enter</kbd> again for the next random task.
-- **Endless play:** keep going until you press **Stop**, then see a summary (correct, wrong, accuracy, time).
+- **Game modes:** endless practice until you press **Stop**, a one-minute timed challenge with a personal best, or a test of 10 or 20 tasks that shows the score and what to practise only at the end. A summary follows every game.
 - **Show how:** after a wrong answer, the working is shown, e.g. `8 + 7 = 8 + 2 + 5 = 10 + 5 = 15`.
-- **Game modes:** practice, a one-minute timed challenge with a personal best, or a test of 10 or 20 tasks that shows the score and what to practise only at the end.
 - **Adaptive difficulty** (optional): starts with small numbers and widens the range as you answer correctly (10 levels). The next game resumes at your last level.
 - **Family game:** 2–4 players take turns on one computer, each with their own adaptive level, so a child and a grandparent can play fairly together. Live scoreboard, final ranking, and "Play again".
 - **Players and goals:** each child (or pupil) has a profile with their own history, levels, personal bests and a daily goal ("Today: 12 / 20 tasks"). Switch players in one click on the menu.
 - **Progress history:** every game is saved on this computer and listed on the History screen with totals and accuracy per operation, for all players or one. A Players tab gives a class overview. Export as CSV for a spreadsheet.
 - **Printable worksheets:** 10, 20 or 30 tasks with the current settings as a PDF with answer keys, in up to four versions; a sheet code gives a whole class the same tasks.
+- **How to use:** a button on the menu opens a short, scrollable guide to the app in the chosen language.
 - **Languages:** English, French, German, Hungarian, Italian, Spanish, Polish, Czech, Finnish, Portuguese, Swedish, Norwegian, Croatian, Slovenian, Slovak, Turkish, Greek, Romanian and Dutch. The app follows the system language, or you can pick one in the menu.
 - **Accessibility:** three text sizes (Normal / Large / Extra large) and a high-contrast colour theme, both remembered between launches. Right and wrong answers are also shown as text (✓ / ✗), not just by colour.
 
@@ -52,8 +54,8 @@ dotnet test
 
 | Path | Contents |
 |---|---|
-| `src/MathExam.Core` | Game logic: task generation, adaptive difficulty, session tracking, history and settings storage |
-| `src/MathExam.App` | Cross-platform user interface (Avalonia, MVVM) |
+| `src/MathExam.Core` | Game logic: task generation (including fractions, decimals and units), explanations, adaptive difficulty, sessions, history, profiles and settings storage |
+| `src/MathExam.App` | Cross-platform user interface (Avalonia, MVVM), translations and the worksheet PDF |
 | `tests/MathExam.Core.Tests` | xUnit tests for the core logic |
 | `packaging/linux/` | README and file list for the Linux archive |
 | `docs/` | Documentation |

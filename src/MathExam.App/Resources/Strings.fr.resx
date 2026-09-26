@@ -408,4 +408,67 @@
   <data name="Menu_Convert" xml:space="preserve">
     <value>Conversions d'unités (km → m)</value>
   </data>
+  <data name="Help_Title" xml:space="preserve">
+    <value>Mode d'emploi</value>
+  </data>
+  <data name="Help_Close" xml:space="preserve">
+    <value>Fermer</value>
+  </data>
+  <data name="Help_S1_Title" xml:space="preserve">
+    <value>Pour commencer</value>
+  </data>
+  <data name="Help_S1_Body" xml:space="preserve">
+    <value>1. Choisis le plus petit et le plus grand nombre, et coche les opérations à travailler.
+2. Appuie sur «Common_Start» (ou Entrée).
+3. Tape le nombre manquant et appuie sur Entrée ou «Game_Send». Le vert veut dire juste ; le rouge montre la bonne réponse.
+4. Appuie sur Entrée pour le calcul suivant, et sur «Common_Stop» quand tu as fini. Un résumé montre tes résultats.</value>
+  </data>
+  <data name="Help_S2_Title" xml:space="preserve">
+    <value>Calculs et réponses</value>
+  </data>
+  <data name="Help_S2_Body" xml:space="preserve">
+    <value>• Le ? peut être le résultat, un nombre du calcul ou le signe (avec l'opérateur manquant) : clique sur + − × ÷ ou tape + - * /.
+• Fractions et décimaux : tape 3/4, 1 1/2, 0.5 ou 0,5. Toute valeur égale compte.
+• Conversions d'unités : tape seulement le nombre, par exemple 3000 pour 3 km = ? m.
+• Après une mauvaise réponse, une ligne montre comment trouver le résultat.</value>
+  </data>
+  <data name="Help_S3_Title" xml:space="preserve">
+    <value>Modes de jeu</value>
+  </data>
+  <data name="Help_S3_Body" xml:space="preserve">
+    <value>• «Mode_Practice» : autant de calculs que tu veux.
+• «Mode_Timed» : réponds au plus grand nombre possible et bats ton record.
+• «Mode_TestShort» : 10 ou 20 calculs sans aide ; le score et les calculs à revoir arrivent à la fin.</value>
+  </data>
+  <data name="Help_S4_Title" xml:space="preserve">
+    <value>«Menu_Adaptive»</value>
+  </data>
+  <data name="Help_S4_Body" xml:space="preserve">
+    <value>Le jeu commence avec de petits nombres. Trois bonnes réponses de suite te font monter d'un niveau, deux mauvaises te font descendre. Ton niveau est gardé pour la partie suivante.</value>
+  </data>
+  <data name="Help_S5_Title" xml:space="preserve">
+    <value>Joueurs et objectifs</value>
+  </data>
+  <data name="Help_S5_Body" xml:space="preserve">
+    <value>Appuie sur «Menu_Players» pour ajouter chaque enfant ou élève et fixer un objectif du jour. Choisis le joueur avant d'appuyer sur «Common_Start» : ses parties, ses niveaux et ses records sont gardés à part, et le menu montre sa progression du jour. «Menu_Guest» joue sans nom.</value>
+  </data>
+  <data name="Help_S6_Title" xml:space="preserve">
+    <value>«Menu_Family»</value>
+  </data>
+  <data name="Help_S6_Body" xml:space="preserve">
+    <value>De 2 à 4 joueurs jouent à tour de rôle sur un ordinateur, chacun à son niveau, pour que petits et grands jouent à égalité. Tu peux choisir combien de calculs chaque joueur fait par tour.</value>
+  </data>
+  <data name="Help_S7_Title" xml:space="preserve">
+    <value>Historique et fiches</value>
+  </data>
+  <data name="Help_S7_Body" xml:space="preserve">
+    <value>• «Menu_History» liste toutes les parties, pour tous les joueurs ou un seul, avec la précision par opération. L'onglet «Players_Title» donne une vue d'ensemble, et «History_Export» l'enregistre pour un tableur.
+• «Menu_Worksheet» crée une fiche à imprimer avec les réglages actuels et les solutions. Le même code donne les mêmes calculs, par exemple pour toute une classe.</value>
+  </data>
+  <data name="Help_S8_Title" xml:space="preserve">
+    <value>«Menu_Display»</value>
+  </data>
+  <data name="Help_S8_Body" xml:space="preserve">
+    <value>À droite du menu, tu peux choisir un texte plus grand, des couleurs à fort contraste ou une autre langue. Les changements s'appliquent tout de suite et sont gardés.</value>
+  </data>
 </root>

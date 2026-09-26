@@ -408,4 +408,67 @@
   <data name="Menu_Convert" xml:space="preserve">
     <value>Μετατροπή μονάδων (km → m)</value>
   </data>
+  <data name="Help_Title" xml:space="preserve">
+    <value>Οδηγίες χρήσης</value>
+  </data>
+  <data name="Help_Close" xml:space="preserve">
+    <value>Κλείσιμο</value>
+  </data>
+  <data name="Help_S1_Title" xml:space="preserve">
+    <value>Πρώτα βήματα</value>
+  </data>
+  <data name="Help_S1_Body" xml:space="preserve">
+    <value>1. Διάλεξε τον μικρότερο και τον μεγαλύτερο αριθμό και σημείωσε τις πράξεις που θέλεις να εξασκήσεις.
+2. Πάτησε «Common_Start» (ή Enter).
+3. Γράψε τον αριθμό που λείπει και πάτησε Enter ή «Game_Send». Το πράσινο σημαίνει σωστό, το κόκκινο δείχνει τη σωστή απάντηση.
+4. Πάτησε Enter για την επόμενη άσκηση και «Common_Stop» όταν τελειώσεις. Μια σύνοψη δείχνει πώς τα πήγες.</value>
+  </data>
+  <data name="Help_S2_Title" xml:space="preserve">
+    <value>Ασκήσεις και απαντήσεις</value>
+  </data>
+  <data name="Help_S2_Body" xml:space="preserve">
+    <value>• Το ? μπορεί να είναι το αποτέλεσμα, ένας αριθμός της άσκησης ή (όταν λείπει η πράξη) το ίδιο το σύμβολο: πάτησε + − × ÷ ή γράψε + - * /.
+• Κλάσματα και δεκαδικοί: γράψε 3/4, 1 1/2, 0.5 ή 0,5. Μετράει κάθε ίση τιμή.
+• Μετατροπή μονάδων: γράψε μόνο τον αριθμό, π.χ. 3000 για το 3 km = ? m.
+• Μετά από λάθος απάντηση, μια γραμμή δείχνει πώς βγαίνει το αποτέλεσμα.</value>
+  </data>
+  <data name="Help_S3_Title" xml:space="preserve">
+    <value>Είδη παιχνιδιού</value>
+  </data>
+  <data name="Help_S3_Body" xml:space="preserve">
+    <value>• «Mode_Practice»: όσες ασκήσεις θέλεις.
+• «Mode_Timed»: απάντησε σε όσες περισσότερες μπορείς και σπάσε το ρεκόρ σου.
+• «Mode_TestShort»: 10 ή 20 ασκήσεις χωρίς βοήθεια· η βαθμολογία και οι ασκήσεις για εξάσκηση έρχονται στο τέλος.</value>
+  </data>
+  <data name="Help_S4_Title" xml:space="preserve">
+    <value>«Menu_Adaptive»</value>
+  </data>
+  <data name="Help_S4_Body" xml:space="preserve">
+    <value>Το παιχνίδι ξεκινά με μικρούς αριθμούς. Τρεις σωστές απαντήσεις στη σειρά σε ανεβάζουν ένα επίπεδο, δύο λάθος σε κατεβάζουν. Το επίπεδό σου αποθηκεύεται για το επόμενο παιχνίδι.</value>
+  </data>
+  <data name="Help_S5_Title" xml:space="preserve">
+    <value>Παίκτες και στόχοι</value>
+  </data>
+  <data name="Help_S5_Body" xml:space="preserve">
+    <value>Με το «Menu_Players» προσθέτεις κάθε παιδί ή μαθητή και ορίζεις ημερήσιο στόχο. Διάλεξε τον παίκτη πριν πατήσεις «Common_Start»: τα παιχνίδια, τα επίπεδα και τα ρεκόρ του κρατιούνται χωριστά, και το μενού δείχνει τη σημερινή πρόοδο. Ο «Menu_Guest» παίζει χωρίς όνομα.</value>
+  </data>
+  <data name="Help_S6_Title" xml:space="preserve">
+    <value>«Menu_Family»</value>
+  </data>
+  <data name="Help_S6_Body" xml:space="preserve">
+    <value>2–4 παίκτες παίζουν με τη σειρά σε έναν υπολογιστή, ο καθένας στο δικό του επίπεδο, ώστε παιδιά και μεγάλοι να παίζουν δίκαια μαζί. Μπορείς να ορίσεις πόσες ασκήσεις λύνει ο καθένας σε κάθε σειρά.</value>
+  </data>
+  <data name="Help_S7_Title" xml:space="preserve">
+    <value>Ιστορικό και φύλλα εργασίας</value>
+  </data>
+  <data name="Help_S7_Body" xml:space="preserve">
+    <value>• Το «Menu_History» δείχνει όλα τα παιχνίδια, για όλους τους παίκτες ή για έναν, με την ακρίβεια ανά πράξη. Η καρτέλα «Players_Title» δίνει μια συνολική εικόνα και η «History_Export» την αποθηκεύει για υπολογιστικό φύλλο.
+• Το «Menu_Worksheet» φτιάχνει ένα φύλλο για εκτύπωση με τις τρέχουσες ρυθμίσεις και τις λύσεις. Ο ίδιος κωδικός δίνει τις ίδιες ασκήσεις, π.χ. για όλη την τάξη.</value>
+  </data>
+  <data name="Help_S8_Title" xml:space="preserve">
+    <value>«Menu_Display»</value>
+  </data>
+  <data name="Help_S8_Body" xml:space="preserve">
+    <value>Στα δεξιά του μενού μπορείς να διαλέξεις μεγαλύτερο κείμενο, χρώματα υψηλής αντίθεσης ή άλλη γλώσσα. Οι αλλαγές ισχύουν αμέσως και αποθηκεύονται.</value>
+  </data>
 </root>

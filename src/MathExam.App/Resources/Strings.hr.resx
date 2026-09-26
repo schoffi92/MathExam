@@ -408,4 +408,67 @@
   <data name="Menu_Convert" xml:space="preserve">
     <value>Pretvorba jedinica (km → m)</value>
   </data>
+  <data name="Help_Title" xml:space="preserve">
+    <value>Kako koristiti</value>
+  </data>
+  <data name="Help_Close" xml:space="preserve">
+    <value>Zatvori</value>
+  </data>
+  <data name="Help_S1_Title" xml:space="preserve">
+    <value>Prvi koraci</value>
+  </data>
+  <data name="Help_S1_Body" xml:space="preserve">
+    <value>1. Odaberi najmanji i najveći broj i označi računske operacije koje želiš vježbati.
+2. Pritisni «Common_Start» (ili Enter).
+3. Upiši broj koji nedostaje i pritisni Enter ili «Game_Send». Zeleno znači točno, crveno pokazuje točan odgovor.
+4. Pritisni Enter za sljedeći zadatak, a «Common_Stop» kad završiš. Sažetak pokazuje kako ti je išlo.</value>
+  </data>
+  <data name="Help_S2_Title" xml:space="preserve">
+    <value>Zadaci i odgovori</value>
+  </data>
+  <data name="Help_S2_Body" xml:space="preserve">
+    <value>• ? može biti rezultat, broj u zadatku ili (kod znaka koji nedostaje) sam znak: klikni + − × ÷ ili upiši + - * /.
+• Razlomci i decimalni brojevi: upiši 3/4, 1 1/2, 0.5 ili 0,5. Vrijedi svaka jednaka vrijednost.
+• Pretvorba jedinica: upiši samo broj, npr. 3000 za 3 km = ? m.
+• Nakon netočnog odgovora jedan redak pokazuje kako se dolazi do rješenja.</value>
+  </data>
+  <data name="Help_S3_Title" xml:space="preserve">
+    <value>Načini igre</value>
+  </data>
+  <data name="Help_S3_Body" xml:space="preserve">
+    <value>• «Mode_Practice»: onoliko zadataka koliko želiš.
+• «Mode_Timed»: odgovori na što više zadataka i obori svoj rekord.
+• «Mode_TestShort»: 10 ili 20 zadataka bez pomoći; rezultat i zadaci za vježbu dolaze na kraju.</value>
+  </data>
+  <data name="Help_S4_Title" xml:space="preserve">
+    <value>«Menu_Adaptive»</value>
+  </data>
+  <data name="Help_S4_Body" xml:space="preserve">
+    <value>Igra počinje malim brojevima. Tri točna odgovora zaredom podižu te za razinu, dva netočna spuštaju. Tvoja razina pamti se za sljedeću igru.</value>
+  </data>
+  <data name="Help_S5_Title" xml:space="preserve">
+    <value>Igrači i ciljevi</value>
+  </data>
+  <data name="Help_S5_Body" xml:space="preserve">
+    <value>Gumbom «Menu_Players» dodaješ svako dijete ili učenika i postavljaš dnevni cilj. Odaberi igrača prije nego pritisneš «Common_Start»: njegove igre, razine i rekordi čuvaju se odvojeno, a izbornik pokazuje današnji napredak. «Menu_Guest» igra bez imena.</value>
+  </data>
+  <data name="Help_S6_Title" xml:space="preserve">
+    <value>«Menu_Family»</value>
+  </data>
+  <data name="Help_S6_Body" xml:space="preserve">
+    <value>2–4 igrača izmjenjuju se za jednim računalom, svaki na svojoj razini, pa djeca i odrasli mogu pošteno igrati zajedno. Možeš odrediti koliko zadataka svaki igrač rješava po potezu.</value>
+  </data>
+  <data name="Help_S7_Title" xml:space="preserve">
+    <value>Povijest i radni listići</value>
+  </data>
+  <data name="Help_S7_Body" xml:space="preserve">
+    <value>• «Menu_History» prikazuje sve igre, za sve igrače ili jednog, s točnošću po računskoj operaciji. Kartica «Players_Title» daje pregled, a «History_Export» sprema ga za tablični kalkulator.
+• «Menu_Worksheet» izrađuje listić za ispis s trenutačnim postavkama i rješenjima. Ista šifra daje iste zadatke, npr. za cijeli razred.</value>
+  </data>
+  <data name="Help_S8_Title" xml:space="preserve">
+    <value>«Menu_Display»</value>
+  </data>
+  <data name="Help_S8_Body" xml:space="preserve">
+    <value>Desno u izborniku možeš odabrati veći tekst, boje visokog kontrasta ili drugi jezik. Promjene vrijede odmah i pamte se.</value>
+  </data>
 </root>

@@ -408,4 +408,67 @@
   <data name="Menu_Convert" xml:space="preserve">
     <value>Převody jednotek (km → m)</value>
   </data>
+  <data name="Help_Title" xml:space="preserve">
+    <value>Jak používat</value>
+  </data>
+  <data name="Help_Close" xml:space="preserve">
+    <value>Zavřít</value>
+  </data>
+  <data name="Help_S1_Title" xml:space="preserve">
+    <value>Začínáme</value>
+  </data>
+  <data name="Help_S1_Body" xml:space="preserve">
+    <value>1. Zvol nejmenší a největší číslo a zaškrtni operace, které chceš procvičovat.
+2. Stiskni «Common_Start» (nebo Enter).
+3. Napiš chybějící číslo a stiskni Enter nebo «Game_Send». Zelená znamená správně, červená ukáže správnou odpověď.
+4. Enterem přejdeš na další příklad, a když skončíš, stiskni «Common_Stop». Shrnutí ukáže, jak se ti dařilo.</value>
+  </data>
+  <data name="Help_S2_Title" xml:space="preserve">
+    <value>Příklady a odpovědi</value>
+  </data>
+  <data name="Help_S2_Body" xml:space="preserve">
+    <value>• ? může být výsledek, číslo v příkladu nebo (u chybějícího znaménka) samotné znaménko: klikni na + − × ÷ nebo napiš + - * /.
+• Zlomky a desetinná čísla: napiš 3/4, 1 1/2, 0.5 nebo 0,5. Platí každá stejná hodnota.
+• Převody jednotek: napiš jen číslo, např. 3000 u 3 km = ? m.
+• Po špatné odpovědi ukáže řádek postup výpočtu.</value>
+  </data>
+  <data name="Help_S3_Title" xml:space="preserve">
+    <value>Druhy hry</value>
+  </data>
+  <data name="Help_S3_Body" xml:space="preserve">
+    <value>• «Mode_Practice»: tolik příkladů, kolik chceš.
+• «Mode_Timed»: odpověz na co nejvíc a překonej svůj rekord.
+• «Mode_TestShort»: 10 nebo 20 příkladů bez nápověd; výsledek a příklady k procvičení přijdou na konci.</value>
+  </data>
+  <data name="Help_S4_Title" xml:space="preserve">
+    <value>«Menu_Adaptive»</value>
+  </data>
+  <data name="Help_S4_Body" xml:space="preserve">
+    <value>Hra začíná s malými čísly. Tři správné odpovědi za sebou tě posunou o úroveň výš, dvě špatné níž. Tvoje úroveň se pamatuje na další hru.</value>
+  </data>
+  <data name="Help_S5_Title" xml:space="preserve">
+    <value>Hráči a cíle</value>
+  </data>
+  <data name="Help_S5_Body" xml:space="preserve">
+    <value>Tlačítkem «Menu_Players» přidáš každé dítě nebo žáka a nastavíš denní cíl. Před stisknutím «Common_Start» vyber hráče: jeho hry, úrovně a rekordy se ukládají zvlášť a menu ukazuje dnešní pokrok. «Menu_Guest» hraje bez jména.</value>
+  </data>
+  <data name="Help_S6_Title" xml:space="preserve">
+    <value>«Menu_Family»</value>
+  </data>
+  <data name="Help_S6_Body" xml:space="preserve">
+    <value>2–4 hráči se střídají u jednoho počítače, každý na své úrovni, takže děti i dospělí mohou hrát spravedlivě spolu. Můžeš nastavit, kolik příkladů každý vyřeší v jednom tahu.</value>
+  </data>
+  <data name="Help_S7_Title" xml:space="preserve">
+    <value>Historie a pracovní listy</value>
+  </data>
+  <data name="Help_S7_Body" xml:space="preserve">
+    <value>• «Menu_History» ukazuje všechny hry, všech hráčů nebo jednoho, s úspěšností pro každou operaci. Karta «Players_Title» dává přehled a «History_Export» vše uloží pro tabulkový procesor.
+• «Menu_Worksheet» vytvoří list k tisku s aktuálním nastavením a výsledky. Stejný kód dá stejné příklady, třeba pro celou třídu.</value>
+  </data>
+  <data name="Help_S8_Title" xml:space="preserve">
+    <value>«Menu_Display»</value>
+  </data>
+  <data name="Help_S8_Body" xml:space="preserve">
+    <value>Vpravo v menu můžeš zvolit větší text, vysoce kontrastní barvy nebo jiný jazyk. Změny platí hned a pamatují se.</value>
+  </data>
 </root>

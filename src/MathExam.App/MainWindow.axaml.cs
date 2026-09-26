@@ -1,6 +1,7 @@
 using System.ComponentModel;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
 using Avalonia.Data;
 using Avalonia.Media;
 using Avalonia.Platform.Storage;
@@ -28,6 +29,19 @@ public partial class MainWindow : Window, IFileSaver
         DataContext = _viewModel;
         FitToTextScale();
         _viewModel.Display.PropertyChanged += OnDisplayChanged;
+        _viewModel.PropertyChanged += OnScreenChanged;
+    }
+
+    /// <summary>
+    /// A screen that scrolls its own content (e.g. the help) gets exactly the window's height, so its fixed
+    /// parts such as a Close button stay in view; the others scroll as a whole when they do not fit.
+    /// </summary>
+    private void OnScreenChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == nameof(MainViewModel.CurrentViewModel))
+            Scroller.VerticalScrollBarVisibility = _viewModel.CurrentViewModel is IScrollsItself
+                ? ScrollBarVisibility.Disabled
+                : ScrollBarVisibility.Auto;
     }
 
     private void OnDisplayChanged(object? sender, PropertyChangedEventArgs e)

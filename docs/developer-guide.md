@@ -82,33 +82,35 @@ All the rules live in `MathExam.Core`, so they can be unit tested without a UI. 
 | `MetricUnits` / `MetricUnit` / `Quantity` | The units of conversion tasks (length, mass, capacity; each a power of ten of m, g or L), the `Pairs` of one quantity at most `MaxStep` (3) powers apart, and `Factor(large, small)`. |
 | `HiddenPart` | What is hidden: `Left`, `Right`, `Result`, or `Operator` (missing-operator tasks). |
 | `NumberKind` / `Rational` | `Whole`, `Decimal` (tenths) or `Fraction`. `Rational` is an exact reduced fraction with `TryParse` (whole numbers, `0.75`/`0,75`, `3/4`, `1 1/2`, `−`) and `ToFractionString()` / `ToDecimalString()`. |
-| `MathTask` | Immutable record `Left Op Right = Result` plus `Hidden`, `Numbers` and `Denominator`: decimal and fraction tasks store each number as a numerator over the shared denominator. For `Power`, Left is the base and Right the exponent; for `Root`, Left is the degree and Right the radicand; for `Convert` the task reads `Left FromUnit = Result ToUnit` and Right is the factor. `Answer` gives the hidden numerator and `AnswerText` the answer as shown (a number, or the operator symbol). `IsCorrect(Rational)` accepts any equal value (compared with `Int128` cross-multiplication; a hidden base of an even power also accepts its negative); `IsCorrect(Operation)` accepts any operator for which `Holds(op)`. `FormatValue` writes a number in the task's notation. `ToParts(revealAnswer)` `ToParts()` returns the text as `EquationPart`s with exponents/degrees marked superscript; `ToDisplayString(revealAnswer)` joins them into plain text, e.g. `99 × ? = 990`, `3² = ?`, `2^? = 8`, `³√27 = ?`, `6 ? 3 = 18`, `1/2 + 1/4 = ?`; with `revealAnswer` the hidden part is filled in (answer keys, explanations). |
-| `Explainer` | `Explain(task)` returns the working as a line of arithmetic, or `null` when there is nothing simpler to show: bridging through ten and tens/ones splits for + and −, splitting a factor for ×, back to multiplication for ÷, powers and roots, undoing the operation for a hidden operand, and a common denominator for fractions. |
+| `MathTask` | Immutable record `Left Op Right = Result` plus `Hidden`, `Numbers` and `Denominator`: decimal and fraction tasks store each number as a numerator over the shared denominator. For `Power`, Left is the base and Right the exponent; for `Root`, Left is the degree and Right the radicand; for `Convert` the task reads `Left FromUnit = Result ToUnit` and Right is the factor. `Answer` gives the hidden numerator and `AnswerText` the answer as shown (a number, or the operator symbol). `IsCorrect(Rational)` accepts any equal value (compared with `Int128` cross-multiplication; a hidden base of an even power also accepts its negative); `IsCorrect(Operation)` accepts any operator for which `Holds(op)`. `FormatValue` writes a number in the task's notation. `ToParts(revealAnswer)` returns the text as `EquationPart`s with exponents/degrees marked superscript; `ToDisplayString(revealAnswer)` joins them into plain text, e.g. `99 × ? = 990`, `3² = ?`, `2^? = 8`, `³√27 = ?`, `6 ? 3 = 18`, `1/2 + 1/4 = ?`; with `revealAnswer` the hidden part is filled in (answer keys, explanations). |
+| `Explainer` | `Explain(task)` returns the working as a line of arithmetic, or `null` when there is nothing simpler to show: bridging through ten and tens/ones splits for + and −, splitting a factor for ×, back to multiplication for ÷, powers and roots, undoing the operation for a hidden operand, a common denominator for fractions, and the unit relation (`1 km = 1000 m → 3 × 1000 = 3000`) for conversions. |
 | `GameSettings` | `Min`, `Max`, `Operations`, `Numbers` and `MissingOperator`; `WithRange(min, max)` copies it with another range. `PowerBaseLimit` (1000) bounds the bases of powers and roots. Fractions are only valid with + and −, decimals also with `Convert`, which needs `Max ≥ 1`. `Validate()` returns a user-facing error message in the current UI language, or `null` when the settings are valid. |
 | `TaskGenerator` | `Next(settings)` creates a random `MathTask`. Accepts a `Random` for deterministic tests. |
 | `GameSession` | One game. Keeps `CurrentTask`, `TaskNumber`, `CorrectCount`, `WrongCount`, `ByOperation` (an `OperationStats` per operation asked), `StartedAt` and `Elapsed`, measured with a `TimeProvider` so tests can pass a manual clock. An optional `TimeLimit` makes it a timed challenge (`TimeLeft`, `IsTimeUp`; `Elapsed` never exceeds the limit); an optional `TaskLimit` makes it a test (`IsTest`, `IsTestComplete`). `Mistakes` lists each wrong answer with what was given, for the test review. `Submit(long | Rational)` or `SubmitOperator(op)` → `bool`, then `NextTask()`, then `Stop()`. With an optional `DifficultyAdjuster` it is adaptive: tasks come from `TaskSettings`, and `LastLevelChange` reports +1/−1/0 after each answer. |
 | `DifficultyAdjuster` | Adaptive level 1–10. `RecordAnswer(correct)` → level change. `ForLevel(settings, level)` / `Apply(settings)` narrow the range. |
 | `FamilyGame` | Turn-based game for 2–4 players. Each `FamilyPlayer` has their own adaptive `GameSession`, and all sessions share one start time. A turn is `TasksPerTurn` tasks (1–`MaxTasksPerTurn` = 10; `TaskInTurn`, `IsLastTaskOfTurn`). `Submit(answer)` answers for `Current`; `Next()` prepares that player's next task, and after their last task of the turn passes the turn on. Also provides `Round`, `Ranking` (correct answers, then accuracy), `Winners` (more than one means a tie; empty if nobody scored), and `ValidatePlayers(names)`. |
-| `SessionRecord` | A finished game as stored in the history (range, operations, counts, duration, start/end level, `Player`: the name in a family game or `null` for solo, `ByOperation`, `TimeLimitSeconds`, `Numbers`, `MissingOperator`, `Profile`: the solo game's profile or `null` for the guest, `TaskLimit` for tests). `Who` is `Player ?? Profile`; `Mode` (`Practice`/`Timed`/`Test`/`Family`) is derived from the fields. Fields added later are optional, so older files still load. `FromSession(session, player)` builds one; `HasSameSettings(other)` compares range, operations and options. |
+| `SessionRecord` | A finished game as stored in the history (range, operations, counts, duration, start/end level, `Player`: the name in a family game or `null` for solo, `ByOperation`, `TimeLimitSeconds`, `Numbers`, `MissingOperator`, `Profile`: the solo game's profile or `null` for the guest, `TaskLimit` for tests). `Who` is `Player ?? Profile`; `Mode` (`Practice`/`Timed`/`Test`/`Family`) is derived from the fields. Fields added later are optional, so older files still load. `FromSession(session, player, profile)` builds one; `HasSameSettings(other)` compares range, operations and options. |
 | `Profile` / `ProfileList` / `ProfileStore` | A profile is a name and a `DailyGoal` (tasks, 0 = none). `ProfileList` holds the profiles and the `Current` one (null = guest), `Find` and `ValidateNewName`; `ProfileStore` keeps it in `profiles.json`. |
 | `PlayerStats` | `TasksOn(records, name, day)` for daily goals (solo games of the profile plus family games under the name), `IsPlayedBy`, and `Overview(records, profiles, today)`: one `PlayerOverview` per profile, family player and the guest. |
 | `HistoryCsv` | `Write(writer, records)`: RFC 4180 CSV with English headers, a `Mode` column, `Player` = `Who`, invariant formats and two columns per operation (empty for games without per-operation counts). `Encoding` is UTF-8 with a byte order mark, for Excel. |
 | `HistoryTotals` | Totals over the history. The records of one family game (same `StartedAt`, non-null `Player`) count as one game, and its time counts once. `ByOperation` adds up the records that have per-operation counts. |
 | `HistoryStore` | Reads and writes the history JSON file. `Load()`, `Add(record)`, `ResumeLevel(records, settings, player, profile)` (same range and kind of numbers, same family player or solo profile), `PersonalBest(records, game)` (most correct answers in an earlier timed solo game by the same profile, with the same limit and settings). `DefaultPath` is `<LocalApplicationData>/MathExam/history.json`, which is `%LOCALAPPDATA%` on Windows and `~/.local/share` on Linux. |
 | `DisplayPreferences` / `PreferencesStore` | `TextSize` (`Normal`/`Large`/`ExtraLarge`), `HighContrast` and `Language` (a two-letter code such as `"hu"`, or `null` for the system language), stored in `preferences.json`. Older files without `Language` load with `null`. `Load()` returns `null` when the file is missing or unreadable. |
-| `JsonFile` (internal) | Shared JSON options, the app data folder, and `WriteAtomic` (temp file + move) used by both stores. |
+| `JsonFile` (internal) | Shared JSON options, the app data folder, and `WriteAtomic` (temp file + move) used by the history, preferences and profile stores. |
 
 ### Task generation rules (`TaskGenerator`)
 
 1. Pick a random enabled operation.
-2. Generate operands within `[Min, Max]`:
+2. Generate operands within `[Min, Max]` (with `Decimal` or `Fraction` numbers, + and − use the rules at the end of this list):
    - **Add / Multiply:** `a`, `b` random; the result is computed.
    - **Subtract:** `a`, `b` random. If `Min >= 0`, they are swapped so that `a >= b` and the result is never negative.
    - **Divide:** built backwards to stay exact. Divisor `b ≠ 0` and quotient `q` are random, and the dividend is `b × q`.
    - **Power:** base `b` from `[Min, Max] ∩ [−PowerBaseLimit, PowerBaseLimit]`; exponent from 2..`MaxExponent` (5), where exponents above 2 are only allowed while `|b|^e ≤ MaxHigherPower` (1000).
    - **Convert:** a random quantity and unit pair; the amount in the larger unit comes from `[max(Min, 1), Max]` (in tenths with `Decimal` numbers), and the other side is that times the factor, so both are exact. The direction and the hidden side (`Left` or `Result`) are random.
    - **Root:** built backwards like division. The root `r` is picked like a power base and the degree like an exponent, and the radicand is `r^d`. A negative `r` only gets odd degrees (falling back to 3 when `|r| > 10`), so every root is real and whole.
-3. Pick a random `HiddenPart`. If hiding that operand would allow any answer (`× 0`, `0 ÷ ?`, `(0 or ±1)^?`, `?√(0 or ±1)`), hide the `Result` instead.
+   - **Decimal + / −:** both operands are tenths (numerators over 10) within the range.
+   - **Fraction + / −:** one denominator from `FractionDenominators` (2, 3, 4, 5, 6, 8, 10, 12), and half the time a second one whose common multiple is at most 24; both operands are multiples of their denominator's step within the range, stored over the common denominator. Up to 20 attempts make at least one operand a real fraction.
+3. Pick a random `HiddenPart`: `Left`, `Right` or `Result`, plus `Operator` for + − × ÷ with `MissingOperator`. If hiding that operand would allow any answer (`× 0`, `0 ÷ ?`, `(0 or ±1)^?`, `?√(0 or ±1)`), hide the `Result` instead. Conversions pick their hidden side (`Left` or `Result`) themselves.
 
 `GameSettings.Validate()` rejects powers/roots when the range has no number within ±`PowerBaseLimit`. `DifficultyAdjuster` narrows the range towards its number closest to zero, which is always within the limit, so every level stays valid.
 
@@ -118,11 +120,11 @@ Numbers are `long`, so multiplying two `int`-range operands cannot overflow; pow
 
 - **Level changes:** +1 after `CorrectStreakToLevelUp` (3) correct answers in a row, −1 after `WrongStreakToLevelDown` (2) wrong answers in a row. The level is clamped to `MinLevel`..`MaxLevel` (1..10), and each streak resets when the level changes or the other kind of answer arrives.
 - **Range per level:** the range grows outwards from the *anchor*, `clamp(0, Min, Max)`, which is the easiest number. Each side covers `ceil(span × level / 10)` of its span, using integer maths so no floating-point rounding creeps in. Rounding up guarantees that a valid `GameSettings` stays valid on every level; for example, division always keeps a non-zero divisor.
-- **Resuming:** `HistoryStore.ResumeLevel` returns the `EndLevel` of the latest adaptive record with the same `Min`/`Max` and the same player (`null` for solo; names compared case-insensitively), or level 1. Solo games and each family player therefore keep separate levels.
+- **Resuming:** `HistoryStore.ResumeLevel` returns the `EndLevel` of the latest adaptive record with the same `Min`/`Max` and `Numbers`, by the same family player, or solo under the same profile (`null` for the guest; names compared case-insensitively), or level 1. The guest, each profile and each family player therefore keep separate levels. Tests are never adaptive.
 
 ### Progress history (`HistoryStore`)
 
-- **Format:** an indented JSON array of `SessionRecord`s. Enums are stored as names, and computed properties (`Answered`, `Accuracy`, `IsAdaptive`) are `[JsonIgnore]`d. Files written before family mode have no `Player` property; they load with `Player = null` (solo).
+- **Format:** an indented JSON array of `SessionRecord`s. Enums are stored as names, and computed properties (`Answered`, `Accuracy`, `IsAdaptive`) are `[JsonIgnore]`d. Files written before a field existed (e.g. `Player`, `ByOperation`, `Profile`) load with its default value, so old solo games belong to the guest.
 - **Safe writes:** `Add` writes to `history.json.tmp` and then moves it over the original, so a crash cannot leave a half-written file.
 - **Corrupt files:** a file that can't be parsed is copied to `history.json.bak` and treated as empty, so the next save does not silently destroy it.
 - **Error handling:** the app catches `IOException`/`UnauthorizedAccessException`. A failed save is shown on the summary screen, and a failed load is shown on the History screen. Neither crashes the app.
@@ -134,12 +136,15 @@ The UI uses [Avalonia](https://avaloniaui.net) 12 with the Fluent theme and the 
 Navigation is view-model first. `MainWindow` has a single `ContentControl` bound to `MainViewModel.CurrentViewModel`, and the `Application.DataTemplates` in `App.axaml` map each view model to its view. Views use compiled bindings (`x:DataType`), so a binding typo is a build error rather than a silent runtime failure.
 
 ```
-MenuViewModel ──Start──▶ GameViewModel ──Stop──▶ SummaryViewModel ──Back──▶ MenuViewModel
-      │                                        (game saved to history)
+MenuViewModel ──Start──▶ GameViewModel ──Stop / time up / test done──▶ SummaryViewModel ──Back──▶ MenuViewModel
+      │                                        (game saved to history under the chosen player)
       ├──Family game──▶ FamilySetupViewModel ──Start──▶ FamilyGameViewModel ──Stop──▶ FamilySummaryViewModel
       │                                                  ▲   (one record per player saved)      │
       │                                                  └────────────── Play again ────────────┘
-      └──History──▶ HistoryViewModel ──Back──▶ MenuViewModel
+      ├──History──▶ HistoryViewModel ──Back──▶ MenuViewModel
+      ├──Worksheet (PDF)──▶ WorksheetViewModel ──Back──▶ MenuViewModel
+      ├──Players…──▶ PlayersViewModel ──Back (profiles saved)──▶ MenuViewModel
+      └──How to use──▶ HelpViewModel ──Close──▶ MenuViewModel
 ```
 
 | View model | Notes |
@@ -147,6 +152,7 @@ MenuViewModel ──Start──▶ GameViewModel ──Stop──▶ SummaryView
 | `DisplayViewModel` | Text size, high contrast and language. Loads preferences at startup (first launch follows the OS contrast preference, via `ThemeManager.SystemPrefersHighContrast()`), applies the theme and language, and saves on every change. Exposes `TextScale` (1.0 / 1.25 / 1.5), one bool per text-size radio button, and `Languages` / `Language` for the language list. |
 | `MainViewModel` | Owns navigation, the `HistoryStore`, the `ProfileStore` and current profile (`SelectPlayer`, `RefreshMenu`, `DailyGoalProgress`), and the shared `DisplayViewModel` (also exposed to the menu as `MenuViewModel.Display`). Reuses one `MenuViewModel`, so settings persist between games. Creates the `DifficultyAdjuster` at the resume level, starts timed challenges (`ChallengeTime`, 1 minute), looks up the personal best before saving each finished game that has answers, and writes worksheets and CSV exports through `IFileSaver`, which `MainWindow` implements with the system save dialog. |
 | `MenuViewModel` | Min/max are bound as strings, so invalid input can be reported instead of silently rejected. `ErrorMessage` and the commands' `CanExecute` reuse `GameSettings.Validate()`. `Numbers` is a `NumberOption` and `Mode` a `GameModeOption` (practice, timed, test of 10 or 20) from combo boxes; `UseMissingOperator`. `Players`/`SelectedPlayer` (guest first) and `GoalText` are filled by `MainViewModel.SetPlayers`. The view has two columns (settings; player and display). |
+| `HelpViewModel` | The "How to use" screen: `SectionCount` sections from `Help_S{n}_Title` / `Help_S{n}_Body`. `FillLabels` replaces each `«Key»` with that key's text, so the help names buttons exactly as the screens do. Implements `IScrollsItself`. |
 | `PlayersViewModel` | Adds and removes `PlayerRow`s with a daily goal each; hands the new `ProfileList` back on leaving. |
 | `WorksheetViewModel` | Tasks per sheet (10/20/30), versions (1–4) and an optional code; `MainViewModel.SaveWorksheetAsync` seeds each version's `TaskGenerator` with `code × 4 + version`, so a code reproduces its sheets. |
 | `GameViewModel` | Solo game. `Equation` is the current `MathTask`, drawn by `Views/EquationBlock`, a `TextBlock` that turns `ToParts()` into runs: superscript digits use the font's Unicode superscripts, and a hidden `?` exponent is a smaller run with `BaselineAlignment.Superscript`. `State` (`Answering`/`Correct`/`Wrong`) drives the button text and read-only state. `IsCorrect`/`IsWrong` toggle the views' `correct`/`wrong` style classes. A single `SubmitOrNextCommand` handles both steps; `Answers.Submit` reads the text as an operator or a `Rational` as the task needs. `PickOperatorCommand` backs the + − × ÷ buttons of missing-operator tasks (`ShowOperatorButtons`). `ExplanationText` shows `Explainer`'s working after a wrong answer. In a test there is no feedback: an answer moves straight on, and the game stops when `IsTestComplete`. `GoalText` adds the answers of this game to the day's `DailyGoalProgress`. An Avalonia `DispatcherTimer` refreshes `ClockText` (elapsed, or time left) and stops a timed game when `IsTimeUp`. |
@@ -156,7 +162,7 @@ MenuViewModel ──Start──▶ GameViewModel ──Stop──▶ SummaryView
 | `FamilyGameViewModel` | Like `GameViewModel`, but for the current player of a `FamilyGame`. Adds `TurnText`, `RoundText`, `TaskInTurnText` (shown when a turn has several tasks) and a `Scoreboard` of `ScoreRow`s (the current player gets the `current` style class). The button reads "Next" within a turn and "Next player" after its last task. |
 | `FamilySummaryViewModel` | Winner or tie text, and `RankingRow`s where equal players share a place. **Play again** restarts with the same names, settings and tasks per turn, loading resume levels fresh. |
 
-`Answers` holds what both game screens share: answer parsing (which accepts `−` as a minus sign), the ✓/✗ feedback text and the level-change text. The green/red answer styles live in `App.axaml` for both screens.
+`Answers` holds what both game screens share: reading the typed answer as an operator or a `Rational` (`Submit`), the ✓/✗ feedback text, the "How:" explanation, the level-change text and the operator buttons' symbols. The green/red answer styles live in `App.axaml` for both screens.
 
 ### Worksheets (`WorksheetPdf`)
 
@@ -172,7 +178,7 @@ The Send/Next button has `IsDefault="True"`, so <kbd>Enter</kbd> anywhere in the
 - **Contrast targets:** Standard meets WCAG AA (4.5:1). High contrast meets AAA (7:1).
 - **Switching:** Avalonia theme variants do the switching. `App.axaml` registers the two files as `ThemeDictionaries` for `Light` and for `ThemeManager.HighContrast`, a custom variant that inherits `Dark`, so any Fluent control not restyled here renders light-on-dark. `ThemeManager.Apply(highContrast)` sets `Application.RequestedThemeVariant`, and all styles and views use `DynamicResource`, so they update immediately. Don't add hard-coded colours to views; add a key to both theme files instead.
 - **Control styles:** styles in `App.axaml`, declared after `<FluentTheme />`, restyle `Button` and `TextBox` in every state (`:pointerover`, `:pressed`, `:focus`, `:disabled`, targeting `/template/` parts). Fluent's own hover colours are unreadable on black.
-- **Answer feedback:** the answer box and feedback text get `correct`/`wrong` style classes (`Classes.correct="{Binding IsCorrect}"`). The matching styles live in `GameView.axaml`, which is closer to the control than the app styles, so they override the focus border. `FeedbackText` repeats the result as "✓ Correct!" / "✗ Correct answer: N", so it doesn't depend on colour.
+- **Answer feedback:** the answer box and feedback text get `correct`/`wrong` style classes (`Classes.correct="{Binding IsCorrect}"`). The matching styles live in `App.axaml`, declared after the focus styles, so the green or red border stays visible while the answer box has focus. `FeedbackText` repeats the result as "✓ Correct!" / "✗ Correct answer: N", so it doesn't depend on colour.
 - **No GroupBox:** Avalonia has no `GroupBox`, so framed sections are a `Border` with the `group` class plus a `groupHeader` text block.
 
 ### Languages
@@ -182,13 +188,14 @@ The Send/Next button has `IsDefault="True"`, so <kbd>Enter</kbd> anywhere in the
 - **Switching:** `LanguageManager.Apply(code)` sets `CultureInfo.CurrentUICulture` (and the default for new threads); `null` restores the culture the app started with. Only the UI language changes; numbers, percentages and parsing keep following the OS regional settings (`CurrentCulture`).
 - **Live change:** views read `{x:Static}` texts once, so when `DisplayViewModel.Language` changes, `MainWindow.RebuildScreen()` replaces the `ContentControl` and every view is created again. View models are kept, so entered settings survive. `FamilySetupViewModel.Open` relabels the player rows for the same reason.
 - **Release builds:** the satellite assemblies (`fr/MathExam.resources.dll`, ...) are bundled into the single-file executable, so the packaging is unchanged.
+- **Help texts:** `Help_*` keys hold the "How to use" guide. Inside them, `«Key»` stands for another key's text (e.g. `«Common_Start»` for the Start button's label); `HelpViewModel` fills it in when the screen opens. `TranslationTests` checks that every `«Key»` exists.
 - **Adding a language:** copy `Strings.resx` to `Strings.<code>.resx` in both projects, translate the values, and add the code to `LanguageManager.Options`. `TranslationTests` fails if a translation misses a key or changes a `{n}` placeholder.
 
 ### Text size
 
 - **Scaling:** `MainWindow.axaml` wraps the content in a `LayoutTransformControl`. `MainWindow.FitToTextScale()` gives it a `ScaleTransform` of `Display.TextScale` whenever the setting changes. Every screen scales uniformly, so layouts keep their proportions.
-- **Scrolling:** the content sits in a vertical `ScrollViewer`, so large text stays usable on small screens.
-- **Window size:** the size and minimum size are set to the base size × scale, clamped to the screen's working area. This is skipped when the window is maximised.
+- **Scrolling:** the content sits in a vertical `ScrollViewer`, so large text stays usable on small screens. A view model that implements `IScrollsItself` (the help) turns it off: its view gets the window's height and scrolls its own text, so its Close button stays in view.
+- **Window size:** the size (800 × 720) and minimum size (800 × 480, as the menu has two columns) are set to the base size × scale, clamped to the screen's working area. This is skipped when the window is maximised.
 
 ## Tests
 
@@ -197,7 +204,7 @@ The Send/Next button has `IsDefault="True"`, so <kbd>Enter</kbd> anywhere in the
 - arithmetic validity of generated tasks over several ranges, including negative ranges
 - exact division and no division by zero
 - only enabled operations appear; operands stay within range
-- non-negative subtraction; every hidden part occurs; ambiguous zero cases are avoided
+- non-negative subtraction; every number can be hidden, the operator only with missing operators; ambiguous zero cases are avoided
 - `GameSettings` validation (including the power/root base limit and decimals/fractions only with + and −) and `GameSession` counters and state
 - `Rational`: parsing whole numbers, decimals with `.` or `,`, fractions and mixed numbers, invalid input, reduced formatting
 - decimal and fraction tasks (range, denominators, at least one real fraction, equal answers accepted), missing operators (only + − × ÷, any true operator accepted)
@@ -209,7 +216,7 @@ The Send/Next button has `IsDefault="True"`, so <kbd>Enter</kbd> anywhere in the
 - `DifficultyAdjuster`: streaks, clamping, per-level ranges (including negative ranges and extreme `int` limits), and adaptive sessions staying within the current range
 - `HistoryStore`: round trip, missing file, corrupt-file backup, resume level, and `SessionRecord.FromSession`. These tests use a temp directory.
 - `PreferencesStore`: round trip, missing file, corrupt file, older files without a language
-- translations: every `Strings.<lang>.resx` has exactly the English keys and the same `{n}` placeholders, and each Core translation loads for its `CurrentUICulture`
+- translations: every `Strings.<lang>.resx` has exactly the English keys and the same `{n}` placeholders, every `«Key»` in the help refers to an existing key, and each Core translation loads for its `CurrentUICulture`
 - `FamilyGame`: turn order and wrap-around, several tasks per turn, rounds, independent per-player levels and scores, ranking, ties, no winner, name validation and trimming, per-player resume level, and the player name in records, including old history files without it
 - `HistoryTotals`: a family game counts once with its time counted once; family players share the start time
 

@@ -408,4 +408,67 @@
   <data name="Menu_Convert" xml:space="preserve">
     <value>Conversão de unidades (km → m)</value>
   </data>
+  <data name="Help_Title" xml:space="preserve">
+    <value>Como usar</value>
+  </data>
+  <data name="Help_Close" xml:space="preserve">
+    <value>Fechar</value>
+  </data>
+  <data name="Help_S1_Title" xml:space="preserve">
+    <value>Para começar</value>
+  </data>
+  <data name="Help_S1_Body" xml:space="preserve">
+    <value>1. Escolhe o menor e o maior número e marca as operações que queres praticar.
+2. Carrega em «Common_Start» (ou Enter).
+3. Escreve o número em falta e carrega em Enter ou «Game_Send». Verde quer dizer certo; o vermelho mostra a resposta certa.
+4. Carrega em Enter para o exercício seguinte e em «Common_Stop» quando acabares. Um resumo mostra como correu.</value>
+  </data>
+  <data name="Help_S2_Title" xml:space="preserve">
+    <value>Exercícios e respostas</value>
+  </data>
+  <data name="Help_S2_Body" xml:space="preserve">
+    <value>• O ? pode ser o resultado, um número do exercício ou o sinal (com o operador em falta): clica em + − × ÷ ou escreve + - * /.
+• Frações e decimais: escreve 3/4, 1 1/2, 0.5 ou 0,5. Qualquer valor igual conta.
+• Conversão de unidades: escreve só o número, por exemplo 3000 para 3 km = ? m.
+• Depois de uma resposta errada, uma linha mostra como chegar ao resultado.</value>
+  </data>
+  <data name="Help_S3_Title" xml:space="preserve">
+    <value>Modos de jogo</value>
+  </data>
+  <data name="Help_S3_Body" xml:space="preserve">
+    <value>• «Mode_Practice»: tantos exercícios quantos quiseres.
+• «Mode_Timed»: responde ao máximo que conseguires e bate o teu recorde.
+• «Mode_TestShort»: 10 ou 20 exercícios sem ajudas; a pontuação e os exercícios para rever aparecem no fim.</value>
+  </data>
+  <data name="Help_S4_Title" xml:space="preserve">
+    <value>«Menu_Adaptive»</value>
+  </data>
+  <data name="Help_S4_Body" xml:space="preserve">
+    <value>O jogo começa com números pequenos. Três respostas certas seguidas sobem um nível, duas erradas descem. O teu nível fica guardado para o próximo jogo.</value>
+  </data>
+  <data name="Help_S5_Title" xml:space="preserve">
+    <value>Jogadores e objetivos</value>
+  </data>
+  <data name="Help_S5_Body" xml:space="preserve">
+    <value>Carrega em «Menu_Players» para adicionar cada criança ou aluno e definir um objetivo diário. Escolhe o jogador antes de carregar em «Common_Start»: os jogos, níveis e recordes ficam separados, e o menu mostra o progresso de hoje. «Menu_Guest» joga sem nome.</value>
+  </data>
+  <data name="Help_S6_Title" xml:space="preserve">
+    <value>«Menu_Family»</value>
+  </data>
+  <data name="Help_S6_Body" xml:space="preserve">
+    <value>De 2 a 4 jogadores jogam à vez num computador, cada um no seu nível, para que crianças e adultos joguem juntos de forma justa. Podes escolher quantos exercícios cada jogador faz por vez.</value>
+  </data>
+  <data name="Help_S7_Title" xml:space="preserve">
+    <value>Histórico e fichas</value>
+  </data>
+  <data name="Help_S7_Body" xml:space="preserve">
+    <value>• «Menu_History» mostra todos os jogos, de todos os jogadores ou de um, com a precisão por operação. O separador «Players_Title» dá uma visão geral e «History_Export» guarda-o para uma folha de cálculo.
+• «Menu_Worksheet» cria uma ficha para imprimir com as definições atuais e as soluções. O mesmo código dá os mesmos exercícios, por exemplo para uma turma inteira.</value>
+  </data>
+  <data name="Help_S8_Title" xml:space="preserve">
+    <value>«Menu_Display»</value>
+  </data>
+  <data name="Help_S8_Body" xml:space="preserve">
+    <value>À direita do menu podes escolher um texto maior, cores de alto contraste ou outro idioma. As alterações aplicam-se logo e ficam guardadas.</value>
+  </data>
 </root>

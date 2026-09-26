@@ -1,0 +1,28 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:MathExam.App.ViewModels"
+             xmlns:res="using:MathExam.App.Resources"
+             x:Class="MathExam.App.Views.HelpView"
+             x:DataType="vm:HelpViewModel">
+    <!-- The window does not scroll this screen (IScrollsItself): the text scrolls, the Close button stays in view. -->
+    <DockPanel>
+        <TextBlock DockPanel.Dock="Top" Text="{x:Static res:Strings.Help_Title}" Classes="title" Margin="0,0,0,12" />
+
+        <Button DockPanel.Dock="Bottom" Content="{x:Static res:Strings.Help_Close}" Command="{Binding CloseCommand}"
+                IsDefault="True" IsCancel="True" HorizontalAlignment="Center" Margin="0,12,0,0" />
+
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+            <ItemsControl ItemsSource="{Binding Sections}" MaxWidth="700" HorizontalAlignment="Center" Margin="0,0,16,0">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate x:DataType="vm:HelpSection">
+                        <StackPanel Margin="0,0,0,20">
+                            <TextBlock Text="{Binding Title}" FontSize="20" FontWeight="SemiBold"
+                                       Foreground="{DynamicResource AccentBrush}" Margin="0,0,0,6" />
+                            <TextBlock Text="{Binding Body}" TextWrapping="Wrap" LineHeight="24" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </DockPanel>
+</UserControl>

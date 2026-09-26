@@ -408,4 +408,67 @@
   <data name="Menu_Convert" xml:space="preserve">
     <value>Unit conversion (km → m)</value>
   </data>
+  <data name="Help_Title" xml:space="preserve">
+    <value>How to use</value>
+  </data>
+  <data name="Help_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Help_S1_Title" xml:space="preserve">
+    <value>Getting started</value>
+  </data>
+  <data name="Help_S1_Body" xml:space="preserve">
+    <value>1. Choose the lowest and highest number and tick the operations to practise.
+2. Press «Common_Start» (or Enter).
+3. Type the missing number and press Enter or «Game_Send». Green means right; red shows the correct answer.
+4. Press Enter for the next task, and «Common_Stop» when you are done. A summary shows how you did.</value>
+  </data>
+  <data name="Help_S2_Title" xml:space="preserve">
+    <value>Tasks and answers</value>
+  </data>
+  <data name="Help_S2_Body" xml:space="preserve">
+    <value>• The ? can be the result, a number in the task, or the sign (with a missing operator): click + − × ÷ or type + - * /.
+• Fractions and decimals: type 3/4, 1 1/2, 0.5 or 0,5. Any equal value counts.
+• Unit conversion: type only the number, e.g. 3000 for 3 km = ? m.
+• After a wrong answer, a line shows how to work it out.</value>
+  </data>
+  <data name="Help_S3_Title" xml:space="preserve">
+    <value>Game modes</value>
+  </data>
+  <data name="Help_S3_Body" xml:space="preserve">
+    <value>• «Mode_Practice»: as many tasks as you like.
+• «Mode_Timed»: answer as many as you can and beat your personal best.
+• «Mode_TestShort»: 10 or 20 tasks without hints; the score and the tasks to practise come at the end.</value>
+  </data>
+  <data name="Help_S4_Title" xml:space="preserve">
+    <value>«Menu_Adaptive»</value>
+  </data>
+  <data name="Help_S4_Body" xml:space="preserve">
+    <value>The game starts with small numbers. Three right answers in a row take you up a level, two wrong ones down. Your level is remembered for the next game.</value>
+  </data>
+  <data name="Help_S5_Title" xml:space="preserve">
+    <value>Players and goals</value>
+  </data>
+  <data name="Help_S5_Body" xml:space="preserve">
+    <value>Press «Menu_Players» to add each child or pupil and set a daily goal. Choose the player before pressing «Common_Start»: their games, levels and personal bests are kept separately, and the menu shows today's progress. «Menu_Guest» plays without a name.</value>
+  </data>
+  <data name="Help_S6_Title" xml:space="preserve">
+    <value>«Menu_Family»</value>
+  </data>
+  <data name="Help_S6_Body" xml:space="preserve">
+    <value>2–4 players take turns on one computer, each at their own level, so children and adults can play fairly together. You can set how many tasks each player answers per turn.</value>
+  </data>
+  <data name="Help_S7_Title" xml:space="preserve">
+    <value>History and worksheets</value>
+  </data>
+  <data name="Help_S7_Body" xml:space="preserve">
+    <value>• «Menu_History» lists every game, for all players or one, with the accuracy for each operation. The «Players_Title» tab gives an overview, and «History_Export» saves it for a spreadsheet.
+• «Menu_Worksheet» makes a printable sheet with the current settings and an answer key. The same sheet code gives the same tasks, e.g. for a whole class.</value>
+  </data>
+  <data name="Help_S8_Title" xml:space="preserve">
+    <value>«Menu_Display»</value>
+  </data>
+  <data name="Help_S8_Body" xml:space="preserve">
+    <value>On the right of the menu you can choose a larger text size, high-contrast colours or another language. Changes apply at once and are remembered.</value>
+  </data>
 </root>

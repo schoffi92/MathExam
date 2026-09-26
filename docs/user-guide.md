@@ -18,13 +18,13 @@ MathExam is a practice app for the four basic operations, plus powers, roots and
 | **Display → High contrast colours** | White and yellow on black, with thicker borders. |
 | **Display → Language** | English, Français (French), Deutsch (German), Magyar (Hungarian), Italiano (Italian), Español (Spanish), Polski (Polish), Čeština (Czech), Suomi (Finnish), Português (Portuguese), Svenska (Swedish), Norsk bokmål (Norwegian), Hrvatski (Croatian), Slovenščina (Slovenian), Slovenčina (Slovak), Türkçe (Turkish), Ελληνικά (Greek), Română (Romanian) or Nederlands (Dutch). *System default* uses your operating system's language, or English if it is none of these. |
 
-Defaults: lowest `1`, highest `10`, the four basic operations on (powers and roots off), whole numbers, no missing operators, adaptive difficulty on, no time limit, normal text, system language. High contrast starts on if the operating system's high-contrast mode is on.
+Defaults: lowest `1`, highest `10`, the four basic operations on (powers, roots and unit conversion off), whole numbers, no missing operators, adaptive difficulty on, *Practice*, the *Guest* player, normal text, system language. High contrast starts on if the operating system's high-contrast mode is on.
 
 Display changes, including the language, apply immediately and are remembered the next time you open the app. If Extra large text doesn't fit on a small screen, the window can be scrolled.
 
-The menu has two columns: what to practise on the left, the display settings on the right.
+The menu has two columns: what to practise on the left; the player and the display settings on the right. **How to use** at the top right opens a short guide to the app in the chosen language; scroll through it and press **Close** (or <kbd>Esc</kbd>) to return to the menu, with your settings as they were.
 
-**Start** (or <kbd>Enter</kbd>) begins a game. **Family game** sets up a game for several players (see [Family game](#5-family-game)). **History** shows your past games. **Worksheet (PDF)** saves a printable worksheet (see [Worksheets](#7-printable-worksheets)). If the settings are invalid, the button stays disabled and a red message says what to fix:
+**Start** (or <kbd>Enter</kbd>) begins a game. **Family game** sets up a game for several players (see [Family game](#5-family-game)). **History** shows your past games. **Worksheet (PDF)** opens the options for a printable worksheet (see [Worksheets](#7-printable-worksheets)). If the settings are invalid, the button stays disabled and a red message says what to fix:
 
 - both limits must be whole numbers,
 - the lowest number must not be greater than the highest,
@@ -42,9 +42,10 @@ The top bar shows:
 
 | Field | Meaning |
 |---|---|
-| `Task #N` | Number of the current task |
+| `Task #N` | Number of the current task; in a test `Task N of 20` |
 | `Level L / 10` | Current difficulty level (adaptive games only) |
-| `Solved: C / A` | Correct answers / answered tasks |
+| `Solved: C / A` | Correct answers / answered tasks (hidden during a test) |
+| Player and goal | The chosen player's name and, with a daily goal, `Today: 12 / 20 tasks` |
 | `Started` | Time the game started |
 | `Elapsed` | Time spent so far (hh:mm:ss); in a timed challenge, `Time left` counts down instead |
 
@@ -95,7 +96,7 @@ Tasks that are already as simple as they get, like `2 + 3`, show no extra line.
 
 ### Ending the game
 
-The game has no fixed length. Click **Stop** to end it and see the summary.
+In *Practice* the game has no fixed length: click **Stop** to end it and see the summary. A timed challenge ends when the time is up, and a test after its last task; **Stop** ends them early.
 
 ### Timed challenge
 
@@ -112,15 +113,16 @@ With adaptive difficulty on, the game has 10 levels.
 - **Level 10** uses your full range. Lower levels use a smaller part of it, starting from the easiest number (the one closest to zero). For example, with a range of 1–10, level 1 uses 1–2, level 5 uses 1–6 and level 10 uses 1–10.
 - **3 correct answers in a row** move you up one level: "▲ Level up!".
 - **2 wrong answers in a row** move you down one level: "▼ Level down".
-- The next game with the **same lowest and highest number** starts at the level you ended on. A new range starts at level 1.
+- The next game by the **same player** with the **same lowest and highest number** and the same kind of numbers starts at the level you ended on. A new range starts at level 1.
+- Tests ignore adaptive difficulty and always use the full range.
 
 With adaptive difficulty off, every task uses the full range.
 
 ## 4. Summary
 
-Shows the number of answered, correct and wrong tasks, your accuracy, the total time and, for adaptive games, the start and end level (e.g. `Level: 2 → 5`). After a timed challenge it also shows your personal best. **Back to menu** (or <kbd>Enter</kbd>) returns to the main menu.
+Shows the number of answered, correct and wrong tasks, your accuracy, the total time and, for adaptive games, the start and end level (e.g. `Level: 2 → 5`). After a timed challenge it also shows your personal best; after a test, the score and the tasks to practise (see [Tests](#tests)). **Back to menu** (or <kbd>Enter</kbd>) returns to the main menu.
 
-The game is saved to your progress history when you press **Stop**. A game with no answered tasks is not saved.
+The game is saved to your progress history when it ends: when you press **Stop**, the time runs out, or a test is complete. It is saved under the chosen player. A game with no answered tasks is not saved.
 
 ## 5. Family game
 
@@ -149,9 +151,9 @@ The **History** button in the main menu has two tabs.
 
 **Players** has one row per player, as an overview for a parent or a teacher: games, tasks, accuracy, total time, tasks today (against the daily goal, e.g. `12 / 20`) and when they last played.
 
-Above the table is a total across all games. A family game counts once, and its time is counted once. Below it, **By operation** shows your accuracy for each operation (e.g. `+ 95 %  ·  × 70 %`), so you can see what to practise. It covers games played since this was added; older games only count in the totals.
+Above the table is a total across the games shown. A family game counts once, and its time is counted once. Below it, **By operation** shows your accuracy for each operation (e.g. `+ 95 %  ·  × 70 %`), so you can see what to practise. It covers games played since this was added; older games only count in the totals.
 
-In the Tasks column, `(1/2)` marks a fraction game, `(0.1)` a decimal game and `(?)` a game with missing operators.
+In the Tasks column, `(1/2)` marks a fraction game, `(0.1)` a decimal game and `(?)` a game with missing operators; `↔` stands for unit conversion.
 
 **Export (CSV)** saves what the Games tab shows (all players, or the chosen one) as a CSV file for a spreadsheet: one row per result, with the date, player, game mode, settings, counts, accuracy, time, levels, time limit and the correct/wrong counts per operation. The file uses English column names, `yyyy-MM-dd HH:mm:ss` dates and `.` as the decimal point, whatever the app's language.
 

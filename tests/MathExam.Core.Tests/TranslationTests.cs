@@ -64,6 +64,25 @@ public sealed partial class TranslationTests
         }
     }
 
+    /// <summary>
+    /// The help texts refer to button and setting names as «Key»; the app fills them in, so each must be a key
+    /// that exists (in the same project's resources).
+    /// </summary>
+    [Theory]
+    [MemberData(nameof(Translations))]
+    public void Label_references_name_existing_keys(string relativePath)
+    {
+        var path = Path.Combine(RepoRoot(), relativePath);
+        var keys = Read(Path.Combine(Path.GetDirectoryName(path)!, "Strings.resx")).Keys.ToHashSet();
+        foreach (var file in new[] { path, Path.Combine(Path.GetDirectoryName(path)!, "Strings.resx") })
+            foreach (var (key, text) in Read(file))
+                foreach (Match m in LabelRegex().Matches(text))
+                    Assert.True(keys.Contains(m.Groups[1].Value), $"{Path.GetFileName(file)} {key}: unknown «{m.Groups[1].Value}»");
+    }
+
+    [GeneratedRegex("«([A-Za-z0-9_]+)»")]
+    private static partial Regex LabelRegex();
+
     private static Dictionary<string, string> Read(string path) =>
         XDocument.Load(path).Root!.Elements("data")
             .ToDictionary(d => (string)d.Attribute("name")!, d => (string)d.Element("value")!);

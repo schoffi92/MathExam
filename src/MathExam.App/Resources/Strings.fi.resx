@@ -408,4 +408,67 @@
   <data name="Menu_Convert" xml:space="preserve">
     <value>Yksikkömuunnokset (km → m)</value>
   </data>
+  <data name="Help_Title" xml:space="preserve">
+    <value>Käyttöohje</value>
+  </data>
+  <data name="Help_Close" xml:space="preserve">
+    <value>Sulje</value>
+  </data>
+  <data name="Help_S1_Title" xml:space="preserve">
+    <value>Aloitus</value>
+  </data>
+  <data name="Help_S1_Body" xml:space="preserve">
+    <value>1. Valitse pienin ja suurin luku ja rastita laskutoimitukset, joita haluat harjoitella.
+2. Paina «Common_Start» (tai Enter).
+3. Kirjoita puuttuva luku ja paina Enter tai «Game_Send». Vihreä tarkoittaa oikein, punainen näyttää oikean vastauksen.
+4. Enterillä tulee seuraava tehtävä, ja kun olet valmis, paina «Common_Stop». Yhteenveto näyttää, miten meni.</value>
+  </data>
+  <data name="Help_S2_Title" xml:space="preserve">
+    <value>Tehtävät ja vastaukset</value>
+  </data>
+  <data name="Help_S2_Body" xml:space="preserve">
+    <value>• ? voi olla tulos, tehtävän luku tai (puuttuvan laskumerkin kanssa) itse merkki: napsauta + − × ÷ tai kirjoita + - * /.
+• Murtoluvut ja desimaaliluvut: kirjoita 3/4, 1 1/2, 0.5 tai 0,5. Jokainen yhtä suuri arvo kelpaa.
+• Yksikkömuunnokset: kirjoita vain luku, esimerkiksi 3000 tehtävään 3 km = ? m.
+• Väärän vastauksen jälkeen rivi näyttää, miten tehtävä ratkaistaan.</value>
+  </data>
+  <data name="Help_S3_Title" xml:space="preserve">
+    <value>Pelimuodot</value>
+  </data>
+  <data name="Help_S3_Body" xml:space="preserve">
+    <value>• «Mode_Practice»: niin monta tehtävää kuin haluat.
+• «Mode_Timed»: vastaa mahdollisimman moneen ja paranna ennätystäsi.
+• «Mode_TestShort»: 10 tai 20 tehtävää ilman vihjeitä; tulos ja harjoiteltavat tehtävät näkyvät lopussa.</value>
+  </data>
+  <data name="Help_S4_Title" xml:space="preserve">
+    <value>«Menu_Adaptive»</value>
+  </data>
+  <data name="Help_S4_Body" xml:space="preserve">
+    <value>Peli alkaa pienillä luvuilla. Kolme oikeaa vastausta peräkkäin nostaa tasoa, kaksi väärää laskee sitä. Tasosi muistetaan seuraavaan peliin.</value>
+  </data>
+  <data name="Help_S5_Title" xml:space="preserve">
+    <value>Pelaajat ja tavoitteet</value>
+  </data>
+  <data name="Help_S5_Body" xml:space="preserve">
+    <value>Painikkeella «Menu_Players» lisäät jokaisen lapsen tai oppilaan ja asetat päivän tavoitteen. Valitse pelaaja ennen kuin painat «Common_Start»: pelit, tasot ja ennätykset pidetään erillään, ja valikko näyttää päivän edistymisen. «Menu_Guest» pelaa ilman nimeä.</value>
+  </data>
+  <data name="Help_S6_Title" xml:space="preserve">
+    <value>«Menu_Family»</value>
+  </data>
+  <data name="Help_S6_Body" xml:space="preserve">
+    <value>2–4 pelaajaa pelaa vuorotellen yhdellä tietokoneella, jokainen omalla tasollaan, joten lapset ja aikuiset voivat pelata reilusti yhdessä. Voit valita, montako tehtävää kukin ratkaisee vuorollaan.</value>
+  </data>
+  <data name="Help_S7_Title" xml:space="preserve">
+    <value>Historia ja tehtävämonisteet</value>
+  </data>
+  <data name="Help_S7_Body" xml:space="preserve">
+    <value>• «Menu_History» näyttää kaikki pelit, kaikilta pelaajilta tai yhdeltä, ja tarkkuuden laskutoimituksittain. «Players_Title»-välilehti antaa yleiskuvan, ja «History_Export» tallentaa sen taulukkolaskentaan.
+• «Menu_Worksheet» tekee tulostettavan monisteen nykyisillä asetuksilla ja vastauksilla. Sama koodi antaa samat tehtävät, esimerkiksi koko luokalle.</value>
+  </data>
+  <data name="Help_S8_Title" xml:space="preserve">
+    <value>«Menu_Display»</value>
+  </data>
+  <data name="Help_S8_Body" xml:space="preserve">
+    <value>Valikon oikeasta reunasta voit valita suuremman tekstin, suurikontrastiset värit tai toisen kielen. Muutokset tulevat voimaan heti ja säilyvät.</value>
+  </data>
 </root>
