@@ -19,7 +19,7 @@
     <value>Alege cel puțin o operație.</value>
   </data>
   <data name="Settings_FractionsNeedAddSub" xml:space="preserve">
-    <value>Fracțiile și zecimalele merg doar cu adunarea și scăderea.</value>
+    <value>Fracțiile merg doar cu adunarea și scăderea, zecimalele și cu transformările de unități.</value>
   </data>
   <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
     <value>Împărțirea are nevoie de un număr diferit de zero în interval.</value>
@@ -41,5 +41,8 @@
   </data>
   <data name="Profiles_NameTaken" xml:space="preserve">
     <value>Există deja un jucător cu acest nume.</value>
+  </data>
+  <data name="Settings_UnitsNeedPositive" xml:space="preserve">
+    <value>Transformările de unități au nevoie de un număr de cel puțin 1 în interval.</value>
   </data>
 </root>

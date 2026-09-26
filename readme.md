@@ -1,6 +1,6 @@
 # MathExam – Mathematical Education Application
 
-A desktop app for **Windows and Linux** (including the Raspberry Pi) (C# / Avalonia, .NET 8) for practising addition, subtraction, multiplication and division, plus powers and roots. Each task is an equation with one hidden number, which can be the result or one of the operands:
+A desktop app for **Windows and Linux** (including the Raspberry Pi) (C# / Avalonia, .NET 8) for practising addition, subtraction, multiplication and division, plus powers, roots and metric unit conversion. Each task is an equation with one hidden number, which can be the result or one of the operands:
 
 ```
 100 × 100 = ?
@@ -9,7 +9,7 @@ A desktop app for **Windows and Linux** (including the Raspberry Pi) (C# / Avalo
 
 ## Features
 
-- **Main menu:** set the lowest and highest number and choose the operations (add, sub, mul, div, powers, roots). Practise with whole numbers, decimals or fractions, and optionally find the missing operator (`6 ? 3 = 18`).
+- **Main menu:** set the lowest and highest number and choose the operations (add, sub, mul, div, powers, roots, unit conversion such as `3 km = ? m`). Practise with whole numbers, decimals or fractions, and optionally find the missing operator (`6 ? 3 = 18`).
 - **Game:** shows the task number, solved count, start time and elapsed time.
   - Type the hidden number and press **Send** or <kbd>Enter</kbd>.
   - A correct answer is shown in **green**. A wrong answer is shown in **red**, together with the right answer.

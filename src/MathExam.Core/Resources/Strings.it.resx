@@ -19,7 +19,7 @@
     <value>Scegli almeno un'operazione.</value>
   </data>
   <data name="Settings_FractionsNeedAddSub" xml:space="preserve">
-    <value>Frazioni e decimali funzionano solo con addizione e sottrazione.</value>
+    <value>Le frazioni funzionano solo con addizione e sottrazione; i decimali anche con la conversione di unità.</value>
   </data>
   <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
     <value>Per la divisione serve un numero diverso da zero nell'intervallo.</value>
@@ -41,5 +41,8 @@
   </data>
   <data name="Profiles_NameTaken" xml:space="preserve">
     <value>Esiste già un giocatore con questo nome.</value>
+  </data>
+  <data name="Settings_UnitsNeedPositive" xml:space="preserve">
+    <value>La conversione di unità richiede un numero di almeno 1 nell'intervallo.</value>
   </data>
 </root>

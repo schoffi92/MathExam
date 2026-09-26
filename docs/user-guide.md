@@ -1,6 +1,6 @@
 # User Guide
 
-MathExam is a practice app for the four basic operations, plus powers and roots, with whole numbers, decimals or fractions. It shows one equation at a time with a single part hidden, and you type in what is missing.
+MathExam is a practice app for the four basic operations, plus powers, roots and metric unit conversion, with whole numbers, decimals or fractions. It shows one equation at a time with a single part hidden, and you type in what is missing.
 
 ## 1. Main menu
 
@@ -8,9 +8,9 @@ MathExam is a practice app for the four basic operations, plus powers and roots,
 |---|---|
 | **Lowest number** | Smallest value an operand can take. Negative numbers are allowed. |
 | **Highest number** | Largest value an operand can take. |
-| **Operations** | Any combination of addition (+), subtraction (−), multiplication (×), division (÷), powers (xⁿ) and roots (√). |
+| **Operations** | Any combination of addition (+), subtraction (−), multiplication (×), division (÷), powers (xⁿ), roots (√) and **unit conversion** (e.g. `3 km = ? m`). |
 | **Missing operator** | Some + − × ÷ tasks hide the operator instead of a number, e.g. `6 ? 3 = 18`. |
-| **Numbers** | *Whole numbers*, *Decimals* (tenths, e.g. `1.7`) or *Fractions* (e.g. `3/4`, `1 1/2`). Decimals and fractions work with addition and subtraction only. |
+| **Numbers** | *Whole numbers*, *Decimals* (tenths, e.g. `1.7`) or *Fractions* (e.g. `3/4`, `1 1/2`). Fractions work with addition and subtraction only; decimals also with unit conversion (`2.5 m = ? cm`). |
 | **Adaptive difficulty** | Adjusts how big the numbers are to how well you are doing (see below). |
 | **Game** | *Practice* (no end), *Timed challenge (1 minute)* or *Test* of 10 or 20 tasks (see [Timed challenge](#timed-challenge) and [Tests](#tests)). Family games ignore it. |
 | **Player** | Who plays solo games: *Guest* or a profile (see [Players and goals](#8-players-and-goals)). **Players…** adds and removes profiles. |
@@ -29,7 +29,8 @@ The menu has two columns: what to practise on the left, the display settings on 
 - both limits must be whole numbers,
 - the lowest number must not be greater than the highest,
 - at least one operation must be selected,
-- decimals and fractions need only addition and/or subtraction to be selected,
+- fractions need only addition and/or subtraction to be selected; decimals may also use unit conversion,
+- unit conversion needs at least one number of 1 or more in the range,
 - division needs at least one non-zero number in the range,
 - powers and roots need at least one number between −1000 and 1000 in the range.
 
@@ -61,6 +62,8 @@ With powers, the `?` can also be the exponent (`2^? = 8`, shown raised); with ro
 
 With **Missing operator** on, some tasks ask for the sign: `6 ? 3 = 18`. Click one of the **+ − × ÷** buttons below the answer box, or type `+`, `-`, `*` (or `x`) or `/` (or `:`) and press <kbd>Enter</kbd>. Any sign that makes the equation true counts, so both `+` and `×` are right for `2 ? 2 = 4`.
 
+With **Unit conversion**, the `?` is one of the two amounts: `3 km = ? m` or `? kg = 4000 g`. Type just the number (`3000`), without the unit.
+
 With **Decimals** or **Fractions**, type the answer as `1.7` or `1,7`, `3/4`, or a mixed number like `1 1/2`. Any equal value counts: for `1/2` you may also type `2/4` or `0.5`.
 
 ### Answering
@@ -85,6 +88,7 @@ After a wrong answer, a line below the correct answer shows how to work it out, 
 | `56 ÷ 8 = ?` | `7 × 8 = 56 → 56 ÷ 8 = 7` |
 | `? + 8 = 15` | `15 − 8 = 7` (undo the operation) |
 | `3⁴ = ?` | `3⁴ = 3 × 3 × 3 × 3 = 81` |
+| `3000 g = ? kg` | `1 kg = 1000 g → 3000 ÷ 1000 = 3` |
 | `1/2 + 1/4 = ?` | `1/2 + 1/4 = 2/4 + 1/4 = 3/4` |
 
 Tasks that are already as simple as they get, like `2 + 3`, show no extra line.
@@ -196,3 +200,4 @@ For a class, add each pupil as a player and let them pick their name before play
 - **Decimals:** both numbers are tenths within your range, e.g. `1.2 + 0.5`.
 - **Fractions:** the denominators are 2, 3, 4, 5, 6, 8, 10 or 12, and each number lies within your range, so a range of `0`–`1` gives fractions below one and `0`–`3` also mixed numbers like `2 1/4`. Half of the tasks use one denominator (`1/4 + 2/4`), the other half two different ones (`1/2 + 1/3`). At least one number in each task is a real fraction.
 - **Missing operator:** about one in four + − × ÷ tasks hides the operator.
+- **Unit conversion:** length (mm, cm, dm, m, km), mass (mg, g, kg, t) or capacity (mL, cL, dL, L, hL), always between two units at most three steps apart (×10, ×100 or ×1000), e.g. m and cm, or kg and g. The amount in the larger unit comes from your range (only its numbers of 1 or more), so `1–10` gives tasks like `7 km = ? m` or `7000 m = ? km`. With *Decimals* that amount can have tenths: `2.5 m = ? cm`, `250 cm = ? m`. Units use their international symbols in every language.

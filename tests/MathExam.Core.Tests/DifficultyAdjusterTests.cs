@@ -74,7 +74,9 @@ public class DifficultyAdjusterTests
     [InlineData(int.MinValue, int.MaxValue)]
     public void Valid_settings_stay_valid_on_every_level(int min, int max)
     {
-        var settings = new GameSettings(min, max, AllOps);
+        // Unit conversion needs a number of at least 1, so it is left out of ranges without one.
+        var settings = new GameSettings(min, max, AllOps.Where(o => o != Operation.Convert || max >= 1));
+        Assert.True(settings.IsValid);
         for (var level = DifficultyAdjuster.MinLevel; level <= DifficultyAdjuster.MaxLevel; level++)
             Assert.True(DifficultyAdjuster.ForLevel(settings, level).IsValid);
     }

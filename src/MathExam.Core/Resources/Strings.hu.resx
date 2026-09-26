@@ -19,7 +19,7 @@
     <value>Válassz legalább egy műveletet.</value>
   </data>
   <data name="Settings_FractionsNeedAddSub" xml:space="preserve">
-    <value>A törtek és a tizedes törtek csak összeadással és kivonással működnek.</value>
+    <value>A törtek csak összeadással és kivonással működnek, a tizedes törtek mértékegység-átváltással is.</value>
   </data>
   <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
     <value>Az osztáshoz kell egy nem nulla szám a tartományban.</value>
@@ -41,5 +41,8 @@
   </data>
   <data name="Profiles_NameTaken" xml:space="preserve">
     <value>Már van ilyen nevű játékos.</value>
+  </data>
+  <data name="Settings_UnitsNeedPositive" xml:space="preserve">
+    <value>A mértékegység-átváltáshoz kell legalább egy 1 vagy nagyobb szám a tartományban.</value>
   </data>
 </root>

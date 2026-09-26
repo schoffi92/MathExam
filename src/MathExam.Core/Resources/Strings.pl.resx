@@ -19,7 +19,7 @@
     <value>Wybierz co najmniej jedno działanie.</value>
   </data>
   <data name="Settings_FractionsNeedAddSub" xml:space="preserve">
-    <value>Ułamki zwykłe i dziesiętne działają tylko z dodawaniem i odejmowaniem.</value>
+    <value>Ułamki zwykłe działają tylko z dodawaniem i odejmowaniem, dziesiętne także z zamianą jednostek.</value>
   </data>
   <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
     <value>Do dzielenia potrzebna jest w zakresie liczba różna od zera.</value>
@@ -41,5 +41,8 @@
   </data>
   <data name="Profiles_NameTaken" xml:space="preserve">
     <value>Gracz o tym imieniu już istnieje.</value>
+  </data>
+  <data name="Settings_UnitsNeedPositive" xml:space="preserve">
+    <value>Zamiana jednostek wymaga w zakresie liczby co najmniej 1.</value>
   </data>
 </root>

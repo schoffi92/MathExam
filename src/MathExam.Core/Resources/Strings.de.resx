@@ -19,7 +19,7 @@
     <value>Wähle mindestens eine Rechenart.</value>
   </data>
   <data name="Settings_FractionsNeedAddSub" xml:space="preserve">
-    <value>Brüche und Dezimalzahlen gibt es nur bei Addition und Subtraktion.</value>
+    <value>Brüche gibt es nur bei Addition und Subtraktion, Dezimalzahlen auch beim Umrechnen von Einheiten.</value>
   </data>
   <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
     <value>Für die Division muss der Bereich eine Zahl ungleich null enthalten.</value>
@@ -41,5 +41,8 @@
   </data>
   <data name="Profiles_NameTaken" xml:space="preserve">
     <value>Es gibt schon einen Spieler mit diesem Namen.</value>
+  </data>
+  <data name="Settings_UnitsNeedPositive" xml:space="preserve">
+    <value>Für das Umrechnen von Einheiten muss der Bereich eine Zahl ab 1 enthalten.</value>
   </data>
 </root>

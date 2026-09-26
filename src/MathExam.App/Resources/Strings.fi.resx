@@ -405,4 +405,7 @@
   <data name="Worksheet_Version" xml:space="preserve">
     <value>Versio {0}</value>
   </data>
+  <data name="Menu_Convert" xml:space="preserve">
+    <value>Yksikkömuunnokset (km → m)</value>
+  </data>
 </root>

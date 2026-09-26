@@ -30,6 +30,9 @@ public static class Explainer
             (Operation.Divide, HiddenPart.Left) => $"{V(res)} × {T(r)} = {V(l)}",
             (Operation.Divide, HiddenPart.Right) => $"{V(l)} ÷ {T(res)} = {V(r)}",
 
+            // Unit conversion: from the relation of the two units, multiply or divide by the factor.
+            (Operation.Convert, _) => Conversion(t),
+
             // Division, powers and roots: go back to multiplication.
             (Operation.Divide, _) => $"{V(res)} × {T(r)} = {V(l)} → {solved}",
             (Operation.Power, HiddenPart.Result) => $"{solved[..solved.LastIndexOf(" = ", StringComparison.Ordinal)]} = {Repeat(l, r)} = {V(res)}",
@@ -47,6 +50,25 @@ public static class Explainer
         };
 
         string Repeat(long factor, long times) => string.Join(" × ", Enumerable.Repeat(T(factor), (int)times));
+    }
+
+    /// <summary>
+    /// "1 km = 1000 m → 3 × 1000 = 3000" when converting to the smaller unit, "… → 3000 ÷ 1000 = 3" to the larger.
+    /// With the first amount hidden, the steps run the other way.
+    /// </summary>
+    private static string? Conversion(MathTask t)
+    {
+        if (t.FromUnit is not { } from || t.ToUnit is not { } to)
+            return null;
+        var toSmaller = from.Exponent > to.Exponent;
+        var (large, small) = toSmaller ? (from, to) : (to, from);
+        var relation = $"1 {large} = {t.Right} {small}";
+
+        // Known amount → hidden amount: multiply going to the smaller unit, divide going to the larger.
+        var (known, hidden) = t.Hidden == HiddenPart.Left ? (t.Result, t.Left) : (t.Left, t.Result);
+        var multiply = toSmaller == (t.Hidden != HiddenPart.Left);
+        var step = multiply ? $"{t.FormatValue(known)} × {t.Right}" : $"{t.FormatValue(known)} ÷ {t.Right}";
+        return $"{relation} → {step} = {t.FormatValue(hidden)}";
     }
 
     /// <summary>Bridging through ten (8 + 7 = 8 + 2 + 5) or adding tens and ones separately.</summary>

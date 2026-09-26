@@ -19,7 +19,7 @@
     <value>Valitse vähintään yksi laskutoimitus.</value>
   </data>
   <data name="Settings_FractionsNeedAddSub" xml:space="preserve">
-    <value>Murtoluvut ja desimaaliluvut toimivat vain yhteen- ja vähennyslaskussa.</value>
+    <value>Murtoluvut toimivat vain yhteen- ja vähennyslaskussa, desimaaliluvut myös yksikkömuunnoksissa.</value>
   </data>
   <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
     <value>Jakolasku tarvitsee alueelle luvun, joka ei ole nolla.</value>
@@ -41,5 +41,8 @@
   </data>
   <data name="Profiles_NameTaken" xml:space="preserve">
     <value>Tämänniminen pelaaja on jo olemassa.</value>
+  </data>
+  <data name="Settings_UnitsNeedPositive" xml:space="preserve">
+    <value>Yksikkömuunnoksia varten alueella täytyy olla vähintään luku 1.</value>
   </data>
 </root>

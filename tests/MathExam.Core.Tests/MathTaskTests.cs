@@ -96,6 +96,31 @@ public class MathTaskTests
     }
 
     [Fact]
+    public void Unit_conversions_show_units_and_accept_decimals()
+    {
+        var km = MetricUnits.All.Single(u => u.Symbol == "km");
+        var m = MetricUnits.All.Single(u => u.Symbol == "m");
+        var cm = MetricUnits.All.Single(u => u.Symbol == "cm");
+        Assert.Equal("3 km = ? m", new MathTask(3, Operation.Convert, 1000, 3000, HiddenPart.Result, FromUnit: km, ToUnit: m).ToDisplayString());
+        Assert.Equal("? m = 3 km", new MathTask(3000, Operation.Convert, 1000, 3, HiddenPart.Left, FromUnit: m, ToUnit: km).ToDisplayString());
+
+        var original = CultureInfo.CurrentCulture;
+        try
+        {
+            CultureInfo.CurrentCulture = new CultureInfo("en-US");
+            // 250 cm = 2.5 m, stored in tenths.
+            var task = new MathTask(2500, Operation.Convert, 100, 25, HiddenPart.Result, NumberKind.Decimal, 10, cm, m);
+            Assert.Equal("250 cm = ? m", task.ToDisplayString());
+            Assert.True(task.IsCorrect(new Rational(5, 2)));
+            Assert.False(task.IsCorrect(new Rational(25)));
+        }
+        finally
+        {
+            CultureInfo.CurrentCulture = original;
+        }
+    }
+
+    [Fact]
     public void Hidden_base_of_an_even_power_accepts_both_signs()
     {
         var task = new MathTask(3, Operation.Power, 2, 9, HiddenPart.Left);

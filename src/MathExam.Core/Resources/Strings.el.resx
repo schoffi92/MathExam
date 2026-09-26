@@ -19,7 +19,7 @@
     <value>Διάλεξε τουλάχιστον μία πράξη.</value>
   </data>
   <data name="Settings_FractionsNeedAddSub" xml:space="preserve">
-    <value>Τα κλάσματα και οι δεκαδικοί λειτουργούν μόνο με πρόσθεση και αφαίρεση.</value>
+    <value>Τα κλάσματα λειτουργούν μόνο με πρόσθεση και αφαίρεση, οι δεκαδικοί και με μετατροπή μονάδων.</value>
   </data>
   <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
     <value>Η διαίρεση χρειάζεται έναν μη μηδενικό αριθμό στο εύρος.</value>
@@ -41,5 +41,8 @@
   </data>
   <data name="Profiles_NameTaken" xml:space="preserve">
     <value>Υπάρχει ήδη παίκτης με αυτό το όνομα.</value>
+  </data>
+  <data name="Settings_UnitsNeedPositive" xml:space="preserve">
+    <value>Η μετατροπή μονάδων χρειάζεται έναν αριθμό τουλάχιστον 1 στο εύρος.</value>
   </data>
 </root>

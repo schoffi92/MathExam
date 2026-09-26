@@ -8,10 +8,13 @@ public sealed record EquationPart(string Text, bool IsSuperscript = false);
 /// Left is the base and Right the exponent (Left^Right); for <see cref="Operation.Root"/> Left is
 /// the degree and Right the radicand (the Left-th root of Right).
 /// Decimal and fraction tasks store each number as a numerator over the shared <see cref="Denominator"/>.
+/// A <see cref="Operation.Convert"/> task reads "Left FromUnit = Result ToUnit" (e.g. 3 km = 3000 m); its
+/// Right is the conversion factor.
 /// </summary>
 public sealed record MathTask(
     long Left, Operation Op, long Right, long Result, HiddenPart Hidden,
-    NumberKind Numbers = NumberKind.Whole, long Denominator = 1)
+    NumberKind Numbers = NumberKind.Whole, long Denominator = 1,
+    MetricUnit? FromUnit = null, MetricUnit? ToUnit = null)
 {
     /// <summary>The hidden number (as a numerator over <see cref="Denominator"/>); meaningless for a hidden operator.</summary>
     public long Answer => Hidden switch
@@ -81,6 +84,8 @@ public sealed record MathTask(
                 if ((Hidden != HiddenPart.Left || revealAnswer) && Left < 0)
                     @base = $"({@base})";
                 return [new(@base), new(Part(HiddenPart.Right, Right), IsSuperscript: true), new(equals)];
+            case Operation.Convert:
+                return [new($"{Part(HiddenPart.Left, Left)} {FromUnit} = {Part(HiddenPart.Result, Result)} {ToUnit}")];
             case Operation.Root:
                 var radical = new EquationPart($"√{Part(HiddenPart.Right, Right)}{equals}");
                 // Square roots are written without their degree, unless the degree is the question.

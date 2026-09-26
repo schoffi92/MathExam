@@ -19,7 +19,7 @@
     <value>Vyber alespoň jednu početní operaci.</value>
   </data>
   <data name="Settings_FractionsNeedAddSub" xml:space="preserve">
-    <value>Zlomky a desetinná čísla fungují jen se sčítáním a odčítáním.</value>
+    <value>Zlomky fungují jen se sčítáním a odčítáním, desetinná čísla i s převody jednotek.</value>
   </data>
   <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
     <value>Dělení potřebuje v rozsahu nenulové číslo.</value>
@@ -41,5 +41,8 @@
   </data>
   <data name="Profiles_NameTaken" xml:space="preserve">
     <value>Hráč s tímto jménem už existuje.</value>
+  </data>
+  <data name="Settings_UnitsNeedPositive" xml:space="preserve">
+    <value>Převody jednotek potřebují v rozsahu číslo alespoň 1.</value>
   </data>
 </root>

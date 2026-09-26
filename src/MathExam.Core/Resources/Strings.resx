@@ -19,7 +19,7 @@
     <value>Select at least one operation.</value>
   </data>
   <data name="Settings_FractionsNeedAddSub" xml:space="preserve">
-    <value>Fractions and decimals work only with addition and subtraction.</value>
+    <value>Fractions work only with addition and subtraction; decimals also with unit conversion.</value>
   </data>
   <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
     <value>Division needs a non-zero number in the range.</value>
@@ -41,5 +41,8 @@
   </data>
   <data name="Profiles_NameTaken" xml:space="preserve">
     <value>There is already a player with this name.</value>
+  </data>
+  <data name="Settings_UnitsNeedPositive" xml:space="preserve">
+    <value>Unit conversion needs a number of at least 1 in the range.</value>
   </data>
 </root>

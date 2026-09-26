@@ -19,7 +19,7 @@
     <value>Välj minst ett räknesätt.</value>
   </data>
   <data name="Settings_FractionsNeedAddSub" xml:space="preserve">
-    <value>Bråk och decimaltal fungerar bara med addition och subtraktion.</value>
+    <value>Bråk fungerar bara med addition och subtraktion, decimaltal även med enhetsomvandling.</value>
   </data>
   <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
     <value>Division behöver ett tal som inte är noll i intervallet.</value>
@@ -41,5 +41,8 @@
   </data>
   <data name="Profiles_NameTaken" xml:space="preserve">
     <value>Det finns redan en spelare med det namnet.</value>
+  </data>
+  <data name="Settings_UnitsNeedPositive" xml:space="preserve">
+    <value>Enhetsomvandling behöver ett tal som är minst 1 i intervallet.</value>
   </data>
 </root>

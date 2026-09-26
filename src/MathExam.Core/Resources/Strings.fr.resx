@@ -19,7 +19,7 @@
     <value>Choisis au moins une opération.</value>
   </data>
   <data name="Settings_FractionsNeedAddSub" xml:space="preserve">
-    <value>Les fractions et les décimaux ne fonctionnent qu'avec l'addition et la soustraction.</value>
+    <value>Les fractions ne fonctionnent qu'avec l'addition et la soustraction ; les décimaux aussi avec les conversions d'unités.</value>
   </data>
   <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
     <value>La division a besoin d'un nombre non nul dans l'intervalle.</value>
@@ -41,5 +41,8 @@
   </data>
   <data name="Profiles_NameTaken" xml:space="preserve">
     <value>Il existe déjà un joueur avec ce nom.</value>
+  </data>
+  <data name="Settings_UnitsNeedPositive" xml:space="preserve">
+    <value>La conversion d'unités a besoin d'un nombre d'au moins 1 dans l'intervalle.</value>
   </data>
 </root>

@@ -19,7 +19,7 @@
     <value>Izberi vsaj eno računsko operacijo.</value>
   </data>
   <data name="Settings_FractionsNeedAddSub" xml:space="preserve">
-    <value>Ulomki in decimalna števila delujejo le s seštevanjem in odštevanjem.</value>
+    <value>Ulomki delujejo le s seštevanjem in odštevanjem, decimalna števila tudi s pretvarjanjem enot.</value>
   </data>
   <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
     <value>Deljenje potrebuje v razponu število, ki ni nič.</value>
@@ -41,5 +41,8 @@
   </data>
   <data name="Profiles_NameTaken" xml:space="preserve">
     <value>Igralec s tem imenom že obstaja.</value>
+  </data>
+  <data name="Settings_UnitsNeedPositive" xml:space="preserve">
+    <value>Pretvarjanje enot potrebuje v razponu število, ki je vsaj 1.</value>
   </data>
 </root>

@@ -69,6 +69,19 @@ public class ExplainerTests
     public void Roots_go_back_to_powers(long degree, long radicand, long root, HiddenPart hidden, string expected) =>
         Assert.Equal(expected, Explain(degree, Operation.Root, radicand, root, hidden));
 
+    [Theory]
+    [InlineData("km", "m", 3, 3000, HiddenPart.Result, "1 km = 1000 m → 3 × 1000 = 3000")]
+    [InlineData("km", "m", 3, 3000, HiddenPart.Left, "1 km = 1000 m → 3000 ÷ 1000 = 3")]
+    [InlineData("g", "kg", 5000, 5, HiddenPart.Result, "1 kg = 1000 g → 5000 ÷ 1000 = 5")]
+    [InlineData("dL", "L", 40, 4, HiddenPart.Left, "1 L = 10 dL → 4 × 10 = 40")]
+    public void Unit_conversions_multiply_or_divide_by_the_factor(string from, string to, long left, long result,
+        HiddenPart hidden, string expected)
+    {
+        var (f, t) = (MetricUnits.All.Single(u => u.Symbol == from), MetricUnits.All.Single(u => u.Symbol == to));
+        var factor = f.Exponent > t.Exponent ? MetricUnits.Factor(f, t) : MetricUnits.Factor(t, f);
+        Assert.Equal(expected, Explainer.Explain(new MathTask(left, Operation.Convert, factor, result, hidden, FromUnit: f, ToUnit: t)));
+    }
+
     [Fact]
     public void Missing_operator_shows_the_whole_equation() =>
         Assert.Equal("6 × 3 = 18", Explain(6, Operation.Multiply, 3, 18, HiddenPart.Operator));

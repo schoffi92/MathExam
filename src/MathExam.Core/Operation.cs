@@ -8,6 +8,8 @@ public enum Operation
     Divide,
     Power,
     Root,
+    /// <summary>Metric unit conversion, e.g. 3 km = ? m.</summary>
+    Convert,
 }
 
 public static class OperationExtensions
@@ -23,13 +25,15 @@ public static class OperationExtensions
         Operation.Divide => "÷",
         Operation.Power => "xⁿ",
         Operation.Root => "√",
+        Operation.Convert => "↔",
         _ => throw new ArgumentOutOfRangeException(nameof(op)),
     };
 
     /// <summary>Power and root take their base from the range but add an exponent (degree) of their own.</summary>
     public static bool IsPowerOrRoot(this Operation op) => op is Operation.Power or Operation.Root;
 
-    public static bool IsBasic(this Operation op) => !op.IsPowerOrRoot();
+    /// <summary>+ − × ÷, the operations that can be hidden in a missing-operator task.</summary>
+    public static bool IsBasic(this Operation op) => op is Operation.Add or Operation.Subtract or Operation.Multiply or Operation.Divide;
 
     /// <summary>Reads a typed operator: + - − * x × · / : ÷ (letters in either case).</summary>
     public static bool TryParseOperator(string? text, out Operation op)

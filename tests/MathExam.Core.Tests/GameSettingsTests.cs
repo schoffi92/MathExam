@@ -30,6 +30,14 @@ public class GameSettingsTests
         Assert.False(new GameSettings(0, 1, [Operation.Add, other], numbers).IsValid);
     }
 
+    [Theory]
+    [InlineData(NumberKind.Whole, 1, true)]
+    [InlineData(NumberKind.Decimal, 1, true)]
+    [InlineData(NumberKind.Fraction, 1, false)]
+    [InlineData(NumberKind.Whole, 0, false)]
+    public void Unit_conversion_needs_a_positive_number_and_allows_decimals(NumberKind numbers, int max, bool valid) =>
+        Assert.Equal(valid, new GameSettings(-3, max, [Operation.Convert], numbers).IsValid);
+
     [Fact]
     public void WithRange_keeps_the_other_settings()
     {

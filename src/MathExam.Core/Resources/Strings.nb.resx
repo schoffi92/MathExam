@@ -19,7 +19,7 @@
     <value>Velg minst én regneart.</value>
   </data>
   <data name="Settings_FractionsNeedAddSub" xml:space="preserve">
-    <value>Brøk og desimaltall fungerer bare med addisjon og subtraksjon.</value>
+    <value>Brøk fungerer bare med addisjon og subtraksjon, desimaltall også med enhetsomregning.</value>
   </data>
   <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
     <value>Divisjon trenger et tall som ikke er null i intervallet.</value>
@@ -41,5 +41,8 @@
   </data>
   <data name="Profiles_NameTaken" xml:space="preserve">
     <value>Det finnes allerede en spiller med dette navnet.</value>
+  </data>
+  <data name="Settings_UnitsNeedPositive" xml:space="preserve">
+    <value>Enhetsomregning trenger et tall på minst 1 i intervallet.</value>
   </data>
 </root>

@@ -38,6 +38,7 @@ public class TaskGeneratorTests
                 Operation.Divide => t.Left / t.Right,
                 Operation.Power => Pow(t.Left, t.Right),
                 Operation.Root => t.Result,
+                Operation.Convert => t.FromUnit!.Exponent > t.ToUnit!.Exponent ? t.Left * t.Right : t.Left / t.Right,
                 _ => throw new InvalidOperationException(),
             };
             Assert.Equal(expected, t.Result);
@@ -202,6 +203,31 @@ public class TaskGeneratorTests
             if (t.Op == Operation.Power) Assert.NotEqual(HiddenPart.Right, t.Hidden);
             if (t.Op == Operation.Root) Assert.NotEqual(HiddenPart.Left, t.Hidden);
         }
+    }
+
+    [Theory]
+    [InlineData(1, 10, NumberKind.Whole)]
+    [InlineData(-5, 3, NumberKind.Whole)]
+    [InlineData(1, 5, NumberKind.Decimal)]
+    public void Unit_conversions_are_exact_within_one_quantity(int min, int max, NumberKind numbers)
+    {
+        var tasks = Generate(new GameSettings(min, max, [Operation.Convert], numbers)).ToList();
+        foreach (var t in tasks)
+        {
+            var (from, to) = (t.FromUnit!, t.ToUnit!);
+            Assert.Equal(from.Quantity, to.Quantity);
+            Assert.InRange(Math.Abs(from.Exponent - to.Exponent), 1, MetricUnits.MaxStep);
+            var (large, small) = from.Exponent > to.Exponent ? (t.Left, t.Result) : (t.Result, t.Left);
+            Assert.Equal(large * t.Right, small);
+            // The amount in the larger unit comes from the positive part of the range.
+            Assert.InRange(large, Math.Max(min, 1) * t.Denominator, max * t.Denominator);
+            Assert.Contains(t.Hidden, new[] { HiddenPart.Left, HiddenPart.Result });
+        }
+        Assert.Equal(Enum.GetValues<Quantity>().ToHashSet(), tasks.Select(t => t.FromUnit!.Quantity).ToHashSet());
+        Assert.Contains(tasks, t => t.FromUnit!.Exponent > t.ToUnit!.Exponent);
+        Assert.Contains(tasks, t => t.FromUnit!.Exponent < t.ToUnit!.Exponent);
+        if (numbers == NumberKind.Decimal)
+            Assert.Contains(tasks, t => t.Left % t.Denominator != 0 || t.Result % t.Denominator != 0);
     }
 
     [Fact]

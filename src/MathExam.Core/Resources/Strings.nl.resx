@@ -19,7 +19,7 @@
     <value>Kies minstens één bewerking.</value>
   </data>
   <data name="Settings_FractionsNeedAddSub" xml:space="preserve">
-    <value>Breuken en kommagetallen werken alleen met optellen en aftrekken.</value>
+    <value>Breuken werken alleen met optellen en aftrekken, kommagetallen ook met eenheden omrekenen.</value>
   </data>
   <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
     <value>Voor delen moet er een getal dat geen nul is in het bereik zitten.</value>
@@ -41,5 +41,8 @@
   </data>
   <data name="Profiles_NameTaken" xml:space="preserve">
     <value>Er is al een speler met deze naam.</value>
+  </data>
+  <data name="Settings_UnitsNeedPositive" xml:space="preserve">
+    <value>Voor eenheden omrekenen moet er een getal van minstens 1 in het bereik zitten.</value>
   </data>
 </root>

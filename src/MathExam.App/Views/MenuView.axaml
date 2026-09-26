@@ -29,6 +29,7 @@
                             <CheckBox Content="{x:Static res:Strings.Menu_Power}" IsChecked="{Binding UsePower}" />
                             <CheckBox Content="{x:Static res:Strings.Menu_Root}" IsChecked="{Binding UseRoot}" />
                         </UniformGrid>
+                        <CheckBox Content="{x:Static res:Strings.Menu_Convert}" IsChecked="{Binding UseConvert}" />
                         <CheckBox Content="{x:Static res:Strings.Menu_MissingOperator}" IsChecked="{Binding UseMissingOperator}" />
                         <StackPanel Orientation="Horizontal" Spacing="8" Margin="4,4,0,0">
                             <TextBlock Text="{x:Static res:Strings.Menu_Numbers}" VerticalAlignment="Center" />

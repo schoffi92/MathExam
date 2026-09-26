@@ -32,6 +32,8 @@ public sealed class TaskGenerator
         var ops = settings.Operations.OrderBy(o => o).ToArray();
         var op = ops[_random.Next(ops.Length)];
 
+        if (op == Operation.Convert)
+            return NextConversion(settings);
         if (settings.Numbers != NumberKind.Whole)
             return NextFractional(settings, op);
 
@@ -115,6 +117,29 @@ public sealed class TaskGenerator
             (left, right) = (right, left);
         var result = op == Operation.Add ? left + right : left - right;
         return new MathTask(left, op, right, result, PickHidden(settings, op, left, right), settings.Numbers, denominator);
+    }
+
+    /// <summary>
+    /// A unit conversion such as "3 km = ? m" or "3000 m = ? km". The amount in the larger unit comes from the
+    /// positive part of the range (in tenths with decimals, e.g. 2.5 km), so both sides are exact. Either side
+    /// may be the question.
+    /// </summary>
+    private MathTask NextConversion(GameSettings settings)
+    {
+        var quantity = (Quantity)_random.Next(Enum.GetValues<Quantity>().Length);
+        var pairs = MetricUnits.Pairs.Where(p => p.Large.Quantity == quantity).ToArray();
+        var (large, small) = pairs[_random.Next(pairs.Length)];
+        var factor = MetricUnits.Factor(large, small);
+
+        long denominator = settings.Numbers == NumberKind.Decimal ? DecimalDenominator : 1;
+        var largeAmount = _random.NextInt64(Math.Max(settings.Min, 1) * denominator, (long)settings.Max * denominator + 1);
+        var smallAmount = largeAmount * factor;
+
+        var toSmaller = _random.Next(2) == 0;
+        var hidden = _random.Next(2) == 0 ? HiddenPart.Result : HiddenPart.Left;
+        return toSmaller
+            ? new MathTask(largeAmount, Operation.Convert, factor, smallAmount, hidden, settings.Numbers, denominator, large, small)
+            : new MathTask(smallAmount, Operation.Convert, factor, largeAmount, hidden, settings.Numbers, denominator, small, large);
     }
 
     private long Pick(GameSettings settings) => _random.NextInt64(settings.Min, (long)settings.Max + 1);

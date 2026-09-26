@@ -405,4 +405,7 @@
   <data name="Worksheet_Version" xml:space="preserve">
     <value>Εκδοχή {0}</value>
   </data>
+  <data name="Menu_Convert" xml:space="preserve">
+    <value>Μετατροπή μονάδων (km → m)</value>
+  </data>
 </root>

@@ -405,4 +405,7 @@
   <data name="Worksheet_Version" xml:space="preserve">
     <value>Wersja {0}</value>
   </data>
+  <data name="Menu_Convert" xml:space="preserve">
+    <value>Zamiana jednostek (km → m)</value>
+  </data>
 </root>

@@ -19,7 +19,7 @@
     <value>Odaberi barem jednu računsku operaciju.</value>
   </data>
   <data name="Settings_FractionsNeedAddSub" xml:space="preserve">
-    <value>Razlomci i decimalni brojevi rade samo sa zbrajanjem i oduzimanjem.</value>
+    <value>Razlomci rade samo sa zbrajanjem i oduzimanjem, decimalni brojevi i s pretvorbom jedinica.</value>
   </data>
   <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
     <value>Za dijeljenje je potreban broj različit od nule u rasponu.</value>
@@ -41,5 +41,8 @@
   </data>
   <data name="Profiles_NameTaken" xml:space="preserve">
     <value>Već postoji igrač s tim imenom.</value>
+  </data>
+  <data name="Settings_UnitsNeedPositive" xml:space="preserve">
+    <value>Pretvorba jedinica treba broj od najmanje 1 u rasponu.</value>
   </data>
 </root>

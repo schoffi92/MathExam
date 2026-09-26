@@ -19,7 +19,7 @@
     <value>En az bir işlem seç.</value>
   </data>
   <data name="Settings_FractionsNeedAddSub" xml:space="preserve">
-    <value>Kesirler ve ondalık sayılar yalnızca toplama ve çıkarma ile çalışır.</value>
+    <value>Kesirler yalnızca toplama ve çıkarma ile, ondalık sayılar birim dönüştürme ile de çalışır.</value>
   </data>
   <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
     <value>Bölme için aralıkta sıfırdan farklı bir sayı gerekir.</value>
@@ -41,5 +41,8 @@
   </data>
   <data name="Profiles_NameTaken" xml:space="preserve">
     <value>Bu adda bir oyuncu zaten var.</value>
+  </data>
+  <data name="Settings_UnitsNeedPositive" xml:space="preserve">
+    <value>Birim dönüştürme için aralıkta en az 1 olan bir sayı gerekir.</value>
   </data>
 </root>

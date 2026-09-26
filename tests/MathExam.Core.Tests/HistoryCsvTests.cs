@@ -22,10 +22,10 @@ public class HistoryCsvTests
         var lines = CsvLines(record);
 
         Assert.StartsWith("Started,Player,Mode,Min,Max,Operations,Numbers,MissingOperator,Answered,Correct,Wrong,Accuracy,", lines[0]);
-        Assert.EndsWith("RootCorrect,RootWrong", lines[0]);
+        Assert.EndsWith("RootCorrect,RootWrong,ConvertCorrect,ConvertWrong", lines[0]);
         Assert.Equal(
             "2026-09-26 14:05:00,\"Anna, the \"\"Great\"\"\",Family,1,10,Add Divide,Whole,true,8,7,1,0.875,75.3,60,1,3," +
-            "5,0,0,0,0,0,2,1,0,0,0,0",
+            "5,0,0,0,0,0,2,1,0,0,0,0,0,0",
             lines[1]);
     }
 

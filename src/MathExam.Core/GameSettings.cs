@@ -35,8 +35,12 @@ public sealed class GameSettings
             return Strings.Settings_MinGreaterThanMax;
         if (Operations.Count == 0)
             return Strings.Settings_NoOperation;
-        if (Numbers != NumberKind.Whole && Operations.Any(o => o is not (Operation.Add or Operation.Subtract)))
+        // Decimals also work with unit conversion (2.5 m = 250 cm); fractions only with + and −.
+        if (Numbers != NumberKind.Whole && Operations.Any(o => o is not (Operation.Add or Operation.Subtract)
+                && !(o == Operation.Convert && Numbers == NumberKind.Decimal)))
             return Strings.Settings_FractionsNeedAddSub;
+        if (Operations.Contains(Operation.Convert) && Max < 1)
+            return Strings.Settings_UnitsNeedPositive;
         if (Operations.Contains(Operation.Divide) && Min == 0 && Max == 0)
             return Strings.Settings_DivisionNeedsNonZero;
         if (Operations.Any(o => o.IsPowerOrRoot()) && (Max < -PowerBaseLimit || Min > PowerBaseLimit))
