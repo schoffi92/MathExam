@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Menu_Lowest" xml:space="preserve">
+    <value>Kleinste getal:</value>
+  </data>
+  <data name="Menu_Highest" xml:space="preserve">
+    <value>Grootste getal:</value>
+  </data>
+  <data name="Menu_Operations" xml:space="preserve">
+    <value>Bewerkingen</value>
+  </data>
+  <data name="Menu_Add" xml:space="preserve">
+    <value>Optellen (+)</value>
+  </data>
+  <data name="Menu_Subtract" xml:space="preserve">
+    <value>Aftrekken (−)</value>
+  </data>
+  <data name="Menu_Multiply" xml:space="preserve">
+    <value>Vermenigvuldigen (×)</value>
+  </data>
+  <data name="Menu_Divide" xml:space="preserve">
+    <value>Delen (÷)</value>
+  </data>
+  <data name="Menu_Power" xml:space="preserve">
+    <value>Machten (xⁿ)</value>
+  </data>
+  <data name="Menu_Root" xml:space="preserve">
+    <value>Wortels (√)</value>
+  </data>
+  <data name="Menu_MissingOperator" xml:space="preserve">
+    <value>Ontbrekend teken (6 ? 3 = 18)</value>
+  </data>
+  <data name="Menu_Numbers" xml:space="preserve">
+    <value>Getallen:</value>
+  </data>
+  <data name="Menu_NumbersWhole" xml:space="preserve">
+    <value>Hele getallen</value>
+  </data>
+  <data name="Menu_NumbersDecimal" xml:space="preserve">
+    <value>Kommagetallen (0,1)</value>
+  </data>
+  <data name="Menu_NumbersFraction" xml:space="preserve">
+    <value>Breuken (1/2)</value>
+  </data>
+  <data name="Menu_Adaptive" xml:space="preserve">
+    <value>Meegroeiende moeilijkheid</value>
+  </data>
+  <data name="Menu_AdaptiveHint" xml:space="preserve">
+    <value>Begint met kleine getallen, die groter worden als je goed antwoordt.</value>
+  </data>
+  <data name="Menu_Timed" xml:space="preserve">
+    <value>Tegen de klok: 1 minuut (alleen)</value>
+  </data>
+  <data name="Menu_Display" xml:space="preserve">
+    <value>Weergave</value>
+  </data>
+  <data name="Menu_TextSize" xml:space="preserve">
+    <value>Tekstgrootte:</value>
+  </data>
+  <data name="Menu_TextNormal" xml:space="preserve">
+    <value>Normaal</value>
+  </data>
+  <data name="Menu_TextLarge" xml:space="preserve">
+    <value>Groot</value>
+  </data>
+  <data name="Menu_TextExtraLarge" xml:space="preserve">
+    <value>Extra groot</value>
+  </data>
+  <data name="Menu_HighContrast" xml:space="preserve">
+    <value>Kleuren met hoog contrast</value>
+  </data>
+  <data name="Menu_Language" xml:space="preserve">
+    <value>Taal:</value>
+  </data>
+  <data name="Menu_LanguageSystem" xml:space="preserve">
+    <value>Systeemtaal</value>
+  </data>
+  <data name="Menu_Family" xml:space="preserve">
+    <value>Familiespel</value>
+  </data>
+  <data name="Menu_History" xml:space="preserve">
+    <value>Geschiedenis</value>
+  </data>
+  <data name="Menu_Worksheet" xml:space="preserve">
+    <value>Werkblad (PDF)</value>
+  </data>
+  <data name="Menu_WorksheetSaved" xml:space="preserve">
+    <value>Werkblad opgeslagen: {0}</value>
+  </data>
+  <data name="Menu_WorksheetError" xml:space="preserve">
+    <value>Het werkblad kon niet worden opgeslagen: {0}</value>
+  </data>
+  <data name="Menu_MinNotWhole" xml:space="preserve">
+    <value>Het kleinste getal moet een heel getal zijn.</value>
+  </data>
+  <data name="Menu_MaxNotWhole" xml:space="preserve">
+    <value>Het grootste getal moet een heel getal zijn.</value>
+  </data>
+  <data name="Common_Start" xml:space="preserve">
+    <value>Starten</value>
+  </data>
+  <data name="Common_Back" xml:space="preserve">
+    <value>Terug</value>
+  </data>
+  <data name="Common_BackToMenu" xml:space="preserve">
+    <value>Terug naar menu</value>
+  </data>
+  <data name="Common_Stop" xml:space="preserve">
+    <value>Stoppen</value>
+  </data>
+  <data name="Common_Time" xml:space="preserve">
+    <value>Tijd: {0}</value>
+  </data>
+  <data name="Game_TaskNumber" xml:space="preserve">
+    <value>Som {0}</value>
+  </data>
+  <data name="Game_Level" xml:space="preserve">
+    <value>Niveau {0} / {1}</value>
+  </data>
+  <data name="Game_Solved" xml:space="preserve">
+    <value>Opgelost: {0} / {1}</value>
+  </data>
+  <data name="Game_Started" xml:space="preserve">
+    <value>Begonnen: {0}</value>
+  </data>
+  <data name="Game_Elapsed" xml:space="preserve">
+    <value>Speeltijd: {0}</value>
+  </data>
+  <data name="Game_TimeLeft" xml:space="preserve">
+    <value>Tijd over: {0}</value>
+  </data>
+  <data name="Game_Send" xml:space="preserve">
+    <value>Controleren</value>
+  </data>
+  <data name="Game_Next" xml:space="preserve">
+    <value>Volgende</value>
+  </data>
+  <data name="Game_OperatorHint" xml:space="preserve">
+    <value>Welk teken ontbreekt?</value>
+  </data>
+  <data name="Answer_Correct" xml:space="preserve">
+    <value>✓ Goed!</value>
+  </data>
+  <data name="Answer_Wrong" xml:space="preserve">
+    <value>✗ Goede antwoord: {0}</value>
+  </data>
+  <data name="Answer_HowTo" xml:space="preserve">
+    <value>Zo werkt het: {0}</value>
+  </data>
+  <data name="Answer_LevelUp" xml:space="preserve">
+    <value>▲ Niveau omhoog! De getallen worden iets groter.</value>
+  </data>
+  <data name="Answer_LevelDown" xml:space="preserve">
+    <value>▼ Niveau omlaag. De getallen worden iets kleiner.</value>
+  </data>
+  <data name="Summary_Title" xml:space="preserve">
+    <value>Overzicht</value>
+  </data>
+  <data name="Summary_Answered" xml:space="preserve">
+    <value>Beantwoord: {0}</value>
+  </data>
+  <data name="Summary_Correct" xml:space="preserve">
+    <value>Goed: {0}</value>
+  </data>
+  <data name="Summary_Wrong" xml:space="preserve">
+    <value>Fout: {0}</value>
+  </data>
+  <data name="Summary_Accuracy" xml:space="preserve">
+    <value>Nauwkeurigheid: {0}</value>
+  </data>
+  <data name="Summary_Level" xml:space="preserve">
+    <value>Niveau: {0} → {1}</value>
+  </data>
+  <data name="Summary_TimeUp" xml:space="preserve">
+    <value>De tijd is om!</value>
+  </data>
+  <data name="Summary_NewBest" xml:space="preserve">
+    <value>Nieuw persoonlijk record: {0} goed!</value>
+  </data>
+  <data name="Summary_Best" xml:space="preserve">
+    <value>Persoonlijk record: {0} goed</value>
+  </data>
+  <data name="History_Title" xml:space="preserve">
+    <value>Je voortgang</value>
+  </data>
+  <data name="History_Date" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="History_Player" xml:space="preserve">
+    <value>Speler</value>
+  </data>
+  <data name="History_Tasks" xml:space="preserve">
+    <value>Sommen</value>
+  </data>
+  <data name="History_Correct" xml:space="preserve">
+    <value>Goed</value>
+  </data>
+  <data name="History_Accuracy" xml:space="preserve">
+    <value>Nauwkeurigheid</value>
+  </data>
+  <data name="History_Time" xml:space="preserve">
+    <value>Tijd</value>
+  </data>
+  <data name="History_Level" xml:space="preserve">
+    <value>Niveau</value>
+  </data>
+  <data name="History_Empty" xml:space="preserve">
+    <value>Nog geen spellen gespeeld.</value>
+  </data>
+  <data name="History_Solo" xml:space="preserve">
+    <value>Alleen</value>
+  </data>
+  <data name="History_GameOne" xml:space="preserve">
+    <value>{0} spel</value>
+  </data>
+  <data name="History_GameMany" xml:space="preserve">
+    <value>{0} spellen</value>
+  </data>
+  <data name="History_Totals" xml:space="preserve">
+    <value>{0} · {1} sommen · {2} goed · {3} in totaal</value>
+  </data>
+  <data name="History_ByOperation" xml:space="preserve">
+    <value>Per bewerking: {0}</value>
+  </data>
+  <data name="History_LoadError" xml:space="preserve">
+    <value>De geschiedenis kon niet worden gelezen: {0}</value>
+  </data>
+  <data name="History_SaveError" xml:space="preserve">
+    <value>Het spel kon niet in de geschiedenis worden opgeslagen: {0}</value>
+  </data>
+  <data name="History_Export" xml:space="preserve">
+    <value>Exporteren (CSV)</value>
+  </data>
+  <data name="History_Exported" xml:space="preserve">
+    <value>Geschiedenis geëxporteerd: {0}</value>
+  </data>
+  <data name="History_ExportError" xml:space="preserve">
+    <value>De geschiedenis kon niet worden geëxporteerd: {0}</value>
+  </data>
+  <data name="FamilySetup_Intro" xml:space="preserve">
+    <value>Speel om de beurt op deze computer: iedere speler maakt zijn sommen en geeft dan de beurt door.</value>
+  </data>
+  <data name="FamilySetup_Settings" xml:space="preserve">
+    <value>Getallen van {0} tot {1}, {2}. Iedereen heeft een eigen moeilijkheidsniveau.</value>
+  </data>
+  <data name="FamilySetup_Player" xml:space="preserve">
+    <value>Speler {0}:</value>
+  </data>
+  <data name="FamilySetup_NamePlaceholder" xml:space="preserve">
+    <value>Naam</value>
+  </data>
+  <data name="FamilySetup_Remove" xml:space="preserve">
+    <value>Verwijderen</value>
+  </data>
+  <data name="FamilySetup_AddPlayer" xml:space="preserve">
+    <value>+ Speler toevoegen</value>
+  </data>
+  <data name="FamilySetup_TasksPerTurn" xml:space="preserve">
+    <value>Sommen per beurt:</value>
+  </data>
+  <data name="FamilyGame_Turn" xml:space="preserve">
+    <value>{0} is aan de beurt</value>
+  </data>
+  <data name="FamilyGame_Round" xml:space="preserve">
+    <value>Ronde {0}</value>
+  </data>
+  <data name="FamilyGame_TaskInTurn" xml:space="preserve">
+    <value>Som {0} van {1}</value>
+  </data>
+  <data name="FamilyGame_NextPlayer" xml:space="preserve">
+    <value>Volgende speler</value>
+  </data>
+  <data name="Family_Score" xml:space="preserve">
+    <value>{0} / {1} goed</value>
+  </data>
+  <data name="Family_Level" xml:space="preserve">
+    <value>Niveau {0}</value>
+  </data>
+  <data name="Family_LevelRange" xml:space="preserve">
+    <value>Niveau {0} → {1}</value>
+  </data>
+  <data name="FamilySummary_NoWinner" xml:space="preserve">
+    <value>Niemand heeft deze keer gescoord. Probeer het nog eens!</value>
+  </data>
+  <data name="FamilySummary_Winner" xml:space="preserve">
+    <value>{0} wint!</value>
+  </data>
+  <data name="FamilySummary_Tie" xml:space="preserve">
+    <value>Gelijkspel: {0}!</value>
+  </data>
+  <data name="FamilySummary_And" xml:space="preserve">
+    <value> en </value>
+  </data>
+  <data name="FamilySummary_PlayAgain" xml:space="preserve">
+    <value>Nog een keer</value>
+  </data>
+  <data name="Worksheet_Title" xml:space="preserve">
+    <value>Werkblad</value>
+  </data>
+  <data name="Worksheet_Name" xml:space="preserve">
+    <value>Naam:</value>
+  </data>
+  <data name="Worksheet_Date" xml:space="preserve">
+    <value>Datum:</value>
+  </data>
+  <data name="Worksheet_Answers" xml:space="preserve">
+    <value>Antwoorden</value>
+  </data>
+  <data name="Worksheet_Settings" xml:space="preserve">
+    <value>Getallen van {0} tot {1}, {2}</value>
+  </data>
+</root>

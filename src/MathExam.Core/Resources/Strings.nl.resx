@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Settings_MinGreaterThanMax" xml:space="preserve">
+    <value>Het kleinste getal mag niet groter zijn dan het grootste getal.</value>
+  </data>
+  <data name="Settings_NoOperation" xml:space="preserve">
+    <value>Kies minstens één bewerking.</value>
+  </data>
+  <data name="Settings_FractionsNeedAddSub" xml:space="preserve">
+    <value>Breuken en kommagetallen werken alleen met optellen en aftrekken.</value>
+  </data>
+  <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
+    <value>Voor delen moet er een getal dat geen nul is in het bereik zitten.</value>
+  </data>
+  <data name="Settings_PowerRangeTooFar" xml:space="preserve">
+    <value>Voor machten en wortels moet er een getal tussen −{0} en {0} in het bereik zitten.</value>
+  </data>
+  <data name="Players_Count" xml:space="preserve">
+    <value>Een familiespel heeft {0} tot {1} spelers nodig.</value>
+  </data>
+  <data name="Players_EmptyName" xml:space="preserve">
+    <value>Vul voor elke speler een naam in.</value>
+  </data>
+  <data name="Players_NameTooLong" xml:space="preserve">
+    <value>Namen mogen hoogstens {0} tekens lang zijn.</value>
+  </data>
+  <data name="Players_DuplicateName" xml:space="preserve">
+    <value>Elke speler heeft een andere naam nodig.</value>
+  </data>
+</root>
