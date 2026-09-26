@@ -35,6 +35,8 @@ public static class LanguageManager
         new("hr", "Hrvatski"),
         new("sl", "Slovenščina"),
         new("sk", "Slovenčina"),
+        new("tr", "Türkçe"),
+        new("el", "Ελληνικά"),
     ];
 
     /// <summary>Returns the option for a saved code; unknown codes fall back to the system default.</summary>

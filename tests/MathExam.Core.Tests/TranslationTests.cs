@@ -18,7 +18,7 @@ public sealed partial class TranslationTests
     public void All_supported_languages_are_translated()
     {
         var files = Translations().Select(row => Path.GetFileName((string)row[0])).ToHashSet();
-        foreach (var lang in new[] { "fr", "de", "hu", "it", "es", "pl", "cs", "fi", "pt", "sv", "nb", "hr", "sl", "sk" })
+        foreach (var lang in new[] { "fr", "de", "hu", "it", "es", "pl", "cs", "fi", "pt", "sv", "nb", "hr", "sl", "sk", "tr", "el" })
             Assert.Contains($"Strings.{lang}.resx", files);
     }
 

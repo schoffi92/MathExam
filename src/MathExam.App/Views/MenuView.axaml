@@ -5,7 +5,7 @@
              xmlns:res="using:MathExam.App.Resources"
              x:Class="MathExam.App.Views.MenuView"
              x:DataType="vm:MenuViewModel">
-    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="460">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="480">
         <TextBlock Text="Math Exam" Classes="title" />
 
         <Grid ColumnDefinitions="*,120" RowDefinitions="Auto,Auto" Margin="0,0,0,16">

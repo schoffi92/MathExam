@@ -12,7 +12,7 @@ MathExam is a practice app for the four basic operations, plus powers and roots.
 | **Adaptive difficulty** | Adjusts how big the numbers are to how well you are doing (see below). |
 | **Display → Text size** | Normal, Large (125%) or Extra large (150%). Everything gets bigger and the window grows to match. |
 | **Display → High contrast colours** | White and yellow on black, with thicker borders. |
-| **Display → Language** | English, Français (French), Deutsch (German), Magyar (Hungarian), Italiano (Italian), Español (Spanish), Polski (Polish), Čeština (Czech), Suomi (Finnish), Português (Portuguese), Svenska (Swedish), Norsk bokmål (Norwegian), Hrvatski (Croatian), Slovenščina (Slovenian) or Slovenčina (Slovak). *System default* uses your operating system's language, or English if it is none of these. |
+| **Display → Language** | English, Français (French), Deutsch (German), Magyar (Hungarian), Italiano (Italian), Español (Spanish), Polski (Polish), Čeština (Czech), Suomi (Finnish), Português (Portuguese), Svenska (Swedish), Norsk bokmål (Norwegian), Hrvatski (Croatian), Slovenščina (Slovenian), Slovenčina (Slovak), Türkçe (Turkish) or Ελληνικά (Greek). *System default* uses your operating system's language, or English if it is none of these. |
 
 Defaults: lowest `1`, highest `10`, the four basic operations on (powers and roots off), adaptive difficulty on, normal text, system language. High contrast starts on if the operating system's high-contrast mode is on.
 

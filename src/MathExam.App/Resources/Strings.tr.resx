@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Menu_Lowest" xml:space="preserve">
+    <value>En küçük sayı:</value>
+  </data>
+  <data name="Menu_Highest" xml:space="preserve">
+    <value>En büyük sayı:</value>
+  </data>
+  <data name="Menu_Operations" xml:space="preserve">
+    <value>İşlemler</value>
+  </data>
+  <data name="Menu_Add" xml:space="preserve">
+    <value>Toplama (+)</value>
+  </data>
+  <data name="Menu_Subtract" xml:space="preserve">
+    <value>Çıkarma (−)</value>
+  </data>
+  <data name="Menu_Multiply" xml:space="preserve">
+    <value>Çarpma (×)</value>
+  </data>
+  <data name="Menu_Divide" xml:space="preserve">
+    <value>Bölme (÷)</value>
+  </data>
+  <data name="Menu_Power" xml:space="preserve">
+    <value>Üs alma (xⁿ)</value>
+  </data>
+  <data name="Menu_Root" xml:space="preserve">
+    <value>Kök alma (√)</value>
+  </data>
+  <data name="Menu_Adaptive" xml:space="preserve">
+    <value>Uyarlanabilir zorluk</value>
+  </data>
+  <data name="Menu_AdaptiveHint" xml:space="preserve">
+    <value>Küçük sayılarla başlar, doğru cevap verdikçe sayılar büyür.</value>
+  </data>
+  <data name="Menu_Display" xml:space="preserve">
+    <value>Görünüm</value>
+  </data>
+  <data name="Menu_TextSize" xml:space="preserve">
+    <value>Yazı boyutu:</value>
+  </data>
+  <data name="Menu_TextNormal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="Menu_TextLarge" xml:space="preserve">
+    <value>Büyük</value>
+  </data>
+  <data name="Menu_TextExtraLarge" xml:space="preserve">
+    <value>Çok büyük</value>
+  </data>
+  <data name="Menu_HighContrast" xml:space="preserve">
+    <value>Yüksek karşıtlıklı renkler</value>
+  </data>
+  <data name="Menu_Language" xml:space="preserve">
+    <value>Dil:</value>
+  </data>
+  <data name="Menu_LanguageSystem" xml:space="preserve">
+    <value>Sistem dili</value>
+  </data>
+  <data name="Menu_Family" xml:space="preserve">
+    <value>Aile oyunu</value>
+  </data>
+  <data name="Menu_History" xml:space="preserve">
+    <value>Geçmiş</value>
+  </data>
+  <data name="Menu_MinNotWhole" xml:space="preserve">
+    <value>En küçük sayı bir tam sayı olmalı.</value>
+  </data>
+  <data name="Menu_MaxNotWhole" xml:space="preserve">
+    <value>En büyük sayı bir tam sayı olmalı.</value>
+  </data>
+  <data name="Common_Start" xml:space="preserve">
+    <value>Başla</value>
+  </data>
+  <data name="Common_Back" xml:space="preserve">
+    <value>Geri</value>
+  </data>
+  <data name="Common_BackToMenu" xml:space="preserve">
+    <value>Menüye dön</value>
+  </data>
+  <data name="Common_Stop" xml:space="preserve">
+    <value>Bitir</value>
+  </data>
+  <data name="Common_Time" xml:space="preserve">
+    <value>Süre: {0}</value>
+  </data>
+  <data name="Game_TaskNumber" xml:space="preserve">
+    <value>Soru {0}</value>
+  </data>
+  <data name="Game_Level" xml:space="preserve">
+    <value>Seviye {0} / {1}</value>
+  </data>
+  <data name="Game_Solved" xml:space="preserve">
+    <value>Çözülen: {0} / {1}</value>
+  </data>
+  <data name="Game_Started" xml:space="preserve">
+    <value>Başlangıç: {0}</value>
+  </data>
+  <data name="Game_Elapsed" xml:space="preserve">
+    <value>Geçen süre: {0}</value>
+  </data>
+  <data name="Game_Send" xml:space="preserve">
+    <value>Kontrol et</value>
+  </data>
+  <data name="Game_Next" xml:space="preserve">
+    <value>Sonraki</value>
+  </data>
+  <data name="Answer_Correct" xml:space="preserve">
+    <value>✓ Doğru!</value>
+  </data>
+  <data name="Answer_Wrong" xml:space="preserve">
+    <value>✗ Doğru cevap: {0}</value>
+  </data>
+  <data name="Answer_LevelUp" xml:space="preserve">
+    <value>▲ Seviye atladın! Sayılar biraz büyüyor.</value>
+  </data>
+  <data name="Answer_LevelDown" xml:space="preserve">
+    <value>▼ Seviye düştü. Sayılar biraz küçülüyor.</value>
+  </data>
+  <data name="Summary_Title" xml:space="preserve">
+    <value>Özet</value>
+  </data>
+  <data name="Summary_Answered" xml:space="preserve">
+    <value>Cevaplanan: {0}</value>
+  </data>
+  <data name="Summary_Correct" xml:space="preserve">
+    <value>Doğru: {0}</value>
+  </data>
+  <data name="Summary_Wrong" xml:space="preserve">
+    <value>Yanlış: {0}</value>
+  </data>
+  <data name="Summary_Accuracy" xml:space="preserve">
+    <value>Başarı: {0}</value>
+  </data>
+  <data name="Summary_Level" xml:space="preserve">
+    <value>Seviye: {0} → {1}</value>
+  </data>
+  <data name="History_Title" xml:space="preserve">
+    <value>İlerlemen</value>
+  </data>
+  <data name="History_Date" xml:space="preserve">
+    <value>Tarih</value>
+  </data>
+  <data name="History_Player" xml:space="preserve">
+    <value>Oyuncu</value>
+  </data>
+  <data name="History_Tasks" xml:space="preserve">
+    <value>Sorular</value>
+  </data>
+  <data name="History_Correct" xml:space="preserve">
+    <value>Doğru</value>
+  </data>
+  <data name="History_Accuracy" xml:space="preserve">
+    <value>Başarı</value>
+  </data>
+  <data name="History_Time" xml:space="preserve">
+    <value>Süre</value>
+  </data>
+  <data name="History_Level" xml:space="preserve">
+    <value>Seviye</value>
+  </data>
+  <data name="History_Empty" xml:space="preserve">
+    <value>Henüz hiç oyun oynanmadı.</value>
+  </data>
+  <data name="History_Solo" xml:space="preserve">
+    <value>Tek kişilik</value>
+  </data>
+  <data name="History_GameOne" xml:space="preserve">
+    <value>{0} oyun</value>
+  </data>
+  <data name="History_GameMany" xml:space="preserve">
+    <value>{0} oyun</value>
+  </data>
+  <data name="History_Totals" xml:space="preserve">
+    <value>{0} · {1} soru · {2} doğru · toplam {3}</value>
+  </data>
+  <data name="History_LoadError" xml:space="preserve">
+    <value>Geçmiş okunamadı: {0}</value>
+  </data>
+  <data name="History_SaveError" xml:space="preserve">
+    <value>Oyun geçmişe kaydedilemedi: {0}</value>
+  </data>
+  <data name="FamilySetup_Intro" xml:space="preserve">
+    <value>Bu bilgisayarda sırayla oynayın: her oyuncu kendi sorularını çözer, sonra sırayı devreder.</value>
+  </data>
+  <data name="FamilySetup_Settings" xml:space="preserve">
+    <value>Sayılar {0} – {1}, {2}. Herkesin kendi zorluk seviyesi var.</value>
+  </data>
+  <data name="FamilySetup_Player" xml:space="preserve">
+    <value>Oyuncu {0}:</value>
+  </data>
+  <data name="FamilySetup_NamePlaceholder" xml:space="preserve">
+    <value>Ad</value>
+  </data>
+  <data name="FamilySetup_Remove" xml:space="preserve">
+    <value>Kaldır</value>
+  </data>
+  <data name="FamilySetup_AddPlayer" xml:space="preserve">
+    <value>+ Oyuncu ekle</value>
+  </data>
+  <data name="FamilySetup_TasksPerTurn" xml:space="preserve">
+    <value>Sıra başına soru:</value>
+  </data>
+  <data name="FamilyGame_Turn" xml:space="preserve">
+    <value>Sıra sende, {0}!</value>
+  </data>
+  <data name="FamilyGame_Round" xml:space="preserve">
+    <value>Tur {0}</value>
+  </data>
+  <data name="FamilyGame_TaskInTurn" xml:space="preserve">
+    <value>Soru {0} / {1}</value>
+  </data>
+  <data name="FamilyGame_NextPlayer" xml:space="preserve">
+    <value>Sıradaki oyuncu</value>
+  </data>
+  <data name="Family_Score" xml:space="preserve">
+    <value>{0} / {1} doğru</value>
+  </data>
+  <data name="Family_Level" xml:space="preserve">
+    <value>Seviye {0}</value>
+  </data>
+  <data name="Family_LevelRange" xml:space="preserve">
+    <value>Seviye {0} → {1}</value>
+  </data>
+  <data name="FamilySummary_NoWinner" xml:space="preserve">
+    <value>Bu sefer kimse puan alamadı. Tekrar deneyin!</value>
+  </data>
+  <data name="FamilySummary_Winner" xml:space="preserve">
+    <value>{0} kazandı!</value>
+  </data>
+  <data name="FamilySummary_Tie" xml:space="preserve">
+    <value>Berabere: {0}!</value>
+  </data>
+  <data name="FamilySummary_And" xml:space="preserve">
+    <value> ve </value>
+  </data>
+  <data name="FamilySummary_PlayAgain" xml:space="preserve">
+    <value>Tekrar oyna</value>
+  </data>
+</root>

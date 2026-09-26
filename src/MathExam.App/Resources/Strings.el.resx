@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Menu_Lowest" xml:space="preserve">
+    <value>Μικρότερος αριθμός:</value>
+  </data>
+  <data name="Menu_Highest" xml:space="preserve">
+    <value>Μεγαλύτερος αριθμός:</value>
+  </data>
+  <data name="Menu_Operations" xml:space="preserve">
+    <value>Πράξεις</value>
+  </data>
+  <data name="Menu_Add" xml:space="preserve">
+    <value>Πρόσθεση (+)</value>
+  </data>
+  <data name="Menu_Subtract" xml:space="preserve">
+    <value>Αφαίρεση (−)</value>
+  </data>
+  <data name="Menu_Multiply" xml:space="preserve">
+    <value>Πολλαπλασιασμός (×)</value>
+  </data>
+  <data name="Menu_Divide" xml:space="preserve">
+    <value>Διαίρεση (÷)</value>
+  </data>
+  <data name="Menu_Power" xml:space="preserve">
+    <value>Δυνάμεις (xⁿ)</value>
+  </data>
+  <data name="Menu_Root" xml:space="preserve">
+    <value>Ρίζες (√)</value>
+  </data>
+  <data name="Menu_Adaptive" xml:space="preserve">
+    <value>Προσαρμοζόμενη δυσκολία</value>
+  </data>
+  <data name="Menu_AdaptiveHint" xml:space="preserve">
+    <value>Ξεκινά με μικρούς αριθμούς, που μεγαλώνουν όσο απαντάς σωστά.</value>
+  </data>
+  <data name="Menu_Display" xml:space="preserve">
+    <value>Εμφάνιση</value>
+  </data>
+  <data name="Menu_TextSize" xml:space="preserve">
+    <value>Μέγεθος κειμένου:</value>
+  </data>
+  <data name="Menu_TextNormal" xml:space="preserve">
+    <value>Κανονικό</value>
+  </data>
+  <data name="Menu_TextLarge" xml:space="preserve">
+    <value>Μεγάλο</value>
+  </data>
+  <data name="Menu_TextExtraLarge" xml:space="preserve">
+    <value>Πολύ μεγάλο</value>
+  </data>
+  <data name="Menu_HighContrast" xml:space="preserve">
+    <value>Χρώματα υψηλής αντίθεσης</value>
+  </data>
+  <data name="Menu_Language" xml:space="preserve">
+    <value>Γλώσσα:</value>
+  </data>
+  <data name="Menu_LanguageSystem" xml:space="preserve">
+    <value>Γλώσσα συστήματος</value>
+  </data>
+  <data name="Menu_Family" xml:space="preserve">
+    <value>Οικογενειακό παιχνίδι</value>
+  </data>
+  <data name="Menu_History" xml:space="preserve">
+    <value>Ιστορικό</value>
+  </data>
+  <data name="Menu_MinNotWhole" xml:space="preserve">
+    <value>Ο μικρότερος αριθμός πρέπει να είναι ακέραιος.</value>
+  </data>
+  <data name="Menu_MaxNotWhole" xml:space="preserve">
+    <value>Ο μεγαλύτερος αριθμός πρέπει να είναι ακέραιος.</value>
+  </data>
+  <data name="Common_Start" xml:space="preserve">
+    <value>Έναρξη</value>
+  </data>
+  <data name="Common_Back" xml:space="preserve">
+    <value>Πίσω</value>
+  </data>
+  <data name="Common_BackToMenu" xml:space="preserve">
+    <value>Πίσω στο μενού</value>
+  </data>
+  <data name="Common_Stop" xml:space="preserve">
+    <value>Τέλος</value>
+  </data>
+  <data name="Common_Time" xml:space="preserve">
+    <value>Χρόνος: {0}</value>
+  </data>
+  <data name="Game_TaskNumber" xml:space="preserve">
+    <value>Άσκηση {0}</value>
+  </data>
+  <data name="Game_Level" xml:space="preserve">
+    <value>Επίπεδο {0} / {1}</value>
+  </data>
+  <data name="Game_Solved" xml:space="preserve">
+    <value>Λύθηκαν: {0} / {1}</value>
+  </data>
+  <data name="Game_Started" xml:space="preserve">
+    <value>Έναρξη: {0}</value>
+  </data>
+  <data name="Game_Elapsed" xml:space="preserve">
+    <value>Διάρκεια: {0}</value>
+  </data>
+  <data name="Game_Send" xml:space="preserve">
+    <value>Έλεγχος</value>
+  </data>
+  <data name="Game_Next" xml:space="preserve">
+    <value>Επόμενη</value>
+  </data>
+  <data name="Answer_Correct" xml:space="preserve">
+    <value>✓ Σωστά!</value>
+  </data>
+  <data name="Answer_Wrong" xml:space="preserve">
+    <value>✗ Σωστή απάντηση: {0}</value>
+  </data>
+  <data name="Answer_LevelUp" xml:space="preserve">
+    <value>▲ Ανέβηκες επίπεδο! Οι αριθμοί μεγαλώνουν λίγο.</value>
+  </data>
+  <data name="Answer_LevelDown" xml:space="preserve">
+    <value>▼ Κατέβηκες επίπεδο. Οι αριθμοί μικραίνουν λίγο.</value>
+  </data>
+  <data name="Summary_Title" xml:space="preserve">
+    <value>Σύνοψη</value>
+  </data>
+  <data name="Summary_Answered" xml:space="preserve">
+    <value>Απαντήσεις: {0}</value>
+  </data>
+  <data name="Summary_Correct" xml:space="preserve">
+    <value>Σωστές: {0}</value>
+  </data>
+  <data name="Summary_Wrong" xml:space="preserve">
+    <value>Λάθος: {0}</value>
+  </data>
+  <data name="Summary_Accuracy" xml:space="preserve">
+    <value>Ακρίβεια: {0}</value>
+  </data>
+  <data name="Summary_Level" xml:space="preserve">
+    <value>Επίπεδο: {0} → {1}</value>
+  </data>
+  <data name="History_Title" xml:space="preserve">
+    <value>Η πρόοδός σου</value>
+  </data>
+  <data name="History_Date" xml:space="preserve">
+    <value>Ημερομηνία</value>
+  </data>
+  <data name="History_Player" xml:space="preserve">
+    <value>Παίκτης</value>
+  </data>
+  <data name="History_Tasks" xml:space="preserve">
+    <value>Ασκήσεις</value>
+  </data>
+  <data name="History_Correct" xml:space="preserve">
+    <value>Σωστές</value>
+  </data>
+  <data name="History_Accuracy" xml:space="preserve">
+    <value>Ακρίβεια</value>
+  </data>
+  <data name="History_Time" xml:space="preserve">
+    <value>Χρόνος</value>
+  </data>
+  <data name="History_Level" xml:space="preserve">
+    <value>Επίπεδο</value>
+  </data>
+  <data name="History_Empty" xml:space="preserve">
+    <value>Δεν έχει παιχτεί ακόμα κανένα παιχνίδι.</value>
+  </data>
+  <data name="History_Solo" xml:space="preserve">
+    <value>Ατομικό</value>
+  </data>
+  <data name="History_GameOne" xml:space="preserve">
+    <value>{0} παιχνίδι</value>
+  </data>
+  <data name="History_GameMany" xml:space="preserve">
+    <value>{0} παιχνίδια</value>
+  </data>
+  <data name="History_Totals" xml:space="preserve">
+    <value>{0} · {1} ασκήσεις · {2} σωστές · {3} συνολικά</value>
+  </data>
+  <data name="History_LoadError" xml:space="preserve">
+    <value>Δεν ήταν δυνατή η ανάγνωση του ιστορικού: {0}</value>
+  </data>
+  <data name="History_SaveError" xml:space="preserve">
+    <value>Δεν ήταν δυνατή η αποθήκευση του παιχνιδιού στο ιστορικό: {0}</value>
+  </data>
+  <data name="FamilySetup_Intro" xml:space="preserve">
+    <value>Παίξτε με τη σειρά σε αυτόν τον υπολογιστή: κάθε παίκτης λύνει τις ασκήσεις του και μετά δίνει τη σειρά στον επόμενο.</value>
+  </data>
+  <data name="FamilySetup_Settings" xml:space="preserve">
+    <value>Αριθμοί {0} – {1}, {2}. Ο καθένας έχει το δικό του επίπεδο δυσκολίας.</value>
+  </data>
+  <data name="FamilySetup_Player" xml:space="preserve">
+    <value>Παίκτης {0}:</value>
+  </data>
+  <data name="FamilySetup_NamePlaceholder" xml:space="preserve">
+    <value>Όνομα</value>
+  </data>
+  <data name="FamilySetup_Remove" xml:space="preserve">
+    <value>Διαγραφή</value>
+  </data>
+  <data name="FamilySetup_AddPlayer" xml:space="preserve">
+    <value>+ Προσθήκη παίκτη</value>
+  </data>
+  <data name="FamilySetup_TasksPerTurn" xml:space="preserve">
+    <value>Ασκήσεις ανά σειρά:</value>
+  </data>
+  <data name="FamilyGame_Turn" xml:space="preserve">
+    <value>Σειρά σου, {0}!</value>
+  </data>
+  <data name="FamilyGame_Round" xml:space="preserve">
+    <value>Γύρος {0}</value>
+  </data>
+  <data name="FamilyGame_TaskInTurn" xml:space="preserve">
+    <value>Άσκηση {0} από {1}</value>
+  </data>
+  <data name="FamilyGame_NextPlayer" xml:space="preserve">
+    <value>Επόμενος παίκτης</value>
+  </data>
+  <data name="Family_Score" xml:space="preserve">
+    <value>{0} / {1} σωστές</value>
+  </data>
+  <data name="Family_Level" xml:space="preserve">
+    <value>Επίπεδο {0}</value>
+  </data>
+  <data name="Family_LevelRange" xml:space="preserve">
+    <value>Επίπεδο {0} → {1}</value>
+  </data>
+  <data name="FamilySummary_NoWinner" xml:space="preserve">
+    <value>Αυτή τη φορά κανείς δεν πήρε πόντο. Δοκιμάστε ξανά!</value>
+  </data>
+  <data name="FamilySummary_Winner" xml:space="preserve">
+    <value>Νικητής: {0}!</value>
+  </data>
+  <data name="FamilySummary_Tie" xml:space="preserve">
+    <value>Ισοπαλία: {0}!</value>
+  </data>
+  <data name="FamilySummary_And" xml:space="preserve">
+    <value> και </value>
+  </data>
+  <data name="FamilySummary_PlayAgain" xml:space="preserve">
+    <value>Παίξτε ξανά</value>
+  </data>
+</root>
