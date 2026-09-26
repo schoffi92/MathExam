@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Settings_MinGreaterThanMax" xml:space="preserve">
+    <value>Cel mai mic număr nu poate fi mai mare decât cel mai mare număr.</value>
+  </data>
+  <data name="Settings_NoOperation" xml:space="preserve">
+    <value>Alege cel puțin o operație.</value>
+  </data>
+  <data name="Settings_FractionsNeedAddSub" xml:space="preserve">
+    <value>Fracțiile și zecimalele merg doar cu adunarea și scăderea.</value>
+  </data>
+  <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
+    <value>Împărțirea are nevoie de un număr diferit de zero în interval.</value>
+  </data>
+  <data name="Settings_PowerRangeTooFar" xml:space="preserve">
+    <value>Puterile și radicalii au nevoie de un număr între −{0} și {0} în interval.</value>
+  </data>
+  <data name="Players_Count" xml:space="preserve">
+    <value>Un joc în familie are nevoie de {0}–{1} jucători.</value>
+  </data>
+  <data name="Players_EmptyName" xml:space="preserve">
+    <value>Scrie un nume pentru fiecare jucător.</value>
+  </data>
+  <data name="Players_NameTooLong" xml:space="preserve">
+    <value>Numele pot avea cel mult {0} caractere.</value>
+  </data>
+  <data name="Players_DuplicateName" xml:space="preserve">
+    <value>Fiecare jucător are nevoie de un nume diferit.</value>
+  </data>
+</root>

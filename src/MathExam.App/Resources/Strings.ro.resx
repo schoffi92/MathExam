@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Menu_Lowest" xml:space="preserve">
+    <value>Cel mai mic număr:</value>
+  </data>
+  <data name="Menu_Highest" xml:space="preserve">
+    <value>Cel mai mare număr:</value>
+  </data>
+  <data name="Menu_Operations" xml:space="preserve">
+    <value>Operații</value>
+  </data>
+  <data name="Menu_Add" xml:space="preserve">
+    <value>Adunare (+)</value>
+  </data>
+  <data name="Menu_Subtract" xml:space="preserve">
+    <value>Scădere (−)</value>
+  </data>
+  <data name="Menu_Multiply" xml:space="preserve">
+    <value>Înmulțire (×)</value>
+  </data>
+  <data name="Menu_Divide" xml:space="preserve">
+    <value>Împărțire (÷)</value>
+  </data>
+  <data name="Menu_Power" xml:space="preserve">
+    <value>Puteri (xⁿ)</value>
+  </data>
+  <data name="Menu_Root" xml:space="preserve">
+    <value>Radicali (√)</value>
+  </data>
+  <data name="Menu_MissingOperator" xml:space="preserve">
+    <value>Semnul lipsă (6 ? 3 = 18)</value>
+  </data>
+  <data name="Menu_Numbers" xml:space="preserve">
+    <value>Numere:</value>
+  </data>
+  <data name="Menu_NumbersWhole" xml:space="preserve">
+    <value>Numere întregi</value>
+  </data>
+  <data name="Menu_NumbersDecimal" xml:space="preserve">
+    <value>Zecimale (0,1)</value>
+  </data>
+  <data name="Menu_NumbersFraction" xml:space="preserve">
+    <value>Fracții (1/2)</value>
+  </data>
+  <data name="Menu_Adaptive" xml:space="preserve">
+    <value>Dificultate adaptivă</value>
+  </data>
+  <data name="Menu_AdaptiveHint" xml:space="preserve">
+    <value>Începe cu numere mici, care cresc când răspunzi corect.</value>
+  </data>
+  <data name="Menu_Timed" xml:space="preserve">
+    <value>Contra cronometru: 1 minut (individual)</value>
+  </data>
+  <data name="Menu_Display" xml:space="preserve">
+    <value>Afișare</value>
+  </data>
+  <data name="Menu_TextSize" xml:space="preserve">
+    <value>Mărimea textului:</value>
+  </data>
+  <data name="Menu_TextNormal" xml:space="preserve">
+    <value>Normală</value>
+  </data>
+  <data name="Menu_TextLarge" xml:space="preserve">
+    <value>Mare</value>
+  </data>
+  <data name="Menu_TextExtraLarge" xml:space="preserve">
+    <value>Foarte mare</value>
+  </data>
+  <data name="Menu_HighContrast" xml:space="preserve">
+    <value>Culori cu contrast ridicat</value>
+  </data>
+  <data name="Menu_Language" xml:space="preserve">
+    <value>Limba:</value>
+  </data>
+  <data name="Menu_LanguageSystem" xml:space="preserve">
+    <value>Limba sistemului</value>
+  </data>
+  <data name="Menu_Family" xml:space="preserve">
+    <value>Joc în familie</value>
+  </data>
+  <data name="Menu_History" xml:space="preserve">
+    <value>Istoric</value>
+  </data>
+  <data name="Menu_Worksheet" xml:space="preserve">
+    <value>Fișă de lucru (PDF)</value>
+  </data>
+  <data name="Menu_WorksheetSaved" xml:space="preserve">
+    <value>Fișa de lucru a fost salvată: {0}</value>
+  </data>
+  <data name="Menu_WorksheetError" xml:space="preserve">
+    <value>Fișa de lucru nu a putut fi salvată: {0}</value>
+  </data>
+  <data name="Menu_MinNotWhole" xml:space="preserve">
+    <value>Cel mai mic număr trebuie să fie un număr întreg.</value>
+  </data>
+  <data name="Menu_MaxNotWhole" xml:space="preserve">
+    <value>Cel mai mare număr trebuie să fie un număr întreg.</value>
+  </data>
+  <data name="Common_Start" xml:space="preserve">
+    <value>Începe</value>
+  </data>
+  <data name="Common_Back" xml:space="preserve">
+    <value>Înapoi</value>
+  </data>
+  <data name="Common_BackToMenu" xml:space="preserve">
+    <value>Înapoi la meniu</value>
+  </data>
+  <data name="Common_Stop" xml:space="preserve">
+    <value>Termină</value>
+  </data>
+  <data name="Common_Time" xml:space="preserve">
+    <value>Timp: {0}</value>
+  </data>
+  <data name="Game_TaskNumber" xml:space="preserve">
+    <value>Exercițiul {0}</value>
+  </data>
+  <data name="Game_Level" xml:space="preserve">
+    <value>Nivelul {0} / {1}</value>
+  </data>
+  <data name="Game_Solved" xml:space="preserve">
+    <value>Rezolvate: {0} / {1}</value>
+  </data>
+  <data name="Game_Started" xml:space="preserve">
+    <value>Început: {0}</value>
+  </data>
+  <data name="Game_Elapsed" xml:space="preserve">
+    <value>Durată: {0}</value>
+  </data>
+  <data name="Game_TimeLeft" xml:space="preserve">
+    <value>Timp rămas: {0}</value>
+  </data>
+  <data name="Game_Send" xml:space="preserve">
+    <value>Verifică</value>
+  </data>
+  <data name="Game_Next" xml:space="preserve">
+    <value>Următorul</value>
+  </data>
+  <data name="Game_OperatorHint" xml:space="preserve">
+    <value>Ce semn lipsește?</value>
+  </data>
+  <data name="Answer_Correct" xml:space="preserve">
+    <value>✓ Corect!</value>
+  </data>
+  <data name="Answer_Wrong" xml:space="preserve">
+    <value>✗ Răspunsul corect: {0}</value>
+  </data>
+  <data name="Answer_HowTo" xml:space="preserve">
+    <value>Cum: {0}</value>
+  </data>
+  <data name="Answer_LevelUp" xml:space="preserve">
+    <value>▲ Nivel nou! Numerele devin puțin mai mari.</value>
+  </data>
+  <data name="Answer_LevelDown" xml:space="preserve">
+    <value>▼ Nivel mai jos. Numerele devin puțin mai mici.</value>
+  </data>
+  <data name="Summary_Title" xml:space="preserve">
+    <value>Rezumat</value>
+  </data>
+  <data name="Summary_Answered" xml:space="preserve">
+    <value>Răspunsuri: {0}</value>
+  </data>
+  <data name="Summary_Correct" xml:space="preserve">
+    <value>Corecte: {0}</value>
+  </data>
+  <data name="Summary_Wrong" xml:space="preserve">
+    <value>Greșite: {0}</value>
+  </data>
+  <data name="Summary_Accuracy" xml:space="preserve">
+    <value>Precizie: {0}</value>
+  </data>
+  <data name="Summary_Level" xml:space="preserve">
+    <value>Nivel: {0} → {1}</value>
+  </data>
+  <data name="Summary_TimeUp" xml:space="preserve">
+    <value>Timpul a expirat!</value>
+  </data>
+  <data name="Summary_NewBest" xml:space="preserve">
+    <value>Record personal nou: {0} corecte!</value>
+  </data>
+  <data name="Summary_Best" xml:space="preserve">
+    <value>Record personal: {0} corecte</value>
+  </data>
+  <data name="History_Title" xml:space="preserve">
+    <value>Progresul tău</value>
+  </data>
+  <data name="History_Date" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="History_Player" xml:space="preserve">
+    <value>Jucător</value>
+  </data>
+  <data name="History_Tasks" xml:space="preserve">
+    <value>Exerciții</value>
+  </data>
+  <data name="History_Correct" xml:space="preserve">
+    <value>Corecte</value>
+  </data>
+  <data name="History_Accuracy" xml:space="preserve">
+    <value>Precizie</value>
+  </data>
+  <data name="History_Time" xml:space="preserve">
+    <value>Timp</value>
+  </data>
+  <data name="History_Level" xml:space="preserve">
+    <value>Nivel</value>
+  </data>
+  <data name="History_Empty" xml:space="preserve">
+    <value>Încă nu s-a jucat niciun joc.</value>
+  </data>
+  <data name="History_Solo" xml:space="preserve">
+    <value>Individual</value>
+  </data>
+  <data name="History_GameOne" xml:space="preserve">
+    <value>Jocuri: {0}</value>
+  </data>
+  <data name="History_GameMany" xml:space="preserve">
+    <value>Jocuri: {0}</value>
+  </data>
+  <data name="History_Totals" xml:space="preserve">
+    <value>{0} · Exerciții: {1} · Corecte: {2} · Total: {3}</value>
+  </data>
+  <data name="History_ByOperation" xml:space="preserve">
+    <value>Pe operații: {0}</value>
+  </data>
+  <data name="History_LoadError" xml:space="preserve">
+    <value>Istoricul nu a putut fi citit: {0}</value>
+  </data>
+  <data name="History_SaveError" xml:space="preserve">
+    <value>Jocul nu a putut fi salvat în istoric: {0}</value>
+  </data>
+  <data name="History_Export" xml:space="preserve">
+    <value>Exportă (CSV)</value>
+  </data>
+  <data name="History_Exported" xml:space="preserve">
+    <value>Istoricul a fost exportat: {0}</value>
+  </data>
+  <data name="History_ExportError" xml:space="preserve">
+    <value>Istoricul nu a putut fi exportat: {0}</value>
+  </data>
+  <data name="FamilySetup_Intro" xml:space="preserve">
+    <value>Jucați pe rând la acest calculator: fiecare jucător își rezolvă exercițiile, apoi dă mai departe.</value>
+  </data>
+  <data name="FamilySetup_Settings" xml:space="preserve">
+    <value>Numere de la {0} la {1}, {2}. Fiecare are propriul nivel de dificultate.</value>
+  </data>
+  <data name="FamilySetup_Player" xml:space="preserve">
+    <value>Jucătorul {0}:</value>
+  </data>
+  <data name="FamilySetup_NamePlaceholder" xml:space="preserve">
+    <value>Nume</value>
+  </data>
+  <data name="FamilySetup_Remove" xml:space="preserve">
+    <value>Elimină</value>
+  </data>
+  <data name="FamilySetup_AddPlayer" xml:space="preserve">
+    <value>+ Adaugă jucător</value>
+  </data>
+  <data name="FamilySetup_TasksPerTurn" xml:space="preserve">
+    <value>Exerciții pe tură:</value>
+  </data>
+  <data name="FamilyGame_Turn" xml:space="preserve">
+    <value>E rândul tău, {0}!</value>
+  </data>
+  <data name="FamilyGame_Round" xml:space="preserve">
+    <value>Runda {0}</value>
+  </data>
+  <data name="FamilyGame_TaskInTurn" xml:space="preserve">
+    <value>Exercițiul {0} din {1}</value>
+  </data>
+  <data name="FamilyGame_NextPlayer" xml:space="preserve">
+    <value>Jucătorul următor</value>
+  </data>
+  <data name="Family_Score" xml:space="preserve">
+    <value>{0} / {1} corecte</value>
+  </data>
+  <data name="Family_Level" xml:space="preserve">
+    <value>Nivelul {0}</value>
+  </data>
+  <data name="Family_LevelRange" xml:space="preserve">
+    <value>Nivel {0} → {1}</value>
+  </data>
+  <data name="FamilySummary_NoWinner" xml:space="preserve">
+    <value>De data asta nimeni nu a marcat. Mai încercați!</value>
+  </data>
+  <data name="FamilySummary_Winner" xml:space="preserve">
+    <value>{0} câștigă!</value>
+  </data>
+  <data name="FamilySummary_Tie" xml:space="preserve">
+    <value>Egalitate: {0}!</value>
+  </data>
+  <data name="FamilySummary_And" xml:space="preserve">
+    <value> și </value>
+  </data>
+  <data name="FamilySummary_PlayAgain" xml:space="preserve">
+    <value>Joacă din nou</value>
+  </data>
+  <data name="Worksheet_Title" xml:space="preserve">
+    <value>Fișă de lucru</value>
+  </data>
+  <data name="Worksheet_Name" xml:space="preserve">
+    <value>Nume:</value>
+  </data>
+  <data name="Worksheet_Date" xml:space="preserve">
+    <value>Data:</value>
+  </data>
+  <data name="Worksheet_Answers" xml:space="preserve">
+    <value>Rezultate</value>
+  </data>
+  <data name="Worksheet_Settings" xml:space="preserve">
+    <value>Numere de la {0} la {1}, {2}</value>
+  </data>
+</root>
