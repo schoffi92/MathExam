@@ -12,10 +12,11 @@ MathExam is a practice app for the four basic operations. It shows one equation 
 | **Adaptive difficulty** | Adjusts how big the numbers are to how well you are doing (see below). |
 | **Display → Text size** | Normal, Large (125%) or Extra large (150%). Everything gets bigger and the window grows to match. |
 | **Display → High contrast colours** | White and yellow on black, with thicker borders. |
+| **Display → Language** | English, Français (French), Deutsch (German) or Magyar (Hungarian). *System default* uses your operating system's language, or English if it is none of these. |
 
-Defaults: lowest `1`, highest `10`, all operations on, adaptive difficulty on, normal text. High contrast starts on if the operating system's high-contrast mode is on.
+Defaults: lowest `1`, highest `10`, all operations on, adaptive difficulty on, normal text, system language. High contrast starts on if the operating system's high-contrast mode is on.
 
-Display changes apply immediately and are remembered the next time you open the app. If Extra large text doesn't fit on a small screen, the window can be scrolled.
+Display changes, including the language, apply immediately and are remembered the next time you open the app. If Extra large text doesn't fit on a small screen, the window can be scrolled.
 
 **Start** (or <kbd>Enter</kbd>) begins a game. **Family game** sets up a game for several players (see [Family game](#5-family-game)). **History** shows your past games. If the settings are invalid, the button stays disabled and a red message says what to fix:
 

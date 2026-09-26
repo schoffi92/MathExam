@@ -1,4 +1,5 @@
 using System.Globalization;
+using MathExam.App.Resources;
 
 namespace MathExam.App.ViewModels;
 
@@ -19,15 +20,15 @@ public static class Answers
     // Spelled out with a symbol so the result is clear without relying on colour.
     public static string Feedback(AnswerState state, long correctAnswer) => state switch
     {
-        AnswerState.Correct => "✓ Correct!",
-        AnswerState.Wrong => $"✗ Correct answer: {correctAnswer}",
+        AnswerState.Correct => Strings.Answer_Correct,
+        AnswerState.Wrong => string.Format(Strings.Answer_Wrong, correctAnswer),
         _ => "",
     };
 
     public static string LevelChange(int change) => change switch
     {
-        > 0 => "▲ Level up! The numbers get a little bigger.",
-        < 0 => "▼ Level down. The numbers get a little smaller.",
+        > 0 => Strings.Answer_LevelUp,
+        < 0 => Strings.Answer_LevelDown,
         _ => "",
     };
 }

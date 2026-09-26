@@ -1,3 +1,5 @@
+using MathExam.Core.Resources;
+
 namespace MathExam.Core;
 
 public sealed class GameSettings
@@ -13,15 +15,15 @@ public sealed class GameSettings
     public int Max { get; }
     public IReadOnlySet<Operation> Operations { get; }
 
-    /// <summary>Returns a user-facing error message, or null when the settings are valid.</summary>
+    /// <summary>Returns a user-facing error message in the current UI language, or null when the settings are valid.</summary>
     public string? Validate()
     {
         if (Min > Max)
-            return "The lowest number must not be greater than the highest number.";
+            return Strings.Settings_MinGreaterThanMax;
         if (Operations.Count == 0)
-            return "Select at least one operation.";
+            return Strings.Settings_NoOperation;
         if (Operations.Contains(Operation.Divide) && Min == 0 && Max == 0)
-            return "Division needs a non-zero number in the range.";
+            return Strings.Settings_DivisionNeedsNonZero;
         return null;
     }
 

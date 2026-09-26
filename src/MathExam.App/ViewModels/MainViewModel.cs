@@ -1,4 +1,5 @@
 using CommunityToolkit.Mvvm.ComponentModel;
+using MathExam.App.Resources;
 using MathExam.Core;
 
 namespace MathExam.App.ViewModels;
@@ -71,7 +72,7 @@ public partial class MainViewModel : ObservableObject
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
-            CurrentViewModel = new HistoryViewModel([], $"The history could not be read: {ex.Message}", ShowMenu);
+            CurrentViewModel = new HistoryViewModel([], string.Format(Strings.History_LoadError, ex.Message), ShowMenu);
         }
     }
 
@@ -86,7 +87,7 @@ public partial class MainViewModel : ObservableObject
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
-            return $"The game could not be saved to the history: {ex.Message}";
+            return string.Format(Strings.History_SaveError, ex.Message);
         }
     }
 

@@ -1,6 +1,7 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="using:MathExam.App.ViewModels"
+             xmlns:res="using:MathExam.App.Resources"
              x:Class="MathExam.App.Views.GameView"
              x:DataType="vm:GameViewModel">
     <DockPanel>
@@ -15,7 +16,7 @@
             <TextBlock Text="{Binding ElapsedText}" HorizontalAlignment="Right" />
         </UniformGrid>
 
-        <Button DockPanel.Dock="Bottom" Content="Stop" Command="{Binding StopCommand}"
+        <Button DockPanel.Dock="Bottom" Content="{x:Static res:Strings.Common_Stop}" Command="{Binding StopCommand}"
                 HorizontalAlignment="Right" Focusable="False" />
 
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">

@@ -2,6 +2,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MathExam.App.Resources;
 using MathExam.Core;
 
 namespace MathExam.App.ViewModels;
@@ -52,9 +53,10 @@ public partial class FamilySetupViewModel : ObservableObject
     public void Open(GameSettings settings)
     {
         _settings = settings;
-        SettingsText = $"Numbers {settings.Min} – {settings.Max}, " +
-                       string.Join(" ", settings.Operations.OrderBy(o => o).Select(o => o.Symbol())) +
-                       ". Everyone has their own difficulty level.";
+        SettingsText = string.Format(Strings.FamilySetup_Settings, settings.Min, settings.Max,
+            string.Join(" ", settings.Operations.OrderBy(o => o).Select(o => o.Symbol())));
+        // The language may have changed since the labels were made.
+        PlayersChanged();
     }
 
     [RelayCommand(CanExecute = nameof(CanAddPlayer))]
@@ -101,7 +103,7 @@ public partial class FamilySetupViewModel : ObservableObject
     {
         for (var i = 0; i < Players.Count; i++)
         {
-            Players[i].Label = $"Player {i + 1}:";
+            Players[i].Label = string.Format(Strings.FamilySetup_Player, i + 1);
             Players[i].CanRemove = Players.Count > FamilyGame.MinPlayers;
         }
         AddPlayerCommand.NotifyCanExecuteChanged();

@@ -1,3 +1,5 @@
+using MathExam.Core.Resources;
+
 namespace MathExam.Core;
 
 /// <summary>One player in a family game, with their own adaptive session.</summary>
@@ -80,18 +82,18 @@ public sealed class FamilyGame
         }
     }
 
-    /// <summary>Returns a user-facing error message, or null when the names are valid.</summary>
+    /// <summary>Returns a user-facing error message in the current UI language, or null when the names are valid.</summary>
     public static string? ValidatePlayers(IEnumerable<string> names)
     {
         var trimmed = names.Select(n => n?.Trim() ?? "").ToList();
         if (trimmed.Count is < MinPlayers or > MaxPlayers)
-            return $"A family game needs {MinPlayers} to {MaxPlayers} players.";
+            return string.Format(Strings.Players_Count, MinPlayers, MaxPlayers);
         if (trimmed.Any(n => n.Length == 0))
-            return "Enter a name for every player.";
+            return Strings.Players_EmptyName;
         if (trimmed.Any(n => n.Length > MaxNameLength))
-            return $"Names can be at most {MaxNameLength} characters long.";
+            return string.Format(Strings.Players_NameTooLong, MaxNameLength);
         if (trimmed.Distinct(StringComparer.OrdinalIgnoreCase).Count() != trimmed.Count)
-            return "Every player needs a different name.";
+            return Strings.Players_DuplicateName;
         return null;
     }
 

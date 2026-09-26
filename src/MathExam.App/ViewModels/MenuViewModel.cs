@@ -1,6 +1,7 @@
 using System.Globalization;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MathExam.App.Resources;
 using MathExam.Core;
 
 namespace MathExam.App.ViewModels;
@@ -83,9 +84,9 @@ public partial class MenuViewModel : ObservableObject
     {
         settings = null;
         if (!int.TryParse(MinText.Trim(), NumberStyles.Integer, CultureInfo.CurrentCulture, out var min))
-            return "The lowest number must be a whole number.";
+            return Strings.Menu_MinNotWhole;
         if (!int.TryParse(MaxText.Trim(), NumberStyles.Integer, CultureInfo.CurrentCulture, out var max))
-            return "The highest number must be a whole number.";
+            return Strings.Menu_MaxNotWhole;
 
         var ops = new List<Operation>();
         if (UseAdd) ops.Add(Operation.Add);

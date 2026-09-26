@@ -1,5 +1,6 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MathExam.App.Resources;
 using MathExam.Core;
 
 namespace MathExam.App.ViewModels;
@@ -21,10 +22,10 @@ public partial class HistoryViewModel : ObservableObject
             .OrderByDescending(r => r.StartedAt)
             .Select(r => new HistoryRow(
                 r.StartedAt.ToString("yyyy-MM-dd HH:mm"),
-                r.Player ?? "Solo",
+                r.Player ?? Strings.History_Solo,
                 $"{r.Min}–{r.Max}  {string.Join(" ", r.Operations.Select(o => o.Symbol()))}",
                 $"{r.Correct} / {r.Answered}",
-                $"{r.Accuracy:P0}",
+                r.Accuracy.ToString("P0"),
                 r.Duration.TotalHours >= 1 ? r.Duration.ToString(@"h\:mm\:ss") : r.Duration.ToString(@"m\:ss"),
                 r.IsAdaptive ? $"{r.StartLevel} → {r.EndLevel}" : "–"))
             .ToList();
@@ -32,8 +33,11 @@ public partial class HistoryViewModel : ObservableObject
         var totals = HistoryTotals.From(records);
         TotalsText = records.Count == 0
             ? ""
-            : $"{totals.Games} {(totals.Games == 1 ? "game" : "games")} · {totals.Tasks} tasks · {totals.Accuracy:P0} correct · " +
-              $"{(int)totals.Time.TotalHours:00}:{totals.Time:mm\\:ss} total";
+            : string.Format(Strings.History_Totals,
+                string.Format(totals.Games == 1 ? Strings.History_GameOne : Strings.History_GameMany, totals.Games),
+                totals.Tasks,
+                totals.Accuracy.ToString("P0"),
+                $"{(int)totals.Time.TotalHours:00}:{totals.Time:mm\\:ss}");
     }
 
     public IReadOnlyList<HistoryRow> Rows { get; }

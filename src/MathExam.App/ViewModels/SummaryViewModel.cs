@@ -1,5 +1,6 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MathExam.App.Resources;
 using MathExam.Core;
 
 namespace MathExam.App.ViewModels;
@@ -11,14 +12,14 @@ public partial class SummaryViewModel : ObservableObject
     public SummaryViewModel(GameSession session, string? saveError, Action onBack)
     {
         _onBack = onBack;
-        AnsweredText = $"Answered: {session.AnsweredCount}";
-        CorrectText = $"Correct: {session.CorrectCount}";
-        WrongText = $"Wrong: {session.WrongCount}";
-        AccuracyText = session.AnsweredCount == 0
-            ? "Accuracy: –"
-            : $"Accuracy: {(double)session.CorrectCount / session.AnsweredCount:P0}";
-        TimeText = $"Time: {session.Elapsed.ToString(@"hh\:mm\:ss")}";
-        LevelText = session.IsAdaptive ? $"Level: {session.StartLevel} → {session.Level}" : "";
+        AnsweredText = string.Format(Strings.Summary_Answered, session.AnsweredCount);
+        CorrectText = string.Format(Strings.Summary_Correct, session.CorrectCount);
+        WrongText = string.Format(Strings.Summary_Wrong, session.WrongCount);
+        AccuracyText = string.Format(Strings.Summary_Accuracy, session.AnsweredCount == 0
+            ? "–"
+            : ((double)session.CorrectCount / session.AnsweredCount).ToString("P0"));
+        TimeText = string.Format(Strings.Common_Time, session.Elapsed.ToString(@"hh\:mm\:ss"));
+        LevelText = session.IsAdaptive ? string.Format(Strings.Summary_Level, session.StartLevel, session.Level) : "";
         SaveError = saveError ?? "";
     }
 

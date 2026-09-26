@@ -1,6 +1,7 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="using:MathExam.App.ViewModels"
+             xmlns:res="using:MathExam.App.Resources"
              x:Class="MathExam.App.Views.FamilySummaryView"
              x:DataType="vm:FamilySummaryViewModel">
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -28,8 +29,8 @@
                    HorizontalAlignment="Center" Margin="0,0,0,12" />
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="12">
-            <Button Content="Play again" Command="{Binding PlayAgainCommand}" IsDefault="True" />
-            <Button Content="Back to menu" Command="{Binding BackToMenuCommand}" />
+            <Button Content="{x:Static res:Strings.FamilySummary_PlayAgain}" Command="{Binding PlayAgainCommand}" IsDefault="True" />
+            <Button Content="{x:Static res:Strings.Common_BackToMenu}" Command="{Binding BackToMenuCommand}" />
         </StackPanel>
     </StackPanel>
 </UserControl>

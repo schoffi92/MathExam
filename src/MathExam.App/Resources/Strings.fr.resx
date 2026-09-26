@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Menu_Lowest" xml:space="preserve">
+    <value>Plus petit nombre :</value>
+  </data>
+  <data name="Menu_Highest" xml:space="preserve">
+    <value>Plus grand nombre :</value>
+  </data>
+  <data name="Menu_Operations" xml:space="preserve">
+    <value>Opérations</value>
+  </data>
+  <data name="Menu_Add" xml:space="preserve">
+    <value>Addition (+)</value>
+  </data>
+  <data name="Menu_Subtract" xml:space="preserve">
+    <value>Soustraction (−)</value>
+  </data>
+  <data name="Menu_Multiply" xml:space="preserve">
+    <value>Multiplication (×)</value>
+  </data>
+  <data name="Menu_Divide" xml:space="preserve">
+    <value>Division (÷)</value>
+  </data>
+  <data name="Menu_Adaptive" xml:space="preserve">
+    <value>Difficulté adaptative</value>
+  </data>
+  <data name="Menu_AdaptiveHint" xml:space="preserve">
+    <value>Commence avec de petits nombres, qui grandissent quand tu réponds juste.</value>
+  </data>
+  <data name="Menu_Display" xml:space="preserve">
+    <value>Affichage</value>
+  </data>
+  <data name="Menu_TextSize" xml:space="preserve">
+    <value>Taille du texte :</value>
+  </data>
+  <data name="Menu_TextNormal" xml:space="preserve">
+    <value>Normale</value>
+  </data>
+  <data name="Menu_TextLarge" xml:space="preserve">
+    <value>Grande</value>
+  </data>
+  <data name="Menu_TextExtraLarge" xml:space="preserve">
+    <value>Très grande</value>
+  </data>
+  <data name="Menu_HighContrast" xml:space="preserve">
+    <value>Couleurs à contraste élevé</value>
+  </data>
+  <data name="Menu_Language" xml:space="preserve">
+    <value>Langue :</value>
+  </data>
+  <data name="Menu_LanguageSystem" xml:space="preserve">
+    <value>Langue du système</value>
+  </data>
+  <data name="Menu_Family" xml:space="preserve">
+    <value>Partie en famille</value>
+  </data>
+  <data name="Menu_History" xml:space="preserve">
+    <value>Historique</value>
+  </data>
+  <data name="Menu_MinNotWhole" xml:space="preserve">
+    <value>Le plus petit nombre doit être un nombre entier.</value>
+  </data>
+  <data name="Menu_MaxNotWhole" xml:space="preserve">
+    <value>Le plus grand nombre doit être un nombre entier.</value>
+  </data>
+  <data name="Common_Start" xml:space="preserve">
+    <value>Commencer</value>
+  </data>
+  <data name="Common_Back" xml:space="preserve">
+    <value>Retour</value>
+  </data>
+  <data name="Common_BackToMenu" xml:space="preserve">
+    <value>Retour au menu</value>
+  </data>
+  <data name="Common_Stop" xml:space="preserve">
+    <value>Arrêter</value>
+  </data>
+  <data name="Common_Time" xml:space="preserve">
+    <value>Temps : {0}</value>
+  </data>
+  <data name="Game_TaskNumber" xml:space="preserve">
+    <value>Calcul n° {0}</value>
+  </data>
+  <data name="Game_Level" xml:space="preserve">
+    <value>Niveau {0} / {1}</value>
+  </data>
+  <data name="Game_Solved" xml:space="preserve">
+    <value>Réussis : {0} / {1}</value>
+  </data>
+  <data name="Game_Started" xml:space="preserve">
+    <value>Début : {0}</value>
+  </data>
+  <data name="Game_Elapsed" xml:space="preserve">
+    <value>Durée : {0}</value>
+  </data>
+  <data name="Game_Send" xml:space="preserve">
+    <value>Valider</value>
+  </data>
+  <data name="Game_Next" xml:space="preserve">
+    <value>Suivant</value>
+  </data>
+  <data name="Answer_Correct" xml:space="preserve">
+    <value>✓ Juste !</value>
+  </data>
+  <data name="Answer_Wrong" xml:space="preserve">
+    <value>✗ Bonne réponse : {0}</value>
+  </data>
+  <data name="Answer_LevelUp" xml:space="preserve">
+    <value>▲ Niveau supérieur ! Les nombres deviennent un peu plus grands.</value>
+  </data>
+  <data name="Answer_LevelDown" xml:space="preserve">
+    <value>▼ Niveau inférieur. Les nombres deviennent un peu plus petits.</value>
+  </data>
+  <data name="Summary_Title" xml:space="preserve">
+    <value>Résumé</value>
+  </data>
+  <data name="Summary_Answered" xml:space="preserve">
+    <value>Réponses : {0}</value>
+  </data>
+  <data name="Summary_Correct" xml:space="preserve">
+    <value>Justes : {0}</value>
+  </data>
+  <data name="Summary_Wrong" xml:space="preserve">
+    <value>Fausses : {0}</value>
+  </data>
+  <data name="Summary_Accuracy" xml:space="preserve">
+    <value>Précision : {0}</value>
+  </data>
+  <data name="Summary_Level" xml:space="preserve">
+    <value>Niveau : {0} → {1}</value>
+  </data>
+  <data name="History_Title" xml:space="preserve">
+    <value>Historique des progrès</value>
+  </data>
+  <data name="History_Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="History_Player" xml:space="preserve">
+    <value>Joueur</value>
+  </data>
+  <data name="History_Tasks" xml:space="preserve">
+    <value>Calculs</value>
+  </data>
+  <data name="History_Correct" xml:space="preserve">
+    <value>Justes</value>
+  </data>
+  <data name="History_Accuracy" xml:space="preserve">
+    <value>Précision</value>
+  </data>
+  <data name="History_Time" xml:space="preserve">
+    <value>Temps</value>
+  </data>
+  <data name="History_Level" xml:space="preserve">
+    <value>Niveau</value>
+  </data>
+  <data name="History_Empty" xml:space="preserve">
+    <value>Aucune partie jouée pour l'instant.</value>
+  </data>
+  <data name="History_Solo" xml:space="preserve">
+    <value>Solo</value>
+  </data>
+  <data name="History_GameOne" xml:space="preserve">
+    <value>{0} partie</value>
+  </data>
+  <data name="History_GameMany" xml:space="preserve">
+    <value>{0} parties</value>
+  </data>
+  <data name="History_Totals" xml:space="preserve">
+    <value>{0} · {1} calculs · {2} justes · {3} au total</value>
+  </data>
+  <data name="History_LoadError" xml:space="preserve">
+    <value>Impossible de lire l'historique : {0}</value>
+  </data>
+  <data name="History_SaveError" xml:space="preserve">
+    <value>Impossible d'enregistrer la partie dans l'historique : {0}</value>
+  </data>
+  <data name="FamilySetup_Intro" xml:space="preserve">
+    <value>Jouez à tour de rôle sur cet ordinateur : chaque joueur répond à un calcul, puis passe la main.</value>
+  </data>
+  <data name="FamilySetup_Settings" xml:space="preserve">
+    <value>Nombres de {0} à {1}, {2}. Chacun a son propre niveau de difficulté.</value>
+  </data>
+  <data name="FamilySetup_Player" xml:space="preserve">
+    <value>Joueur {0} :</value>
+  </data>
+  <data name="FamilySetup_NamePlaceholder" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="FamilySetup_Remove" xml:space="preserve">
+    <value>Retirer</value>
+  </data>
+  <data name="FamilySetup_AddPlayer" xml:space="preserve">
+    <value>+ Ajouter un joueur</value>
+  </data>
+  <data name="FamilyGame_Turn" xml:space="preserve">
+    <value>Au tour de {0}</value>
+  </data>
+  <data name="FamilyGame_Round" xml:space="preserve">
+    <value>Tour {0}</value>
+  </data>
+  <data name="FamilyGame_NextPlayer" xml:space="preserve">
+    <value>Joueur suivant</value>
+  </data>
+  <data name="Family_Score" xml:space="preserve">
+    <value>{0} / {1} justes</value>
+  </data>
+  <data name="Family_Level" xml:space="preserve">
+    <value>Niveau {0}</value>
+  </data>
+  <data name="Family_LevelRange" xml:space="preserve">
+    <value>Niveau {0} → {1}</value>
+  </data>
+  <data name="FamilySummary_NoWinner" xml:space="preserve">
+    <value>Personne n'a marqué cette fois. Réessayez !</value>
+  </data>
+  <data name="FamilySummary_Winner" xml:space="preserve">
+    <value>{0} gagne !</value>
+  </data>
+  <data name="FamilySummary_Tie" xml:space="preserve">
+    <value>Égalité : {0} !</value>
+  </data>
+  <data name="FamilySummary_And" xml:space="preserve">
+    <value> et </value>
+  </data>
+  <data name="FamilySummary_PlayAgain" xml:space="preserve">
+    <value>Rejouer</value>
+  </data>
+</root>

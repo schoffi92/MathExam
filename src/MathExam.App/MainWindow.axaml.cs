@@ -1,7 +1,9 @@
 using System.ComponentModel;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Data;
 using Avalonia.Media;
+using Avalonia.Threading;
 using MathExam.App.ViewModels;
 
 namespace MathExam.App;
@@ -28,6 +30,22 @@ public partial class MainWindow : Window
     {
         if (e.PropertyName == nameof(DisplayViewModel.TextScale))
             FitToTextScale();
+        else if (e.PropertyName == nameof(DisplayViewModel.Language))
+            // Posted, so the language list is not replaced while it is still handling the selection.
+            Dispatcher.UIThread.Post(RebuildScreen);
+    }
+
+    /// <summary>
+    /// Views read their texts once, when they are created ({x:Static}), so after a language change
+    /// the screen is replaced by a fresh one. The view models, and so all entered settings, are kept.
+    /// </summary>
+    private void RebuildScreen()
+    {
+        Scaler.Child = new ContentControl
+        {
+            Margin = new Thickness(24),
+            [!ContentControl.ContentProperty] = new Binding(nameof(MainViewModel.CurrentViewModel)),
+        };
     }
 
     /// <summary>Scales the content and resizes the window to match, keeping it inside the screen's work area.</summary>

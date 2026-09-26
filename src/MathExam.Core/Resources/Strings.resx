@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Settings_MinGreaterThanMax" xml:space="preserve">
+    <value>The lowest number must not be greater than the highest number.</value>
+  </data>
+  <data name="Settings_NoOperation" xml:space="preserve">
+    <value>Select at least one operation.</value>
+  </data>
+  <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
+    <value>Division needs a non-zero number in the range.</value>
+  </data>
+  <data name="Players_Count" xml:space="preserve">
+    <value>A family game needs {0} to {1} players.</value>
+  </data>
+  <data name="Players_EmptyName" xml:space="preserve">
+    <value>Enter a name for every player.</value>
+  </data>
+  <data name="Players_NameTooLong" xml:space="preserve">
+    <value>Names can be at most {0} characters long.</value>
+  </data>
+  <data name="Players_DuplicateName" xml:space="preserve">
+    <value>Every player needs a different name.</value>
+  </data>
+</root>

@@ -23,6 +23,19 @@
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
   </PropertyGroup>
 
+  <!-- UI texts: Strings.resx is English; Strings.<lang>.resx are the translations. The build generates
+       the public Strings class from Strings.resx, so a missing key is a compile error. -->
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Strings.resx">
+      <StronglyTypedFileName>$(IntermediateOutputPath)Strings.Designer.cs</StronglyTypedFileName>
+      <StronglyTypedLanguage>CSharp</StronglyTypedLanguage>
+      <StronglyTypedNamespace>MathExam.App.Resources</StronglyTypedNamespace>
+      <StronglyTypedClassName>Strings</StronglyTypedClassName>
+      <!-- Public, so views can use {x:Static res:Strings.Key}. -->
+      <PublicClass>true</PublicClass>
+    </EmbeddedResource>
+  </ItemGroup>
+
   <!-- SkiaSharp/HarfBuzz ship native debug symbols (~100 MB) that end up next to the published exe. -->
   <Target Name="RemovePdbsFromPublish" AfterTargets="Publish">
     <ItemGroup>

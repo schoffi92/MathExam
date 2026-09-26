@@ -55,8 +55,9 @@ Verified on Ubuntu 20.04 (WSL2): a Linux build and an extracted archive run unde
 ```
 MathExam.sln
 src/
-  MathExam.Core/          Game logic, no UI dependencies
+  MathExam.Core/          Game logic, no UI dependencies (Resources/: validation messages)
   MathExam.App/           Avalonia front end (MVVM, CommunityToolkit.Mvvm); builds MathExam(.exe)
+    Resources/            Strings.resx (English) + Strings.fr/de/hu.resx
     Themes/               Standard.axaml, HighContrast.axaml
     ViewModels/
     Views/
@@ -79,7 +80,7 @@ All the rules live in `MathExam.Core`, so they can be unit tested without a UI. 
 | `Operation` | `Add`, `Subtract`, `Multiply`, `Divide`. `Symbol()` returns `+ − × ÷`. |
 | `HiddenPart` | Which number is hidden: `Left`, `Right` or `Result`. |
 | `MathTask` | Immutable record `Left Op Right = Result` plus `Hidden`. `Answer` gives the hidden value, `IsCorrect(answer)` checks it, `ToDisplayString()` renders e.g. `99 × ? = 990`. |
-| `GameSettings` | `Min`, `Max`, `Operations`. `Validate()` returns a user-facing error message, or `null` when the settings are valid. |
+| `GameSettings` | `Min`, `Max`, `Operations`. `Validate()` returns a user-facing error message in the current UI language, or `null` when the settings are valid. |
 | `TaskGenerator` | `Next(settings)` creates a random `MathTask`. Accepts a `Random` for deterministic tests. |
 | `GameSession` | One endless game. Keeps `CurrentTask`, `TaskNumber`, `CorrectCount`, `WrongCount`, `StartedAt` and `Elapsed` (a `Stopwatch`). `Submit(answer)` → `bool`, then `NextTask()`, then `Stop()`. With an optional `DifficultyAdjuster` it is adaptive: tasks come from `TaskSettings`, and `LastLevelChange` reports +1/−1/0 after each answer. |
 | `DifficultyAdjuster` | Adaptive level 1–10. `RecordAnswer(correct)` → level change. `ForLevel(settings, level)` / `Apply(settings)` narrow the range. |
@@ -87,7 +88,7 @@ All the rules live in `MathExam.Core`, so they can be unit tested without a UI. 
 | `SessionRecord` | A finished game as stored in the history (range, operations, counts, duration, start/end level, and `Player`: the name in a family game, `null` for solo). `FromSession(session, player)` builds one. |
 | `HistoryTotals` | Totals over the history. The records of one family game (same `StartedAt`, non-null `Player`) count as one game, and its time counts once. |
 | `HistoryStore` | Reads and writes the history JSON file. `Load()`, `Add(record)`, `ResumeLevel(records, settings, player)`. `DefaultPath` is `<LocalApplicationData>/MathExam/history.json`, which is `%LOCALAPPDATA%` on Windows and `~/.local/share` on Linux. |
-| `DisplayPreferences` / `PreferencesStore` | `TextSize` (`Normal`/`Large`/`ExtraLarge`) and `HighContrast`, stored in `preferences.json`. `Load()` returns `null` when the file is missing or unreadable. |
+| `DisplayPreferences` / `PreferencesStore` | `TextSize` (`Normal`/`Large`/`ExtraLarge`), `HighContrast` and `Language` (`"en"`, `"fr"`, `"de"`, `"hu"`, or `null` for the system language), stored in `preferences.json`. Older files without `Language` load with `null`. `Load()` returns `null` when the file is missing or unreadable. |
 | `JsonFile` (internal) | Shared JSON options, the app data folder, and `WriteAtomic` (temp file + move) used by both stores. |
 
 ### Task generation rules (`TaskGenerator`)
@@ -131,7 +132,7 @@ MenuViewModel ──Start──▶ GameViewModel ──Stop──▶ SummaryView
 
 | View model | Notes |
 |---|---|
-| `DisplayViewModel` | Text size and high contrast. Loads preferences at startup (first launch follows the OS contrast preference, via `ThemeManager.SystemPrefersHighContrast()`), applies the theme, and saves on every change. Exposes `TextScale` (1.0 / 1.25 / 1.5) and one bool per text-size radio button. |
+| `DisplayViewModel` | Text size, high contrast and language. Loads preferences at startup (first launch follows the OS contrast preference, via `ThemeManager.SystemPrefersHighContrast()`), applies the theme and language, and saves on every change. Exposes `TextScale` (1.0 / 1.25 / 1.5), one bool per text-size radio button, and `Languages` / `Language` for the language list. |
 | `MainViewModel` | Owns navigation, the `HistoryStore` and the shared `DisplayViewModel` (also exposed to the menu as `MenuViewModel.Display`). Reuses one `MenuViewModel`, so settings persist between games. Creates the `DifficultyAdjuster` at the resume level and saves each finished game that has answers. |
 | `MenuViewModel` | Min/max are bound as strings, so invalid input can be reported instead of silently rejected. `ErrorMessage` and `StartCommand.CanExecute` reuse `GameSettings.Validate()`. |
 | `GameViewModel` | Solo game. `State` (`Answering`/`Correct`/`Wrong`) drives the button text and read-only state. `IsCorrect`/`IsWrong` toggle the views' `correct`/`wrong` style classes. A single `SubmitOrNextCommand` handles both steps. An Avalonia `DispatcherTimer` refreshes `ElapsedText`. |
@@ -156,6 +157,15 @@ The Send/Next button has `IsDefault="True"`, so <kbd>Enter</kbd> anywhere in the
 - **Answer feedback:** the answer box and feedback text get `correct`/`wrong` style classes (`Classes.correct="{Binding IsCorrect}"`). The matching styles live in `GameView.axaml`, which is closer to the control than the app styles, so they override the focus border. `FeedbackText` repeats the result as "✓ Correct!" / "✗ Correct answer: N", so it doesn't depend on colour.
 - **No GroupBox:** Avalonia has no `GroupBox`, so framed sections are a `Border` with the `group` class plus a `groupHeader` text block.
 
+### Languages
+
+- **Strings:** every UI text lives in `Resources/Strings.resx` (English, the fallback) with one `Strings.<lang>.resx` per translation (`fr`, `de`, `hu`). `MathExam.Core` has its own small set for the validation messages. The build generates a `Strings` class from each neutral file (`StronglyTyped*` metadata in the `.csproj`), so keys are checked at compile time. The app's class is public so views can use `{x:Static res:Strings.Key}`.
+- **Formatting:** view models use `string.Format(Strings.Key, ...)`, so each language can put the numbers where its grammar wants them (`Task #{0}` → `{0}. feladat`). Plurals that differ get separate keys (`History_GameOne` / `History_GameMany`).
+- **Switching:** `LanguageManager.Apply(code)` sets `CultureInfo.CurrentUICulture` (and the default for new threads); `null` restores the culture the app started with. Only the UI language changes; numbers, percentages and parsing keep following the OS regional settings (`CurrentCulture`).
+- **Live change:** views read `{x:Static}` texts once, so when `DisplayViewModel.Language` changes, `MainWindow.RebuildScreen()` replaces the `ContentControl` and every view is created again. View models are kept, so entered settings survive. `FamilySetupViewModel.Open` relabels the player rows for the same reason.
+- **Release builds:** the satellite assemblies (`fr/MathExam.resources.dll`, ...) are bundled into the single-file executable, so the packaging is unchanged.
+- **Adding a language:** copy `Strings.resx` to `Strings.<code>.resx` in both projects, translate the values, and add the code to `LanguageManager.Options`. `TranslationTests` fails if a translation misses a key or changes a `{n}` placeholder.
+
 ### Text size
 
 - **Scaling:** `MainWindow.axaml` wraps the content in a `LayoutTransformControl`. `MainWindow.FitToTextScale()` gives it a `ScaleTransform` of `Display.TextScale` whenever the setting changes. Every screen scales uniformly, so layouts keep their proportions.
@@ -173,7 +183,8 @@ The Send/Next button has `IsDefault="True"`, so <kbd>Enter</kbd> anywhere in the
 - `GameSettings` validation and `GameSession` counters and state
 - `DifficultyAdjuster`: streaks, clamping, per-level ranges (including negative ranges and extreme `int` limits), and adaptive sessions staying within the current range
 - `HistoryStore`: round trip, missing file, corrupt-file backup, resume level, and `SessionRecord.FromSession`. These tests use a temp directory.
-- `PreferencesStore`: round trip, missing file, corrupt file
+- `PreferencesStore`: round trip, missing file, corrupt file, older files without a language
+- translations: every `Strings.<lang>.resx` has exactly the English keys and the same `{n}` placeholders, and messages follow `CurrentUICulture`
 - `FamilyGame`: turn order and wrap-around, rounds, independent per-player levels and scores, ranking, ties, no winner, name validation and trimming, per-player resume level, and the player name in records, including old history files without it
 - `HistoryTotals`: a family game counts once with its time counted once; family players share the start time
 

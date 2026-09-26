@@ -1,6 +1,7 @@
 using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MathExam.App.Resources;
 using MathExam.Core;
 
 namespace MathExam.App.ViewModels;
@@ -29,16 +30,17 @@ public partial class GameViewModel : ObservableObject
     private string _answerText = "";
 
     public string Equation => _session.CurrentTask.ToDisplayString();
-    public string TaskNumberText => $"Task #{_session.TaskNumber}";
-    public string SolvedText => $"Solved: {_session.CorrectCount} / {_session.AnsweredCount}";
-    public string StartedText => $"Started: {_session.StartedAt:HH:mm:ss}";
-    public string ElapsedText => $"Elapsed: {_session.Elapsed.ToString(@"hh\:mm\:ss")}";
+    public string TaskNumberText => string.Format(Strings.Game_TaskNumber, _session.TaskNumber);
+    public string SolvedText => string.Format(Strings.Game_Solved, _session.CorrectCount, _session.AnsweredCount);
+    public string StartedText => string.Format(Strings.Game_Started, _session.StartedAt.ToString("HH:mm:ss"));
+    public string ElapsedText => string.Format(Strings.Game_Elapsed, _session.Elapsed.ToString(@"hh\:mm\:ss"));
     public bool IsAnswered => State != AnswerState.Answering;
     public bool IsCorrect => State == AnswerState.Correct;
     public bool IsWrong => State == AnswerState.Wrong;
-    public string ButtonText => IsAnswered ? "Next" : "Send";
+    public string ButtonText => IsAnswered ? Strings.Game_Next : Strings.Game_Send;
     public string FeedbackText => Answers.Feedback(State, _session.CurrentTask.Answer);
-    public string LevelText => _session.IsAdaptive ? $"Level {_session.Level} / {DifficultyAdjuster.MaxLevel}" : "";
+    public string LevelText =>
+        _session.IsAdaptive ? string.Format(Strings.Game_Level, _session.Level, DifficultyAdjuster.MaxLevel) : "";
     public string LevelChangeText => Answers.LevelChange(IsAnswered ? _session.LastLevelChange : 0);
 
     [RelayCommand]

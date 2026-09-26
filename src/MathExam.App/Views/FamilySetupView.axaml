@@ -1,12 +1,13 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="using:MathExam.App.ViewModels"
+             xmlns:res="using:MathExam.App.Resources"
              xmlns:core="using:MathExam.Core"
              x:Class="MathExam.App.Views.FamilySetupView"
              x:DataType="vm:FamilySetupViewModel">
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="420">
-        <TextBlock Text="Family game" Classes="title" Margin="0,0,0,8" />
-        <TextBlock Text="Take turns on this computer: each player answers one task, then passes on."
+        <TextBlock Text="{x:Static res:Strings.Menu_Family}" Classes="title" Margin="0,0,0,8" />
+        <TextBlock Text="{x:Static res:Strings.FamilySetup_Intro}"
                    TextWrapping="Wrap" TextAlignment="Center" Margin="0,0,0,4" />
         <TextBlock Text="{Binding SettingsText}" Foreground="{DynamicResource MutedBrush}" FontSize="13"
                    TextWrapping="Wrap" TextAlignment="Center" Margin="0,0,0,16" />
@@ -16,9 +17,9 @@
                 <DataTemplate x:DataType="vm:PlayerNameEntry">
                     <Grid ColumnDefinitions="90,*,Auto" Margin="0,4">
                         <TextBlock Text="{Binding Label}" VerticalAlignment="Center" />
-                        <TextBox Grid.Column="1" Text="{Binding Name}" PlaceholderText="Name"
+                        <TextBox Grid.Column="1" Text="{Binding Name}" PlaceholderText="{x:Static res:Strings.FamilySetup_NamePlaceholder}"
                                  MaxLength="{x:Static core:FamilyGame.MaxNameLength}" />
-                        <Button Grid.Column="2" Content="Remove" Command="{Binding RemoveCommand}"
+                        <Button Grid.Column="2" Content="{x:Static res:Strings.FamilySetup_Remove}" Command="{Binding RemoveCommand}"
                                 IsVisible="{Binding CanRemove}" Margin="8,0,0,0"
                                 MinWidth="0" Padding="10,4" FontSize="14" />
                     </Grid>
@@ -26,15 +27,15 @@
             </ItemsControl.ItemTemplate>
         </ItemsControl>
 
-        <Button Content="+ Add player" Command="{Binding AddPlayerCommand}" HorizontalAlignment="Left"
+        <Button Content="{x:Static res:Strings.FamilySetup_AddPlayer}" Command="{Binding AddPlayerCommand}" HorizontalAlignment="Left"
                 MinWidth="0" Padding="12,4" FontSize="14" Margin="90,8,0,16" />
 
         <TextBlock Text="{Binding ErrorMessage}" Foreground="{DynamicResource ErrorBrush}" TextWrapping="Wrap"
                    HorizontalAlignment="Center" Margin="0,0,0,12" />
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="12">
-            <Button Content="Start" Command="{Binding StartCommand}" IsDefault="True" />
-            <Button Content="Back" Command="{Binding BackCommand}" IsCancel="True" />
+            <Button Content="{x:Static res:Strings.Common_Start}" Command="{Binding StartCommand}" IsDefault="True" />
+            <Button Content="{x:Static res:Strings.Common_Back}" Command="{Binding BackCommand}" IsCancel="True" />
         </StackPanel>
     </StackPanel>
 </UserControl>

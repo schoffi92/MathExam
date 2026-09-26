@@ -1,5 +1,6 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MathExam.App.Resources;
 using MathExam.Core;
 
 namespace MathExam.App.ViewModels;
@@ -20,9 +21,9 @@ public partial class FamilySummaryViewModel : ObservableObject
         var winners = game.Winners.Select(p => p.Name).ToList();
         WinnerText = winners.Count switch
         {
-            0 => "Nobody scored this time. Try again!",
-            1 => $"{winners[0]} wins!",
-            _ => $"It's a tie: {string.Join(" and ", winners)}!",
+            0 => Strings.FamilySummary_NoWinner,
+            1 => string.Format(Strings.FamilySummary_Winner, winners[0]),
+            _ => string.Format(Strings.FamilySummary_Tie, string.Join(Strings.FamilySummary_And, winners)),
         };
 
         // Players with the same score and accuracy share a place.
@@ -40,13 +41,13 @@ public partial class FamilySummaryViewModel : ObservableObject
             rows.Add(new RankingRow(
                 $"{place}.",
                 ranking[i].Name,
-                $"{s.CorrectCount} / {s.AnsweredCount} correct",
-                s.AnsweredCount == 0 ? "–" : $"{accuracy:P0}",
-                $"Level {s.StartLevel} → {s.Level}"));
+                string.Format(Strings.Family_Score, s.CorrectCount, s.AnsweredCount),
+                s.AnsweredCount == 0 ? "–" : accuracy.ToString("P0"),
+                string.Format(Strings.Family_LevelRange, s.StartLevel, s.Level)));
         }
         Rows = rows;
 
-        TimeText = $"Time: {game.Players[0].Session.Elapsed.ToString(@"hh\:mm\:ss")}";
+        TimeText = string.Format(Strings.Common_Time, game.Players[0].Session.Elapsed.ToString(@"hh\:mm\:ss"));
         SaveError = saveError ?? "";
     }
 

@@ -1,44 +1,57 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="using:MathExam.App.ViewModels"
+             xmlns:app="using:MathExam.App"
+             xmlns:res="using:MathExam.App.Resources"
              x:Class="MathExam.App.Views.MenuView"
              x:DataType="vm:MenuViewModel">
-    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="380">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="460">
         <TextBlock Text="Math Exam" Classes="title" />
 
         <Grid ColumnDefinitions="*,120" RowDefinitions="Auto,Auto" Margin="0,0,0,16">
-            <TextBlock Text="Lowest number:" VerticalAlignment="Center" />
+            <TextBlock Text="{x:Static res:Strings.Menu_Lowest}" VerticalAlignment="Center" />
             <TextBox Grid.Column="1" Margin="0,4" Text="{Binding MinText}" />
-            <TextBlock Grid.Row="1" Text="Highest number:" VerticalAlignment="Center" />
+            <TextBlock Grid.Row="1" Text="{x:Static res:Strings.Menu_Highest}" VerticalAlignment="Center" />
             <TextBox Grid.Row="1" Grid.Column="1" Margin="0,4" Text="{Binding MaxText}" />
         </Grid>
 
         <Border Classes="group" Margin="0,0,0,16">
             <StackPanel>
-                <TextBlock Text="Operations" Classes="groupHeader" />
+                <TextBlock Text="{x:Static res:Strings.Menu_Operations}" Classes="groupHeader" />
                 <UniformGrid Columns="2">
-                    <CheckBox Content="Addition (+)" IsChecked="{Binding UseAdd}" />
-                    <CheckBox Content="Subtraction (−)" IsChecked="{Binding UseSubtract}" />
-                    <CheckBox Content="Multiplication (×)" IsChecked="{Binding UseMultiply}" />
-                    <CheckBox Content="Division (÷)" IsChecked="{Binding UseDivide}" />
+                    <CheckBox Content="{x:Static res:Strings.Menu_Add}" IsChecked="{Binding UseAdd}" />
+                    <CheckBox Content="{x:Static res:Strings.Menu_Subtract}" IsChecked="{Binding UseSubtract}" />
+                    <CheckBox Content="{x:Static res:Strings.Menu_Multiply}" IsChecked="{Binding UseMultiply}" />
+                    <CheckBox Content="{x:Static res:Strings.Menu_Divide}" IsChecked="{Binding UseDivide}" />
                 </UniformGrid>
             </StackPanel>
         </Border>
 
-        <CheckBox Content="Adaptive difficulty" IsChecked="{Binding UseAdaptive}" />
-        <TextBlock Text="Starts with small numbers and grows as you answer correctly."
+        <CheckBox Content="{x:Static res:Strings.Menu_Adaptive}" IsChecked="{Binding UseAdaptive}" />
+        <TextBlock Text="{x:Static res:Strings.Menu_AdaptiveHint}"
                    Foreground="{DynamicResource MutedBrush}" FontSize="13" TextWrapping="Wrap" Margin="28,0,0,12" />
 
         <Border Classes="group" Margin="0,0,0,16">
             <StackPanel>
-                <TextBlock Text="Display" Classes="groupHeader" />
-                <TextBlock Text="Text size:" Margin="4,0,0,0" />
+                <TextBlock Text="{x:Static res:Strings.Menu_Display}" Classes="groupHeader" />
+                <TextBlock Text="{x:Static res:Strings.Menu_TextSize}" Margin="4,0,0,0" />
                 <StackPanel Orientation="Horizontal" Spacing="12">
-                    <RadioButton Content="Normal" GroupName="TextSize" IsChecked="{Binding Display.IsNormalText}" />
-                    <RadioButton Content="Large" GroupName="TextSize" IsChecked="{Binding Display.IsLargeText}" />
-                    <RadioButton Content="Extra large" GroupName="TextSize" IsChecked="{Binding Display.IsExtraLargeText}" />
+                    <RadioButton Content="{x:Static res:Strings.Menu_TextNormal}" GroupName="TextSize" IsChecked="{Binding Display.IsNormalText}" />
+                    <RadioButton Content="{x:Static res:Strings.Menu_TextLarge}" GroupName="TextSize" IsChecked="{Binding Display.IsLargeText}" />
+                    <RadioButton Content="{x:Static res:Strings.Menu_TextExtraLarge}" GroupName="TextSize" IsChecked="{Binding Display.IsExtraLargeText}" />
                 </StackPanel>
-                <CheckBox Content="High contrast colours" IsChecked="{Binding Display.HighContrast}" />
+                <CheckBox Content="{x:Static res:Strings.Menu_HighContrast}" IsChecked="{Binding Display.HighContrast}" />
+                <StackPanel Orientation="Horizontal" Spacing="8" Margin="4,4,0,0">
+                    <TextBlock Text="{x:Static res:Strings.Menu_Language}" VerticalAlignment="Center" />
+                    <ComboBox ItemsSource="{Binding Display.Languages}" SelectedItem="{Binding Display.Language}"
+                              MinWidth="180">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate x:DataType="app:LanguageOption">
+                                <TextBlock Text="{Binding DisplayName}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
             </StackPanel>
         </Border>
 
@@ -52,9 +65,9 @@
                     <Setter Property="Padding" Value="12,8" />
                 </Style>
             </StackPanel.Styles>
-            <Button Content="Start" Command="{Binding StartCommand}" IsDefault="True" />
-            <Button Content="Family game" Command="{Binding FamilyCommand}" />
-            <Button Content="History" Command="{Binding ShowHistoryCommand}" />
+            <Button Content="{x:Static res:Strings.Common_Start}" Command="{Binding StartCommand}" IsDefault="True" />
+            <Button Content="{x:Static res:Strings.Menu_Family}" Command="{Binding FamilyCommand}" />
+            <Button Content="{x:Static res:Strings.Menu_History}" Command="{Binding ShowHistoryCommand}" />
         </StackPanel>
     </StackPanel>
 </UserControl>

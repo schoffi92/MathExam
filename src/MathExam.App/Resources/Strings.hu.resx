@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Menu_Lowest" xml:space="preserve">
+    <value>Legkisebb szám:</value>
+  </data>
+  <data name="Menu_Highest" xml:space="preserve">
+    <value>Legnagyobb szám:</value>
+  </data>
+  <data name="Menu_Operations" xml:space="preserve">
+    <value>Műveletek</value>
+  </data>
+  <data name="Menu_Add" xml:space="preserve">
+    <value>Összeadás (+)</value>
+  </data>
+  <data name="Menu_Subtract" xml:space="preserve">
+    <value>Kivonás (−)</value>
+  </data>
+  <data name="Menu_Multiply" xml:space="preserve">
+    <value>Szorzás (×)</value>
+  </data>
+  <data name="Menu_Divide" xml:space="preserve">
+    <value>Osztás (÷)</value>
+  </data>
+  <data name="Menu_Adaptive" xml:space="preserve">
+    <value>Alkalmazkodó nehézség</value>
+  </data>
+  <data name="Menu_AdaptiveHint" xml:space="preserve">
+    <value>Kis számokkal kezd, és a helyes válaszokkal egyre nagyobbak lesznek.</value>
+  </data>
+  <data name="Menu_Display" xml:space="preserve">
+    <value>Megjelenés</value>
+  </data>
+  <data name="Menu_TextSize" xml:space="preserve">
+    <value>Betűméret:</value>
+  </data>
+  <data name="Menu_TextNormal" xml:space="preserve">
+    <value>Normál</value>
+  </data>
+  <data name="Menu_TextLarge" xml:space="preserve">
+    <value>Nagy</value>
+  </data>
+  <data name="Menu_TextExtraLarge" xml:space="preserve">
+    <value>Nagyon nagy</value>
+  </data>
+  <data name="Menu_HighContrast" xml:space="preserve">
+    <value>Nagy kontrasztú színek</value>
+  </data>
+  <data name="Menu_Language" xml:space="preserve">
+    <value>Nyelv:</value>
+  </data>
+  <data name="Menu_LanguageSystem" xml:space="preserve">
+    <value>A rendszer nyelve</value>
+  </data>
+  <data name="Menu_Family" xml:space="preserve">
+    <value>Családi játék</value>
+  </data>
+  <data name="Menu_History" xml:space="preserve">
+    <value>Előzmények</value>
+  </data>
+  <data name="Menu_MinNotWhole" xml:space="preserve">
+    <value>A legkisebb számnak egész számnak kell lennie.</value>
+  </data>
+  <data name="Menu_MaxNotWhole" xml:space="preserve">
+    <value>A legnagyobb számnak egész számnak kell lennie.</value>
+  </data>
+  <data name="Common_Start" xml:space="preserve">
+    <value>Indítás</value>
+  </data>
+  <data name="Common_Back" xml:space="preserve">
+    <value>Vissza</value>
+  </data>
+  <data name="Common_BackToMenu" xml:space="preserve">
+    <value>Vissza a menübe</value>
+  </data>
+  <data name="Common_Stop" xml:space="preserve">
+    <value>Befejezés</value>
+  </data>
+  <data name="Common_Time" xml:space="preserve">
+    <value>Idő: {0}</value>
+  </data>
+  <data name="Game_TaskNumber" xml:space="preserve">
+    <value>{0}. feladat</value>
+  </data>
+  <data name="Game_Level" xml:space="preserve">
+    <value>Szint: {0} / {1}</value>
+  </data>
+  <data name="Game_Solved" xml:space="preserve">
+    <value>Megoldva: {0} / {1}</value>
+  </data>
+  <data name="Game_Started" xml:space="preserve">
+    <value>Kezdés: {0}</value>
+  </data>
+  <data name="Game_Elapsed" xml:space="preserve">
+    <value>Eltelt idő: {0}</value>
+  </data>
+  <data name="Game_Send" xml:space="preserve">
+    <value>Küldés</value>
+  </data>
+  <data name="Game_Next" xml:space="preserve">
+    <value>Következő</value>
+  </data>
+  <data name="Answer_Correct" xml:space="preserve">
+    <value>✓ Helyes!</value>
+  </data>
+  <data name="Answer_Wrong" xml:space="preserve">
+    <value>✗ A helyes válasz: {0}</value>
+  </data>
+  <data name="Answer_LevelUp" xml:space="preserve">
+    <value>▲ Szintlépés! A számok kicsit nagyobbak lesznek.</value>
+  </data>
+  <data name="Answer_LevelDown" xml:space="preserve">
+    <value>▼ Egy szinttel lejjebb. A számok kicsit kisebbek lesznek.</value>
+  </data>
+  <data name="Summary_Title" xml:space="preserve">
+    <value>Összesítés</value>
+  </data>
+  <data name="Summary_Answered" xml:space="preserve">
+    <value>Megválaszolva: {0}</value>
+  </data>
+  <data name="Summary_Correct" xml:space="preserve">
+    <value>Helyes: {0}</value>
+  </data>
+  <data name="Summary_Wrong" xml:space="preserve">
+    <value>Hibás: {0}</value>
+  </data>
+  <data name="Summary_Accuracy" xml:space="preserve">
+    <value>Pontosság: {0}</value>
+  </data>
+  <data name="Summary_Level" xml:space="preserve">
+    <value>Szint: {0} → {1}</value>
+  </data>
+  <data name="History_Title" xml:space="preserve">
+    <value>Eddigi eredmények</value>
+  </data>
+  <data name="History_Date" xml:space="preserve">
+    <value>Dátum</value>
+  </data>
+  <data name="History_Player" xml:space="preserve">
+    <value>Játékos</value>
+  </data>
+  <data name="History_Tasks" xml:space="preserve">
+    <value>Feladatok</value>
+  </data>
+  <data name="History_Correct" xml:space="preserve">
+    <value>Helyes</value>
+  </data>
+  <data name="History_Accuracy" xml:space="preserve">
+    <value>Pontosság</value>
+  </data>
+  <data name="History_Time" xml:space="preserve">
+    <value>Idő</value>
+  </data>
+  <data name="History_Level" xml:space="preserve">
+    <value>Szint</value>
+  </data>
+  <data name="History_Empty" xml:space="preserve">
+    <value>Még nem volt játék.</value>
+  </data>
+  <data name="History_Solo" xml:space="preserve">
+    <value>Egyéni</value>
+  </data>
+  <data name="History_GameOne" xml:space="preserve">
+    <value>{0} játék</value>
+  </data>
+  <data name="History_GameMany" xml:space="preserve">
+    <value>{0} játék</value>
+  </data>
+  <data name="History_Totals" xml:space="preserve">
+    <value>{0} · {1} feladat · {2} helyes · összesen {3}</value>
+  </data>
+  <data name="History_LoadError" xml:space="preserve">
+    <value>Az előzményeket nem sikerült beolvasni: {0}</value>
+  </data>
+  <data name="History_SaveError" xml:space="preserve">
+    <value>A játékot nem sikerült menteni az előzmények közé: {0}</value>
+  </data>
+  <data name="FamilySetup_Intro" xml:space="preserve">
+    <value>Felváltva játszotok ezen a gépen: mindenki megold egy feladatot, aztán továbbadja.</value>
+  </data>
+  <data name="FamilySetup_Settings" xml:space="preserve">
+    <value>Számok: {0} – {1}, {2}. Mindenkinek saját nehézségi szintje van.</value>
+  </data>
+  <data name="FamilySetup_Player" xml:space="preserve">
+    <value>{0}. játékos:</value>
+  </data>
+  <data name="FamilySetup_NamePlaceholder" xml:space="preserve">
+    <value>Név</value>
+  </data>
+  <data name="FamilySetup_Remove" xml:space="preserve">
+    <value>Törlés</value>
+  </data>
+  <data name="FamilySetup_AddPlayer" xml:space="preserve">
+    <value>+ Új játékos</value>
+  </data>
+  <data name="FamilyGame_Turn" xml:space="preserve">
+    <value>{0} következik</value>
+  </data>
+  <data name="FamilyGame_Round" xml:space="preserve">
+    <value>{0}. kör</value>
+  </data>
+  <data name="FamilyGame_NextPlayer" xml:space="preserve">
+    <value>Következő játékos</value>
+  </data>
+  <data name="Family_Score" xml:space="preserve">
+    <value>{0} / {1} helyes</value>
+  </data>
+  <data name="Family_Level" xml:space="preserve">
+    <value>Szint: {0}</value>
+  </data>
+  <data name="Family_LevelRange" xml:space="preserve">
+    <value>Szint: {0} → {1}</value>
+  </data>
+  <data name="FamilySummary_NoWinner" xml:space="preserve">
+    <value>Most senki sem szerzett pontot. Próbáljátok újra!</value>
+  </data>
+  <data name="FamilySummary_Winner" xml:space="preserve">
+    <value>{0} nyert!</value>
+  </data>
+  <data name="FamilySummary_Tie" xml:space="preserve">
+    <value>Döntetlen: {0}!</value>
+  </data>
+  <data name="FamilySummary_And" xml:space="preserve">
+    <value> és </value>
+  </data>
+  <data name="FamilySummary_PlayAgain" xml:space="preserve">
+    <value>Még egyszer</value>
+  </data>
+</root>

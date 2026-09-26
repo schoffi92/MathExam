@@ -9,8 +9,10 @@ public enum TextSize
     ExtraLarge,
 }
 
-/// <summary>How the app looks: text size and colour theme.</summary>
-public sealed record DisplayPreferences(TextSize TextSize = TextSize.Normal, bool HighContrast = false);
+/// <summary>How the app looks: text size, colour theme and language.</summary>
+/// <param name="Language">Two-letter UI language code (e.g. "hu"), or null to follow the operating system.</param>
+public sealed record DisplayPreferences(
+    TextSize TextSize = TextSize.Normal, bool HighContrast = false, string? Language = null);
 
 /// <summary>Persists <see cref="DisplayPreferences"/> as a small JSON file.</summary>
 public sealed class PreferencesStore

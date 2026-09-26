@@ -1,10 +1,11 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="using:MathExam.App.ViewModels"
+             xmlns:res="using:MathExam.App.Resources"
              x:Class="MathExam.App.Views.SummaryView"
              x:DataType="vm:SummaryViewModel">
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock Text="Summary" Classes="title" />
+        <TextBlock Text="{x:Static res:Strings.Summary_Title}" Classes="title" />
         <StackPanel Margin="0,0,0,24" Spacing="8">
             <StackPanel.Styles>
                 <Style Selector="TextBlock">
@@ -20,7 +21,7 @@
         </StackPanel>
         <TextBlock Text="{Binding SaveError}" Foreground="{DynamicResource ErrorBrush}" TextWrapping="Wrap" MaxWidth="480"
                    HorizontalAlignment="Center" Margin="0,0,0,12" />
-        <Button Content="Back to menu" Command="{Binding BackToMenuCommand}" IsDefault="True"
+        <Button Content="{x:Static res:Strings.Common_BackToMenu}" Command="{Binding BackToMenuCommand}" IsDefault="True"
                 HorizontalAlignment="Center" />
     </StackPanel>
 </UserControl>
