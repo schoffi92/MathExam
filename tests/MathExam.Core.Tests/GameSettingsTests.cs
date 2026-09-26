@@ -21,6 +21,24 @@ public class GameSettingsTests
         Assert.NotNull(new GameSettings(0, 0, [Operation.Divide]).Validate());
 
     [Theory]
+    [InlineData(NumberKind.Decimal, Operation.Multiply)]
+    [InlineData(NumberKind.Fraction, Operation.Divide)]
+    [InlineData(NumberKind.Fraction, Operation.Power)]
+    public void Fractions_and_decimals_only_allow_addition_and_subtraction(NumberKind numbers, Operation other)
+    {
+        Assert.True(new GameSettings(0, 1, [Operation.Add, Operation.Subtract], numbers).IsValid);
+        Assert.False(new GameSettings(0, 1, [Operation.Add, other], numbers).IsValid);
+    }
+
+    [Fact]
+    public void WithRange_keeps_the_other_settings()
+    {
+        var s = new GameSettings(0, 10, [Operation.Add], NumberKind.Fraction, missingOperator: true).WithRange(0, 2);
+        Assert.Equal((0, 2, NumberKind.Fraction, true), (s.Min, s.Max, s.Numbers, s.MissingOperator));
+        Assert.Equal([Operation.Add], s.Operations);
+    }
+
+    [Theory]
     [InlineData(1001, 5000, false)]
     [InlineData(-5000, -1001, false)]
     [InlineData(1000, 5000, true)]

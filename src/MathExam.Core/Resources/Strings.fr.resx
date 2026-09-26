@@ -18,6 +18,9 @@
   <data name="Settings_NoOperation" xml:space="preserve">
     <value>Choisis au moins une opération.</value>
   </data>
+  <data name="Settings_FractionsNeedAddSub" xml:space="preserve">
+    <value>Les fractions et les décimaux ne fonctionnent qu'avec l'addition et la soustraction.</value>
+  </data>
   <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
     <value>La division a besoin d'un nombre non nul dans l'intervalle.</value>
   </data>

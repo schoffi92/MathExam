@@ -39,11 +39,29 @@
   <data name="Menu_Root" xml:space="preserve">
     <value>Raíces (√)</value>
   </data>
+  <data name="Menu_MissingOperator" xml:space="preserve">
+    <value>Operador que falta (6 ? 3 = 18)</value>
+  </data>
+  <data name="Menu_Numbers" xml:space="preserve">
+    <value>Números:</value>
+  </data>
+  <data name="Menu_NumbersWhole" xml:space="preserve">
+    <value>Números enteros</value>
+  </data>
+  <data name="Menu_NumbersDecimal" xml:space="preserve">
+    <value>Decimales (0,1)</value>
+  </data>
+  <data name="Menu_NumbersFraction" xml:space="preserve">
+    <value>Fracciones (1/2)</value>
+  </data>
   <data name="Menu_Adaptive" xml:space="preserve">
     <value>Dificultad adaptativa</value>
   </data>
   <data name="Menu_AdaptiveHint" xml:space="preserve">
     <value>Empieza con números pequeños, que crecen cuando respondes bien.</value>
+  </data>
+  <data name="Menu_Timed" xml:space="preserve">
+    <value>Contrarreloj: 1 minuto (individual)</value>
   </data>
   <data name="Menu_Display" xml:space="preserve">
     <value>Pantalla</value>
@@ -74,6 +92,15 @@
   </data>
   <data name="Menu_History" xml:space="preserve">
     <value>Historial</value>
+  </data>
+  <data name="Menu_Worksheet" xml:space="preserve">
+    <value>Hoja de ejercicios (PDF)</value>
+  </data>
+  <data name="Menu_WorksheetSaved" xml:space="preserve">
+    <value>Hoja guardada: {0}</value>
+  </data>
+  <data name="Menu_WorksheetError" xml:space="preserve">
+    <value>No se pudo guardar la hoja: {0}</value>
   </data>
   <data name="Menu_MinNotWhole" xml:space="preserve">
     <value>El número más pequeño debe ser un número entero.</value>
@@ -111,17 +138,26 @@
   <data name="Game_Elapsed" xml:space="preserve">
     <value>Duración: {0}</value>
   </data>
+  <data name="Game_TimeLeft" xml:space="preserve">
+    <value>Tiempo restante: {0}</value>
+  </data>
   <data name="Game_Send" xml:space="preserve">
     <value>Comprobar</value>
   </data>
   <data name="Game_Next" xml:space="preserve">
     <value>Siguiente</value>
   </data>
+  <data name="Game_OperatorHint" xml:space="preserve">
+    <value>¿Qué signo falta?</value>
+  </data>
   <data name="Answer_Correct" xml:space="preserve">
     <value>✓ ¡Correcto!</value>
   </data>
   <data name="Answer_Wrong" xml:space="preserve">
     <value>✗ Respuesta correcta: {0}</value>
+  </data>
+  <data name="Answer_HowTo" xml:space="preserve">
+    <value>Cómo: {0}</value>
   </data>
   <data name="Answer_LevelUp" xml:space="preserve">
     <value>▲ ¡Subes de nivel! Los números serán un poco más grandes.</value>
@@ -146,6 +182,15 @@
   </data>
   <data name="Summary_Level" xml:space="preserve">
     <value>Nivel: {0} → {1}</value>
+  </data>
+  <data name="Summary_TimeUp" xml:space="preserve">
+    <value>¡Se acabó el tiempo!</value>
+  </data>
+  <data name="Summary_NewBest" xml:space="preserve">
+    <value>¡Nuevo récord personal: {0} correctas!</value>
+  </data>
+  <data name="Summary_Best" xml:space="preserve">
+    <value>Récord personal: {0} correctas</value>
   </data>
   <data name="History_Title" xml:space="preserve">
     <value>Tu progreso</value>
@@ -186,11 +231,23 @@
   <data name="History_Totals" xml:space="preserve">
     <value>{0} · {1} ejercicios · {2} correctas · {3} en total</value>
   </data>
+  <data name="History_ByOperation" xml:space="preserve">
+    <value>Por operación: {0}</value>
+  </data>
   <data name="History_LoadError" xml:space="preserve">
     <value>No se pudo leer el historial: {0}</value>
   </data>
   <data name="History_SaveError" xml:space="preserve">
     <value>No se pudo guardar la partida en el historial: {0}</value>
+  </data>
+  <data name="History_Export" xml:space="preserve">
+    <value>Exportar (CSV)</value>
+  </data>
+  <data name="History_Exported" xml:space="preserve">
+    <value>Historial exportado: {0}</value>
+  </data>
+  <data name="History_ExportError" xml:space="preserve">
+    <value>No se pudo exportar el historial: {0}</value>
   </data>
   <data name="FamilySetup_Intro" xml:space="preserve">
     <value>Jugad por turnos en este ordenador: cada jugador resuelve sus ejercicios y luego pasa el turno.</value>
@@ -248,5 +305,20 @@
   </data>
   <data name="FamilySummary_PlayAgain" xml:space="preserve">
     <value>Jugar otra vez</value>
+  </data>
+  <data name="Worksheet_Title" xml:space="preserve">
+    <value>Hoja de ejercicios</value>
+  </data>
+  <data name="Worksheet_Name" xml:space="preserve">
+    <value>Nombre:</value>
+  </data>
+  <data name="Worksheet_Date" xml:space="preserve">
+    <value>Fecha:</value>
+  </data>
+  <data name="Worksheet_Answers" xml:space="preserve">
+    <value>Soluciones</value>
+  </data>
+  <data name="Worksheet_Settings" xml:space="preserve">
+    <value>Números del {0} al {1}, {2}</value>
   </data>
 </root>

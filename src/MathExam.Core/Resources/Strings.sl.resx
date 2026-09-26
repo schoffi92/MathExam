@@ -18,6 +18,9 @@
   <data name="Settings_NoOperation" xml:space="preserve">
     <value>Izberi vsaj eno računsko operacijo.</value>
   </data>
+  <data name="Settings_FractionsNeedAddSub" xml:space="preserve">
+    <value>Ulomki in decimalna števila delujejo le s seštevanjem in odštevanjem.</value>
+  </data>
   <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
     <value>Deljenje potrebuje v razponu število, ki ni nič.</value>
   </data>

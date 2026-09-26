@@ -18,6 +18,9 @@
   <data name="Settings_NoOperation" xml:space="preserve">
     <value>Select at least one operation.</value>
   </data>
+  <data name="Settings_FractionsNeedAddSub" xml:space="preserve">
+    <value>Fractions and decimals work only with addition and subtraction.</value>
+  </data>
   <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
     <value>Division needs a non-zero number in the range.</value>
   </data>

@@ -18,6 +18,9 @@
   <data name="Settings_NoOperation" xml:space="preserve">
     <value>Valitse vähintään yksi laskutoimitus.</value>
   </data>
+  <data name="Settings_FractionsNeedAddSub" xml:space="preserve">
+    <value>Murtoluvut ja desimaaliluvut toimivat vain yhteen- ja vähennyslaskussa.</value>
+  </data>
   <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
     <value>Jakolasku tarvitsee alueelle luvun, joka ei ole nolla.</value>
   </data>

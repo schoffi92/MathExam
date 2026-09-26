@@ -63,6 +63,11 @@ public sealed class FamilyGame
 
     public bool Submit(long answer) => Current.Session.Submit(answer);
 
+    public bool Submit(Rational answer) => Current.Session.Submit(answer);
+
+    /// <summary>Answers a missing-operator task for the current player.</summary>
+    public bool SubmitOperator(Operation answer) => Current.Session.SubmitOperator(answer);
+
     /// <summary>
     /// Prepares the current player's next task. After their last task of the turn, the turn passes to the next player.
     /// </summary>

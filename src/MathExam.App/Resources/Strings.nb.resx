@@ -39,11 +39,29 @@
   <data name="Menu_Root" xml:space="preserve">
     <value>Røtter (√)</value>
   </data>
+  <data name="Menu_MissingOperator" xml:space="preserve">
+    <value>Manglende regnetegn (6 ? 3 = 18)</value>
+  </data>
+  <data name="Menu_Numbers" xml:space="preserve">
+    <value>Tall:</value>
+  </data>
+  <data name="Menu_NumbersWhole" xml:space="preserve">
+    <value>Heltall</value>
+  </data>
+  <data name="Menu_NumbersDecimal" xml:space="preserve">
+    <value>Desimaltall (0,1)</value>
+  </data>
+  <data name="Menu_NumbersFraction" xml:space="preserve">
+    <value>Brøk (1/2)</value>
+  </data>
   <data name="Menu_Adaptive" xml:space="preserve">
     <value>Tilpasset vanskelighetsgrad</value>
   </data>
   <data name="Menu_AdaptiveHint" xml:space="preserve">
     <value>Begynner med små tall som blir større når du svarer riktig.</value>
+  </data>
+  <data name="Menu_Timed" xml:space="preserve">
+    <value>Mot klokka: 1 minutt (solo)</value>
   </data>
   <data name="Menu_Display" xml:space="preserve">
     <value>Visning</value>
@@ -74,6 +92,15 @@
   </data>
   <data name="Menu_History" xml:space="preserve">
     <value>Historikk</value>
+  </data>
+  <data name="Menu_Worksheet" xml:space="preserve">
+    <value>Arbeidsark (PDF)</value>
+  </data>
+  <data name="Menu_WorksheetSaved" xml:space="preserve">
+    <value>Arbeidsarket er lagret: {0}</value>
+  </data>
+  <data name="Menu_WorksheetError" xml:space="preserve">
+    <value>Arbeidsarket kunne ikke lagres: {0}</value>
   </data>
   <data name="Menu_MinNotWhole" xml:space="preserve">
     <value>Det minste tallet må være et heltall.</value>
@@ -111,17 +138,26 @@
   <data name="Game_Elapsed" xml:space="preserve">
     <value>Spilletid: {0}</value>
   </data>
+  <data name="Game_TimeLeft" xml:space="preserve">
+    <value>Tid igjen: {0}</value>
+  </data>
   <data name="Game_Send" xml:space="preserve">
     <value>Svar</value>
   </data>
   <data name="Game_Next" xml:space="preserve">
     <value>Neste</value>
   </data>
+  <data name="Game_OperatorHint" xml:space="preserve">
+    <value>Hvilket tegn mangler?</value>
+  </data>
   <data name="Answer_Correct" xml:space="preserve">
     <value>✓ Riktig!</value>
   </data>
   <data name="Answer_Wrong" xml:space="preserve">
     <value>✗ Riktig svar: {0}</value>
+  </data>
+  <data name="Answer_HowTo" xml:space="preserve">
+    <value>Slik: {0}</value>
   </data>
   <data name="Answer_LevelUp" xml:space="preserve">
     <value>▲ Nytt nivå! Tallene blir litt større.</value>
@@ -146,6 +182,15 @@
   </data>
   <data name="Summary_Level" xml:space="preserve">
     <value>Nivå: {0} → {1}</value>
+  </data>
+  <data name="Summary_TimeUp" xml:space="preserve">
+    <value>Tiden er ute!</value>
+  </data>
+  <data name="Summary_NewBest" xml:space="preserve">
+    <value>Ny personlig rekord: {0} riktige!</value>
+  </data>
+  <data name="Summary_Best" xml:space="preserve">
+    <value>Personlig rekord: {0} riktige</value>
   </data>
   <data name="History_Title" xml:space="preserve">
     <value>Din fremgang</value>
@@ -186,11 +231,23 @@
   <data name="History_Totals" xml:space="preserve">
     <value>{0} · {1} oppgaver · {2} riktige · {3} totalt</value>
   </data>
+  <data name="History_ByOperation" xml:space="preserve">
+    <value>Per regneart: {0}</value>
+  </data>
   <data name="History_LoadError" xml:space="preserve">
     <value>Historikken kunne ikke leses: {0}</value>
   </data>
   <data name="History_SaveError" xml:space="preserve">
     <value>Spillet kunne ikke lagres i historikken: {0}</value>
+  </data>
+  <data name="History_Export" xml:space="preserve">
+    <value>Eksporter (CSV)</value>
+  </data>
+  <data name="History_Exported" xml:space="preserve">
+    <value>Historikken er eksportert: {0}</value>
+  </data>
+  <data name="History_ExportError" xml:space="preserve">
+    <value>Historikken kunne ikke eksporteres: {0}</value>
   </data>
   <data name="FamilySetup_Intro" xml:space="preserve">
     <value>Bytt på ved denne datamaskinen: hver spiller løser oppgavene sine og gir så videre.</value>
@@ -248,5 +305,20 @@
   </data>
   <data name="FamilySummary_PlayAgain" xml:space="preserve">
     <value>Spill igjen</value>
+  </data>
+  <data name="Worksheet_Title" xml:space="preserve">
+    <value>Arbeidsark</value>
+  </data>
+  <data name="Worksheet_Name" xml:space="preserve">
+    <value>Navn:</value>
+  </data>
+  <data name="Worksheet_Date" xml:space="preserve">
+    <value>Dato:</value>
+  </data>
+  <data name="Worksheet_Answers" xml:space="preserve">
+    <value>Fasit</value>
+  </data>
+  <data name="Worksheet_Settings" xml:space="preserve">
+    <value>Tall {0} – {1}, {2}</value>
   </data>
 </root>

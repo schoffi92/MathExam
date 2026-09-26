@@ -18,6 +18,9 @@
   <data name="Settings_NoOperation" xml:space="preserve">
     <value>Välj minst ett räknesätt.</value>
   </data>
+  <data name="Settings_FractionsNeedAddSub" xml:space="preserve">
+    <value>Bråk och decimaltal fungerar bara med addition och subtraktion.</value>
+  </data>
   <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
     <value>Division behöver ett tal som inte är noll i intervallet.</value>
   </data>

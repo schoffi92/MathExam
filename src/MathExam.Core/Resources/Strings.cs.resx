@@ -18,6 +18,9 @@
   <data name="Settings_NoOperation" xml:space="preserve">
     <value>Vyber alespoň jednu početní operaci.</value>
   </data>
+  <data name="Settings_FractionsNeedAddSub" xml:space="preserve">
+    <value>Zlomky a desetinná čísla fungují jen se sčítáním a odčítáním.</value>
+  </data>
   <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
     <value>Dělení potřebuje v rozsahu nenulové číslo.</value>
   </data>

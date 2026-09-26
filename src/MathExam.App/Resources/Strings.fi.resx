@@ -39,11 +39,29 @@
   <data name="Menu_Root" xml:space="preserve">
     <value>Juuret (√)</value>
   </data>
+  <data name="Menu_MissingOperator" xml:space="preserve">
+    <value>Puuttuva laskumerkki (6 ? 3 = 18)</value>
+  </data>
+  <data name="Menu_Numbers" xml:space="preserve">
+    <value>Luvut:</value>
+  </data>
+  <data name="Menu_NumbersWhole" xml:space="preserve">
+    <value>Kokonaisluvut</value>
+  </data>
+  <data name="Menu_NumbersDecimal" xml:space="preserve">
+    <value>Desimaaliluvut (0,1)</value>
+  </data>
+  <data name="Menu_NumbersFraction" xml:space="preserve">
+    <value>Murtoluvut (1/2)</value>
+  </data>
   <data name="Menu_Adaptive" xml:space="preserve">
     <value>Mukautuva vaikeustaso</value>
   </data>
   <data name="Menu_AdaptiveHint" xml:space="preserve">
     <value>Alkaa pienillä luvuilla, jotka kasvavat, kun vastaat oikein.</value>
+  </data>
+  <data name="Menu_Timed" xml:space="preserve">
+    <value>Aikahaaste: 1 minuutti (yksin)</value>
   </data>
   <data name="Menu_Display" xml:space="preserve">
     <value>Näyttö</value>
@@ -74,6 +92,15 @@
   </data>
   <data name="Menu_History" xml:space="preserve">
     <value>Historia</value>
+  </data>
+  <data name="Menu_Worksheet" xml:space="preserve">
+    <value>Tehtävämoniste (PDF)</value>
+  </data>
+  <data name="Menu_WorksheetSaved" xml:space="preserve">
+    <value>Tehtävämoniste tallennettu: {0}</value>
+  </data>
+  <data name="Menu_WorksheetError" xml:space="preserve">
+    <value>Tehtävämonistetta ei voitu tallentaa: {0}</value>
   </data>
   <data name="Menu_MinNotWhole" xml:space="preserve">
     <value>Pienimmän luvun on oltava kokonaisluku.</value>
@@ -111,17 +138,26 @@
   <data name="Game_Elapsed" xml:space="preserve">
     <value>Kulunut: {0}</value>
   </data>
+  <data name="Game_TimeLeft" xml:space="preserve">
+    <value>Aikaa jäljellä: {0}</value>
+  </data>
   <data name="Game_Send" xml:space="preserve">
     <value>Tarkista</value>
   </data>
   <data name="Game_Next" xml:space="preserve">
     <value>Seuraava</value>
   </data>
+  <data name="Game_OperatorHint" xml:space="preserve">
+    <value>Mikä laskumerkki puuttuu?</value>
+  </data>
   <data name="Answer_Correct" xml:space="preserve">
     <value>✓ Oikein!</value>
   </data>
   <data name="Answer_Wrong" xml:space="preserve">
     <value>✗ Oikea vastaus: {0}</value>
+  </data>
+  <data name="Answer_HowTo" xml:space="preserve">
+    <value>Näin: {0}</value>
   </data>
   <data name="Answer_LevelUp" xml:space="preserve">
     <value>▲ Taso nousi! Luvut kasvavat hieman.</value>
@@ -146,6 +182,15 @@
   </data>
   <data name="Summary_Level" xml:space="preserve">
     <value>Taso: {0} → {1}</value>
+  </data>
+  <data name="Summary_TimeUp" xml:space="preserve">
+    <value>Aika loppui!</value>
+  </data>
+  <data name="Summary_NewBest" xml:space="preserve">
+    <value>Uusi ennätys: {0} oikein!</value>
+  </data>
+  <data name="Summary_Best" xml:space="preserve">
+    <value>Ennätys: {0} oikein</value>
   </data>
   <data name="History_Title" xml:space="preserve">
     <value>Edistymisesi</value>
@@ -186,11 +231,23 @@
   <data name="History_Totals" xml:space="preserve">
     <value>{0} · Tehtäviä: {1} · Oikein: {2} · Yhteensä: {3}</value>
   </data>
+  <data name="History_ByOperation" xml:space="preserve">
+    <value>Laskutoimituksittain: {0}</value>
+  </data>
   <data name="History_LoadError" xml:space="preserve">
     <value>Historiaa ei voitu lukea: {0}</value>
   </data>
   <data name="History_SaveError" xml:space="preserve">
     <value>Peliä ei voitu tallentaa historiaan: {0}</value>
+  </data>
+  <data name="History_Export" xml:space="preserve">
+    <value>Vie (CSV)</value>
+  </data>
+  <data name="History_Exported" xml:space="preserve">
+    <value>Historia viety: {0}</value>
+  </data>
+  <data name="History_ExportError" xml:space="preserve">
+    <value>Historiaa ei voitu viedä: {0}</value>
   </data>
   <data name="FamilySetup_Intro" xml:space="preserve">
     <value>Pelatkaa vuorotellen tällä tietokoneella: jokainen ratkaisee omat tehtävänsä ja antaa sitten vuoron seuraavalle.</value>
@@ -248,5 +305,20 @@
   </data>
   <data name="FamilySummary_PlayAgain" xml:space="preserve">
     <value>Pelaa uudelleen</value>
+  </data>
+  <data name="Worksheet_Title" xml:space="preserve">
+    <value>Tehtävämoniste</value>
+  </data>
+  <data name="Worksheet_Name" xml:space="preserve">
+    <value>Nimi:</value>
+  </data>
+  <data name="Worksheet_Date" xml:space="preserve">
+    <value>Päivämäärä:</value>
+  </data>
+  <data name="Worksheet_Answers" xml:space="preserve">
+    <value>Vastaukset</value>
+  </data>
+  <data name="Worksheet_Settings" xml:space="preserve">
+    <value>Luvut {0} – {1}, {2}</value>
   </data>
 </root>

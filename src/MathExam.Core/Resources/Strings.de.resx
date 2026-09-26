@@ -18,6 +18,9 @@
   <data name="Settings_NoOperation" xml:space="preserve">
     <value>Wähle mindestens eine Rechenart.</value>
   </data>
+  <data name="Settings_FractionsNeedAddSub" xml:space="preserve">
+    <value>Brüche und Dezimalzahlen gibt es nur bei Addition und Subtraktion.</value>
+  </data>
   <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
     <value>Für die Division muss der Bereich eine Zahl ungleich null enthalten.</value>
   </data>

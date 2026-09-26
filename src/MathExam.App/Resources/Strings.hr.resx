@@ -39,11 +39,29 @@
   <data name="Menu_Root" xml:space="preserve">
     <value>Korjenovanje (√)</value>
   </data>
+  <data name="Menu_MissingOperator" xml:space="preserve">
+    <value>Znak koji nedostaje (6 ? 3 = 18)</value>
+  </data>
+  <data name="Menu_Numbers" xml:space="preserve">
+    <value>Brojevi:</value>
+  </data>
+  <data name="Menu_NumbersWhole" xml:space="preserve">
+    <value>Cijeli brojevi</value>
+  </data>
+  <data name="Menu_NumbersDecimal" xml:space="preserve">
+    <value>Decimalni brojevi (0,1)</value>
+  </data>
+  <data name="Menu_NumbersFraction" xml:space="preserve">
+    <value>Razlomci (1/2)</value>
+  </data>
   <data name="Menu_Adaptive" xml:space="preserve">
     <value>Prilagodljiva težina</value>
   </data>
   <data name="Menu_AdaptiveHint" xml:space="preserve">
     <value>Počinje s malim brojevima koji rastu kad odgovaraš točno.</value>
+  </data>
+  <data name="Menu_Timed" xml:space="preserve">
+    <value>Na vrijeme: 1 minuta (samostalno)</value>
   </data>
   <data name="Menu_Display" xml:space="preserve">
     <value>Prikaz</value>
@@ -74,6 +92,15 @@
   </data>
   <data name="Menu_History" xml:space="preserve">
     <value>Povijest</value>
+  </data>
+  <data name="Menu_Worksheet" xml:space="preserve">
+    <value>Radni listić (PDF)</value>
+  </data>
+  <data name="Menu_WorksheetSaved" xml:space="preserve">
+    <value>Radni listić spremljen: {0}</value>
+  </data>
+  <data name="Menu_WorksheetError" xml:space="preserve">
+    <value>Radni listić nije se mogao spremiti: {0}</value>
   </data>
   <data name="Menu_MinNotWhole" xml:space="preserve">
     <value>Najmanji broj mora biti cijeli broj.</value>
@@ -111,17 +138,26 @@
   <data name="Game_Elapsed" xml:space="preserve">
     <value>Proteklo: {0}</value>
   </data>
+  <data name="Game_TimeLeft" xml:space="preserve">
+    <value>Preostalo vrijeme: {0}</value>
+  </data>
   <data name="Game_Send" xml:space="preserve">
     <value>Provjeri</value>
   </data>
   <data name="Game_Next" xml:space="preserve">
     <value>Dalje</value>
   </data>
+  <data name="Game_OperatorHint" xml:space="preserve">
+    <value>Koji znak nedostaje?</value>
+  </data>
   <data name="Answer_Correct" xml:space="preserve">
     <value>✓ Točno!</value>
   </data>
   <data name="Answer_Wrong" xml:space="preserve">
     <value>✗ Točan odgovor: {0}</value>
+  </data>
+  <data name="Answer_HowTo" xml:space="preserve">
+    <value>Kako: {0}</value>
   </data>
   <data name="Answer_LevelUp" xml:space="preserve">
     <value>▲ Viša razina! Brojevi postaju malo veći.</value>
@@ -146,6 +182,15 @@
   </data>
   <data name="Summary_Level" xml:space="preserve">
     <value>Razina: {0} → {1}</value>
+  </data>
+  <data name="Summary_TimeUp" xml:space="preserve">
+    <value>Vrijeme je isteklo!</value>
+  </data>
+  <data name="Summary_NewBest" xml:space="preserve">
+    <value>Novi osobni rekord: {0} točno!</value>
+  </data>
+  <data name="Summary_Best" xml:space="preserve">
+    <value>Osobni rekord: {0} točno</value>
   </data>
   <data name="History_Title" xml:space="preserve">
     <value>Tvoj napredak</value>
@@ -186,11 +231,23 @@
   <data name="History_Totals" xml:space="preserve">
     <value>{0} · Zadaci: {1} · Točno: {2} · Ukupno: {3}</value>
   </data>
+  <data name="History_ByOperation" xml:space="preserve">
+    <value>Po operacijama: {0}</value>
+  </data>
   <data name="History_LoadError" xml:space="preserve">
     <value>Povijest se nije mogla učitati: {0}</value>
   </data>
   <data name="History_SaveError" xml:space="preserve">
     <value>Igra se nije mogla spremiti u povijest: {0}</value>
+  </data>
+  <data name="History_Export" xml:space="preserve">
+    <value>Izvezi (CSV)</value>
+  </data>
+  <data name="History_Exported" xml:space="preserve">
+    <value>Povijest izvezena: {0}</value>
+  </data>
+  <data name="History_ExportError" xml:space="preserve">
+    <value>Povijest se nije mogla izvesti: {0}</value>
   </data>
   <data name="FamilySetup_Intro" xml:space="preserve">
     <value>Izmjenjujte se za ovim računalom: svaki igrač riješi svoje zadatke i onda preda dalje.</value>
@@ -248,5 +305,20 @@
   </data>
   <data name="FamilySummary_PlayAgain" xml:space="preserve">
     <value>Igraj ponovno</value>
+  </data>
+  <data name="Worksheet_Title" xml:space="preserve">
+    <value>Radni listić</value>
+  </data>
+  <data name="Worksheet_Name" xml:space="preserve">
+    <value>Ime:</value>
+  </data>
+  <data name="Worksheet_Date" xml:space="preserve">
+    <value>Datum:</value>
+  </data>
+  <data name="Worksheet_Answers" xml:space="preserve">
+    <value>Rješenja</value>
+  </data>
+  <data name="Worksheet_Settings" xml:space="preserve">
+    <value>Brojevi od {0} do {1}, {2}</value>
   </data>
 </root>

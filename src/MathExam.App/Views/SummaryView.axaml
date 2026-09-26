@@ -5,7 +5,9 @@
              x:Class="MathExam.App.Views.SummaryView"
              x:DataType="vm:SummaryViewModel">
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock Text="{x:Static res:Strings.Summary_Title}" Classes="title" />
+        <TextBlock Text="{x:Static res:Strings.Summary_Title}" Classes="title" Margin="0,0,0,8" />
+        <TextBlock Text="{Binding TimeUpText}" FontSize="22" FontWeight="SemiBold" HorizontalAlignment="Center"
+                   Margin="0,0,0,16" />
         <StackPanel Margin="0,0,0,24" Spacing="8">
             <StackPanel.Styles>
                 <Style Selector="TextBlock">
@@ -18,6 +20,7 @@
             <TextBlock Text="{Binding AccuracyText}" />
             <TextBlock Text="{Binding TimeText}" />
             <TextBlock Text="{Binding LevelText}" />
+            <TextBlock Text="{Binding BestText}" FontWeight="SemiBold" Foreground="{DynamicResource AccentBrush}" />
         </StackPanel>
         <TextBlock Text="{Binding SaveError}" Foreground="{DynamicResource ErrorBrush}" TextWrapping="Wrap" MaxWidth="480"
                    HorizontalAlignment="Center" Margin="0,0,0,12" />

@@ -89,10 +89,63 @@ public class TaskGeneratorTests
     }
 
     [Fact]
-    public void All_hidden_parts_occur()
+    public void All_numbers_can_be_hidden_but_not_the_operator_by_default()
     {
         var hidden = Generate(new GameSettings(1, 10, AllOps)).Select(t => t.Hidden).ToHashSet();
-        Assert.Equal(Enum.GetValues<HiddenPart>().ToHashSet(), hidden);
+        Assert.Equal([HiddenPart.Left, HiddenPart.Right, HiddenPart.Result], hidden.Order());
+    }
+
+    [Fact]
+    public void Missing_operator_hides_only_basic_operators_and_the_task_stays_true()
+    {
+        var tasks = Generate(new GameSettings(1, 10, AllOps, missingOperator: true)).ToList();
+        var hiddenOperator = tasks.Where(t => t.Hidden == HiddenPart.Operator).ToList();
+        Assert.NotEmpty(hiddenOperator);
+        Assert.All(hiddenOperator, t =>
+        {
+            Assert.True(t.Op.IsBasic());
+            Assert.True(t.IsCorrect(t.Op));
+            Assert.Equal(t.Op.Symbol(), t.AnswerText);
+        });
+    }
+
+    [Theory]
+    [InlineData(0, 1)]
+    [InlineData(0, 3)]
+    [InlineData(-2, 2)]
+    public void Fraction_tasks_add_or_subtract_fractions_within_the_range(int min, int max)
+    {
+        var tasks = Generate(new GameSettings(min, max, [Operation.Add, Operation.Subtract], NumberKind.Fraction)).ToList();
+        foreach (var t in tasks)
+        {
+            Assert.Equal(NumberKind.Fraction, t.Numbers);
+            Assert.InRange(t.Denominator, 2, 24);
+            Assert.Equal(t.Op == Operation.Add ? t.Left + t.Right : t.Left - t.Right, t.Result);
+            Assert.InRange(t.Left, min * t.Denominator, max * t.Denominator);
+            Assert.InRange(t.Right, min * t.Denominator, max * t.Denominator);
+            Assert.True(t.Left % t.Denominator != 0 || t.Right % t.Denominator != 0, $"{t} has no fraction");
+            if (min >= 0)
+                Assert.True(t.Result >= 0);
+        }
+        // Both like and unlike denominators occur.
+        Assert.Contains(tasks, t => new Rational(t.Left, t.Denominator).Denominator != new Rational(t.Right, t.Denominator).Denominator);
+    }
+
+    [Fact]
+    public void Decimal_tasks_use_tenths()
+    {
+        foreach (var t in Generate(new GameSettings(0, 5, [Operation.Add], NumberKind.Decimal)))
+        {
+            Assert.Equal(TaskGenerator.DecimalDenominator, t.Denominator);
+            Assert.Equal(t.Left + t.Right, t.Result);
+            Assert.InRange(t.Left, 0, 50);
+        }
+    }
+
+    [Fact]
+    public void A_range_without_fractions_still_generates_tasks()
+    {
+        Assert.All(Generate(new GameSettings(0, 0, [Operation.Add], NumberKind.Fraction), count: 20), t => Assert.Equal(0, t.Result));
     }
 
     [Fact]

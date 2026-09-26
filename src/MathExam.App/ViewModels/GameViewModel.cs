@@ -17,13 +17,14 @@ public partial class GameViewModel : ObservableObject
         _session = session;
         _onStop = onStop;
         _timer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(250) };
-        _timer.Tick += (_, _) => OnPropertyChanged(nameof(ElapsedText));
+        _timer.Tick += (_, _) => OnTick();
         _timer.Start();
     }
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(IsAnswered), nameof(IsCorrect), nameof(IsWrong), nameof(ButtonText),
-        nameof(FeedbackText), nameof(SolvedText), nameof(LevelText), nameof(LevelChangeText))]
+        nameof(FeedbackText), nameof(ExplanationText), nameof(SolvedText), nameof(LevelText), nameof(LevelChangeText),
+        nameof(ShowOperatorButtons))]
     private AnswerState _state = AnswerState.Answering;
 
     [ObservableProperty]
@@ -33,15 +34,24 @@ public partial class GameViewModel : ObservableObject
     public string TaskNumberText => string.Format(Strings.Game_TaskNumber, _session.TaskNumber);
     public string SolvedText => string.Format(Strings.Game_Solved, _session.CorrectCount, _session.AnsweredCount);
     public string StartedText => string.Format(Strings.Game_Started, _session.StartedAt.ToString("HH:mm:ss"));
-    public string ElapsedText => string.Format(Strings.Game_Elapsed, _session.Elapsed.ToString(@"hh\:mm\:ss"));
+
+    /// <summary>Elapsed time, or in a timed challenge the time left.</summary>
+    public string ClockText => _session.TimeLeft is { } left
+        ? string.Format(Strings.Game_TimeLeft, left.ToString(@"m\:ss"))
+        : string.Format(Strings.Game_Elapsed, _session.Elapsed.ToString(@"hh\:mm\:ss"));
+
     public bool IsAnswered => State != AnswerState.Answering;
     public bool IsCorrect => State == AnswerState.Correct;
     public bool IsWrong => State == AnswerState.Wrong;
     public string ButtonText => IsAnswered ? Strings.Game_Next : Strings.Game_Send;
-    public string FeedbackText => Answers.Feedback(State, _session.CurrentTask.Answer);
+    public string FeedbackText => Answers.Feedback(State, _session.CurrentTask);
+    public string ExplanationText => Answers.Explanation(State, _session.CurrentTask);
     public string LevelText =>
         _session.IsAdaptive ? string.Format(Strings.Game_Level, _session.Level, DifficultyAdjuster.MaxLevel) : "";
     public string LevelChangeText => Answers.LevelChange(IsAnswered ? _session.LastLevelChange : 0);
+
+    public bool ShowOperatorButtons => _session.CurrentTask.Hidden == HiddenPart.Operator && !IsAnswered;
+    public IReadOnlyList<string> OperatorSymbols => Answers.OperatorSymbols;
 
     [RelayCommand]
     private void SubmitOrNext()
@@ -53,13 +63,23 @@ public partial class GameViewModel : ObservableObject
             State = AnswerState.Answering;
             OnPropertyChanged(nameof(Equation));
             OnPropertyChanged(nameof(TaskNumberText));
+            OnPropertyChanged(nameof(ShowOperatorButtons));
             return;
         }
 
-        if (!Answers.TryParse(AnswerText, out var answer))
-            return;
+        var result = Answers.Submit(AnswerText, _session.CurrentTask, _session.Submit, _session.SubmitOperator);
+        if (result is { } correct)
+            State = correct ? AnswerState.Correct : AnswerState.Wrong;
+    }
 
-        State = _session.Submit(answer) ? AnswerState.Correct : AnswerState.Wrong;
+    /// <summary>An operator button of a missing-operator task: fills in the symbol and sends it.</summary>
+    [RelayCommand]
+    private void PickOperator(string symbol)
+    {
+        if (IsAnswered)
+            return;
+        AnswerText = symbol;
+        SubmitOrNext();
     }
 
     [RelayCommand]
@@ -68,5 +88,12 @@ public partial class GameViewModel : ObservableObject
         _timer.Stop();
         _session.Stop();
         _onStop(_session);
+    }
+
+    private void OnTick()
+    {
+        OnPropertyChanged(nameof(ClockText));
+        if (_session.IsTimeUp)
+            Stop();
     }
 }

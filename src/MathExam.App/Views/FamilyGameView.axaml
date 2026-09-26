@@ -53,9 +53,31 @@
                         IsDefault="True" Focusable="False" VerticalAlignment="Stretch" VerticalContentAlignment="Center" />
             </StackPanel>
 
+            <!-- Missing-operator task: a hint and one button per operator (typing + - * / works too). -->
+            <StackPanel IsVisible="{Binding ShowOperatorButtons}" HorizontalAlignment="Center" Margin="0,16,0,0">
+                <TextBlock Text="{x:Static res:Strings.Game_OperatorHint}" HorizontalAlignment="Center"
+                           Foreground="{DynamicResource MutedBrush}" Margin="0,0,0,8" />
+                <ItemsControl ItemsSource="{Binding OperatorSymbols}" HorizontalAlignment="Center">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" Spacing="12" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate x:DataType="x:String">
+                            <Button Content="{Binding}" FontSize="28" MinWidth="64" Padding="12,4" Focusable="False"
+                                    Command="{Binding $parent[ItemsControl].((vm:FamilyGameViewModel)DataContext).PickOperatorCommand}"
+                                    CommandParameter="{Binding}" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+
             <TextBlock Text="{Binding FeedbackText}" FontSize="22" FontWeight="SemiBold"
                        HorizontalAlignment="Center" Margin="0,16,0,0" Classes="feedback"
                        Classes.correct="{Binding IsCorrect}" Classes.wrong="{Binding IsWrong}" />
+            <TextBlock Text="{Binding ExplanationText}" FontSize="18" HorizontalAlignment="Center"
+                       TextWrapping="Wrap" TextAlignment="Center" MaxWidth="700" Margin="0,8,0,0" />
             <TextBlock Text="{Binding LevelChangeText}" Foreground="{DynamicResource AccentBrush}" FontSize="18"
                        HorizontalAlignment="Center" Margin="0,8,0,0" />
         </StackPanel>

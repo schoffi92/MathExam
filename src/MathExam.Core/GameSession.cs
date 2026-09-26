@@ -1,32 +1,61 @@
-using System.Diagnostics;
-
 namespace MathExam.Core;
 
-/// <summary>An endless game: tasks keep coming until <see cref="Stop"/> is called.</summary>
+/// <summary>Right and wrong answers for one operation.</summary>
+public sealed record OperationStats(int Correct, int Wrong)
+{
+    public int Answered => Correct + Wrong;
+    public double Accuracy => Answered == 0 ? 0 : (double)Correct / Answered;
+}
+
+/// <summary>
+/// A game: tasks keep coming until <see cref="Stop"/> is called, or, with a time limit, until the time is up.
+/// </summary>
 public sealed class GameSession
 {
     private readonly TaskGenerator _generator;
-    private readonly Stopwatch _stopwatch = new();
+    private readonly TimeProvider _clock;
+    private readonly long _startTimestamp;
+    private readonly Dictionary<Operation, OperationStats> _byOperation = [];
+    private TimeSpan? _stoppedAt;
 
     /// <param name="difficulty">When given, the game is adaptive: tasks use the adjuster's current range.</param>
     /// <param name="startedAt">Start time; family games pass one shared time so their players' records belong together.</param>
+    /// <param name="timeLimit">For a timed challenge: the game ends when this much time has passed.</param>
+    /// <param name="clock">Measures the elapsed time; tests pass a controllable one.</param>
     public GameSession(GameSettings settings, TaskGenerator? generator = null, DifficultyAdjuster? difficulty = null,
-        DateTime? startedAt = null)
+        DateTime? startedAt = null, TimeSpan? timeLimit = null, TimeProvider? clock = null)
     {
         Settings = settings;
         _generator = generator ?? new TaskGenerator();
         Difficulty = difficulty;
         StartLevel = difficulty?.Level;
         StartedAt = startedAt ?? DateTime.Now;
-        _stopwatch.Start();
+        TimeLimit = timeLimit;
+        _clock = clock ?? TimeProvider.System;
+        _startTimestamp = _clock.GetTimestamp();
         CurrentTask = _generator.Next(TaskSettings);
         TaskNumber = 1;
     }
 
     public GameSettings Settings { get; }
     public DateTime StartedAt { get; }
-    public TimeSpan Elapsed => _stopwatch.Elapsed;
-    public bool IsRunning => _stopwatch.IsRunning;
+
+    /// <summary>Time played; a timed game never reports more than its limit.</summary>
+    public TimeSpan Elapsed
+    {
+        get
+        {
+            var elapsed = _stoppedAt ?? _clock.GetElapsedTime(_startTimestamp);
+            return TimeLimit is { } limit && elapsed > limit ? limit : elapsed;
+        }
+    }
+
+    public bool IsRunning => _stoppedAt is null;
+
+    public TimeSpan? TimeLimit { get; }
+    public bool IsTimed => TimeLimit is not null;
+    public TimeSpan? TimeLeft => TimeLimit - Elapsed;
+    public bool IsTimeUp => TimeLimit is { } limit && Elapsed >= limit;
 
     public DifficultyAdjuster? Difficulty { get; }
     public bool IsAdaptive => Difficulty is not null;
@@ -45,23 +74,18 @@ public sealed class GameSession
     public int WrongCount { get; private set; }
     public int AnsweredCount => CorrectCount + WrongCount;
 
+    /// <summary>Right and wrong answers per operation, for the operations that were asked.</summary>
+    public IReadOnlyDictionary<Operation, OperationStats> ByOperation => _byOperation;
+
     /// <summary>True once the current task has been answered; call <see cref="NextTask"/> to continue.</summary>
     public bool IsCurrentAnswered { get; private set; }
 
-    public bool Submit(long answer)
-    {
-        if (IsCurrentAnswered)
-            throw new InvalidOperationException("The current task has already been answered.");
+    public bool Submit(long answer) => Record(CurrentTask.IsCorrect(answer));
 
-        IsCurrentAnswered = true;
-        var correct = CurrentTask.IsCorrect(answer);
-        if (correct)
-            CorrectCount++;
-        else
-            WrongCount++;
-        LastLevelChange = Difficulty?.RecordAnswer(correct) ?? 0;
-        return correct;
-    }
+    public bool Submit(Rational answer) => Record(CurrentTask.IsCorrect(answer));
+
+    /// <summary>Answers a missing-operator task.</summary>
+    public bool SubmitOperator(Operation answer) => Record(CurrentTask.IsCorrect(answer));
 
     public void NextTask()
     {
@@ -71,5 +95,24 @@ public sealed class GameSession
         LastLevelChange = 0;
     }
 
-    public void Stop() => _stopwatch.Stop();
+    public void Stop() => _stoppedAt ??= Elapsed;
+
+    private bool Record(bool correct)
+    {
+        if (IsCurrentAnswered)
+            throw new InvalidOperationException("The current task has already been answered.");
+
+        IsCurrentAnswered = true;
+        if (correct)
+            CorrectCount++;
+        else
+            WrongCount++;
+
+        var op = CurrentTask.Op;
+        var stats = _byOperation.GetValueOrDefault(op) ?? new OperationStats(0, 0);
+        _byOperation[op] = correct ? stats with { Correct = stats.Correct + 1 } : stats with { Wrong = stats.Wrong + 1 };
+
+        LastLevelChange = Difficulty?.RecordAnswer(correct) ?? 0;
+        return correct;
+    }
 }

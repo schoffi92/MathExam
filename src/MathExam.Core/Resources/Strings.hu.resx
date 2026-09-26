@@ -18,6 +18,9 @@
   <data name="Settings_NoOperation" xml:space="preserve">
     <value>Válassz legalább egy műveletet.</value>
   </data>
+  <data name="Settings_FractionsNeedAddSub" xml:space="preserve">
+    <value>A törtek és a tizedes törtek csak összeadással és kivonással működnek.</value>
+  </data>
   <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
     <value>Az osztáshoz kell egy nem nulla szám a tartományban.</value>
   </data>

@@ -26,7 +26,8 @@ public partial class FamilyGameViewModel : ObservableObject
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(IsAnswered), nameof(IsCorrect), nameof(IsWrong), nameof(ButtonText),
-        nameof(FeedbackText), nameof(LevelChangeText), nameof(Scoreboard))]
+        nameof(FeedbackText), nameof(ExplanationText), nameof(LevelChangeText), nameof(Scoreboard),
+        nameof(ShowOperatorButtons))]
     private AnswerState _state = AnswerState.Answering;
 
     [ObservableProperty]
@@ -45,7 +46,10 @@ public partial class FamilyGameViewModel : ObservableObject
     public bool IsWrong => State == AnswerState.Wrong;
     public string ButtonText => !IsAnswered ? Strings.Game_Send
         : _game.IsLastTaskOfTurn ? Strings.FamilyGame_NextPlayer : Strings.Game_Next;
-    public string FeedbackText => Answers.Feedback(State, Session.CurrentTask.Answer);
+    public string FeedbackText => Answers.Feedback(State, Session.CurrentTask);
+    public string ExplanationText => Answers.Explanation(State, Session.CurrentTask);
+    public bool ShowOperatorButtons => Session.CurrentTask.Hidden == HiddenPart.Operator && !IsAnswered;
+    public IReadOnlyList<string> OperatorSymbols => Answers.OperatorSymbols;
     public string LevelChangeText => Answers.LevelChange(IsAnswered ? Session.LastLevelChange : 0);
 
     public IReadOnlyList<ScoreRow> Scoreboard => _game.Players
@@ -68,13 +72,23 @@ public partial class FamilyGameViewModel : ObservableObject
             OnPropertyChanged(nameof(RoundText));
             OnPropertyChanged(nameof(TaskInTurnText));
             OnPropertyChanged(nameof(Equation));
+            OnPropertyChanged(nameof(ShowOperatorButtons));
             return;
         }
 
-        if (!Answers.TryParse(AnswerText, out var answer))
-            return;
+        var result = Answers.Submit(AnswerText, Session.CurrentTask, _game.Submit, _game.SubmitOperator);
+        if (result is { } correct)
+            State = correct ? AnswerState.Correct : AnswerState.Wrong;
+    }
 
-        State = _game.Submit(answer) ? AnswerState.Correct : AnswerState.Wrong;
+    /// <summary>An operator button of a missing-operator task: fills in the symbol and sends it.</summary>
+    [RelayCommand]
+    private void PickOperator(string symbol)
+    {
+        if (IsAnswered)
+            return;
+        AnswerText = symbol;
+        SubmitOrNext();
     }
 
     [RelayCommand]

@@ -39,11 +39,29 @@
   <data name="Menu_Root" xml:space="preserve">
     <value>Pierwiastkowanie (√)</value>
   </data>
+  <data name="Menu_MissingOperator" xml:space="preserve">
+    <value>Brakujący znak (6 ? 3 = 18)</value>
+  </data>
+  <data name="Menu_Numbers" xml:space="preserve">
+    <value>Liczby:</value>
+  </data>
+  <data name="Menu_NumbersWhole" xml:space="preserve">
+    <value>Liczby całkowite</value>
+  </data>
+  <data name="Menu_NumbersDecimal" xml:space="preserve">
+    <value>Ułamki dziesiętne (0,1)</value>
+  </data>
+  <data name="Menu_NumbersFraction" xml:space="preserve">
+    <value>Ułamki zwykłe (1/2)</value>
+  </data>
   <data name="Menu_Adaptive" xml:space="preserve">
     <value>Dostosowywana trudność</value>
   </data>
   <data name="Menu_AdaptiveHint" xml:space="preserve">
     <value>Zaczyna od małych liczb, które rosną, gdy odpowiadasz poprawnie.</value>
+  </data>
+  <data name="Menu_Timed" xml:space="preserve">
+    <value>Na czas: 1 minuta (solo)</value>
   </data>
   <data name="Menu_Display" xml:space="preserve">
     <value>Wygląd</value>
@@ -74,6 +92,15 @@
   </data>
   <data name="Menu_History" xml:space="preserve">
     <value>Historia</value>
+  </data>
+  <data name="Menu_Worksheet" xml:space="preserve">
+    <value>Karta pracy (PDF)</value>
+  </data>
+  <data name="Menu_WorksheetSaved" xml:space="preserve">
+    <value>Zapisano kartę pracy: {0}</value>
+  </data>
+  <data name="Menu_WorksheetError" xml:space="preserve">
+    <value>Nie udało się zapisać karty pracy: {0}</value>
   </data>
   <data name="Menu_MinNotWhole" xml:space="preserve">
     <value>Najmniejsza liczba musi być liczbą całkowitą.</value>
@@ -111,17 +138,26 @@
   <data name="Game_Elapsed" xml:space="preserve">
     <value>Czas gry: {0}</value>
   </data>
+  <data name="Game_TimeLeft" xml:space="preserve">
+    <value>Pozostały czas: {0}</value>
+  </data>
   <data name="Game_Send" xml:space="preserve">
     <value>Sprawdź</value>
   </data>
   <data name="Game_Next" xml:space="preserve">
     <value>Dalej</value>
   </data>
+  <data name="Game_OperatorHint" xml:space="preserve">
+    <value>Którego znaku brakuje?</value>
+  </data>
   <data name="Answer_Correct" xml:space="preserve">
     <value>✓ Dobrze!</value>
   </data>
   <data name="Answer_Wrong" xml:space="preserve">
     <value>✗ Poprawna odpowiedź: {0}</value>
+  </data>
+  <data name="Answer_HowTo" xml:space="preserve">
+    <value>Jak: {0}</value>
   </data>
   <data name="Answer_LevelUp" xml:space="preserve">
     <value>▲ Wyższy poziom! Liczby będą trochę większe.</value>
@@ -146,6 +182,15 @@
   </data>
   <data name="Summary_Level" xml:space="preserve">
     <value>Poziom: {0} → {1}</value>
+  </data>
+  <data name="Summary_TimeUp" xml:space="preserve">
+    <value>Koniec czasu!</value>
+  </data>
+  <data name="Summary_NewBest" xml:space="preserve">
+    <value>Nowy rekord: {0} dobrze!</value>
+  </data>
+  <data name="Summary_Best" xml:space="preserve">
+    <value>Rekord: {0} dobrze</value>
   </data>
   <data name="History_Title" xml:space="preserve">
     <value>Twoje postępy</value>
@@ -186,11 +231,23 @@
   <data name="History_Totals" xml:space="preserve">
     <value>{0} · Zadania: {1} · Dobrze: {2} · Łącznie: {3}</value>
   </data>
+  <data name="History_ByOperation" xml:space="preserve">
+    <value>Według działań: {0}</value>
+  </data>
   <data name="History_LoadError" xml:space="preserve">
     <value>Nie udało się odczytać historii: {0}</value>
   </data>
   <data name="History_SaveError" xml:space="preserve">
     <value>Nie udało się zapisać gry w historii: {0}</value>
+  </data>
+  <data name="History_Export" xml:space="preserve">
+    <value>Eksportuj (CSV)</value>
+  </data>
+  <data name="History_Exported" xml:space="preserve">
+    <value>Wyeksportowano historię: {0}</value>
+  </data>
+  <data name="History_ExportError" xml:space="preserve">
+    <value>Nie udało się wyeksportować historii: {0}</value>
   </data>
   <data name="FamilySetup_Intro" xml:space="preserve">
     <value>Grajcie na zmianę na tym komputerze: każdy gracz rozwiązuje swoje zadania i przekazuje dalej.</value>
@@ -248,5 +305,20 @@
   </data>
   <data name="FamilySummary_PlayAgain" xml:space="preserve">
     <value>Zagraj jeszcze raz</value>
+  </data>
+  <data name="Worksheet_Title" xml:space="preserve">
+    <value>Karta pracy</value>
+  </data>
+  <data name="Worksheet_Name" xml:space="preserve">
+    <value>Imię:</value>
+  </data>
+  <data name="Worksheet_Date" xml:space="preserve">
+    <value>Data:</value>
+  </data>
+  <data name="Worksheet_Answers" xml:space="preserve">
+    <value>Odpowiedzi</value>
+  </data>
+  <data name="Worksheet_Settings" xml:space="preserve">
+    <value>Liczby od {0} do {1}, {2}</value>
   </data>
 </root>

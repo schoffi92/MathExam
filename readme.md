@@ -9,15 +9,18 @@ A desktop app for **Windows and Linux** (C# / Avalonia, .NET 8) for practising a
 
 ## Features
 
-- **Main menu:** set the lowest and highest number and choose the operations (add, sub, mul, div, powers, roots).
+- **Main menu:** set the lowest and highest number and choose the operations (add, sub, mul, div, powers, roots). Practise with whole numbers, decimals or fractions, and optionally find the missing operator (`6 ? 3 = 18`).
 - **Game:** shows the task number, solved count, start time and elapsed time.
   - Type the hidden number and press **Send** or <kbd>Enter</kbd>.
   - A correct answer is shown in **green**. A wrong answer is shown in **red**, together with the right answer.
   - Press **Next** or <kbd>Enter</kbd> again for the next random task.
 - **Endless play:** keep going until you press **Stop**, then see a summary (correct, wrong, accuracy, time).
+- **Show how:** after a wrong answer, the working is shown, e.g. `8 + 7 = 8 + 2 + 5 = 10 + 5 = 15`.
+- **Timed challenge:** one minute against the clock, with a personal best for each set of settings.
 - **Adaptive difficulty** (optional): starts with small numbers and widens the range as you answer correctly (10 levels). The next game resumes at your last level.
 - **Family game:** 2–4 players take turns on one computer, each with their own adaptive level, so a child and a grandparent can play fairly together. Live scoreboard, final ranking, and "Play again".
-- **Progress history:** every game is saved on this computer and listed on the History screen with overall totals.
+- **Progress history:** every game is saved on this computer and listed on the History screen with overall totals and accuracy per operation. Export it as CSV for a spreadsheet.
+- **Printable worksheets:** 20 tasks with the current settings as a PDF, with an answer key on page 2.
 - **Languages:** English, French, German, Hungarian, Italian, Spanish, Polish, Czech, Finnish, Portuguese, Swedish, Norwegian, Croatian, Slovenian, Slovak, Turkish and Greek. The app follows the system language, or you can pick one in the menu.
 - **Accessibility:** three text sizes (Normal / Large / Extra large) and a high-contrast colour theme, both remembered between launches. Right and wrong answers are also shown as text (✓ / ✗), not just by colour.
 

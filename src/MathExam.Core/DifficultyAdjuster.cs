@@ -60,7 +60,7 @@ public sealed class DifficultyAdjuster
         long anchor = Math.Clamp(0, settings.Min, settings.Max);
         var min = anchor - CeilingPortion(anchor - settings.Min, level);
         var max = anchor + CeilingPortion(settings.Max - anchor, level);
-        return new GameSettings((int)min, (int)max, settings.Operations);
+        return settings.WithRange((int)min, (int)max);
     }
 
     private static long CeilingPortion(long span, int level) => (span * level + MaxLevel - 1) / MaxLevel;

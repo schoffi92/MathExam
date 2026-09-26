@@ -1,3 +1,4 @@
+using System.Globalization;
 using MathExam.Core;
 
 namespace MathExam.Core.Tests;
@@ -40,6 +41,58 @@ public class MathTaskTests
         Assert.Equal([new("2"), new("?", IsSuperscript: true), new(" = 32")], power);
         var root = new MathTask(3, Operation.Root, 27, 3, HiddenPart.Result).ToParts();
         Assert.Equal([new("3", IsSuperscript: true), new("√27 = ?")], root);
+    }
+
+    [Fact]
+    public void Missing_operator_accepts_every_operator_that_makes_the_equation_true()
+    {
+        var task = new MathTask(2, Operation.Multiply, 2, 4, HiddenPart.Operator);
+        Assert.Equal("2 ? 2 = 4", task.ToDisplayString());
+        Assert.Equal("2 × 2 = 4", task.ToDisplayString(revealAnswer: true));
+        Assert.True(task.IsCorrect(Operation.Multiply));
+        Assert.True(task.IsCorrect(Operation.Add));
+        Assert.False(task.IsCorrect(Operation.Subtract));
+        Assert.False(task.IsCorrect(4));
+
+        var division = new MathTask(18, Operation.Divide, 3, 6, HiddenPart.Operator);
+        Assert.True(division.IsCorrect(Operation.Divide));
+        Assert.False(division.IsCorrect(Operation.Multiply));
+        Assert.False(new MathTask(5, Operation.Add, 0, 5, HiddenPart.Operator).IsCorrect(Operation.Divide));
+    }
+
+    [Fact]
+    public void Fraction_tasks_show_fractions_and_accept_any_equal_answer()
+    {
+        // 1/2 + 1/4 = 3/4, stored over 4.
+        var task = new MathTask(2, Operation.Add, 1, 3, HiddenPart.Result, NumberKind.Fraction, 4);
+        Assert.Equal("1/2 + 1/4 = ?", task.ToDisplayString());
+        Assert.Equal("3/4", task.AnswerText);
+        foreach (var text in new[] { "3/4", "6/8", "0.75", "0,75" })
+        {
+            Assert.True(Rational.TryParse(text, out var answer));
+            Assert.True(task.IsCorrect(answer), text);
+        }
+        Assert.False(task.IsCorrect(new Rational(1, 2)));
+        Assert.Equal("1 1/4 − 1/2 = 3/4", new MathTask(5, Operation.Subtract, 2, 3, HiddenPart.Left, NumberKind.Fraction, 4)
+            .ToDisplayString(revealAnswer: true));
+    }
+
+    [Fact]
+    public void Decimal_tasks_show_tenths_in_the_current_culture()
+    {
+        var original = CultureInfo.CurrentCulture;
+        try
+        {
+            CultureInfo.CurrentCulture = new CultureInfo("en-US");
+            var task = new MathTask(12, Operation.Add, 5, 17, HiddenPart.Result, NumberKind.Decimal, 10);
+            Assert.Equal("1.2 + 0.5 = ?", task.ToDisplayString());
+            Assert.True(task.IsCorrect(new Rational(17, 10)));
+            Assert.False(task.IsCorrect(17));
+        }
+        finally
+        {
+            CultureInfo.CurrentCulture = original;
+        }
     }
 
     [Fact]

@@ -18,6 +18,9 @@
   <data name="Settings_NoOperation" xml:space="preserve">
     <value>En az bir işlem seç.</value>
   </data>
+  <data name="Settings_FractionsNeedAddSub" xml:space="preserve">
+    <value>Kesirler ve ondalık sayılar yalnızca toplama ve çıkarma ile çalışır.</value>
+  </data>
   <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
     <value>Bölme için aralıkta sıfırdan farklı bir sayı gerekir.</value>
   </data>

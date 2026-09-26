@@ -18,6 +18,9 @@
   <data name="Settings_NoOperation" xml:space="preserve">
     <value>Velg minst én regneart.</value>
   </data>
+  <data name="Settings_FractionsNeedAddSub" xml:space="preserve">
+    <value>Brøk og desimaltall fungerer bare med addisjon og subtraksjon.</value>
+  </data>
   <data name="Settings_DivisionNeedsNonZero" xml:space="preserve">
     <value>Divisjon trenger et tall som ikke er null i intervallet.</value>
   </data>

@@ -39,11 +39,29 @@
   <data name="Menu_Root" xml:space="preserve">
     <value>Kök alma (√)</value>
   </data>
+  <data name="Menu_MissingOperator" xml:space="preserve">
+    <value>Eksik işlem işareti (6 ? 3 = 18)</value>
+  </data>
+  <data name="Menu_Numbers" xml:space="preserve">
+    <value>Sayılar:</value>
+  </data>
+  <data name="Menu_NumbersWhole" xml:space="preserve">
+    <value>Tam sayılar</value>
+  </data>
+  <data name="Menu_NumbersDecimal" xml:space="preserve">
+    <value>Ondalık sayılar (0,1)</value>
+  </data>
+  <data name="Menu_NumbersFraction" xml:space="preserve">
+    <value>Kesirler (1/2)</value>
+  </data>
   <data name="Menu_Adaptive" xml:space="preserve">
     <value>Uyarlanabilir zorluk</value>
   </data>
   <data name="Menu_AdaptiveHint" xml:space="preserve">
     <value>Küçük sayılarla başlar, doğru cevap verdikçe sayılar büyür.</value>
+  </data>
+  <data name="Menu_Timed" xml:space="preserve">
+    <value>Zamana karşı: 1 dakika (tek kişilik)</value>
   </data>
   <data name="Menu_Display" xml:space="preserve">
     <value>Görünüm</value>
@@ -74,6 +92,15 @@
   </data>
   <data name="Menu_History" xml:space="preserve">
     <value>Geçmiş</value>
+  </data>
+  <data name="Menu_Worksheet" xml:space="preserve">
+    <value>Çalışma kâğıdı (PDF)</value>
+  </data>
+  <data name="Menu_WorksheetSaved" xml:space="preserve">
+    <value>Çalışma kâğıdı kaydedildi: {0}</value>
+  </data>
+  <data name="Menu_WorksheetError" xml:space="preserve">
+    <value>Çalışma kâğıdı kaydedilemedi: {0}</value>
   </data>
   <data name="Menu_MinNotWhole" xml:space="preserve">
     <value>En küçük sayı bir tam sayı olmalı.</value>
@@ -111,17 +138,26 @@
   <data name="Game_Elapsed" xml:space="preserve">
     <value>Geçen süre: {0}</value>
   </data>
+  <data name="Game_TimeLeft" xml:space="preserve">
+    <value>Kalan süre: {0}</value>
+  </data>
   <data name="Game_Send" xml:space="preserve">
     <value>Kontrol et</value>
   </data>
   <data name="Game_Next" xml:space="preserve">
     <value>Sonraki</value>
   </data>
+  <data name="Game_OperatorHint" xml:space="preserve">
+    <value>Hangi işaret eksik?</value>
+  </data>
   <data name="Answer_Correct" xml:space="preserve">
     <value>✓ Doğru!</value>
   </data>
   <data name="Answer_Wrong" xml:space="preserve">
     <value>✗ Doğru cevap: {0}</value>
+  </data>
+  <data name="Answer_HowTo" xml:space="preserve">
+    <value>Nasıl: {0}</value>
   </data>
   <data name="Answer_LevelUp" xml:space="preserve">
     <value>▲ Seviye atladın! Sayılar biraz büyüyor.</value>
@@ -146,6 +182,15 @@
   </data>
   <data name="Summary_Level" xml:space="preserve">
     <value>Seviye: {0} → {1}</value>
+  </data>
+  <data name="Summary_TimeUp" xml:space="preserve">
+    <value>Süre doldu!</value>
+  </data>
+  <data name="Summary_NewBest" xml:space="preserve">
+    <value>Yeni kişisel rekor: {0} doğru!</value>
+  </data>
+  <data name="Summary_Best" xml:space="preserve">
+    <value>Kişisel rekor: {0} doğru</value>
   </data>
   <data name="History_Title" xml:space="preserve">
     <value>İlerlemen</value>
@@ -186,11 +231,23 @@
   <data name="History_Totals" xml:space="preserve">
     <value>{0} · {1} soru · {2} doğru · toplam {3}</value>
   </data>
+  <data name="History_ByOperation" xml:space="preserve">
+    <value>İşleme göre: {0}</value>
+  </data>
   <data name="History_LoadError" xml:space="preserve">
     <value>Geçmiş okunamadı: {0}</value>
   </data>
   <data name="History_SaveError" xml:space="preserve">
     <value>Oyun geçmişe kaydedilemedi: {0}</value>
+  </data>
+  <data name="History_Export" xml:space="preserve">
+    <value>Dışa aktar (CSV)</value>
+  </data>
+  <data name="History_Exported" xml:space="preserve">
+    <value>Geçmiş dışa aktarıldı: {0}</value>
+  </data>
+  <data name="History_ExportError" xml:space="preserve">
+    <value>Geçmiş dışa aktarılamadı: {0}</value>
   </data>
   <data name="FamilySetup_Intro" xml:space="preserve">
     <value>Bu bilgisayarda sırayla oynayın: her oyuncu kendi sorularını çözer, sonra sırayı devreder.</value>
@@ -248,5 +305,20 @@
   </data>
   <data name="FamilySummary_PlayAgain" xml:space="preserve">
     <value>Tekrar oyna</value>
+  </data>
+  <data name="Worksheet_Title" xml:space="preserve">
+    <value>Çalışma kâğıdı</value>
+  </data>
+  <data name="Worksheet_Name" xml:space="preserve">
+    <value>Ad:</value>
+  </data>
+  <data name="Worksheet_Date" xml:space="preserve">
+    <value>Tarih:</value>
+  </data>
+  <data name="Worksheet_Answers" xml:space="preserve">
+    <value>Cevaplar</value>
+  </data>
+  <data name="Worksheet_Settings" xml:space="preserve">
+    <value>Sayılar {0} – {1}, {2}</value>
   </data>
 </root>

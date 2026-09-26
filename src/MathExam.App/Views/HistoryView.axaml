@@ -6,12 +6,19 @@
              x:DataType="vm:HistoryViewModel">
     <DockPanel>
         <TextBlock DockPanel.Dock="Top" Text="{x:Static res:Strings.History_Title}" Classes="title" Margin="0,0,0,8" />
-        <TextBlock DockPanel.Dock="Top" Text="{Binding TotalsText}" HorizontalAlignment="Center" Margin="0,0,0,12" />
+        <TextBlock DockPanel.Dock="Top" Text="{Binding TotalsText}" HorizontalAlignment="Center" Margin="0,0,0,4" />
+        <TextBlock DockPanel.Dock="Top" Text="{Binding ByOperationText}" HorizontalAlignment="Center"
+                   Foreground="{DynamicResource AccentBrush}" TextWrapping="Wrap" Margin="0,0,0,12" />
         <TextBlock DockPanel.Dock="Top" Text="{Binding LoadError}" Foreground="{DynamicResource ErrorBrush}"
                    TextWrapping="Wrap" HorizontalAlignment="Center" />
 
-        <Button DockPanel.Dock="Bottom" Content="{x:Static res:Strings.Common_BackToMenu}" Command="{Binding BackToMenuCommand}"
-                IsDefault="True" IsCancel="True" HorizontalAlignment="Center" Margin="0,12,0,0" />
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center" Spacing="12" Margin="0,12,0,0">
+            <Button Content="{x:Static res:Strings.History_Export}" Command="{Binding ExportCommand}" />
+            <Button Content="{x:Static res:Strings.Common_BackToMenu}" Command="{Binding BackToMenuCommand}"
+                    IsDefault="True" IsCancel="True" />
+        </StackPanel>
+        <TextBlock DockPanel.Dock="Bottom" Text="{Binding StatusText}" HorizontalAlignment="Center" TextWrapping="Wrap"
+                   Foreground="{DynamicResource MutedBrush}" Margin="0,8,0,0" />
 
         <Grid>
             <DataGrid ItemsSource="{Binding Rows}" AutoGenerateColumns="False" IsReadOnly="True"

@@ -3,23 +3,27 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Data;
 using Avalonia.Media;
+using Avalonia.Platform.Storage;
 using Avalonia.Threading;
 using MathExam.App.ViewModels;
 
 namespace MathExam.App;
 
-public partial class MainWindow : Window
+public partial class MainWindow : Window, IFileSaver
 {
     // Window size at normal text size; it is multiplied by the text scale.
     private const double BaseWidth = 800;
     private const double BaseHeight = 720;
-    private const double BaseMinWidth = 560;
+    // The menu has two columns, so narrower windows would cut it off.
+    private const double BaseMinWidth = 800;
     private const double BaseMinHeight = 480;
 
-    private readonly MainViewModel _viewModel = new();
+    private readonly MainViewModel _viewModel;
 
     public MainWindow()
     {
+        // Created first: it applies the saved language, which the views read while they load.
+        _viewModel = new MainViewModel(this);
         InitializeComponent();
         DataContext = _viewModel;
         FitToTextScale();
@@ -71,5 +75,25 @@ public partial class MainWindow : Window
         return screen is null
             ? new Size(double.PositiveInfinity, double.PositiveInfinity)
             : screen.WorkingArea.Size.ToSize(screen.Scaling);
+    }
+
+    public async Task<SaveTarget?> PickAsync(string title, string suggestedName, string fileTypeName, string extension)
+    {
+        var file = await StorageProvider.SaveFilePickerAsync(new FilePickerSaveOptions
+        {
+            Title = title,
+            SuggestedFileName = suggestedName,
+            DefaultExtension = extension,
+            ShowOverwritePrompt = true,
+            FileTypeChoices = [new FilePickerFileType(fileTypeName) { Patterns = [$"*.{extension}"] }],
+        });
+        if (file is null)
+            return null;
+
+        var stream = await file.OpenWriteAsync();
+        // Replacing an existing file: drop its old content beyond what is written now.
+        if (stream.CanSeek)
+            stream.SetLength(0);
+        return new SaveTarget(stream, file.TryGetLocalPath() ?? file.Name);
     }
 }
